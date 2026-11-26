@@ -370,7 +370,7 @@ Ampelsteuerung als Fall).
 - [x] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
 - [x] Simulator-Kern: Automat.ts, AutomatDiagramm, AutomatSimulator, AutomatAufgabe mit Tests und data/automaten.yaml; zeigt Kreise, Pfeile, Eingabe und Ausgabe am Pfeil, Startpfeil, Tastaturbedienung
-- [ ] Musterseite alltag/zustandsdiagramm in de und en: Selins Tabelle, Diagramm des Saftautomaten im Simulator, Merke zu Lesefehlern, Spielstein-Anleitung, Übungen number, matching, AutomatAufgabe folge und pfeil, single-choice, true-false; zeigt das Seitenmuster und den Simulator
+- [x] Musterseite alltag/zustandsdiagramm in de und en: Selins Tabelle, Diagramm des Saftautomaten im Simulator, Merke zu Lesefehlern, Spielstein-Anleitung, Übungen number, matching, AutomatAufgabe folge und pfeil, single-choice, true-false; zeigt das Seitenmuster und den Simulator
 <!-- tasks: pattern (2 added): the one page or screen that is the pattern for the others -->
 - [ ] **Checkpoint:** the pattern page. Load skill `lernapps-learner-check` and do its learner check on the page. Fix
       what it finds. Then show the creator the page and ask whether the others may follow it. Stop and wait. A
