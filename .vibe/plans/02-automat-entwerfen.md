@@ -4,7 +4,7 @@
 # Archetype, as in the app's first plan. Allowed values: explainer, interactive, quiz.
 archetype: explainer
 # Current phase. Allowed values: explore, plan, code, commit.
-phase: explore
+phase: plan
 # prePushFailures: failed pre-push runs of this increment, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
@@ -144,8 +144,9 @@ Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
 - [x] Write under "Notes" the didactic approach per competency and the scope (in, out, data range).
 - [x] The increment needs a kind of content the guide does not cover (a new page structure, screen, component or kind
       of exercise): load skills `lernapps-explainer-design` and `lernapps-exercise-patterns`. Else skip this task.
-- [ ] **Checkpoint:** research. Show in plain words: the new competencies by chapter, the didactic approach, the
+- [x] **Checkpoint:** research. Show in plain words: the new competencies by chapter, the didactic approach, the
       scope, every "(guess)", the sources and what is unchecked. Stop and wait. Changes: change them, then ask again.
+      Creator: Einverstanden, weiter mit dem Plan. Zwei Seiten für einen Baustein: ja. Ausgaben: nur Zustände und Übergänge entwerfen; in einem Satz erwähnen, dass man Ausgaben auch an die Übergänge schreiben kann. Begriffe vollständig, eindeutig (deterministisch einmal), Testfolge passen. inf-schule nur als Anregung.
 
 ### Answers
 
@@ -167,24 +168,74 @@ Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
 
 ### Tasks
 
-- [ ] Load skill `lernapps-content-growth`. Add the tasks of Code as slices, one per competency, in the guide's
+- [x] Load skill `lernapps-content-growth`. Add the tasks of Code as slices, one per competency, in the guide's
       order, one call each: `npx --no -- lernapps plan add --at slices "<task>"`. Say in each which sub-agent may
       write it in parallel, if any.
-- [ ] Write "Content method": the guide's patterns, figures and components per slice. Anything new: map it as skill
+- [x] Write "Content method": the guide's patterns, figures and components per slice. Anything new: map it as skill
       `lernapps-explainer-design` says, and say why the guide's patterns do not fit.
-- [ ] Draw a sketch of each new component or interactive exercise, in `.vibe/sketches/`.
-- [ ] Show the creator, short: goal, new competencies by chapter, slices; in plain words what learners see and do and
+- [x] Draw a sketch of each new component or interactive exercise, in `.vibe/sketches/`.
+- [x] Show the creator, short: goal, new competencies by chapter, slices; in plain words what learners see and do and
       what is new. At most 2 questions.
 - [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for an explicit yes. Changes: change
       them, then ask again.
 
 ### Content method
 
-<!-- One line each: the guide's patterns, figures and components used, and where; anything new, what it does and
-cannot. Something new goes into the guide in the slice that adds it. -->
-<!-- An explainer: per figure, model and component its learning action in two to four sentences
-(`explainer-representation-explained`); per page its prerequisites the app does not practise, and which get a recap
-page, which a link. -->
+**Aufbau.** `src/entwerfen/chapter.yaml` („Einen Automaten entwerfen“), in `src/app.yaml` nach `alltag`. Seiten
+`ampel-entwerfen`, `entwurf-testen`, beide `competencies: [automat-entwerfen]`. Abschnitts-ids wie Kapitel 1
+(`einstieg`, `idee`, `ausprobieren`, `mitmachen` entfällt hier, `uebung`, am Kapitelende `rueckblick`). Voraussetzung
+`zustandsdiagramm`: übt Kapitel 1; Link auf `/alltag/zustandsdiagramm/` im Einstieg, kein recap.
+
+**Fall statt Bild.** Chat der 9b als `text`-Block mit Zeilen „**Selin:** …“ (je Seite ein Chat im Einstieg, kurz);
+keine gezeichneten Kinder. Ausgaben: ein Satz auf Seite 1, dass man sie wie in Kapitel 1 an die Übergänge schreiben
+kann; entworfen werden nur Zustände und Übergänge.
+
+**Muster aus dem Leitfaden** (weiter genutzt): `AutomatAufgabe` Modus `folge` (Bedarfsampel lesen),
+`true-false` gegen Fehlvorstellungen, `matching`, `single-choice` mit `info` je Option, Simulator-Bild.
+
+**Neu, und warum kein vorhandenes Muster passt:**
+- **Übungskomponente `AutomatEntwurf`** (entwerfen; kein Block kann einen Entwurf mit frei gewählten Zuständen
+  prüfen): je Aufgabe aus `src/data/entwuerfe.yaml` (Bedarfsampel, Parkhausschranke, Zahlenschloss 2-7, Drehtür im
+  Museum) die Aufgabe, die Eingaben, 5-7 Zustandskarten (darunter 1-2 Karten, die eine Eingabe, Ausgabe oder Handlung
+  sind, mit Grund) und 3-5 Testfolgen mit erwartetem Endzustand. Bedienung: Karten an- und abwählen (Checkboxen),
+  Startzustand wählen (Radio), je Zeile „Zustand × Eingabe“ das Ziel aus einer Auswahlliste; das Diagramm (Kreise auf
+  einem Kreis angeordnet) zeichnet sich mit; „Testfolgen abspielen“ zeigt je Folge, wo sie endet. Antwort: der Entwurf.
+  `check` prüft Eigenschaften: keine Nicht-Zustand-Karte; Startzustand wie in der Aufgabe beschrieben; vollständig;
+  alle Testfolgen enden richtig. `reason` nennt die erste verletzte Eigenschaft (die Karte mit ihrem Grund, die leere
+  Zeile, die gescheiterte Testfolge mit ihrem Ende), nie die Lösung. `solution` ist ein gültiger Entwurf aus den Daten
+  (nur für „Lösung zeigen“ und den Tutor; geprüft wird nicht gegen ihn). Modus `verbessern` (Seite 2): Der Entwurf
+  startet mit einem gültigen Entwurf, in dem ein Pfeil verändert ist; die Kinder finden ihn mit den Testfolgen.
+  Kann nicht: eigene Zustandsnamen eintippen (nur Karten), Ausgaben festlegen, nicht-deterministische Entwürfe bauen
+  (die Bedienung erlaubt je Zeile ein Ziel; das Thema „eindeutig“ übt Seite 2 mit Bildern und Fragen).
+- **Simulator-Ansicht `entwerfen`** (Seite 1, Ausprobieren, keine Übung): dieselbe Bedienung mit der Bedarfsampel,
+  ohne Prüfen, mit „Testfolge abspielen“ Schritt für Schritt. Ansicht `bild`: nur das Diagramm ohne Knöpfe, für die
+  Fehlerbilder auf Seite 2 (`src/data/fehlerbilder.yaml`: ein Entwurf mit fehlendem Pfeil, einer mit zwei Pfeilen
+  derselben Eingabe).
+- **`AutomatAufgabe` Modus `fehler`** (Seite 2): ein Automat aus `automaten.yaml` mit einem veränderten Pfeil und eine
+  Testfolge, die falsch endet; die Kinder wählen den falschen Pfeil aus einer Liste („Mitte – runter → oben“).
+  `reason`: ein Pfeil, den die Folge gar nicht benutzt, oder ein benutzter, aber richtiger.
+- **`generated` Zeilen zählen** (Seite 2): „n Zustände, m Eingaben: Wie viele Pfeile braucht ein vollständiger
+  Entwurf?“ Antwort n·m; Fehler n+m, n, m.
+
+**Seiten und Übungen:**
+1. `ampel-entwerfen`: Einstieg Chat (Bedarfsampel vor der Schule) + `multiple-choice` „Welche sind Eingaben der
+   Bedarfsampel?“ – Idee: vier Schritte als Liste, Zustandskarten-Tabelle, Definitionen „vollständig“, „eindeutig
+   (deterministisch)“, „Testfolge“ – Ausprobieren: Simulator `entwerfen` (Bedarfsampel) – Übung: `ordering` der vier
+   Schritte, `single-choice` „Warum braucht die Ampel ‚Anforderung‘?“, `AutomatEntwurf` (alle vier Aufgaben),
+   `true-false` „Die Ampel braucht eine Uhr als Zustand“.
+2. `entwurf-testen`: Einstieg Chat (Mias Entwurf, die Testfolge scheitert) + `single-choice` – Idee: drei Fehlerarten,
+   je mit Simulator `bild`, gute Testfolgen (jede Eingabe in jedem Zustand) – Übung: `generated` Zeilen zählen,
+   `AutomatAufgabe` `fehler`, `AutomatEntwurf` `verbessern`, `matching` Fehlerbild → Fehlerart – Rückblick aufs Kapitel
+   und auf die App.
+
+**Engagement:** 1. Einstieg „Was muss sich die Ampel merken?“ – Wechsel Chat, Liste, Tabelle, Simulator, Übungen –
+Lohn: ein eigener Entwurf, der alle Testfolgen besteht – weiter: Mia testet ihn. 2. Einstieg „Mias Entwurf lässt die
+Fußgänger nie gehen. Warum?“ – Wechsel Bilder, Fragen, Fehler suchen, verbessern – Lohn: die Technik-AG programmiert
+nach dem geprüften Entwurf – Rückblick vom Saftautomaten der 6b bis zur Ampel der 9b.
+
+**Selbsteinschätzung:** Kapitel `entwerfen` bekommt eine mit `AutomatEntwurf` (zweimal), `fehler`, Zeilen zählen.
+
+**Budget:** eigener Code aller Komponenten zusammen unter 20 kB gzip (jetzt etwa 7 kB).
 
 ## Code
 
@@ -207,7 +258,9 @@ page, which a link. -->
       `references/language-tasks.md` in the same folder. A component in the plan: also `references/components.md`.
 - [ ] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
-<!-- tasks: slices: one per competency, as written in Plan -->
+- [ ] Slice 1 (ich, kein Subagent; gemeinsame Komponenten): Entwurfs-Komponenten (AutomatEntwurf.ts/.vue mit Tests, Simulator-Ansicht entwerfen, Daten entwuerfe.yaml) und Musterseite entwerfen/ampel-entwerfen (de, en): Chat der 9b, vier Schritte, Simulator entwerfen, Definitionen vollständig/eindeutig/Testfolge, Übungen
+- [ ] Slice 2 (ich, kein Subagent; nutzt dieselben Komponenten): Seite entwerfen/entwurf-testen (de, en): drei Fehlerarten mit Bildern, Testfolgen wählen, AutomatAufgabe Modus fehler, AutomatEntwurf Modus verbessern, generated Zeilen zählen
+<!-- tasks: slices (2 added): one per competency, as written in Plan -->
 - [ ] **Checkpoint:** the pattern page, after the first slice. A slice in a pattern the app already has: show it to
       the creator and go on. A new pattern: load skill `lernapps-learner-check`, do its learner check, fix what it
       finds, then ask the creator whether the others may follow it, and wait.
