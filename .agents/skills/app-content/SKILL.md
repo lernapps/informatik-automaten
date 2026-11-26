@@ -31,7 +31,8 @@ Kapitel `alltag` „Automaten im Alltag“:
 - Seite `alltag/automaten-im-alltag`, `competencies: [automaten-im-alltag]`: „Ich kann an einem Automaten aus dem
   Alltag, zum Beispiel einem Getränkeautomaten, erklären, wie er abhängig von Eingabe und Zustand reagiert.“
   Übungen: `kein-saft` (single-choice, Einstieg), `immer-gleich` (true-false), `was-passiert` (generated),
-  `zettel-am-ende` (AutomatAufgabe folge, kasten), `alltag-merken` (matching).
+  `zettel-am-ende` (AutomatAufgabe folge, kasten), `alltag-merken` (matching), `zustand-oder-eingabe`
+  (single-choice: Zustand, Eingabe oder Ausgabe?).
 - Seite `alltag/zustandsdiagramm`, `competencies: [zustandsdiagramm]`: „Ich kann das Verhalten eines Automaten mit
   Zuständen und Übergängen in einem Zustandsdiagramm darstellen und ein solches Diagramm lesen.“ Übungen:
   `zustaende-zaehlen` (number), `saft-bekommen` (single-choice zum Simulator), `diagramm-teile` (matching),
@@ -60,7 +61,7 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   „Münze kommt zurück“ aus. Knopf: bei 0 und 1 bleibt er (keine Ausgabe), bei 2 → 0 mit „Saft fällt heraus“.
 - Seite 0 Wiederholung → Seite 1 (Jona spielt, Zustand; endet mit `ausblick`) → Seite 2 (Selins Plan als Tabelle,
   dann als Diagramm im Simulator, Merke, Spielstein-Spiel, fremde Diagramme lesen und ergänzen, `rueckblick` aufs
-  Kapitel mit Ausblick auf 9-10). Die anderen Automaten (Flurlicht mit Knopf, Drehkreuz, Aufzug, Fußgängerampel)
+  Kapitel mit Ausblick auf 9-10). Die anderen Automaten (Lampe mit Druckknopf, Drehkreuz, Aufzug, Fußgängerampel)
   stellt Seite 1 in `alltag-merken` vor und Seite 2 in einem Text am Anfang von `uebung`.
 
 ## Terminology
@@ -74,6 +75,7 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 - Vermieden: Mealy, Moore, Endzustand, akzeptierender Zustand, Wort, Sprache (#504); Schleife im Sinn von Programmen
   (#495) – den Pfeil zurück zum selben Zustand nennen wir „Pfeil zurück zum selben Kreis“ (en: „arrow back to the same
   circle“), nicht „Schleife“. Den Übergang nennen wir im Fließtext auch „Sprung“ und erklären ihn so.
+- Tabelle auf Seite 2 mit Spalten „Jetzt | Eingabe / Ausgabe | Danach“, wie die Beschriftung am Pfeil.
 - Englisch: Automatennamen großgeschrieben („Juice machine“), englische Anführungszeichen “…”, „green man“ statt
   wörtlicher Übersetzung; Eingaben in den Aufgaben ohne Anführungszeichen aufgezählt („coin, button, coin“).
 - Regel der App: Jeder Zustand hat für jede Eingabe genau einen Pfeil; ändert sich der Zustand nicht, führt er zurück
@@ -118,7 +120,7 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   - Ansicht `kasten` (Seite 1): Karton mit Münzschlitz, Zettel „Jona merkt sich: …“ und Ausgabefach, kein Diagramm.
   - Unter dem Diagramm: ein Knopf je Eingabe, „Zurück zum Start“, die Ausgabezeile, der Verlauf; der neue Zustand wird
     über `aria-live` angesagt. Ohne JS: Tabelle aller Übergänge (`nojs`).
-- `src/data/automaten.yaml`: Automaten mit Nummer `nr` (0 Saftautomat, 1 Flurlicht mit Knopf, 2 Drehkreuz am
+- `src/data/automaten.yaml`: Automaten mit Nummer `nr` (0 Saftautomat, 1 Lampe mit Druckknopf, 2 Drehkreuz am
   Schwimmbad, 3 Aufzug, 4 Fußgängerampel); Zustände und Eingaben heißen mit ihrer Stelle in der Liste ab 0 (`start`,
   `from`, `to`, `input`). Keine ids als Text: Jeder `string`-Prop ist für den Build ein Lerntext in jeder Sprache.
   Je Zustand `x`, `y` (Fläche etwa 600 × 300; der Aufzug steht senkrecht) und `loop` (Richtung des Pfeils zurück zum
@@ -160,4 +162,10 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 - Eine Tabelle direkt unter der Zählfrage verriet die Antwort: Material, das eine Frage beantwortet, steht danach.
 - Fragen im Fließtext („Wie kommst du an einen Saft?“) ohne Übung: jede solche Frage bekommt eine Übung.
 - Neue Automaten in Übungen ohne Einführung verwirrten: erst kurz vorstellen.
+- Fachliche Prüfung: „Ampel → welche Farbe leuchtet“ lehrte „Zustand = was man sieht“ (die Ampel hat zwei Zustände
+  mit gleichen Farben); „Geld kommt zurück“ klang nach voller Erstattung (jetzt „Münze kommt zurück“); „behalten“
+  ließ „2 € drin“ als Ziel lesen. Im selben Zustand reagiert ein Automat immer gleich: das steht positiv im Merke.
+- Bei zwei Zuständen ist jede falsche Antwort „der andere Zustand“: dann keine eigene Fehlermeldung, nur die
+  allgemeine.
+- Englisch: Saft-Zustände „€0 paid“ statt „€0 in“.
 - Benachbarte Aufgabennummern lieferten mit mulberry32 denselben Automaten: Seed vorher mischen (`AutomatAufgabe.ts`).

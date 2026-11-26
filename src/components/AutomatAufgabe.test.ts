@@ -151,3 +151,10 @@ test("describe gives the task and the diagram as text, without the missing arrow
   expect(describe(f, folge, "de").solution).toContain("**2 € drin**");
   expect(Object.keys(params(f, folge, "de"))).toEqual(["automat", "start", "inputs"]);
 });
+
+test("folge with two states: no typical mistake, only the general message", () => {
+  const task = { mode: "folge" as const, automat: lampe, inputs: [0, 0, 0], hidden: undefined };
+  expect(solution(task)).toBe(1);
+  expect(mistakes(task)).toEqual([undefined, undefined, undefined, undefined, undefined]);
+  expect(reason(task, 0, folge)).toBe("Fang bei „aus“ an und folge jedem Pfeil.");
+});

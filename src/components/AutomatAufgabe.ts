@@ -108,7 +108,9 @@ export function wrong(task: Task): number {
 /**
  * The answer of each typical mistake, in the order of about.mistakes of the mode; undefined where it would be right.
  * folge: the last input left out; the arrows read backwards; still at the start.
- * pfeil: the arrow back to its own state although the state changes; the start state although nothing changes.
+ * pfeil: the arrow back to its own state although the state changes; another state (state 0, or 1 when the arrow
+ * starts at 0) although nothing changes.
+ * folge with two states: none, since every wrong answer is the other state.
  */
 export function mistakes(task: Task, _props?: Props): (number | undefined)[] {
   const right = solution(task);
@@ -123,6 +125,8 @@ export function mistakes(task: Task, _props?: Props): (number | undefined)[] {
       right === task.hidden.from ? keep(other) : undefined,
     ];
   }
+  // with two states every wrong answer is the other state: no typical mistake can be told apart, only the general hint
+  if (task.automat.states.length < 3) return [undefined, undefined, undefined, undefined, undefined];
   return [
     keep(end(task.automat, task.inputs.slice(0, -1))),
     keep(backwards(task.automat, task.inputs)),

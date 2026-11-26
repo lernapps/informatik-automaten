@@ -65,8 +65,8 @@ blocks:
     options:
       - text:
           {
-            de: "Nichts: Es kommt darauf an, wie viel Geld schon drin ist.",
-            en: "Nothing: it depends on how much money is inside already.",
+            de: "Es sagt nicht, ob Saft kommt. Das hängt davon ab, wie viel Geld schon drin ist.",
+            en: "It does not say whether juice comes out. That depends on how much money is inside already.",
           }
         correct: true
         info:
@@ -81,7 +81,7 @@ blocks:
         correct: false
         info:
           de: Mit 2 € im Automaten bringt der Knopf einen Saft.
-          en: With €2 in the machine, the button brings a juice.
+          en: With €2 paid the machine, the button brings a juice.
     explanation:
       de: Derselbe Knopf kann einmal Saft bringen und einmal nicht. Was den Unterschied macht, lernst du auf der nächsten Seite.
       en: The same button can bring a juice one time and nothing another time. What makes the difference is on the next page.

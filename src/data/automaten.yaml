@@ -1,4 +1,4 @@
-# Die Automaten des Simulators. Ein Automat heißt mit seiner Nummer nr (0 Saftautomat, 1 Flurlicht, 2 Drehkreuz,
+# Die Automaten des Simulators. Ein Automat heißt mit seiner Nummer nr (0 Saftautomat, 1 Lampe, 2 Drehkreuz,
 # 3 Aufzug, 4 Fußgängerampel); Zustände und Eingaben heißen mit ihrer Stelle in der Liste, ab 0 (from, to, input,
 # start). Nummern statt Namen, weil jeder Text, den der Build an eine Komponente gibt, ein Lerntext je Sprache ist.
 # Jeder Automat ist vollständig: Jeder Zustand hat für jede Eingabe genau einen Pfeil.
@@ -16,19 +16,19 @@
   states:
     - name:
         de: 0 € drin
-        en: €0 in
+        en: €0 paid
       x: 110
       y: 170
       loop: -90
     - name:
         de: 1 € drin
-        en: €1 in
+        en: €1 paid
       x: 310
       y: 170
       loop: -90
     - name:
         de: 2 € drin
-        en: €2 in
+        en: €2 paid
       x: 510
       y: 170
       loop: -90
@@ -81,17 +81,17 @@
       bend: 55
       text:
         de:
-          Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die zwei Münzen hat der Automat für
-          den Saft behalten.
+          Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die Münzen wandern in Jonas Kasse.
+          Für den nächsten Saft musst du neu bezahlen.
         en:
-          Two coins are inside the machine. You press the button. A juice drops out. The machine has kept the two coins
-          to pay for it.
+          Two coins are inside the machine. You press the button. A juice drops out. The coins go into Jona's cash box.
+          For the next juice you have to pay again.
   outputs:
     - from: 2
       input: 0
       text:
-        de: Geld kommt zurück
-        en: money comes back
+        de: Münze kommt zurück
+        en: coin comes back
     - from: 2
       input: 1
       text:
@@ -100,8 +100,8 @@
 # lampe
 - nr: 1
   name:
-    de: Flurlicht mit Knopf
-    en: Hall light with a button
+    de: Lampe mit Druckknopf
+    en: Lamp with a push button
   start: 0
   states:
     - name:
@@ -126,15 +126,15 @@
       to: 1
       bend: 0
       text:
-        de: Im Flur ist es dunkel. Du drückst den Knopf an der Wand. Danach kannst du im Flur gut sehen.
-        en: The hall is dark. You press the button on the wall. Afterwards you can see well in the hall.
+        de: Im Zimmer ist es dunkel. Du drückst den Knopf an der Lampe. Danach kannst du im Zimmer gut sehen.
+        en: The room is dark. You press the button on the lamp. Afterwards you can see well in the room.
     - from: 1
       input: 0
       to: 0
       bend: 0
       text:
-        de: Im Flur ist es hell. Du drückst den Knopf an der Wand. Danach ist es im Flur wieder dunkel.
-        en: The hall is bright. You press the button on the wall. Afterwards the hall is dark again.
+        de: Im Zimmer ist es hell. Du drückst den Knopf an der Lampe. Danach ist es im Zimmer wieder dunkel.
+        en: The room is bright. You press the button on the lamp. Afterwards the room is dark again.
   outputs:
     - from: 0
       input: 0
@@ -170,7 +170,7 @@
         de: Chip
         en: token
     - name:
-        de: Durchgehen
+        de: drücken
         en: push
   transitions:
     - from: 0
@@ -364,3 +364,13 @@
       text:
         de: Wartesignal an
         en: WAIT light on
+    - from: 1
+      input: 1
+      text:
+        de: Autos Rot, Fußgänger Grün
+        en: red for cars, green man
+    - from: 2
+      input: 1
+      text:
+        de: Fußgänger Rot, Autos Grün
+        en: red man, green for cars

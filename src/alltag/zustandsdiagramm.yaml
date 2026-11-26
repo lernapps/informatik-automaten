@@ -34,7 +34,7 @@ blocks:
           - answer: 2
             message:
               de: "Hast du den leeren Automaten vergessen? Auch „0 € drin“ ist ein Zustand."
-              en: "Did you forget the empty machine? “€0 in” is a state too."
+              en: "Did you forget the empty machine? “€0 paid” is a state too."
           - answer: 4
             message:
               de: "Mehr als 2 € sind nie drin: Eine dritte Münze kommt zurück."
@@ -53,42 +53,42 @@ blocks:
     blocks:
       - type: table
         caption:
-          de: "Selins Plan als Tabelle: Wohin springt der Automat in welchem Zustand bei welcher Eingabe? Was kommt heraus?"
-          en: "Selin's plan as a table: where does the machine jump in which state with which input? What comes out?"
+          de: "Selins Plan als Tabelle: Wohin springt der Automat in welchem Zustand bei welcher Eingabe, und was kommt dabei heraus?"
+          en: "Selin's plan as a table: where does the machine jump in which state with which input, and what comes out on the way?"
         header:
           - { de: Jetzt, en: Now }
-          - { de: Eingabe, en: Input }
+          - { de: Eingabe / Ausgabe, en: Input / output }
           - { de: Danach, en: After }
         rows:
-          - - { de: "0 € drin", en: "€0 in" }
+          - - { de: "0 € drin", en: "€0 paid" }
             - { de: Münze, en: coin }
-            - { de: "1 € drin", en: "€1 in" }
-          - - { de: "0 € drin", en: "€0 in" }
+            - { de: "1 € drin", en: "€1 paid" }
+          - - { de: "0 € drin", en: "€0 paid" }
             - { de: Knopf, en: button }
-            - { de: "0 € drin", en: "€0 in" }
-          - - { de: "1 € drin", en: "€1 in" }
+            - { de: "0 € drin", en: "€0 paid" }
+          - - { de: "1 € drin", en: "€1 paid" }
             - { de: Münze, en: coin }
-            - { de: "2 € drin", en: "€2 in" }
-          - - { de: "1 € drin", en: "€1 in" }
+            - { de: "2 € drin", en: "€2 paid" }
+          - - { de: "1 € drin", en: "€1 paid" }
             - { de: Knopf, en: button }
-            - { de: "1 € drin", en: "€1 in" }
-          - - { de: "2 € drin", en: "€2 in" }
-            - { de: Münze, en: coin }
-            - { de: "2 € drin, Ausgabe: Geld kommt zurück", en: "€2 in, output: money comes back" }
-          - - { de: "2 € drin", en: "€2 in" }
-            - { de: Knopf, en: button }
-            - { de: "0 € drin, Ausgabe: Saft fällt heraus", en: "€0 in, output: juice drops out" }
+            - { de: "1 € drin", en: "€1 paid" }
+          - - { de: "2 € drin", en: "€2 paid" }
+            - { de: Münze / Münze kommt zurück, en: coin / coin comes back }
+            - { de: "2 € drin", en: "€2 paid" }
+          - - { de: "2 € drin", en: "€2 paid" }
+            - { de: Knopf / Saft fällt heraus, en: button / juice drops out }
+            - { de: "0 € drin", en: "€0 paid" }
       - type: text
         text:
           de: >-
             Die Tabelle stimmt, aber sie ist lang. Selin zeichnet sie deshalb als Bild: Jeder Zustand wird ein Kreis.
-            Jede Zeile wird ein Pfeil vom Kreis „Jetzt“ zum Kreis „Danach“. Am Pfeil steht die Eingabe in Blau. Kommt
-            etwas heraus, steht nach dem Schrägstrich die Ausgabe in Orange. Ein Pfeil mit dem Wort „Start“ zeigt auf
+            Jede Zeile wird ein Pfeil vom Kreis „Jetzt“ zum Kreis „Danach“. Am Pfeil steht wie in der Tabelle die Eingabe in
+            Blau und nach dem Schrägstrich die Ausgabe in Orange. Ein Pfeil mit dem Wort „Start“ zeigt auf
             den Kreis, bei dem der Automat anfängt. Unten kannst du Selins Bild ausprobieren.
           en: >-
             The table is right, but it is long. So Selin draws it as a picture: each state becomes a circle. Each row
-            becomes an arrow from the “Now” circle to the “After” circle. The input is written next to the arrow in
-            blue. If something comes out, the output follows after a slash in orange. An arrow with the word “Start”
+            becomes an arrow from the “Now” circle to the “After” circle. As in the table, the input is written next to
+            the arrow in blue and the output after the slash in orange. An arrow with the word “Start”
             points to the circle where the machine begins. Below you can try out Selin's picture.
       - type: definition
         term:
@@ -102,8 +102,8 @@ blocks:
           de: Übergang
           en: transition
         explanation:
-          de: Ein Übergang ist der Sprung von einem Zustand zum nächsten bei einer Eingabe. Im Diagramm ist er ein Pfeil.
-          en: A transition is the jump from one state to the next when there is an input. In the diagram it is an arrow.
+          de: Ein Übergang ist der Sprung von einem Zustand zu einem Zustand bei einer Eingabe. Das kann auch derselbe Zustand sein. Im Diagramm ist er ein Pfeil.
+          en: A transition is the jump from one state to a state when there is an input. It can be the same state. In the diagram it is an arrow.
       - type: definition
         term:
           de: Startzustand
@@ -138,19 +138,19 @@ blocks:
             - 0 € drin – Knopf → 0 € drin
             - 1 € drin – Münze → 2 € drin
             - 1 € drin – Knopf → 1 € drin
-            - 2 € drin – Münze → 2 € drin (Ausgabe: Geld kommt zurück)
+            - 2 € drin – Münze → 2 € drin (Ausgabe: Münze kommt zurück)
             - 2 € drin – Knopf → 0 € drin (Ausgabe: Saft fällt heraus)
 
             Mit JavaScript drückst du die Eingaben „Münze“ und „Knopf“ und siehst den Automaten springen.
           en: |-
-            The simulator shows Selin's state diagram of the juice machine. Three circles: “€0 in” (start state), “€1 in” and “€2 in”. The arrows:
+            The simulator shows Selin's state diagram of the juice machine. Three circles: “€0 paid” (start state), “€1 paid” and “€2 paid”. The arrows:
 
-            - €0 in – coin → €1 in
-            - €0 in – button → €0 in
-            - €1 in – coin → €2 in
-            - €1 in – button → €1 in
-            - €2 in – coin → €2 in (output: money comes back)
-            - €2 in – button → €0 in (output: juice drops out)
+            - €0 paid – coin → €1 paid
+            - €0 paid – button → €0 paid
+            - €1 paid – coin → €2 paid
+            - €1 paid – button → €1 paid
+            - €2 paid – coin → €2 paid (output: coin comes back)
+            - €2 paid – button → €0 paid (output: juice drops out)
 
             With JavaScript you press the inputs “coin” and “button” and watch the machine jump.
       - type: single-choice
@@ -163,12 +163,12 @@ blocks:
             correct: true
             info:
               de: Nach zwei Münzen ist der Automat bei „2 € drin“. Dort führt der Pfeil „Knopf“ zur Ausgabe „Saft fällt heraus“.
-              en: After two coins the machine is at “€2 in”. From there the arrow “button” gives the output “juice drops out”.
+              en: After two coins the machine is at “€2 paid”. From there the arrow “button” gives the output “juice drops out”.
           - text: { de: "Münze, Knopf", en: "coin, button" }
             correct: false
             info:
               de: Nach einer Münze ist der Automat bei „1 € drin“. Dort führt der Pfeil „Knopf“ zurück zum selben Kreis, ohne Ausgabe.
-              en: After one coin the machine is at “€1 in”. From there the arrow “button” goes back to the same circle, with no output.
+              en: After one coin the machine is at “€1 paid”. From there the arrow “button” goes back to the same circle, with no output.
           - text: { de: "Knopf, Münze, Münze", en: "button, coin, coin" }
             correct: false
             info:
@@ -181,7 +181,7 @@ blocks:
               en: When you press the button only €1 is inside, which is not enough. After that €2 is inside, but there is no more button press.
         explanation:
           de: Folge vom Start aus den Pfeilen. Ein Saft kommt nur beim Pfeil von „2 € drin“ mit der Eingabe „Knopf“.
-          en: Follow the arrows from the start. A juice only comes with the arrow from “€2 in” with the input “button”.
+          en: Follow the arrows from the start. A juice only comes with the arrow from “€2 paid” with the input “button”.
       - type: note
         title:
           de: Merke
@@ -190,10 +190,10 @@ blocks:
           - type: text
             text:
               de: |-
-                - Jeder Zustand braucht für jede Eingabe einen Pfeil. Ändert sich der Zustand nicht, führt der Pfeil zurück zum selben Kreis, auch wenn etwas herauskommt.
+                - In unseren Plänen bekommt jeder Zustand für jede Eingabe einen Pfeil. Ändert sich der Zustand nicht, führt der Pfeil zurück zum selben Kreis, auch wenn etwas herauskommt.
                 - Der Automat springt immer zur Spitze des Pfeils.
               en: |-
-                - Every state needs an arrow for every input. If the state does not change, the arrow goes back to the same circle, even when something comes out.
+                - In our plans every state gets an arrow for every input. If the state does not change, the arrow goes back to the same circle, even when something comes out.
                 - The machine always jumps to the head of the arrow.
   - type: section
     id: mitmachen
@@ -226,13 +226,13 @@ blocks:
       - type: text
         text:
           de: >-
-            Selin hat noch mehr Pläne gezeichnet: für das Flurlicht mit Knopf, das Drehkreuz am Schwimmbad (erst einen
-            Chip einstecken, dann durchgehen), den Aufzug und die Fußgängerampel. Bei der Ampel ist auch „Zeit um“ eine
-            Eingabe: Die bekommt die Ampel, wenn ihre Wartezeit vorbei ist.
+            Selin hat noch mehr Pläne gezeichnet: für die Lampe mit Druckknopf, das Drehkreuz am Schwimmbad (erst einen
+            Chip einstecken, dann drücken), den Aufzug und die Fußgängerampel. Bei der Ampel ist auch „Zeit um“ eine
+            Eingabe: Die bekommt die Ampel, wenn eine Ampelphase vorbei ist.
           en: >-
-            Selin has drawn more plans: for the hall light with a button, the turnstile at the swimming pool (first put
-            in a token, then push through), the lift and the pedestrian crossing. At the crossing, “time up” is an
-            input too: the lights get it when their waiting time is over.
+            Selin has drawn more plans: for the lamp with a push button, the turnstile at the swimming pool (first put
+            in a token, then push), the lift and the pedestrian crossing. At the crossing, “time up” is an
+            input too: the lights get it when a phase of the lights is over.
       - type: matching
         id: diagramm-teile
         text:
@@ -241,7 +241,7 @@ blocks:
         pairs:
           - left: { de: ein Kreis, en: a circle }
             right: { de: ein Zustand, en: a state }
-          - left: { de: ein Pfeil von Kreis zu Kreis, en: an arrow from circle to circle }
+          - left: { de: ein Pfeil, en: an arrow }
             right: { de: ein Übergang, en: a transition }
           - left: { de: das blaue Wort am Pfeil, en: the blue word next to an arrow }
             right: { de: die Eingabe, en: the input }
@@ -267,12 +267,12 @@ blocks:
           chooseLabel: { de: Zustand am Ende, en: State at the end }
           outputWord: { de: Ausgabe, en: output }
           mistakes:
-            - de: "Fast. Die letzte Eingabe „{last}“ fehlt noch: Folge auch ihrem Pfeil."
-              en: "Almost. The last input “{last}” is still missing: follow its arrow too."
+            - de: "Hast du die letzte Eingabe „{last}“ mitgezählt? Folge auch ihrem Pfeil."
+              en: "Did you count the last input “{last}”? Follow its arrow too."
             - de: "Schau bei jedem Schritt, wohin die Spitze des Pfeils zeigt. Der Automat springt immer zur Spitze."
               en: "At each step, look where the head of the arrow points. The machine always jumps to the head."
-            - de: "Du stehst noch beim Start. Bei jeder Eingabe springt der Automat entlang des Pfeils mit diesem Wort."
-              en: "You are still at the start. With each input the machine jumps along the arrow with that word."
+            - de: "Am Ende ist der Automat nicht beim Start. Geh vom Start aus jede Eingabe einzeln durch: Bei jeder springt er entlang des Pfeils mit diesem Wort."
+              en: "At the end the machine is not at the start. Go through each input from the start: with each one it jumps along the arrow with that word."
           other:
             de: "Fang bei „{start}“ an und geh die Eingaben einzeln durch. Achte auf Pfeile zurück zum selben Kreis."
             en: "Begin at “{start}” and go through the inputs one by one. Look out for arrows that go back to the same circle."
@@ -328,10 +328,10 @@ blocks:
           de: >-
             Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne Fehler. Du kannst ein
             Zustandsdiagramm lesen und fehlende Pfeile ergänzen: Kreise sind Zustände, Pfeile sind Übergänge, am Pfeil
-            stehen Eingabe und Ausgabe. In Klasse 9 oder 10 entwirfst du selbst einen ganzen Automaten, zum Beispiel
+            stehen Eingabe und Ausgabe. In höheren Klassen entwirfst du selbst einen ganzen Automaten, zum Beispiel
             die Ampeln an einer Kreuzung.
           en: >-
             Done: Selin's plan now hangs on the box, and Mia plays the machine without a mistake. You can read a state
             diagram and add missing arrows: circles are states, arrows are transitions, and next to each arrow are its
-            input and output. In year 9 or 10 you will design a whole machine yourself, for example the traffic lights
+            input and output. In a few years you will design a whole machine yourself, for example the traffic lights
             at a crossroads.
