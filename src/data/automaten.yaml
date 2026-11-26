@@ -1,0 +1,361 @@
+# Die Automaten des Simulators. Ein Automat heißt mit seiner Nummer nr (0 Saftautomat, 1 Flurlicht, 2 Drehkreuz,
+# 3 Aufzug, 4 Fußgängerampel); Zustände und Eingaben heißen mit ihrer Stelle in der Liste, ab 0 (from, to, input,
+# start). Nummern statt Namen, weil jeder Text, den der Build an eine Komponente gibt, ein Lerntext je Sprache ist.
+# Jeder Automat ist vollständig: Jeder Zustand hat für jede Eingabe genau einen Pfeil.
+# x, y: Mitte des Kreises in einer Fläche von etwa 600 × 300. loop: Richtung des Pfeils zurück zum selben Kreis
+# (-90 oben, 90 unten). bend: 0 gerade (bei Gegenrichtung von selbst gebogen), sonst die Biegung nach links in
+# Fahrtrichtung. text: was passiert, in Alltagsworten, für die Übung „Pfeil ergänzen“; nennt den Zielzustand nicht.
+# outputs: was beim Übergang herauskommt. Kein Automat braucht eine Uhr: „Zeit um“ ist eine Eingabe.
+# saft
+- nr: 0
+  name:
+    de: Saftautomat
+    en: juice machine
+  start: 0
+  states:
+    - name:
+        de: 0 € drin
+        en: €0 in
+      x: 110
+      y: 170
+      loop: -90
+    - name:
+        de: 1 € drin
+        en: €1 in
+      x: 300
+      y: 170
+      loop: -90
+    - name:
+        de: 2 € drin
+        en: €2 in
+      x: 490
+      y: 170
+      loop: -90
+  inputs:
+    - name:
+        de: Münze
+        en: coin
+    - name:
+        de: Knopf
+        en: button
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Der Automat ist leer. Du wirfst eine Münze ein. Jetzt hat er Geld, aber noch nicht genug.
+        en: The machine is empty. You put in a coin. Now it has some money, but not enough yet.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Automat ist leer. Du drückst den Knopf. Es passiert nichts, er bleibt leer.
+        en: The machine is empty. You press the button. Nothing happens, it stays empty.
+    - from: 1
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Eine Münze ist schon drin. Du wirfst noch eine ein. Jetzt ist genug Geld für einen Saft drin.
+        en: One coin is already in. You put in another one. Now there is enough money for a juice.
+    - from: 1
+      input: 1
+      to: 1
+      bend: 0
+      text:
+        de: Eine Münze ist drin. Du drückst den Knopf. Das Geld reicht nicht, der Automat behält die Münze.
+        en: One coin is in. You press the button. It is not enough money, so the machine keeps the coin.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Es ist schon genug Geld drin. Du wirfst noch eine Münze ein. Sie kommt zurück, es bleibt genug Geld drin.
+        en: There is already enough money in. You put in one more coin. It comes back, and there is still enough money in.
+    - from: 2
+      input: 1
+      to: 0
+      bend: 55
+      text:
+        de: Es ist genug Geld drin. Du drückst den Knopf. Ein Saft fällt heraus, das Geld ist verbraucht.
+        en: There is enough money in. You press the button. A juice drops out, and the money is used up.
+  outputs:
+    - from: 2
+      input: 0
+      text:
+        de: Münze kommt zurück
+        en: coin comes back
+    - from: 2
+      input: 1
+      text:
+        de: Saft fällt heraus
+        en: juice drops out
+# lampe
+- nr: 1
+  name:
+    de: Flurlicht mit Taster
+    en: hall light with a push button
+  start: 0
+  states:
+    - name:
+        de: aus
+        en: "off"
+      x: 170
+      y: 150
+      loop: -90
+    - name:
+        de: an
+        en: "on"
+      x: 430
+      y: 150
+      loop: -90
+  inputs:
+    - name:
+        de: Taster
+        en: push button
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Im Flur ist es dunkel. Du drückst den Taster. Das Licht geht an.
+        en: The hall is dark. You press the push button. The light comes on.
+    - from: 1
+      input: 0
+      to: 0
+      bend: 0
+      text:
+        de: Im Flur brennt Licht. Du drückst den Taster. Das Licht geht aus.
+        en: The light in the hall is on. You press the push button. The light goes out.
+  outputs:
+    - from: 0
+      input: 0
+      text:
+        de: Licht geht an
+        en: light comes on
+    - from: 1
+      input: 0
+      text:
+        de: Licht geht aus
+        en: light goes out
+# drehkreuz
+- nr: 2
+  name:
+    de: Drehkreuz am Schwimmbad
+    en: turnstile at the swimming pool
+  start: 0
+  states:
+    - name:
+        de: gesperrt
+        en: locked
+      x: 170
+      y: 160
+      loop: -90
+    - name:
+        de: frei
+        en: open
+      x: 430
+      y: 160
+      loop: -90
+  inputs:
+    - name:
+        de: Chip
+        en: token
+    - name:
+        de: Durchgehen
+        en: push
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Das Drehkreuz ist gesperrt. Du steckst einen Chip hinein. Jetzt darfst du durch.
+        en: The turnstile is locked. You put in a token. Now you may go through.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Das Drehkreuz ist gesperrt. Du drückst dagegen, ohne zu bezahlen. Es bewegt sich nicht.
+        en: The turnstile is locked. You push it without paying. It does not move.
+    - from: 1
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Du hast bezahlt und gehst durch. Hinter dir sperrt das Drehkreuz wieder.
+        en: You have paid and you go through. Behind you, the turnstile locks again.
+    - from: 1
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Du hast schon bezahlt und steckst noch einen Chip hinein. Er kommt zurück, du darfst weiter durch.
+        en: You have already paid and you put in another token. It comes back, and you may still go through.
+  outputs:
+    - from: 1
+      input: 0
+      text:
+        de: Chip kommt zurück
+        en: token comes back
+# aufzug
+- nr: 3
+  name:
+    de: Aufzug mit drei Stockwerken
+    en: lift with three floors
+  start: 0
+  states:
+    - name:
+        de: unten
+        en: bottom
+      x: 300
+      y: 400
+      loop: 90
+    - name:
+        de: Mitte
+        en: middle
+      x: 300
+      y: 230
+      loop: 0
+    - name:
+        de: oben
+        en: top
+      x: 300
+      y: 60
+      loop: -90
+  inputs:
+    - name:
+        de: hoch
+        en: up
+    - name:
+        de: runter
+        en: down
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz unten. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben.
+        en: The lift is at the very bottom. Someone presses “up”. It goes up one floor.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz unten. Jemand drückt „runter“. Tiefer geht es nicht, er bleibt stehen.
+        en: The lift is at the very bottom. Someone presses “down”. It cannot go lower, so it stays.
+    - from: 1
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Der Aufzug steht in der Mitte. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben.
+        en: The lift is in the middle. Someone presses “up”. It goes up one floor.
+    - from: 1
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Aufzug steht in der Mitte. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten.
+        en: The lift is in the middle. Someone presses “down”. It goes down one floor.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz oben. Jemand drückt „hoch“. Höher geht es nicht, er bleibt stehen.
+        en: The lift is at the very top. Someone presses “up”. It cannot go higher, so it stays.
+    - from: 2
+      input: 1
+      to: 1
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz oben. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten.
+        en: The lift is at the very top. Someone presses “down”. It goes down one floor.
+  outputs: []
+# ampel
+- nr: 4
+  name:
+    de: Fußgängerampel mit Knopf
+    en: pedestrian crossing with a button
+  start: 0
+  states:
+    - name:
+        de: Autos grün
+        en: cars green
+      x: 130
+      y: 210
+      loop: 90
+    - name:
+        de: wartet
+        en: waiting
+      x: 470
+      y: 210
+      loop: 90
+    - name:
+        de: Fußgänger grün
+        en: walkers green
+      x: 300
+      y: 60
+      loop: -90
+  inputs:
+    - name:
+        de: Knopf
+        en: button
+    - name:
+        de: Zeit um
+        en: time up
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Die Autos haben Grün. Ein Kind drückt den Knopf. Die Ampel merkt sich das, aber die Autos fahren noch.
+        en: The cars have green. A child presses the button. The lights remember it, but the cars still drive.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Die Autos haben Grün, niemand hat gedrückt. Die Zeit ist um. Die Autos behalten Grün.
+        en: The cars have green and nobody has pressed. Time is up. The cars keep green.
+    - from: 1
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Jemand hat schon gedrückt. Ein Kind drückt noch einmal. Es ändert sich nichts, die Ampel wartet weiter.
+        en: Someone has already pressed. A child presses again. Nothing changes, the lights keep waiting.
+    - from: 1
+      input: 1
+      to: 2
+      bend: 0
+      text:
+        de: Jemand hat gedrückt. Die Zeit ist um. Jetzt dürfen die Fußgänger gehen.
+        en: Someone has pressed. Time is up. Now the people on foot may cross.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Es ändert sich nichts.
+        en: The people on foot have green. A child presses the button. Nothing changes.
+    - from: 2
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Die Fußgänger haben Grün. Die Zeit ist um. Jetzt dürfen wieder die Autos fahren.
+        en: The people on foot have green. Time is up. Now the cars may drive again.
+  outputs:
+    - from: 0
+      input: 0
+      text:
+        de: „Signal kommt“
+        en: “WAIT” lights

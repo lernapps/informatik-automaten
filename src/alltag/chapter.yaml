@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+title:
+  de: Automaten im Alltag
+  en: Automata in everyday life
+summary:
+  de: Du spielst einen Saftautomaten, findest heraus, was er sich merkt, und zeichnest ihn als Zustandsdiagramm.
+  en: You play a juice machine, find out what it remembers and draw it as a state diagram.
+pages: [zustandsdiagramm]

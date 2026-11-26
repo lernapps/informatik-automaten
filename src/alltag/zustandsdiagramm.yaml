@@ -1,0 +1,333 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+title:
+  de: Zustandsdiagramm
+  en: State diagrams
+description:
+  de: "Einen Automaten als Zustandsdiagramm zeichnen und lesen: Kreise für Zustände, Pfeile für Übergänge."
+  en: "Draw and read a machine as a state diagram: circles for states, arrows for transitions."
+competencies: [zustandsdiagramm]
+blocks:
+  - type: section
+    id: einstieg
+    title:
+      de: Selins Plan
+      en: Selin's plan
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Jona war lange der Saftautomat. Jetzt braucht er eine Pause. Wer spielt weiter? Selin schreibt einen Plan,
+            damit jedes Kind den Automaten spielen kann. Auf dieser Seite zeichnest du so einen Plan als Bild und
+            lernst, ihn zu lesen.
+          en: >-
+            Jona has been the juice machine for a long time. Now he needs a break. Who takes over? Selin writes a plan
+            so that any child can play the machine. On this page you draw such a plan as a picture and learn to read
+            it.
+      - type: number
+        id: zustaende-zaehlen
+        text:
+          de: "Zuerst schreibt Selin auf, was sich der Automat merken muss. Wie viele verschiedene Zustände hat der Saftautomat?"
+          en: "First Selin writes down what the machine has to remember. How many different states does the juice machine have?"
+        answer: 3
+        tolerance: 0
+        mistakes:
+          - answer: 2
+            message:
+              de: "Hast du „0 € drin“ vergessen? Auch ein leerer Automat ist in einem Zustand."
+              en: "Did you forget “€0 in”? An empty machine is in a state too."
+          - answer: 4
+            message:
+              de: "Mehr als 2 € sind nie drin: Eine dritte Münze kommt zurück."
+              en: "There is never more than €2 inside: a third coin comes back."
+        explanation:
+          de: "Jona merkt sich nur das Geld: 0 €, 1 € oder 2 €. Das sind drei Zustände."
+          en: "Jona only remembers the money: €0, €1 or €2. Those are three states."
+      - type: table
+        caption:
+          de: "Selins Plan als Tabelle: Was macht der Automat in welchem Zustand bei welcher Eingabe?"
+          en: "Selin's plan as a table: what does the machine do in which state with which input?"
+        header:
+          - { de: Jetzt, en: Now }
+          - { de: Eingabe, en: Input }
+          - { de: Danach (Ausgabe), en: After (output) }
+        rows:
+          - - { de: "0 € drin", en: "€0 in" }
+            - { de: Münze, en: coin }
+            - { de: "1 € drin", en: "€1 in" }
+          - - { de: "0 € drin", en: "€0 in" }
+            - { de: Knopf, en: button }
+            - { de: "0 € drin", en: "€0 in" }
+          - - { de: "1 € drin", en: "€1 in" }
+            - { de: Münze, en: coin }
+            - { de: "2 € drin", en: "€2 in" }
+          - - { de: "1 € drin", en: "€1 in" }
+            - { de: Knopf, en: button }
+            - { de: "1 € drin", en: "€1 in" }
+          - - { de: "2 € drin", en: "€2 in" }
+            - { de: Münze, en: coin }
+            - { de: "2 € drin (Münze kommt zurück)", en: "€2 in (coin comes back)" }
+          - - { de: "2 € drin", en: "€2 in" }
+            - { de: Knopf, en: button }
+            - { de: "0 € drin (Saft fällt heraus)", en: "€0 in (juice drops out)" }
+  - type: section
+    id: idee
+    title:
+      de: Vom Plan zum Diagramm
+      en: From the plan to the diagram
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Die Tabelle stimmt, aber sie ist lang. Selin zeichnet sie deshalb als **Zustandsdiagramm**. Jeder Zustand
+            wird ein Kreis. Jede Zeile der Tabelle wird ein Pfeil: Er beginnt beim Kreis „Jetzt“ und zeigt mit der
+            Spitze auf den Kreis „Danach“. Am Pfeil steht die Eingabe. Kommt etwas heraus, steht nach einem
+            Schrägstrich die Ausgabe: „Knopf / Saft fällt heraus“.
+          en: >-
+            The table is right, but it is long. So Selin draws it as a **state diagram**. Each state becomes a circle.
+            Each row of the table becomes an arrow: it starts at the “Now” circle and its head points at the “After”
+            circle. The input is written at the arrow. If something comes out, the output follows after a slash:
+            “button / juice drops out”.
+      - type: definition
+        term:
+          de: Übergang
+          en: transition
+        explanation:
+          de: Ein Übergang ist der Sprung von einem Zustand zum nächsten bei einer Eingabe. Im Diagramm ist er ein Pfeil.
+          en: A transition is the jump from one state to the next when there is an input. In the diagram it is an arrow.
+      - type: definition
+        term:
+          de: Startzustand
+          en: start state
+        explanation:
+          de: Der Startzustand ist der Zustand, in dem ein Automat anfängt. Im Diagramm zeigt ein Pfeil mit „Start“ auf ihn.
+          en: The start state is the state a machine begins in. In the diagram, an arrow marked “Start” points to it.
+      - type: definition
+        term:
+          de: Zustandsdiagramm
+          en: state diagram
+        explanation:
+          de: Ein Zustandsdiagramm zeigt alle Zustände eines Automaten als Kreise und alle Übergänge als Pfeile mit ihrer Eingabe.
+          en: A state diagram (also called a state transition diagram) shows all states of a machine as circles and all transitions as arrows with their input.
+      - type: note
+        title:
+          de: Merke
+          en: Remember
+        blocks:
+          - type: text
+            text:
+              de: |-
+                - Jeder Zustand braucht für jede Eingabe einen Pfeil. Ändert sich nichts, führt der Pfeil zurück zum selben Kreis.
+                - Lies einen Pfeil immer vom Anfang bis zur Spitze.
+                - Fang immer beim Startzustand an.
+              en: |-
+                - Every state needs an arrow for every input. If nothing changes, the arrow goes back to the same circle.
+                - Always read an arrow from its tail to its head.
+                - Always begin at the start state.
+  - type: section
+    id: ausprobieren
+    title:
+      de: Ausprobieren
+      en: Try it out
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Hier ist Selins Diagramm als Simulator. Drück unten die Knöpfe „Münze“ und „Knopf“. Der gefüllte Kreis
+            zeigt, in welchem Zustand der Automat jetzt ist. Der dicke Pfeil zeigt den letzten Übergang. Wie kommst du
+            an einen Saft?
+          en: >-
+            Here is Selin's diagram as a simulator. Press the buttons “coin” and “button” below. The filled circle shows
+            which state the machine is in now. The thick arrow shows the last transition. How do you get a juice?
+      - type: vue-component
+        component: AutomatSimulator
+        props:
+          automata: { data: automaten }
+          automat: 0
+          view: diagramm
+          startWord: { de: Start, en: Start }
+          inputsLabel: { de: Eingaben, en: Inputs }
+          now: { de: "Jetzt: {state}", en: "Now: {state}" }
+          outputLine: { de: "Ausgabe: {output}", en: "Output: {output}" }
+          noOutput: { de: nichts, en: nothing }
+          historyWord: { de: "Verlauf:", en: "History:" }
+          reset: { de: Zurück zum Start, en: Back to start }
+        nojs:
+          de: |-
+            Der Simulator zeigt Selins Zustandsdiagramm des Saftautomaten. Drei Kreise: „0 € drin“ (Startzustand), „1 € drin“ und „2 € drin“. Die Pfeile:
+
+            - 0 € drin – Münze → 1 € drin
+            - 0 € drin – Knopf → 0 € drin
+            - 1 € drin – Münze → 2 € drin
+            - 1 € drin – Knopf → 1 € drin
+            - 2 € drin – Münze → 2 € drin (Ausgabe: Münze kommt zurück)
+            - 2 € drin – Knopf → 0 € drin (Ausgabe: Saft fällt heraus)
+
+            Mit JavaScript kannst du die Eingaben „Münze“ und „Knopf“ drücken und siehst den Automaten springen.
+          en: |-
+            The simulator shows Selin's state diagram of the juice machine. Three circles: “€0 in” (start state), “€1 in” and “€2 in”. The arrows:
+
+            - €0 in – coin → €1 in
+            - €0 in – button → €0 in
+            - €1 in – coin → €2 in
+            - €1 in – button → €1 in
+            - €2 in – coin → €2 in (output: coin comes back)
+            - €2 in – button → €0 in (output: juice drops out)
+
+            With JavaScript you can press the inputs “coin” and “button” and watch the machine jump.
+  - type: section
+    id: mitmachen
+    title:
+      de: Nach Plan spielen
+      en: Play by the plan
+    blocks:
+      - type: text
+        text:
+          de: |-
+            Spielt den Automaten zu zweit nach Selins Plan:
+
+            1. Zeichnet das Diagramm groß auf ein Blatt.
+            2. Legt einen Spielstein auf den Kreis mit dem Startpfeil.
+            3. Eine Person sagt eine Eingabe. Die andere schiebt den Stein am passenden Pfeil entlang und sagt die Ausgabe.
+            4. Tauscht nach fünf Eingaben.
+          en: |-
+            Play the machine in pairs by Selin's plan:
+
+            1. Draw the diagram large on a sheet of paper.
+            2. Put a counter on the circle with the start arrow.
+            3. One person says an input. The other moves the counter along the matching arrow and says the output.
+            4. Swap after five inputs.
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: matching
+        id: diagramm-teile
+        text:
+          de: Was bedeutet welcher Teil im Zustandsdiagramm?
+          en: What does each part of a state diagram mean?
+        pairs:
+          - left: { de: ein Kreis, en: a circle }
+            right: { de: ein Zustand, en: a state }
+          - left: { de: ein Pfeil, en: an arrow }
+            right: { de: ein Übergang, en: a transition }
+          - left: { de: das Wort vor dem Schrägstrich, en: the word before the slash }
+            right: { de: die Eingabe, en: the input }
+          - left: { de: das Wort nach dem Schrägstrich, en: the word after the slash }
+            right: { de: die Ausgabe, en: the output }
+          - left: { de: der Pfeil mit „Start“, en: the arrow marked “Start” }
+            right: { de: der Startzustand, en: the start state }
+        explanation:
+          de: "Kreise sind, was sich der Automat merkt. Pfeile sind die Sprünge. Am Pfeil steht erst, was hineinkommt, dann, was herauskommt."
+          en: "Circles are what the machine remembers. Arrows are the jumps. At an arrow, first comes what goes in, then what comes out."
+      - type: vue-component
+        id: folge-lesen
+        component: AutomatAufgabe
+        props:
+          automata: { data: automaten }
+          use: [0, 1, 2, 3, 4]
+          mode: folge
+          view: diagramm
+          task:
+            de: "{automat}: Der Automat startet beim Startzustand „{start}“. Dann kommen die Eingaben {inputs}. In welchem Zustand ist er am Ende?"
+            en: "{automat}: the machine begins at the start state “{start}”. Then come the inputs {inputs}. Which state is it in at the end?"
+          startWord: { de: Start, en: Start }
+          chooseLabel: { de: Zustand am Ende, en: State at the end }
+          outputWord: { de: Ausgabe, en: output }
+          mistakes:
+            - de: "Fast. Die letzte Eingabe „{last}“ fehlt noch: Folge auch ihrem Pfeil."
+              en: "Almost. The last input “{last}” is still missing: follow its arrow too."
+            - de: "Du bist einen Pfeil rückwärts gegangen. Ein Pfeil führt vom Anfang zur Spitze, nie zurück."
+              en: "You went along an arrow backwards. An arrow leads from its tail to its head, never back."
+            - de: "Du stehst noch beim Start. Bei jeder Eingabe springt der Automat entlang des Pfeils mit diesem Wort."
+              en: "You are still at the start. With each input the machine jumps along the arrow with that word."
+          other:
+            de: "Fang bei „{start}“ an und geh die Eingaben einzeln durch. Achte auf Pfeile zurück zum selben Kreis."
+            en: "Begin at “{start}” and go through the inputs one by one. Look out for arrows that go back to the same circle."
+        examples:
+          accepted:
+            - { answer: 0, seed: 1 }
+          rejected:
+            - { answer: 1, seed: 1 }
+      - type: vue-component
+        id: pfeil-ergaenzen
+        component: AutomatAufgabe
+        props:
+          automata: { data: automaten }
+          use: [0, 1, 2, 3, 4]
+          mode: pfeil
+          view: diagramm
+          task:
+            de: "{automat}: Ein Pfeil fehlt. {text} Wohin führt der Pfeil „{input}“ von „{from}“?"
+            en: "{automat}: one arrow is missing. {text} Where does the arrow “{input}” from “{from}” lead?"
+          startWord: { de: Start, en: Start }
+          chooseLabel: { de: Der Pfeil führt zu, en: The arrow leads to }
+          outputWord: { de: Ausgabe, en: output }
+          mistakes:
+            - de: "Lies den Satz noch einmal: Es ändert sich etwas. Dann führt der Pfeil zu einem anderen Kreis."
+              en: "Read the sentence again: something changes. Then the arrow leads to another circle."
+            - de: "Lies den Satz noch einmal: Es ändert sich nichts. Dann führt der Pfeil zurück zum selben Kreis."
+              en: "Read the sentence again: nothing changes. Then the arrow goes back to the same circle."
+          other:
+            de: "Lies den Satz noch einmal: Was merkt sich der Automat danach? Such den Kreis mit genau diesem Zustand."
+            en: "Read the sentence again: what does the machine remember afterwards? Find the circle with exactly that state."
+        examples:
+          accepted:
+            - { answer: 1, seed: 1 }
+          rejected:
+            - { answer: 0, seed: 1 }
+      - type: true-false
+        id: pfeil-weglassen
+        text:
+          de: "Selin sagt: „Wenn bei einer Eingabe nichts passiert, brauche ich dafür keinen Pfeil.“ Stimmt das in unseren Plänen?"
+          en: "Selin says: “If nothing happens with an input, I don't need an arrow for it.” Is that right in our plans?"
+        answer: false
+        explanation:
+          de: "In unseren Plänen braucht jeder Zustand für jede Eingabe einen Pfeil. Sonst weiß, wer den Automaten spielt, nicht, was zu tun ist. Ändert sich nichts, führt der Pfeil zurück zum selben Kreis."
+          en: "In our plans every state needs an arrow for every input. Otherwise the person playing the machine does not know what to do. If nothing changes, the arrow goes back to the same circle."
+      - type: single-choice
+        id: startzustand-finden
+        text:
+          de: "Mia will nach Selins Plan spielen. Woran erkennt sie, bei welchem Kreis sie anfangen muss?"
+          en: "Mia wants to play by Selin's plan. How does she know which circle to begin at?"
+        options:
+          - text: { de: Am Pfeil mit „Start“, en: By the arrow marked “Start” }
+            correct: true
+            info:
+              de: Der Startpfeil kommt von nirgendwo und zeigt auf den Startzustand.
+              en: The start arrow comes from nowhere and points to the start state.
+          - text: { de: Am Kreis ganz links, en: By the circle on the far left }
+            correct: false
+            info:
+              de: Beim Saftautomaten steht der Start zufällig links. In einem anderen Diagramm kann er überall stehen.
+              en: In the juice machine the start happens to be on the left. In another diagram it can be anywhere.
+          - text: { de: Am Kreis mit den meisten Pfeilen, en: By the circle with the most arrows }
+            correct: false
+            info:
+              de: Wie viele Pfeile ein Kreis hat, sagt nichts über den Anfang.
+              en: How many arrows a circle has says nothing about where to begin.
+          - text: { de: Am gefüllten Kreis im Simulator, en: By the filled circle in the simulator }
+            correct: false
+            info:
+              de: Der gefüllte Kreis zeigt nur, wo der Automat gerade ist. Auf Papier gibt es ihn nicht.
+              en: The filled circle only shows where the machine is right now. On paper there is no such circle.
+        explanation:
+          de: Der Startzustand ist am Pfeil mit „Start“ zu erkennen, egal wo er im Bild steht.
+          en: You can spot the start state by the arrow marked “Start”, wherever it is in the picture.
+  - type: section
+    id: rueckblick
+    title:
+      de: Rückblick
+      en: Looking back
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne Fehler. Du kannst einen
+            Automaten als Zustandsdiagramm zeichnen und lesen: Kreise sind Zustände, Pfeile sind Übergänge, am Pfeil
+            steht die Eingabe. In Klasse 9 oder 10 entwirfst du selbst einen Automaten, zum Beispiel für eine Ampel.
+          en: >-
+            Done: Selin's plan now hangs on the box, and Mia plays the machine without a mistake. You can draw and read
+            a machine as a state diagram: circles are states, arrows are transitions, and the input is written at the
+            arrow. In year 9 or 10 you will design a machine yourself, for example for traffic lights.

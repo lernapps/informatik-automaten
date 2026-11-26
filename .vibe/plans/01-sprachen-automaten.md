@@ -8,7 +8,7 @@ phase: code
 # prePushFailures: failed pre-push runs, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
-failedChecks: {}
+failedChecks: { checks-pass: 1 }
 ---
 
 # Plan: sprachen-automaten, first version
@@ -42,6 +42,7 @@ Zustandsdiagramme (Ampel, Drehkreuz) und sagen voraus, wohin ein Automat bei ein
   Startzustand, Schritt): `AutomatDiagramm` zeichnet, `AutomatSimulator` spielt (Anzeige), `AutomatAufgabe` ist die
   Übungskomponente. Automaten liegen als Daten in `src/data/automaten.yaml`. Kapitel 2 ergänzt einen Entwurfsmodus,
   ohne Modell und Daten umzubauen.
+- Kein `scope`: keine `open-task` und kein Material eines Erstellers; laut structure.md optional.
 - Sprachen `[de, en]`: Deutsch in einfacher Sprache mit „du“, Englisch vollständig, Plain English mit „you“; Texte in
   Bildern über Props der Komponenten (wie `EvaBild` in #490).
 
@@ -361,14 +362,14 @@ Ampelsteuerung als Fall).
       `npx --no -- lernapps create --archetype explainer`.
 - [x] Fill the content guide `.agents/skills/app-content/SKILL.md` from "Notes" and "Content method": every heading,
       no "FILL IN" left. Commit it before any content.
-- [ ] Load skill `lernapps-explainer`.
-- [ ] Load skill `lernapps-content-questions`. Read whole, with your file tool:
+- [x] Load skill `lernapps-explainer`.
+- [x] Load skill `lernapps-content-questions`. Read whole, with your file tool:
       `.agents/skills/lernapps-explainer/references/blocks.md` and
       `.agents/skills/lernapps-explainer/references/exercises.md`. A foreign language: also
       `references/language-tasks.md` in the same folder. A component in the plan: also `references/components.md`.
-- [ ] Decide whether the app needs `scope`, as "`scope`" in
+- [x] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
-- [ ] Simulator-Kern: Automat.ts, AutomatDiagramm, AutomatSimulator, AutomatAufgabe mit Tests und data/automaten.yaml; zeigt Kreise, Pfeile, Eingabe und Ausgabe am Pfeil, Startpfeil, Tastaturbedienung
+- [x] Simulator-Kern: Automat.ts, AutomatDiagramm, AutomatSimulator, AutomatAufgabe mit Tests und data/automaten.yaml; zeigt Kreise, Pfeile, Eingabe und Ausgabe am Pfeil, Startpfeil, Tastaturbedienung
 - [ ] Musterseite alltag/zustandsdiagramm in de und en: Selins Tabelle, Diagramm des Saftautomaten im Simulator, Merke zu Lesefehlern, Spielstein-Anleitung, Übungen number, matching, AutomatAufgabe folge und pfeil, single-choice, true-false; zeigt das Seitenmuster und den Simulator
 <!-- tasks: pattern (2 added): the one page or screen that is the pattern for the others -->
 - [ ] **Checkpoint:** the pattern page. Load skill `lernapps-learner-check` and do its learner check on the page. Fix
