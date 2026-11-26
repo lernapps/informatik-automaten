@@ -6,3 +6,13 @@ summary:
   de: Du spielst einen Saftautomaten, findest heraus, was er sich merkt, und zeichnest ihn als Zustandsdiagramm.
   en: You play a juice machine, find out what it remembers and draw it as a state diagram.
 pages: [das-brauchst-du, automaten-im-alltag, zustandsdiagramm]
+selfAssessment:
+  pages:
+    - exercises:
+        - /alltag/automaten-im-alltag/#was-passiert
+        - /alltag/automaten-im-alltag/#zettel-am-ende
+        - /alltag/automaten-im-alltag/#zustand-oder-eingabe
+    - exercises:
+        - /alltag/zustandsdiagramm/#folge-lesen
+        - /alltag/zustandsdiagramm/#pfeil-ergaenzen
+        - /alltag/zustandsdiagramm/#diagramm-teile

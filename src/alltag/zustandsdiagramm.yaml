@@ -16,11 +16,11 @@ blocks:
       - type: text
         text:
           de: >-
-            Jona war lange der Saftautomat. Jetzt braucht er eine Pause. Wer spielt weiter? Selin schreibt einen Plan,
+            Jona war lange der Saftautomat. Jetzt braucht er eine Pause. Mia will weiterspielen, aber was muss sie tun? Selin schreibt einen Plan,
             damit jedes Kind den Automaten spielen kann. Auf dieser Seite lernst du, so einen Plan als Bild zu lesen
             und zu ergänzen.
           en: >-
-            Jona has been the juice machine for a long time. Now he needs a break. Who takes over? Selin writes a plan
+            Jona has been the juice machine for a long time. Now he needs a break. Mia wants to take over, but what does she have to do? Selin writes a plan
             so that any child can play the machine. On this page you learn to read such a plan as a picture and to
             complete it.
       - type: number
@@ -54,7 +54,7 @@ blocks:
       - type: table
         caption:
           de: "Selins Plan als Tabelle: Wohin springt der Automat in welchem Zustand bei welcher Eingabe, und was kommt dabei heraus?"
-          en: "Selin's plan as a table: where does the machine jump in which state with which input, and what comes out on the way?"
+          en: "Selin's plan as a table: where does the machine jump in which state with which input, and what comes out?"
         header:
           - { de: Jetzt, en: Now }
           - { de: Eingabe / Ausgabe, en: Input / output }
@@ -82,13 +82,13 @@ blocks:
         text:
           de: >-
             Die Tabelle stimmt, aber sie ist lang. Selin zeichnet sie deshalb als Bild: Jeder Zustand wird ein Kreis.
-            Jede Zeile wird ein Pfeil vom Kreis „Jetzt“ zum Kreis „Danach“. Am Pfeil steht wie in der Tabelle die Eingabe in
-            Blau und nach dem Schrägstrich die Ausgabe in Orange. Ein Pfeil mit dem Wort „Start“ zeigt auf
+            Jede Zeile wird ein Pfeil vom Kreis „Jetzt“ zum Kreis „Danach“. Am Pfeil steht, wie in der Tabelle, erst die Eingabe
+            (blau) und nach dem Schrägstrich die Ausgabe (orange). Ein Pfeil mit dem Wort „Start“ zeigt auf
             den Kreis, bei dem der Automat anfängt. Unten kannst du Selins Bild ausprobieren.
           en: >-
             The table is right, but it is long. So Selin draws it as a picture: each state becomes a circle. Each row
-            becomes an arrow from the “Now” circle to the “After” circle. As in the table, the input is written next to
-            the arrow in blue and the output after the slash in orange. An arrow with the word “Start”
+            becomes an arrow from the “Now” circle to the “After” circle. As in the table, the input comes first next to
+            the arrow (blue), and the output after the slash (orange). An arrow with the word “Start”
             points to the circle where the machine begins. Below you can try out Selin's picture.
       - type: definition
         term:
@@ -102,8 +102,8 @@ blocks:
           de: Übergang
           en: transition
         explanation:
-          de: Ein Übergang ist der Sprung von einem Zustand zu einem Zustand bei einer Eingabe. Das kann auch derselbe Zustand sein. Im Diagramm ist er ein Pfeil.
-          en: A transition is the jump from one state to a state when there is an input. It can be the same state. In the diagram it is an arrow.
+          de: Ein Übergang ist der Sprung von einem Zustand zum nächsten bei einer Eingabe. Der nächste kann auch derselbe Zustand sein. Im Diagramm ist er ein Pfeil.
+          en: A transition is the jump from one state to the next when there is an input. The next state can also be the same one. In the diagram it is an arrow.
       - type: definition
         term:
           de: Startzustand
@@ -207,14 +207,14 @@ blocks:
             Spielt den Automaten zu zweit nach Selins Plan, ohne Computer:
 
             1. Zeichnet das Diagramm groß auf ein Blatt.
-            2. Legt einen Spielstein auf den Startzustand.
+            2. Legt einen Spielstein auf den Startzustand. Der Stein zeigt, wo der Automat gerade ist.
             3. Eine Person sagt eine Eingabe. Die andere schiebt den Stein am passenden Pfeil entlang und sagt die Ausgabe.
             4. Tauscht nach fünf Eingaben.
           en: |-
             Play the machine in pairs by Selin's plan, without a computer:
 
             1. Draw the diagram large on a sheet of paper.
-            2. Put a counter on the start state.
+            2. Put a counter on the start state. The counter shows where the machine is right now.
             3. One person says an input. The other moves the counter along the matching arrow and says the output.
             4. Swap after five inputs.
   - type: section
@@ -226,13 +226,11 @@ blocks:
       - type: text
         text:
           de: >-
-            Selin hat noch mehr Pläne gezeichnet: für die Lampe mit Druckknopf, das Drehkreuz am Schwimmbad (erst einen
-            Chip einstecken, dann drücken), den Aufzug und die Fußgängerampel. Bei der Ampel ist auch „Zeit um“ eine
-            Eingabe: Die bekommt die Ampel, wenn eine Ampelphase vorbei ist.
+            Selin hat noch mehr Pläne gezeichnet: für die Lampe mit Druckknopf, das Drehkreuz am Schwimmbad, den Aufzug und die Fußgängerampel. Bei der Ampel ist auch „Zeit um“ eine
+            Eingabe: Die bekommt die Ampel, wenn sie lange genug gleich geblieben ist.
           en: >-
-            Selin has drawn more plans: for the lamp with a push button, the turnstile at the swimming pool (first put
-            in a token, then push), the lift and the pedestrian crossing. At the crossing, “time up” is an
-            input too: the lights get it when a phase of the lights is over.
+            Selin has drawn more plans: for the lamp with a push button, the turnstile at the swimming pool, the lift and the pedestrian crossing. At the crossing, “time up” is an
+            input too: the lights get it when they have stayed the same for long enough.
       - type: matching
         id: diagramm-teile
         text:
@@ -298,8 +296,8 @@ blocks:
           mistakes:
             - de: "Lies den Satz noch einmal: Merkt sich der Automat danach etwas anderes als vorher? Dann führt der Pfeil zu einem anderen Kreis."
               en: "Read the sentence again: does the machine remember something different afterwards? Then the arrow leads to another circle."
-            - de: "Lies den Satz noch einmal: Der Automat merkt sich danach dasselbe wie vorher. Dann führt der Pfeil zurück zum selben Kreis, auch wenn etwas herauskommt."
-              en: "Read the sentence again: afterwards the machine remembers the same as before. Then the arrow goes back to the same circle, even if something comes out."
+            - de: "Lies den Satz noch einmal: Der Automat merkt sich danach dasselbe wie vorher. Dann führt der Pfeil zurück zum selben Kreis."
+              en: "Read the sentence again: afterwards the machine remembers the same as before. Then the arrow goes back to the same circle."
           other:
             de: "Lies den Satz noch einmal: Was merkt sich der Automat danach? Such den Kreis mit genau diesem Zustand."
             en: "Read the sentence again: what does the machine remember afterwards? Find the circle with exactly that state."
@@ -311,8 +309,8 @@ blocks:
       - type: true-false
         id: diagramm-jetzt
         text:
-          de: "Mia schaut auf Selins Plan an der Wand und sagt: „Auf dem Plan sehe ich, wie viel Geld gerade im Automaten ist.“ Stimmt das?"
-          en: "Mia looks at Selin's plan on the wall and says: “On the plan I can see how much money is in the machine right now.” Is that true?"
+          de: "Mia schaut auf Selins Plan am Karton und sagt: „Auf dem Plan sehe ich, wie viel Geld gerade im Automaten ist.“ Stimmt das?"
+          en: "Mia looks at Selin's plan on the box and says: “On the plan I can see how much money is in the machine right now.” Is that true?"
         answer: false
         explanation:
           de: "Der Plan zeigt alle Zustände, die der Automat haben kann, und alle Pfeile. Wo er gerade ist, weiß nur, wer ihn spielt. Im Simulator zeigt es der grüne Kreis, auf Papier der Spielstein."
@@ -327,11 +325,9 @@ blocks:
         text:
           de: >-
             Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne Fehler. Du kannst ein
-            Zustandsdiagramm lesen und fehlende Pfeile ergänzen: Kreise sind Zustände, Pfeile sind Übergänge, am Pfeil
-            stehen Eingabe und Ausgabe. In höheren Klassen entwirfst du selbst einen ganzen Automaten, zum Beispiel
-            die Ampeln an einer Kreuzung.
+            Zustandsdiagramm lesen und fehlende Pfeile ergänzen. In höheren Klassen entwirfst du selbst einen ganzen
+            Automaten, zum Beispiel die Ampeln an einer Kreuzung.
           en: >-
             Done: Selin's plan now hangs on the box, and Mia plays the machine without a mistake. You can read a state
-            diagram and add missing arrows: circles are states, arrows are transitions, and next to each arrow are its
-            input and output. In a few years you will design a whole machine yourself, for example the traffic lights
+            diagram and add missing arrows. In a few years you will design a whole machine yourself, for example the traffic lights
             at a crossroads.

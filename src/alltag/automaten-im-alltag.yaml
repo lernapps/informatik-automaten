@@ -19,8 +19,8 @@ blocks:
           de: Jona sitzt in einem Karton mit Münzschlitz, rotem Knopf und Ausgabefach. Links steht Mia mit einer Münze, rechts Selin mit einem Notizblock.
           en: Jona sits in a cardboard box with a coin slot, a red button and a drawer. Mia stands on the left with a coin, Selin on the right with a notepad.
         caption:
-          de: Der Saftautomat der 6b. Jona sitzt im Karton und ist der Automat.
-          en: Class 6b's juice machine. Jona sits in the box and is the machine.
+          de: Der Saftautomat der 6b. Jona sitzt im Karton und ist der Automat, Mia kauft, Selin schreibt mit.
+          en: Class 6b's juice machine. Jona sits in the box and is the machine, Mia buys, Selin takes notes.
         source:
           de: eigene Zeichnung
           en: own drawing
@@ -29,12 +29,14 @@ blocks:
         text:
           de: >-
             Schulfest der 6b. Die Klasse hat einen Saftautomaten aus einem Karton gebaut. Ein Saft kostet 2 €, der
-            Automat nimmt nur 1-€-Münzen. Jona sitzt im Karton und ist der Automat. Mia wirft eine Münze ein und
+            Automat nimmt nur 1-€-Münzen. Jona sitzt im Karton und ist der Automat. Selin schreibt mit, was
+            passiert. Mia wirft eine Münze ein und
             drückt den Knopf. Es kommt kein Saft. Auf dieser Seite findest du heraus, warum ein Automat auf denselben
             Knopf einmal so und einmal anders reagiert.
           en: >-
             It is class 6b's school fair. The class has built a juice machine out of a cardboard box. A juice costs
-            €2, and the machine only takes €1 coins. Jona sits in the box and is the machine. Mia puts in a coin and
+            €2, and the machine only takes €1 coins. Jona sits in the box and is the machine. Selin writes down what
+            happens. Mia puts in a coin and
             presses the button. No juice comes out. On this page you find out why a machine reacts to the same button
             in one way at one time and in another way at another time.
       - type: single-choice
@@ -76,10 +78,11 @@ blocks:
         text:
           de: >-
             Hier spielst du Mia. Drück „Münze“ oder „Knopf“. Auf dem Zettel im Karton steht, was Jona sich gerade
-            merkt. Im Fach unten erscheint, was herauskommt. Drück den Knopf einmal bei 1 € und einmal bei 2 €.
+            merkt. Im Fach unten erscheint, was herauskommt. Drück den Knopf einmal bei 1 € und einmal bei 2 €. Wirf auch einmal eine dritte
+            Münze ein.
           en: >-
             Here you play Mia. Press “coin” or “button”. The note in the box shows what Jona remembers right now. The
-            drawer at the bottom shows what comes out. Press the button once at €1 and once at €2.
+            drawer at the bottom shows what comes out. Press the button once at €1 and once at €2. Also try a third coin.
       - type: vue-component
         component: AutomatSimulator
         props:
@@ -98,7 +101,7 @@ blocks:
             Ein Karton-Saftautomat mit Jonas Zettel. Am Anfang steht darauf „0 € drin“. Was passiert:
 
             - Münze bei 0 € oder 1 €: Jona behält sie und merkt sich 1 € mehr.
-            - Münze bei 2 €: Die Münze fällt wieder heraus.
+            - Münze bei 2 €: Die Münze kommt zurück.
             - Knopf bei 0 € oder 1 €: Nichts passiert.
             - Knopf bei 2 €: Ein Saft fällt heraus, danach merkt sich Jona „0 € drin“.
 
@@ -107,7 +110,7 @@ blocks:
             A cardboard juice machine with Jona's note. At the start it says “€0 paid”. What happens:
 
             - Coin at €0 or €1: Jona keeps it and remembers €1 more.
-            - Coin at €2: the coin drops out again.
+            - Coin at €2: the coin comes back.
             - Button at €0 or €1: nothing happens.
             - Button at €2: a juice drops out, and afterwards Jona remembers “€0 paid”.
 
@@ -127,8 +130,8 @@ blocks:
             Münze steht auf dem Zettel 1 € mehr.
           en: >-
             The same button twice: once nothing comes out, once a juice. The difference is on Jona's note. The IPO
-            picture shows what goes in and what comes out. If you look at the device as an **automaton** (a state
-            machine), what it remembers right now counts too. That is called its **state**. An input can change the state:
+            picture shows what goes in and what comes out. If you look at the device as an **automaton** (a machine
+            that remembers), what it remembers right now counts too. That is called its **state**. An input can change the state:
             after a coin, the note says €1 more.
       - type: definition
         term:
@@ -156,8 +159,8 @@ blocks:
       - type: true-false
         id: immer-gleich
         text:
-          de: "Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich.“ Stimmt das?"
-          en: "Someone says: “A machine always reacts to the same input in the same way.” Is that true?"
+          de: "Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich, egal was er sich gemerkt hat.“ Stimmt das?"
+          en: "Someone says: “A machine always reacts to the same input in the same way, whatever it has remembered.” Is that true?"
         answer: false
         explanation:
           de: "Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab. Nur im selben Zustand ist sie immer gleich."
@@ -176,14 +179,14 @@ blocks:
             1. Eine Person ist der Automat. Sie hat einen Zettel, auf dem „0 € drin“ steht.
             2. Die andere Person kauft. Sie sagt „Münze“ oder „Knopf“.
             3. Der Automat schaut auf seinen Zettel, sagt, was herauskommt, und schreibt den neuen Betrag auf.
-            4. Tauscht nach fünf Eingaben. Wer merkt sich falsch?
+            4. Tauscht nach fünf Eingaben. Wem passiert ein Fehler?
           en: |-
             Play the juice machine in pairs, without a computer:
 
             1. One person is the machine. They have a note that says “€0 paid”.
             2. The other person buys. They say “coin” or “button”.
             3. The machine looks at its note, says what comes out and writes down the new amount.
-            4. Swap after five inputs. Who remembers wrongly?
+            4. Swap after five inputs. Who makes a mistake?
   - type: section
     id: uebung
     title:
@@ -208,7 +211,7 @@ blocks:
                   de: "Nichts kommt heraus, Jona merkt sich mehr Geld.",
                   en: "Nothing comes out, Jona remembers more money.",
                 }
-              - { de: Die Münze fällt wieder heraus., en: The coin drops out again. }
+              - { de: Die Münze kommt zurück., en: The coin comes back. }
         mistakes:
           - value: "s.falsch"
             message:
@@ -242,8 +245,8 @@ blocks:
             - de: "Der Zettel bleibt nicht beim Anfang stehen. Jede Münze, die Jona behält, kommt dazu."
               en: "The note does not stay as it was at the start. Every coin Jona keeps is added."
           other:
-            de: "Geh die Eingaben einzeln durch. Denk daran: Eine dritte Münze fällt wieder heraus, und nach einem Saft ist der Automat leer."
-            en: "Go through the inputs one by one. Remember: a third coin drops out again, and after a juice the machine is empty."
+            de: "Geh die Eingaben einzeln durch. Denk daran: Eine dritte Münze kommt zurück, und nach einem Saft ist der Automat leer."
+            en: "Go through the inputs one by one. Remember: a third coin comes back, and after a juice the machine is empty."
         examples:
           accepted:
             - { answer: 0, seed: 1 }
@@ -255,15 +258,16 @@ blocks:
           de: Auch andere Automaten im Alltag merken sich etwas. Was merkt sich welcher Automat?
           en: Other machines in everyday life remember something too. What does each machine remember?
         pairs:
-          - left: { de: Ampel, en: traffic lights }
+          - left: { de: Fußgängerampel mit Knopf, en: pedestrian crossing with a button }
             right:
               { de: wer Grün hat und ob schon jemand gedrückt hat, en: who has green and whether someone has pressed }
           - left: { de: Aufzug, en: lift }
-            right: { de: in welchem Stockwerk er gerade ist, en: which floor it is on }
+            right:
+              { de: "das Stockwerk, an dem man gerade einsteigen kann", en: "the floor where you can get in right now" }
           - left: { de: Drehkreuz am Schwimmbad, en: turnstile at the swimming pool }
             right: { de: ob schon bezahlt ist, en: whether someone has paid }
           - left: { de: Lampe mit Druckknopf, en: lamp with a push button }
-            right: { de: ob sie gerade an ist, en: whether it is on }
+            right: { de: ob das Licht an ist, en: whether the light is on }
         explanation:
           de: "Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf an der Lampe schaltet ein, wenn sie aus ist, und aus, wenn sie an ist. Bei der Ampel sieht man nicht alles: Ob jemand gedrückt hat, merkt sie sich, auch wenn die Autos noch Grün haben."
           en: "Each of these machines reacts to the same input in different ways, depending on what it remembers. The button of the lamp switches it on when it is off, and off when it is on. You cannot see everything at the crossing: the lights remember that someone has pressed, even while the cars still have green."
@@ -291,8 +295,8 @@ blocks:
           - text: { de: "„Saft fällt heraus“", en: "“juice drops out”" }
             correct: false
             info:
-              de: Das ist eine Ausgabe. Sie kommt beim Sprung heraus, der Automat merkt sie sich nicht.
-              en: That is an output. It comes out during the jump; the machine does not remember it.
+              de: Das ist eine Ausgabe. Sie kommt heraus, wenn der Automat reagiert. Er merkt sie sich nicht.
+              en: That is an output. It comes out when the machine reacts. The machine does not remember it.
         explanation:
           de: "Ein Zustand ist, was der Automat sich merkt. Eingaben und Ausgaben passieren in einem Moment."
           en: "A state is what the machine remembers. Inputs and outputs happen in a moment."

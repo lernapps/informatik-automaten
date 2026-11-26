@@ -4,7 +4,7 @@
 # Archetype, null until chosen in Explore. Allowed values: explainer, interactive, quiz.
 archetype: explainer
 # Current phase. Allowed values: explore, plan, code, commit.
-phase: code
+phase: commit
 # prePushFailures: failed pre-push runs, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
@@ -146,6 +146,23 @@ nachgesehen)
   Fehler: Pfeil in falscher Richtung gelesen (vom Ziel zum Start); Startzustand vergessen (beim aktuellen statt beim
   Startzustand anfangen); Schleife übersehen („bei Knopf passiert nichts, also gibt es keinen Pfeil“); Eingabe mit
   Zustand verwechselt (Beschriftung am Kreis statt am Pfeil); eine Eingabe der Folge übersprungen.
+
+### Prüfungen und was ich geändert habe
+
+- Lernenden-Check Musterseite (Subagent, 5-6, de/en, 360/1280, Tastatur): Pfeil-Sätze verrieten das Ziel; Blau
+  dreifach belegt (Zustand jetzt grün); Tabelle verriet die Zählaufgabe; Simulator-Frage ungeprüft (jetzt
+  single-choice); fremde Automaten nicht eingeführt; deutsche Anführungszeichen im Englischen. Alles geändert.
+- 360 px (Orchestrator: mindestens 12 px): Umbruch von Ausgaben und Zustandsnamen unter 30rem; gemessen ≥ 12,7 px.
+- Fachlicher Prüfer (Subagent): Ampel-Zuordnung lehrte „Zustand = was man sieht“; „behalten“ und „Geld kommt zurück“
+  irreführend; EVA gegen Automat überzeichnet; Determinismus nur negativ gesagt; Übergang ohne Pfeil zum selben
+  Kreis; Ausgabe in der Spalte „Danach“; „Fast …“ bei zwei Zuständen falsch; Flurlicht real anders. Alles geändert,
+  dazu die Übung `zustand-oder-eingabe`. Offen gelassen: Aufzug-Knöpfe „hoch/runter“ (Vereinfachung); „darstellen“
+  nur durch Pfeile ergänzen und Zeichnen auf Papier (ganz selbst zeichnen: Kapitel 2).
+- Lernenden-Check ganze App (Subagent): Personen nicht vorgestellt; dritte Münze geprüft, bevor gezeigt; zwei Namen
+  für dieselbe Ausgabe; Merke „immer gleich“ gegen die Wahr-falsch-Frage; „Sprung“ vor Seite 3; Mia als Spielerin
+  nicht eingeführt; Plan an Wand oder Karton; „Ampelphase“; Endzustand fast immer „0 € drin“ (jetzt gleich verteilt);
+  Ampel-Beschriftung am falschen Pfeil; ein kaputter englischer Satz. Alles geändert. Nicht änderbar (Vorlage):
+  allgemeine Rückmeldungen „Lies dazu noch einmal den Text über der Aufgabe“, „Matched rightly“.
 
 ### Umfang
 
@@ -383,7 +400,7 @@ Ampelsteuerung als Fall).
 - [x] Run `npx --no -- lernapps check` until it passes.
 - [x] Look at every screen and state, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
       Compare each with its sketch.
-- [ ] Do the whole-app check of skill `lernapps-learner-check`. Fix what it finds and write under "Notes" what you
+- [x] Do the whole-app check of skill `lernapps-learner-check`. Fix what it finds and write under "Notes" what you
       fixed.
 
 ## Commit
@@ -396,9 +413,9 @@ Ampelsteuerung als Fall).
 
 ### Tasks
 
-- [ ] Load skill `lernapps-explainer-self-assessment`. Add the self-assessment as it says, or write under "Key
+- [x] Load skill `lernapps-explainer-self-assessment`. Add the self-assessment as it says, or write under "Key
       decisions" why the app has none. Commit.
-- [ ] Load skill `lernapps-github`. Set up the repository and Pages as it says. Ask for the repository's name and
+- [x] (skipped: Repository lernapps/informatik-automaten, main und gh-pages hat der Orchestrator angelegt; die Vorschau unter lernapps.net/informatik-automaten/pr-preview/ läuft.) Load skill `lernapps-github`. Set up the repository and Pages as it says. Ask for the repository's name and
       every click only the creator can make, in one message.
 - [ ] Push `work`, open the preview pull request and see its checks to green, as skill `lernapps-github` says.
 - [ ] **Checkpoint:** publish. Show what the app does and the preview link from the comment "Vorschau der App". Ask

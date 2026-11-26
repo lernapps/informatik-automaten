@@ -75,16 +75,20 @@ export function generate(seed: number, props: Props): Task {
     const t = any(automat.transitions, next);
     return { mode: "pfeil", automat, inputs: [], hidden: { from: t.from, input: t.input } };
   }
+  // the automaton and the state the sequence ends in are drawn first, so that every state is the answer equally often
+  // (else the juice machine mostly ends empty, and the first button would win)
+  const automat = any(automata, next);
+  const target = Math.floor(next() * automat.states.length);
   let fallback: Task | undefined;
-  for (let tries = 0; tries < 60; tries++) {
-    const automat = any(automata, next);
+  for (let tries = 0; tries < 400; tries++) {
     const count = 3 + Math.floor(next() * 3);
     const inputs = Array.from({ length: count }, () => Math.floor(next() * automat.inputs.length));
     const task: Task = { mode: "folge", automat, inputs, hidden: undefined };
-    fallback ??= task;
-    if (end(automat, inputs.slice(0, -1)) !== end(automat, inputs)) return task;
+    const changes = end(automat, inputs.slice(0, -1)) !== end(automat, inputs);
+    if (changes) fallback ??= task;
+    if (changes && end(automat, inputs) === target) return task;
   }
-  return fallback as Task;
+  return fallback ?? { mode: "folge", automat, inputs: [0, 0, 0], hidden: undefined };
 }
 
 /** The right answer: the state at the end (folge), the end of the missing arrow (pfeil). */

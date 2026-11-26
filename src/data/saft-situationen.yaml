@@ -36,7 +36,7 @@
   tut: { de: wirft eine Münze ein, en: puts in a coin }
   reaktion:
     { de: "Nichts kommt heraus, Jona merkt sich mehr Geld.", en: "Nothing comes out, Jona remembers more money." }
-  falsch: { de: Die Münze fällt wieder heraus., en: The coin drops out again. }
+  falsch: { de: Die Münze kommt zurück., en: The coin comes back. }
   warum:
     de: "Der Automat ist leer. Er behält die Münze, denn ein Saft kostet 2 €."
     en: "The machine is empty. It keeps the coin, because a juice costs €2."
@@ -56,11 +56,11 @@
     en: "Jona keeps the coin and writes “€2 paid” on his note. The juice only comes with the button."
 - jetzt: { de: "2 € drin", en: "€2 paid" }
   tut: { de: wirft eine Münze ein, en: puts in a coin }
-  reaktion: { de: Die Münze fällt wieder heraus., en: The coin drops out again. }
+  reaktion: { de: Die Münze kommt zurück., en: The coin comes back. }
   falsch: { de: "Nichts kommt heraus, Jona merkt sich mehr Geld.", en: "Nothing comes out, Jona remembers more money." }
   warum:
     de: "Mehr als 2 € braucht der Automat nie. Auf Jonas Zettel gibt es kein „3 € drin“."
     en: "The machine never needs more than €2. There is no “€3 paid” on Jona's note."
   grund:
-    de: "Es ist schon genug Geld drin. Die Münze fällt wieder heraus, Jona merkt sich weiter „2 € drin“."
-    en: "There is already enough money inside. The coin drops out again, and Jona still remembers “€2 paid”."
+    de: "Es ist schon genug Geld drin. Die Münze kommt zurück, Jona merkt sich weiter „2 € drin“."
+    en: "There is already enough money inside. The coin comes back, and Jona still remembers “€2 paid”."

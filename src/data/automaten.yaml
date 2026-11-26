@@ -81,10 +81,10 @@
       bend: 55
       text:
         de:
-          Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die Münzen wandern in Jonas Kasse.
-          Für den nächsten Saft musst du neu bezahlen.
+          Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die zwei Münzen sind damit bezahlt.
+          Für den nächsten Saft musst du neu Geld einwerfen.
         en:
-          Two coins are inside the machine. You press the button. A juice drops out. The coins go into Jona's cash box.
+          Two coins are inside the machine. You press the button. A juice drops out. The two coins have now paid for it.
           For the next juice you have to pay again.
   outputs:
     - from: 2
@@ -319,7 +319,7 @@
     - from: 0
       input: 0
       to: 1
-      bend: 0
+      bend: -22
       text:
         de: Die Autos haben Grün. Ein Kind drückt den Knopf. Die Autos fahren noch, aber das Wartesignal leuchtet.
         en: The lights are green for cars. A child presses the button. The cars still drive, but the WAIT light comes on.

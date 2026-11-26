@@ -152,7 +152,10 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 3. Simulator: `AutomatSimulator` bekommt die Ansicht `entwerfen` (Zustände anlegen, Pfeile setzen, Folge testen);
    prüfen mit `Automat.ts` (`run`, `isComplete`) gegen Testfolgen. Modell und Datenform nicht umbauen.
 4. In 9-10 keine gezeichneten Kinder: ein Fall (eine Ampel an der Schule).
-5. `npx --no -- lernapps check`, dann Commit.
+5. 1 bis 3 ihrer Übungen in `selfAssessment` aufnehmen, wie Skill `lernapps-explainer-self-assessment` sagt. Kapitel
+   `alltag` hat zwei Schritte: `was-passiert`, `zettel-am-ende`, `zustand-oder-eingabe` und `folge-lesen`,
+   `pfeil-ergaenzen`, `diagramm-teile`.
+6. `npx --no -- lernapps check`, dann Commit.
 
 ## Rules learned from mistakes
 
