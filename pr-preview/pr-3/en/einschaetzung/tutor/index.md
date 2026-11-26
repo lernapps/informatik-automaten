@@ -49,6 +49,7 @@ If the address of this page names `bedarf=`, each section it names holds, severa
 
 - no self-assessment
 - “Designing traffic lights” · not asked
+- “Testing and improving designs” · not asked
 
 ## The tasks of this self-assessment
 

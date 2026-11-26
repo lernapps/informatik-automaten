@@ -39,6 +39,16 @@
       "competencies": [
         "automat-entwerfen"
       ]
+    },
+    {
+      "path": "entwerfen/entwurf-testen/",
+      "title": {
+        "de": "Entwürfe testen und verbessern",
+        "en": "Testing and improving designs"
+      },
+      "competencies": [
+        "automat-entwerfen"
+      ]
     }
   ]
 }

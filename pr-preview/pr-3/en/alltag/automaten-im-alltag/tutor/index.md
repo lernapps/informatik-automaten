@@ -137,16 +137,18 @@ No. | s.jetzt | s.tut | s.grund | s.warum | Choices | Solution | F1
 
 ### Exercise zettel-am-ende
 
-- What to do: folge: an automaton is shown as a state diagram (or as a box with a note), with a start state and 3 to 5 inputs. The child chooses the state at the end. pfeil: one arrow of the diagram is missing and a sentence says what happens; the child chooses where the arrow leads. Then they press “Check”.
+- What to do: folge: an automaton is shown as a state diagram (or as a box with a note), with a start state and 3 to 5 inputs. The child chooses the state at the end. pfeil: one arrow of the diagram is missing and a sentence says what happens; the child chooses where the arrow leads. fehler: one arrow is drawn wrong, so a test sequence ends elsewhere than asked; the learners choose the wrong arrow. Then they press “Check”.
 - Task: „At the start Jona's note shows “{start}”. Then come these inputs: {inputs}. What does the note say at the end?“
-- Answer format: A state: a button below the diagram or a circle.
-- What counts as right: folge: the state the automaton is in after the last input, starting at the start state and following the arrow with each input's word. pfeil: the state the missing arrow leads to.
+- Answer format: A state: a button below the diagram or a circle. fehler: an arrow, one button per arrow.
+- What counts as right: folge: the state the automaton is in after the last input, starting at the start state and following the arrow with each input's word. pfeil: the state the missing arrow leads to. fehler: the only arrow on the way of the test sequence that, set right, makes the sequence end in the state asked for.
 - Typical mistakes (the app's message fits one of them):
   - F1: folge: the last input left out.
   - F2: folge: arrows read backwards, from the head to the tail.
   - F3: folge: stayed at the start state.
   - F4: pfeil: the arrow goes back to the same circle, although the sentence says something changes.
   - F5: pfeil: the arrow goes to another circle, although the sentence says nothing changes.
+  - F6: fehler: an arrow chosen that the test sequence does not pass.
+  - F7: fehler: an arrow on the way chosen that is right; changed, the sequence still does not end as asked.
 - Link to number n: `../?zettel-am-ende=n&via=tutor#zettel-am-ende`
 - Tasks by number: the values for `{…}`, the solution and what the mistakes give. A mistake without a column has no fixed value; the app's message says whether it is there.
 
