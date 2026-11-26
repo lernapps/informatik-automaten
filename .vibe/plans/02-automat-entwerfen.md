@@ -27,15 +27,75 @@ correction. The process is in AGENTS.md; this plan holds the method.
 
 ## Goal
 
-<!-- 1–2 sentences: what learners can do after this increment. -->
+Jugendliche der Klassen 9-10 entwerfen für eine Aufgabe (eine Bedarfsampel, eine Parkhausschranke) selbst einen
+Automaten: Sie wählen die Zustände, legen für jeden Zustand und jede Eingabe den Übergang fest und testen den Entwurf
+im Simulator mit Eingabefolgen. Sie finden Fehler in fremden Entwürfen (fehlender Pfeil, zwei Pfeile mit derselben
+Eingabe, falscher Übergang) und verbessern sie.
 
 ## Key decisions
 
-<!-- One line each: decision and reason. Your own choice without the creator: mark "(guess)". -->
+- Kapitel 2 `entwerfen` (9-10) mit dem Baustein `automat-entwerfen`, Branch `increment/9-10` von `main` (Auftrag
+  Welle 3). Archetyp, Simulator-Bild (Kreise, Pfeile, Eingabe blau, Ausgabe orange, Zustand grün), Datenform und
+  Regeln aus Kapitel 1 bleiben.
+- Zwei Seiten für den einen Baustein (guess, Frage am Checkpoint): `entwerfen/ampel-entwerfen` (entwerfen, Schritt für
+  Schritt) und `entwerfen/entwurf-testen` (testen, Fehler finden und verbessern). Der Baustein ist groß (GI SA-4
+  „modellieren“), eine Seite würde über 350 Wörter.
+- Neue Übungskomponente `AutomatEntwurf` (entwerfen) und eine Bearbeitungsansicht, die sich Simulator und Übung
+  teilen. Geprüft wird über Eigenschaften (vollständig, deterministisch, besteht alle Testfolgen der Aufgabe, keine
+  Eingabe oder Ausgabe als Zustand), keine Musterlösung. Bedienung nur mit Knöpfen und Auswahllisten, ohne Ziehen,
+  mit Tastatur; Text ohne JS.
+- Kein Wechsel auf ids: Kapitel 1 nutzt Nummern und funktioniert. Neue Props für Zustands-Karten bekommen `@verbatim`
+  (app-templates 0.24), wo ein Text als Schlüssel dient.
+- Geschichte: Klasse 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b) als Chat (Textblock mit Zeilen
+  „**Selin:** …“), ein realer Fall statt gezeichneter Kinder.
 
 ## Notes
 
-<!-- New competencies by chapter (ids of the strand), didactic approach, scope, sources and licences, open questions. -->
+### Baustein und Kapitel
+
+| Kapitel | Seite (Datei) | Baustein | Stufe, Schritt | requires | opens |
+|---|---|---|---|---|---|
+| 2 Einen Automaten entwerfen | `entwerfen/ampel-entwerfen` | automat-entwerfen | 9-10, 1 | zustandsdiagramm | 0 |
+| 2 | `entwerfen/entwurf-testen` | automat-entwerfen | 9-10, 1 | zustandsdiagramm | 0 |
+
+„Ich kann für eine konkrete Aufgabe, zum Beispiel eine Ampelsteuerung, einen Automaten mit Zuständen und Übergängen
+entwerfen.“ (Karte, wörtlich). Voraussetzung `zustandsdiagramm` übt Kapitel 1: keine Wiederholungsseite; Seite 1 von
+Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
+
+### Didaktik
+
+- Fall statt Bildergeschichte (9-10): Die 9b (Jona, Selin, Mia, alle 14) baut in der Technik-AG ein Modell der neuen
+  Bedarfsampel vor der Schule, gesteuert von einem kleinen Computer. Bevor programmiert wird, entwerfen sie den
+  Automaten. Der Chat (Textblock, Zeilen „**Selin:** …“) trägt die Seiten.
+- Methode in vier Schritten, die auf beiden Seiten gleich heißt: 1. Eingaben sammeln. 2. Zustände finden: Was muss
+  sich die Ampel merken? (nicht: was passiert in einem Moment). 3. Für jeden Zustand jede Eingabe festlegen (Tabelle,
+  dann Diagramm). 4. Mit Eingabefolgen testen.
+- Bedarfsampel (fest): Eingaben „Knopf“, „Zeit um“. Zustände „Autos grün“, „Anforderung“ (Autos noch grün, Knopf
+  gedrückt), „Autos gelb“, „Fußgänger grün“, „Autos rot-gelb“. Das Kernproblem: „Autos grün“ und „Anforderung“ sehen
+  gleich aus und sind zwei Zustände (schon in Kapitel 1 angelegt).
+- Entwerfen im Simulator ohne Ziehen: Zustände aus Karten wählen (darunter Karten, die Eingaben oder Ausgaben sind),
+  Startzustand wählen, für jede Zeile „Zustand × Eingabe“ das Ziel aus einer Liste wählen. Das Diagramm zeichnet sich
+  dabei mit. Testfolgen der Aufgabe lassen sich abspielen; der Simulator zeigt, wo eine Folge anders endet.
+- Prüfung über Eigenschaften: alle Zeilen gefüllt (vollständig), je Zeile ein Ziel (eindeutig, durch die Bedienung
+  immer erfüllt; auf Seite 2 als Fehlerart geübt), alle Testfolgen der Aufgabe enden im erwarteten Zustand, keine
+  Eingabe- oder Ausgabe-Karte als Zustand. Mehrere richtige Entwürfe sind möglich.
+- Seite 2: drei Fehlerarten in fremden Entwürfen: Pfeil fehlt (unvollständig), zwei Pfeile mit derselben Eingabe aus
+  einem Zustand (nicht eindeutig), Pfeil führt falsch (Testfolge scheitert). Gute Testfolgen: jede Eingabe in jedem
+  Zustand einmal.
+- Hürden (guess, der fachliche Prüfer bestätigt): Zustand mit Handlung oder Ausgabe verwechselt („Knopf gedrückt“,
+  „Licht wechselt“); zwei gleich aussehende Lagen zu einem Zustand zusammengelegt; Zeilen vergessen (Knopf während
+  „Fußgänger grün“); nur den „Gutfall“ testen; „Zeit um“ als Uhr statt als Eingabe denken.
+
+### Umfang
+
+- Drin: Entwurf deterministischer, vollständiger Automaten mit 2-5 Zuständen und 2-3 Eingaben; Ausgaben am Übergang
+  wie in Kapitel 1 (lesen, im Entwurf optional nicht gefordert, guess); Testfolgen; Fehlerarten.
+- Aufgaben zum Entwerfen (Daten `src/data/entwuerfe.yaml`): Bedarfsampel, Parkhausschranke (Ticket, Auto fährt
+  durch), Zahlenschloss mit Code 2-7, Drehtür im Museum (Karte, drücken). Je Aufgabe: Zustandskarten mit Ablenkern,
+  Eingaben, Startzustand, Testfolgen mit erwartetem Endzustand.
+- Nicht drin: Endzustände und akzeptierte Wörter, Minimierung, Mealy/Moore als Begriffe, Programmieren der Ampel
+  (#495), Zeit als Uhr.
+- Sprachen de und en (Plain English, „you“).
 
 ## Explore
 
@@ -46,11 +106,11 @@ correction. The process is in AGENTS.md; this plan holds the method.
 
 ### Tasks
 
-- [ ] Read the README of the archetype's template (its path is in skill `lernapps-app`): what the app can do now.
+- [x] Read the README of the archetype's template (its path is in skill `lernapps-app`): what the app can do now.
       Tell the creator what is new, if it matters for this increment.
-- [ ] Load the content guide `.agents/skills/app-content/SKILL.md` and read the earlier plans in `.vibe/plans/`: what
+- [x] Load the content guide `.agents/skills/app-content/SKILL.md` and read the earlier plans in `.vibe/plans/`: what
       the app teaches, how its content is made, what is open.
-- [ ] Interview, one topic per question, the creator's words under "Answers": which competencies, chapters or rounds,
+- [x] Interview, one topic per question, the creator's words under "Answers": which competencies, chapters or rounds,
       for which school years; hurdles and examples; the amount; any change of look and feel or of terms. No answer:
       ask once more, then write your assumption with "(guess)".
 - [ ] Load skill `lernapps-content-research`. Research what the content guide does not cover. Write under "Notes":
@@ -63,7 +123,14 @@ correction. The process is in AGENTS.md; this plan holds the method.
 
 ### Answers
 
-<!-- The creator's answers, in their words, one bullet each. -->
+- Auftrag (Orchestrator, Welle 3): „Kapitel 2 ‚Einen Automaten entwerfen‘ (Baustein `automat-entwerfen`) … Der
+  Simulator bekommt die Ansicht `entwerfen` auf demselben Modell; die Jugendlichen entwerfen z. B. eine
+  Ampelsteuerung und testen sie mit Eingabefolgen.“
+- „Klasse in Welle 3: 9b, alle 14, zwei Jahre nach der 6b. Chat als Textblock mit Zeilen ‚**Selin:** …‘.“
+- „Entwerfen prüfen: über Eigenschaften (vollständig, deterministisch, besteht die Eingabefolgen der Aufgabe), keine
+  Musterlösung. Bedienung ganz ohne Ziehen, mit Tastatur, Text ohne JS.“
+- „Zuerst `lernapps update`“ (erledigt: tooling 0.20.2, app-templates 0.24).
+- Hürden: im Auftrag nicht genannt (guess, siehe Notes).
 
 ## Plan
 
