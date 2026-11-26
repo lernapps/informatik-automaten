@@ -109,9 +109,10 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   sich nichts ändert. Eine neue Aufgabe genauso: alle Entwürfe durchprobieren.
   `loesung` nur für „Lösung zeigen“ und den Tutor. Ohne Prüfen: Anzeige `AutomatWerkstatt` (eine Aufgabe, `aufgabe: <id>`).
   Die Ampel ist das Beispiel der Werkstatt; `entwurf-neu` zieht nur `schranke`, `schloss`, `handy`. „Prüfen“ ohne
-  Zustand meldet `noStates`. Karten heißen kurz und ohne Wort über 9 Zeichen („jemand wartet“, „Grün zum Gehen“,
+  Zustand meldet `noStates`. Die Einleitung sagt „Geprüft werden auch weitere Testfolgen“, nicht „drück Prüfen“ (die
+  Selbsteinschätzung hat kein „Prüfen“). „abspielen“ ohne Startzustand zeigt `needStart`; Schritt 3 steht immer da. Karten heißen kurz und ohne Wort über 9 Zeichen („jemand wartet“, „Grün zum Gehen“,
   „2 getippt“, „1 Fehler“); jede Karte hat `x`, `y`, `loop`. Sind alle gewählten Karten platziert (`x > 0`), zeichnet
-  das Diagramm sie dort (Handy: entsperrt unten zwischen gesperrt und 1 Fehler), sonst im Kreis. Tutor-Tabelle: kurze
+  das Diagramm sie dort (Handy im Quadrat: gesperrt 100,120, 1 Fehler 400,120, entsperrt 100,370, blockiert 400,370), sonst im Kreis. Tutor-Tabelle: kurze
   Lösung je Zustand („↺“ = bleibt), nur der Fehler „Pfeil falsch“ als Antwort (sonst über 64 kB; Seite 2 hat
   61 kB).
 
@@ -158,6 +159,10 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
     Zeichen neben der Farbe. Gleicher Start und gleiches Ziel: eine Beschriftung „Münze, Knopf“.
   - Seite der Beschriftung eines geraden Pfeils: weg von der Mitte aller Kreise; liegt der Pfeil nah an der Mitte, auf
     der Seite weiter weg von den Mitten der anderen Pfeile (`line` in `AutomatDiagramm.ts`).
+  - Ein gerader Pfeil, der durch einen anderen Kreis liefe, macht einen Bogen um ihn (`around`). Eine Beschriftung
+    über oder unter einem geraden Pfeil, die breiter ist als der Pfeil zwischen den Kreisen, steht über den Kreisen.
+    Schmal: mehrere Eingaben an einem Pfeil untereinander („Code richtig,“ / „Code falsch“), ein langes Wort mit
+    Bindestrich bricht nach ihm („rot-“ / „gelb“).
   - Schmaler Bildschirm (unter 30rem, erst nach dem Laden): lange Ausgaben in Zeilen bis 11 Zeichen, Zustandsnamen in
     Zeilen bis 6 Zeichen und bis Schriftgröße 30. Gemessen bei 360 px: jede Schrift ≥ 12 px. Zustandsnamen ohne ein
     Wort über 9 Zeichen (deshalb „Grün zum Gehen“ statt „Fußgänger grün“).

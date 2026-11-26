@@ -102,8 +102,8 @@ blocks:
           de: Testfolge
           en: test sequence
         explanation:
-          de: Eine Testfolge ist eine Reihe von Eingaben, die beim Startzustand beginnt, mit dem Zustand, in dem der Automat laut Aufgabe danach sein soll.
-          en: A test sequence is a series of inputs that begins at the start state, with the state the automaton should be in afterwards, according to the task.
+          de: Eine Testfolge ist eine Reihe von Eingaben ab dem Startzustand. Dazu gehört der Zustand, in dem der Automat laut Aufgabe am Ende sein soll.
+          en: A test sequence is a series of inputs, starting at the start state. It comes with the state the task says the automaton should end in.
   - type: section
     id: ausprobieren
     title:
@@ -150,6 +150,11 @@ blocks:
                 de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
                 en: "Choose states first. Then the start state, the transitions and the diagram appear.",
               }
+            needStart:
+              {
+                de: "Wähl zuerst den Startzustand, dann kann die Testfolge loslaufen.",
+                en: "Choose the start state first, then the test sequence can run.",
+              }
             hiddenNote:
               {
                 de: "Hier gibt es kein „Prüfen“: Probier frei aus.",
@@ -158,7 +163,7 @@ blocks:
           reset: { de: Alles leeren, en: Clear everything }
         nojs:
           de: |-
-            Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, jemand wartet, Autos gelb, Grün zum Gehen, Autos rot-gelb, Knopf drücken, Wartesignal leuchtet auf. Eingaben: Knopf, Zeit um. Testfolgen:
+            Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, Knopf drücken, jemand wartet, Autos gelb, Wartesignal leuchtet auf, Grün zum Gehen, Autos rot-gelb. Eingaben: Knopf, Zeit um. Testfolgen:
 
             - Zeit um, Zeit um → Autos grün
             - Knopf, Zeit um → Autos gelb
@@ -168,7 +173,7 @@ blocks:
 
             Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
           en: |-
-            The design of the crossing. State cards: cars green, someone waiting, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:
+            The design of the crossing. State cards: cars green, press the button, someone waiting, cars amber, WAIT light comes on, green man, cars red and amber. Inputs: button, time up. Test sequences:
 
             - time up, time up → cars green
             - button, time up → cars amber
@@ -223,7 +228,7 @@ blocks:
               en: The task gives no reason for that. The problem is the missing memory of the button.
         explanation:
           de: Zwei Situationen, nach denen bei derselben Eingabe Verschiedenes passiert, sind zwei Zustände, auch wenn sie für die Autos gleich aussehen.
-          en: Two situations after which the same input leads to different things are two states, even if they look the same to the cars.
+          en: If the same input leads to different things in two situations, they are two states, even if they look the same to the cars.
       - type: vue-component
         id: entwurf-neu
         component: AutomatEntwurf
@@ -232,8 +237,8 @@ blocks:
           use: [schranke, schloss, handy]
           mode: neu
           intro:
-            de: "Entwirf einen Automaten für diese Aufgabe. Spiel die Testfolgen ab, dann drück „Prüfen“. „Prüfen“ testet noch weitere Folgen, die du hier nicht siehst."
-            en: "Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here."
+            de: "Entwirf einen Automaten für diese Aufgabe und spiel die Testfolgen ab. Geprüft werden auch weitere Testfolgen, die du hier nicht siehst."
+            en: "Design an automaton for this task and play the test sequences. More test sequences that you cannot see here are checked too."
           labels:
             inputs: { de: "Schritt 1 – Eingaben (stehen in der Aufgabe):", en: "Step 1 – inputs (given by the task):" }
             states:
@@ -259,7 +264,12 @@ blocks:
                 de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
                 en: "Choose states first. Then the start state, the transitions and the diagram appear.",
               }
-            hiddenNote: { de: "„Prüfen“ testet noch weitere Folgen.", en: "“Check” tests more sequences." }
+            needStart:
+              {
+                de: "Wähl zuerst den Startzustand, dann kann die Testfolge loslaufen.",
+                en: "Choose the start state first, then the test sequence can run.",
+              }
+            hiddenNote: { de: "Geprüft werden noch weitere Folgen.", en: "More sequences are checked too." }
           noStates:
             de: Wähl zuerst die Karten, die Zustände sind.
             en: First choose the cards that are states.
@@ -330,4 +340,4 @@ blocks:
             Entwürfe.
           en: >-
             You can now design an automaton in four steps. Mia has finished her design already, but in the test it never
-            lets the people on foot cross. On the next page class 9b looks for such mistakes and improves designs.
+            lets the pedestrians cross. On the next page class 9b looks for such mistakes and improves designs.

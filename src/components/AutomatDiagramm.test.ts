@@ -1,6 +1,17 @@
 import { expect, test } from "vite-plus/test";
 import { inputName, type Automat } from "./Automat.ts";
-import { arrows, head, labelText, line, loop, nameLines, startArrow, stateFont, viewBox } from "./AutomatDiagramm.ts";
+import {
+  around,
+  arrows,
+  head,
+  labelText,
+  line,
+  loop,
+  nameLines,
+  startArrow,
+  stateFont,
+  viewBox,
+} from "./AutomatDiagramm.ts";
 
 /** The juice machine of the data file, in German, and the hall light. */
 const tr = (from: number, input: number, to: number) => ({ from, input, to, bend: 0, text: `${from} ${input}` });
@@ -103,4 +114,14 @@ test("the view box holds circles, start arrow and labels", () => {
 test("a long state name gets a smaller font, a short one 22", () => {
   expect(stateFont("aus")).toBe(22);
   expect(stateFont("Fußgänger grün")).toBeLessThan(22);
+});
+
+test("a straight arrow that would run through another circle bends around it", () => {
+  const a = { name: "a", x: 100, y: 100, loop: 0 };
+  const b = { name: "b", x: 300, y: 100, loop: 0 };
+  const c = { name: "c", x: 500, y: 100, loop: 0 };
+  const automat = { nr: 0, name: "", start: 0, states: [a, b, c], inputs: [], transitions: [], outputs: [] };
+  expect(around(automat, a, c)).not.toBe(0);
+  expect(around(automat, a, b)).toBe(0);
+  expect(nameLines("Autos rot-gelb", true)).toEqual(["Autos", "rot-", "gelb"]);
 });

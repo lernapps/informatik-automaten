@@ -94,9 +94,45 @@ export function arrows(automat: Automat, hidden?: { from: number; input: number 
     if (!a || !b) return [];
     const reverse = g.from !== g.to && groups.has(`${g.to}>${g.from}`);
     const shape =
-      g.from === g.to ? loop(a, a.loop) : line(a, b, g.bend !== 0 ? g.bend : reverse ? 34 : 0, centre, middles);
+      g.from === g.to
+        ? loop(a, a.loop)
+        : line(
+            a,
+            b,
+            g.bend !== 0 ? g.bend : reverse ? 34 : around(automat, a, b),
+            centre,
+            middles,
+            labelWidth(automat, g.parts),
+          );
     return [{ key, from: g.from, to: g.to, parts: g.parts, ...shape }];
   });
+}
+
+/** The width of a label on a wide screen: its longest line. */
+function labelWidth(automat: Automat, parts: Arrow["parts"]): number {
+  const lines = labelLines(parts.map((p) => ({ input: automat.inputs[p.input]?.name ?? "", output: p.output })));
+  const longest = Math.max(0, ...lines.map((l) => l.inputs.length + l.output.length + (l.slash ? 2 : 0)));
+  return longest * FONT * 0.56;
+}
+
+/**
+ * The bend of a straight arrow from `a` to `b` that would run through another circle: away from that circle, else 0.
+ */
+export function around(automat: Automat, a: P, b: P): number {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len2 = dx * dx + dy * dy || 1;
+  for (const c of automat.states) {
+    if (c === a || c === b) continue;
+    const t = ((c.x - a.x) * dx + (c.y - a.y) * dy) / len2;
+    if (t <= 0 || t >= 1) continue;
+    if (Math.hypot(a.x + t * dx - c.x, a.y + t * dy - c.y) < R + 12) {
+      // the circle on the left of the way (the side of the normal (dy, -dx)): bend to the right, and the other way round
+      const left = (c.x - a.x) * dy - (c.y - a.y) * dx > 0;
+      return left ? -60 : 60;
+    }
+  }
+  return 0;
 }
 
 /** An arrow from circle `a` to circle `b`, straight or bent by `bend` to its left. */
@@ -106,6 +142,7 @@ export function line(
   bend: number,
   centre?: P,
   middles: P[] = [],
+  width = 0,
 ): Omit<Arrow, "key" | "from" | "to" | "parts"> {
   const dx = b.x - a.x;
   const dy = b.y - a.y;
@@ -153,7 +190,9 @@ export function line(
   }
   const ox = nx * side;
   const oy = ny * side;
-  const gap = 14;
+  // above or below a straight arrow, a label wider than the arrow between the circles goes past their tops, so that
+  // it does not cover them
+  const gap = bend === 0 && Math.abs(oy) > 0.5 && width > len - 2 * R ? R + 6 : 14;
   const lx = half.x + ox * gap;
   const ly = half.y + oy * gap + (oy > 0.3 ? FONT * 0.8 : oy < -0.3 ? 0 : FONT * 0.35);
   return {
@@ -213,7 +252,9 @@ export function wrap(text: string, max: number): string[] {
  * screen in short lines of at most 6 characters, so that the name can be written larger.
  */
 export function nameLines(name: string, narrow = false): string[] {
-  if (narrow && name.length > 6) return wrap(name, 6);
+  // a long word with a hyphen breaks after it: "rot-gelb" → "rot-", "gelb"
+  if (narrow && name.length > 6)
+    return wrap(name, 6).flatMap((w) => (w.length > 6 && w.includes("-") ? w.replace("-", "-\n").split("\n") : [w]));
   if (name.length <= 9 || !name.includes(" ")) return [name];
   const middle = name.length / 2;
   let best = -1;
@@ -248,7 +289,14 @@ export interface LabelLine {
  */
 export function labelLines(parts: { input: string; output: string | undefined }[], max = 0): LabelLine[] {
   const plain = parts.filter((p) => p.output === undefined).map((p) => p.input);
-  const out: LabelLine[] = plain.length > 0 ? [{ inputs: plain.join(", "), slash: false, output: "" }] : [];
+  // on a narrow screen several inputs that do not fit one short line go one per line: "Code richtig," "Code falsch"
+  const joined = plain.join(", ");
+  const out: LabelLine[] =
+    plain.length === 0
+      ? []
+      : max > 0 && plain.length > 1 && joined.length > max
+        ? plain.map((input, i) => ({ inputs: i < plain.length - 1 ? `${input},` : input, slash: false, output: "" }))
+        : [{ inputs: joined, slash: false, output: "" }];
   for (const p of parts) {
     if (p.output === undefined) continue;
     out.push({ inputs: p.input, slash: true, output: "" });

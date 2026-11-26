@@ -55,6 +55,7 @@ const props = defineProps<{
     startWord: string;
     hiddenNote: string;
     empty: string;
+    needStart: string;
   };
   /** The label of the button that empties the design. */
   reset: string;

@@ -286,7 +286,7 @@ export function arrowsText(task: Task, props: Props): string[] {
 }
 
 /** The task as a learner sees it, with the diagram as a list of arrows, and its solution. */
-export function describe(task: Task, props: Props, _lang: string): { task: string; solution: string } {
+export function describe(task: Task, props: Props, lang: string): { task: string; solution: string } {
   const a = task.automat;
   const arrows = arrowsText(task, props)
     .map((l) => `- ${l}`)
@@ -299,7 +299,9 @@ export function describe(task: Task, props: Props, _lang: string): { task: strin
     task: `${taskText(task, props)}\n\n**${a.name}** (Start: ${stateName(a, a.start)}):\n\n${arrows}`,
     solution:
       task.mode === "fehler" && task.fehler
-        ? `${stateName(a, a.start)}: ${steps}. → **${arrowText(a, right)}** (→ ${stateName(a, task.fehler.right)})`
+        ? lang === "en"
+          ? `The wrong arrow is **${arrowText(a, right)}**. It should lead to “${stateName(a, task.fehler.right)}”. The way of the test sequence: ${stateName(a, a.start)}: ${steps}.`
+          : `Falsch ist der Pfeil **${arrowText(a, right)}**. Richtig führt er zu „${stateName(a, task.fehler.right)}“. Der Weg der Testfolge: ${stateName(a, a.start)}: ${steps}.`
         : task.mode === "folge"
           ? `${stateName(a, a.start)}: ${steps}. → **${stateName(a, right)}**`
           : `→ **${stateName(a, right)}**`,

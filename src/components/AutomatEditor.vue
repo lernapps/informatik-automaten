@@ -31,6 +31,7 @@ const props = defineProps<{
     startWord: string;
     hiddenNote: string;
     empty: string;
+    needStart: string;
   };
 }>();
 const emit = defineEmits<{ change: [Entwurf] }>();
@@ -55,6 +56,11 @@ function change(next: Entwurf): void {
 function play(index: number): void {
   const test = visible.value[index];
   if (!test) return;
+  // without a start state there is no way to show: say what is missing
+  if (props.entwurf.start === "") {
+    ways.value = { ...ways.value, [index]: props.labels.needStart };
+    return;
+  }
   const end = runEnd(props.entwurf, test.inputs);
   // the way: the start, then each input and the state it leads to, until a row is empty
   const parts = [props.entwurf.start === "" ? "–" : name(props.entwurf.start)];
@@ -96,7 +102,10 @@ const active = computed(() => props.entwurf.states.indexOf(lastEnd.value));
         {{ card.name }}: {{ card.warum }}
       </p>
     </fieldset>
-    <p v-if="entwurf.states.length === 0" class="automat-editor-note">{{ labels.empty }}</p>
+    <fieldset v-if="entwurf.states.length === 0" class="automat-editor-rows">
+      <legend>{{ labels.arrows }}</legend>
+      <p class="automat-editor-note">{{ labels.empty }}</p>
+    </fieldset>
     <fieldset v-if="entwurf.states.length > 0" class="automat-editor-start">
       <legend>{{ labels.start }}</legend>
       <label v-for="state in entwurf.states" :key="state" class="automat-editor-card">

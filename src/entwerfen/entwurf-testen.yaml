@@ -141,6 +141,13 @@ blocks:
             **2. Zwei Pfeile mit derselben Eingabe.** Im Drehkreuz B gehen aus „gesperrt“ zwei Pfeile mit „Chip“: einer zu „frei“, einer zurück zu „gesperrt“. Was soll der Automat tun? Das ist nicht eindeutig.
           en: |-
             **2. Two arrows with the same input.** In turnstile B two arrows with “token” leave “locked”: one to “open”, one back to “locked”. What should the automaton do? That is ambiguous.
+      - type: definition
+        term:
+          de: eindeutig
+          en: unambiguous
+        explanation:
+          de: Ein Automat ist eindeutig, wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Ist er eindeutig und vollständig, nennt man ihn deterministisch.
+          en: An automaton is unambiguous when every state has at most one arrow for every input. If it is unambiguous and complete, it is called deterministic.
       - type: vue-component
         component: AutomatBild
         props:
@@ -168,13 +175,6 @@ blocks:
             - open – push → locked
 
             Two arrows with “token” leave “locked”.
-      - type: definition
-        term:
-          de: eindeutig
-          en: unambiguous
-        explanation:
-          de: Ein Automat ist eindeutig, wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Ist er eindeutig und vollständig, nennt man ihn deterministisch.
-          en: An automaton is unambiguous when every state has at most one arrow for every input. If it is unambiguous and complete, it is called deterministic.
       - type: text
         text:
           de: |-
@@ -259,8 +259,8 @@ blocks:
           use: [ampel, schranke, schloss, handy]
           mode: verbessern
           intro:
-            de: "In diesem Entwurf führt ein Pfeil falsch. Spiel die Testfolgen ab, such die Zeile und ändere sie. Dann drück „Prüfen“. „Prüfen“ testet noch weitere Folgen, die du hier nicht siehst."
-            en: "In this design one arrow is wrong. Play the test sequences, find the row and change it. Then press “Check”. “Check” tests more sequences that you cannot see here."
+            de: "In diesem Entwurf führt ein Pfeil falsch. Spiel die Testfolgen ab, such die Zeile und ändere sie. Geprüft werden auch weitere Testfolgen, die du hier nicht siehst."
+            en: "In this design one arrow is wrong. Play the test sequences, find the row and change it. More test sequences that you cannot see here are checked too."
           labels:
             inputs: { de: "Schritt 1 – Eingaben (stehen in der Aufgabe):", en: "Step 1 – inputs (given by the task):" }
             states:
@@ -286,7 +286,12 @@ blocks:
                 de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
                 en: "Choose states first. Then the start state, the transitions and the diagram appear.",
               }
-            hiddenNote: { de: "„Prüfen“ testet noch weitere Folgen.", en: "“Check” tests more sequences." }
+            needStart:
+              {
+                de: "Wähl zuerst den Startzustand, dann kann die Testfolge loslaufen.",
+                en: "Choose the start state first, then the test sequence can run.",
+              }
+            hiddenNote: { de: "Geprüft werden noch weitere Folgen.", en: "More sequences are checked too." }
           noStates:
             de: "Ändere zuerst den falschen Pfeil: Spiel die Testfolgen ab und such die Zeile. Hast du Karten abgewählt, wähl die Zustände wieder."
             en: "First change the wrong arrow: play the test sequences and find the row. If you unticked cards, tick the states again."
@@ -341,14 +346,21 @@ blocks:
           en: Which mistake is in which design?
         pairs:
           - left:
-              { de: "Bei „offen“ gibt es keinen Pfeil für „Ticket“.", en: "At “open” there is no arrow for “ticket”." }
+              {
+                de: "Schranke: Bei „Schranke offen“ fehlt der Pfeil für „Ticket“.",
+                en: "Barrier: at “barrier open” the arrow for “ticket” is missing.",
+              }
             right: { de: nicht vollständig, en: not complete }
-          - left: { de: "Aus „zu“ gehen zwei Pfeile mit „2“.", en: "Two arrows with “2” leave “locked”." }
+          - left:
+              {
+                de: "Zahlenschloss: Aus „zu“ gehen zwei Pfeile mit „2“.",
+                en: "Combination lock: two arrows with “2” leave “locked”.",
+              }
             right: { de: nicht eindeutig, en: ambiguous }
           - left:
               {
-                de: "Alle Zeilen haben genau ein Ziel, aber „Code falsch, Code falsch“ endet bei „gesperrt“.",
-                en: "Every row has exactly one target, but “wrong code, wrong code” ends at “locked”.",
+                de: "Handysperre: Jeder Zustand hat für jede Eingabe genau einen Pfeil, aber „Code falsch, Code falsch“ endet bei „gesperrt“ statt bei „blockiert“.",
+                en: "Phone lock: every state has exactly one arrow for every input, but “wrong code, wrong code” ends at “locked” instead of “blocked”.",
               }
             right: { de: ein Pfeil führt falsch, en: an arrow is wrong }
         explanation:
@@ -393,13 +405,13 @@ blocks:
         text:
           de: >-
             Mia hat den Pfeil „jemand wartet – Zeit um“ auf „Autos gelb“ gesetzt. Jetzt besteht ihr Entwurf alle
-            Testfolgen, und die Technik-AG programmiert die Ampel danach. Vom Saftautomaten der 6b bis zur Ampel der 9b
+            Testfolgen, und die laufen zusammen über jeden Übergang. Die Technik-AG programmiert die Ampel danach. Vom Saftautomaten der 6b bis zur Ampel der 9b
             gilt dasselbe: Ein Automat merkt sich einen Zustand, und jede Eingabe führt über einen Pfeil zum nächsten. Du
             kannst jetzt einen Automaten in vier Schritten entwerfen, prüfen, ob er vollständig und eindeutig ist, und
             ihn mit guten Testfolgen testen.
           en: >-
             Mia has set the arrow “someone waiting – time up” to “cars amber”. Now her design passes all test sequences,
-            and the tech club programs the lights from it. From class 6b's juice machine to class 9b's lights the same
+            and together they pass every transition. The tech club programs the lights from it. From class 6b's juice machine to class 9b's lights the same
             holds: an automaton remembers a state, and every input leads along an arrow to the next one. You can now
             design an automaton in four steps, check whether it is complete and unambiguous, and test it with good
             test sequences.

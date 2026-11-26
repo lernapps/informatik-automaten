@@ -13,11 +13,11 @@
   text:
     de:
       Am Anfang haben die Autos Grün. Ohne Knopfdruck bleibt das so, auch wenn die Zeit um ist. Drückt jemand den Knopf,
-      fahren die Autos weiter, bis die Zeit um ist. Dann kommt Gelb für die Autos, nach der nächsten Zeit Grün für die Fußgänger,
+      fahren die Autos weiter, bis die Zeit um ist. Dann kommt Gelb für die Autos, nach der nächsten Zeit Grün für die Fußgänger (die Autos haben dann Rot),
       danach Rot-Gelb für die Autos und wieder Grün. Bei Gelb, Fußgänger-Grün und Rot-Gelb ändert der Knopf nichts.
     en: At the start the cars have green. If nobody presses the button, it stays like this, even when the time is up. If
       someone presses the button, the cars keep driving until the time is up. Then the cars get amber; when the time is
-      up again, the green man shows, then the cars get red and amber, and then green again. During amber, the green man
+      up again, the green man shows (the cars have red then), then the cars get red and amber, and then green again. During amber, the green man
       and red and amber, the button changes nothing.
   inputs:
     - id: knopf
@@ -40,6 +40,17 @@
       x: 110
       y: 250
       loop: 135
+    - id: druecken
+      name:
+        de: Knopf drücken
+        en: press the button
+      art: eingabe
+      warum:
+        de: „Knopf drücken“ passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
+        en: “Press the button” happens in a moment. That is an input, not a state.
+      x: 0
+      y: 0
+      loop: 0
     - id: wartet
       name:
         de: jemand wartet
@@ -62,6 +73,17 @@
       x: 430
       y: 70
       loop: -60
+    - id: signal
+      name:
+        de: Wartesignal leuchtet auf
+        en: WAIT light comes on
+      art: ausgabe
+      warum:
+        de: Das Aufleuchten passiert bei einem Übergang. Das ist eine Ausgabe, kein Zustand.
+        en: The light coming on happens during a transition. That is an output, not a state.
+      x: 0
+      y: 0
+      loop: 0
     - id: gehen
       name:
         de: Grün zum Gehen
@@ -84,28 +106,6 @@
       x: 380
       y: 400
       loop: 90
-    - id: druecken
-      name:
-        de: Knopf drücken
-        en: press the button
-      art: eingabe
-      warum:
-        de: „Knopf drücken“ passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
-        en: “Press the button” happens in a moment. That is an input, not a state.
-      x: 0
-      y: 0
-      loop: 0
-    - id: signal
-      name:
-        de: Wartesignal leuchtet auf
-        en: WAIT light comes on
-      art: ausgabe
-      warum:
-        de: Das Aufleuchten passiert bei einem Übergang. Das ist eine Ausgabe, kein Zustand.
-        en: The light coming on happens during a transition. That is an output, not a state.
-      x: 0
-      y: 0
-      loop: 0
   start: gruen
   loesung:
     - from: gruen
@@ -294,7 +294,7 @@
   text:
     de:
       Am Anfang ist das Schloss zu. Es geht auf, wenn direkt nacheinander 2 und dann 7 getippt werden. Jede andere Ziffer
-      nach der 2 macht den Anfang ungültig, eine neue 2 fängt ihn wieder an. Ist das Schloss offen, bleibt es offen.
+      nach der 2 macht den Anfang ungültig. Kommt nach der 2 noch eine 2, ist die neue 2 der Anfang. Ist das Schloss offen, bleibt es offen.
     en: At the start the lock is locked. It opens when 2 and then 7 are typed one right after the other. Any other digit
       after the 2 means starting again. If you type 2 again, that 2 is the new start of the code. Once the lock is open, it stays open.
   inputs:
@@ -458,7 +458,7 @@
         en: No wrong try yet.
       x: 100
       y: 120
-      loop: 90
+      loop: -90
     - id: einmal
       name:
         de: 1 Fehler
@@ -478,9 +478,9 @@
       warum:
         de: Zweimal falsch, jetzt geht nichts mehr.
         en: Wrong twice, now nothing works.
-      x: 700
-      y: 120
-      loop: -90
+      x: 400
+      y: 370
+      loop: 0
     - id: entsperrt
       name:
         de: entsperrt
@@ -489,7 +489,7 @@
       warum:
         de: Der Code war richtig.
         en: The code was right.
-      x: 250
+      x: 100
       y: 370
       loop: 90
     - id: eingeben

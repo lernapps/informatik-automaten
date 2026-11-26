@@ -59,6 +59,7 @@ const props = defineProps<{
     startWord: string;
     hiddenNote: string;
     empty: string;
+    needStart: string;
   };
   /** No state chosen yet. */
   noStates: string;
