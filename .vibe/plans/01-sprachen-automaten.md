@@ -72,6 +72,38 @@ Voraussetzungen von außerhalb: `eva-prinzip` (direkt), `informatiksysteme-im-al
 auf der Sammel-Wiederholung „Das brauchst du hier“, kompakt, ohne neue Inhalte. #490 (informatik-computer) ist noch im
 Bau; ich verlinke keine Seite dort, die Runtime verlinkt die Bausteine auf der Karte.
 
+### Quellen (geöffnet und gelesen; Lehrpläne hat ein Hilfsagent gelesen, die Kernstellen GI und NRW habe ich im Text
+nachgesehen)
+
+- Lernlandkarte Informatik: https://lernapps.net/apps/map/informatik.json (Strang sprachen-automaten).
+- GI: Bildungsstandards Informatik Sek I (Januar 2025), doi:10.18420/rec2025_052,
+  https://www.mnu.de/images/fachbereiche/Informatik/Bildungsstandards_Sek_I_2025__pdf-A_.pdf, S. 18, Abschnitt 5.3:
+  „Automaten sind Rechnermodelle, deren Verhalten durch Zustände und Zustandsübergänge beschrieben wird.“ Jg. 5-6 nur
+  SA-1 (formale Sprachen); SA-3 „analysieren das Verhalten endlicher Automaten“ und SA-4 „modellieren Sachverhalte
+  zustandsorientiert“ erst in Jg. 7-10. **Die Karte setzt die zwei Bausteine früher an als die GI (Fund an der Karte,
+  gemeldet).**
+- NRW: Kernlehrplan Informatik Klasse 5 und 6, MSB NRW 2021,
+  https://lehrplannavigator.nrw.de/system/files/media/document/file/si_kl5u6_if_klp_2021_07_01.pdf, S. 14: Automaten
+  „treffen Entscheidungen, die aus einer Verknüpfung von Eingabe und Zustand resultieren“, Beispiele „Fahrkarten- und
+  Getränkeautomaten“; S. 18: „erläutern die Funktionsweise eines Automaten aus ihrer Lebenswelt“, „stellen Abläufe in
+  Automaten graphisch dar“. Das Wort Zustandsdiagramm steht dort nicht.
+- Bayern LehrplanPLUS: in Gymnasium NT 5-7 und Mittelschule Informatik 5-6 nichts zu Automaten. Realschule IT, Modul
+  2.7.2 (https://www.lehrplanplus.bayern.de/fachlehrplan/realschule/7/it): „Zustandsübergangsdiagramm“, ohne feste
+  Jahrgangsstufe.
+- Hessen: Handreichung „Digitale Welt“, HMKB/HMDI, November 2024,
+  https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/hmkb_digwelt_nov24_barrierefrei_v2.pdf: kein Zustand,
+  kein Übergang; „Sprachen und Automaten“ nur als Aufzählung der GI-Bereiche (S. 7).
+- Englisch: Isaac Computer Science, „Finite state machines“, https://isaaccomputerscience.org/concepts/dsa_toc_fsm
+  (A level): state, transition, input, output, start state, state transition diagram; Startzustand mit geradem Pfeil von
+  links, Zustände als Kreise, Übergänge als Pfeile mit der Eingabe. National Curriculum England KS3: „model the state
+  and behaviour of real-world problems“
+  (https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study).
+- Nicht geprüft: NRW Informatik WP 7-10 (für Kapitel 2), ältere bayerische Pläne, ein Secondary-Glossar von Teach
+  Computing.
+- Fachbegriffe der App: Automat (automaton, Mehrzahl automata; im Text „machine“ wo es um das Gerät geht), Zustand
+  (state), Übergang (transition), Eingabe (input), Ausgabe (output), Startzustand (start state), Zustandsdiagramm
+  (state diagram; einmal: „also called a state transition diagram“).
+
 ### Didaktik
 
 - Leitbild **Automaten-Simulator**: Zustände sind Kreise mit Namen, Übergänge Pfeile mit der Eingabe daran, der
@@ -94,8 +126,10 @@ Bau; ich verlinke keine Seite dort, die Runtime verlinkt die Bausteine auf der K
   1 →(Münze) 2, 2 →(Münze) 2 mit Ausgabe „Münze kommt zurück“, 0 und 1 →(Knopf) bleiben, 2 →(Knopf) 0 mit Ausgabe „Saft
   fällt heraus“. Jeder Zustand hat für jede Eingabe einen Pfeil, auch wenn sich nichts ändert (Schleife). So ist das
   Diagramm vollständig und der Simulator weiß immer, wohin.
-- Ausgaben: an den Übergängen (was passiert beim Springen), im Diagramm klein unter der Eingabe („Knopf / Saft“), im
-  Simulator als Satz. (guess bis zur Recherche: Welche Schreibweise nutzen GI und Lehrpläne für 5-6?)
+- Ausgaben: an den Übergängen (was beim Springen passiert). Im Diagramm steht am Pfeil oben die Eingabe, darunter die
+  Ausgabe, im Simulator als Satz. Keine deutsche Quelle legt eine Schreibweise fest; Isaac Computer Science schreibt die
+  Ausgabe ebenfalls an den Übergang. Farben aus EVA: Eingabe blau #2f5fb3, Ausgabe orange #a4500f, dazu je ein
+  Wort-Zeichen (kein Farbcode allein). Die Begriffe Mealy und Moore kommen nicht vor.
 - Unplugged (Anleitung auf der Seite, geprüft wird mit Übungen): S. 1 „Automat spielen“: ein Kind ist der Automat mit
   einem Zettel, auf dem es sich das Geld merkt; eins kauft. S. 2 „Nach Plan spielen“: das Diagramm auf Papier, ein Kind
   zeigt mit einem Spielstein auf den Zustand und zieht bei jeder Eingabe den Pfeil entlang.
@@ -156,13 +190,13 @@ Bau; ich verlinke keine Seite dort, die Runtime verlinkt die Bausteine auf der K
 - [x] Interview: ask every other topic of "Answers", in order. Leave out only a topic that an answer of the creator
       already covers, and note which answer. A topic nobody answered is asked once before you write an assumption
       with "(guess)".
-- [ ] Load skill `lernapps-content-research` and research as it says. Write under "Notes": the strand or subject, the
+- [x] Load skill `lernapps-content-research` and research as it says. Write under "Notes": the strand or subject, the
       competencies by chapter with their ids, the sources you opened.
-- [ ] Write under "Notes" which competency goes on which page and which pages form a chapter, as "Map the content" of
+- [x] Write under "Notes" which competency goes on which page and which pages form a chapter, as "Map the content" of
       skill `lernapps-explainer-design` says. Per page, name the prerequisites the app does not practise.
-- [ ] Write under "Notes", one line per competency: how learners get there (they derive it, they do not only read it
+- [x] Write under "Notes", one line per competency: how learners get there (they derive it, they do not only read it
       off), and which misconception the feedback catches.
-- [ ] Write under "Notes" the scope: what is in, what is out and why, the data range (for example "all main-group
+- [x] Write under "Notes" the scope: what is in, what is out and why, the data range (for example "all main-group
       elements", never a silent "1–20"), the languages.
 - [ ] **Checkpoint:** research. Show in plain words: the strand or why none, the competencies by chapter, the didactic
       approach, the scope, every "(guess)", the sources and what is unchecked, the archetype and its reason. Stop and
