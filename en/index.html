@@ -18,7 +18,7 @@
 <h1>Automata and states</h1>
 <div class="explainer-intro"><p>Class 6b is building a juice machine out of a cardboard box for their school fair. Jona sits inside and is the machine, Mia buys, and Selin writes the plan. You join in and learn what a machine remembers and how to draw it as a state diagram.</p></div>
 <template class="explainer-assessment-template">
-<section class="explainer-assessment-offer" aria-labelledby="selbsteinschaetzung" hidden data-key="self-assessment" data-storage="sprachen-automaten">
+<section class="explainer-assessment-offer" aria-labelledby="selbsteinschaetzung" hidden data-key="self-assessment" data-storage="informatik-automaten">
 <h2 id="selbsteinschaetzung">What do you know already?</h2>
 <p>Optional: before you start, you can solve 6 tasks from this app. At the end you see for each page whether you should look at it more closely.</p>
 <p><a class="explainer-assessment-link" href="../en/einschaetzung/" data-last="See your last result">Start the self-assessment</a></p>
@@ -31,13 +31,13 @@
 <h2 id="ki-tutor">Learn with an AI tutor</h2>
 <p>An AI tutor is an AI assistant of your choice that accompanies you while you learn with this app. It explains the topic with the examples of the pages, gives you tasks from the app and helps you when you are stuck. You solve the tasks in the app: it checks your answers.</p>
 <p>Choose your assistant here. It is then ready under the title of every page, and every exercise has the button “Help”. You can also switch it on under the title of a page.</p>
-<p class="explainer-tutor-choice" hidden><label>Your AI assistant <select class="explainer-tutor-choose" data-storage="sprachen-automaten"><option value="">None</option><option value="Claude">Claude</option><option value="ChatGPT">ChatGPT</option><option value="Mistral Vibe" data-hint="Mistral Vibe does not load web pages when the link comes from a button. So we copy the sentence with the link for you. A click on “Learn with Mistral Vibe” opens Mistral Vibe with a short message. Then paste the copied sentence (Ctrl+V, ⌘+V on a Mac) and send it.">Mistral Vibe</option><option value="copy">Another one: copy the text</option></select></label> <button type="button" class="explainer-tutor-needs-open" aria-haspopup="dialog" aria-label="Settings" title="Settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></p>
+<p class="explainer-tutor-choice" hidden><label>Your AI assistant <select class="explainer-tutor-choose" data-storage="informatik-automaten"><option value="">None</option><option value="Claude">Claude</option><option value="ChatGPT">ChatGPT</option><option value="Mistral Vibe" data-hint="Mistral Vibe does not load web pages when the link comes from a button. So we copy the sentence with the link for you. A click on “Learn with Mistral Vibe” opens Mistral Vibe with a short message. Then paste the copied sentence (Ctrl+V, ⌘+V on a Mac) and send it.">Mistral Vibe</option><option value="copy">Another one: copy the text</option></select></label> <button type="button" class="explainer-tutor-needs-open" aria-haspopup="dialog" aria-label="Settings" title="Settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></p>
 <p class="explainer-tutor-hint" role="status" aria-live="polite" hidden></p>
 <p>You use your own account with the provider. The assistant is not offered by lernapps.net: lernapps only provides the content and the exercises.</p>
 <p>Your choice stays on this device; only your click opens the assistant. Ask your parents or teacher whether you may use it.</p>
 </section>
 <template class="explainer-tutor-needs-template">
-<dialog class="explainer-tutor-needs" data-storage="sprachen-automaten" aria-labelledby="bedarf-titel">
+<dialog class="explainer-tutor-needs" data-storage="informatik-automaten" aria-labelledby="bedarf-titel">
 <form method="dialog">
 <h2 id="bedarf-titel">What helps you learn</h2>
 <p>Here you can tell your tutor how it should talk to you. Tick what helps you; you can choose several.</p>
@@ -98,7 +98,7 @@
 <span class="explainer-feedback-local">Kept in this browser only</span>
 <button type="button" class="explainer-feedback-off">End</button>
 </div>
-<script type="application/json" class="explainer-feedback-data">{"storage":"sprachen-automaten","app":"Automata and states","root":"../en/","repository":"lernapps/informatik-automaten","revision":"cab8764"}</script>
+<script type="application/json" class="explainer-feedback-data">{"storage":"informatik-automaten","app":"Automata and states","root":"../en/","repository":"lernapps/informatik-automaten","revision":"2787bef"}</script>
 </aside>
 </template>
 <footer class="page-footer"><p>An explainer on lernapps.net · <a href="https://lernapps.net/imprint/">Imprint</a> · <a href="https://lernapps.net/privacy/">Privacy</a></p></footer>
