@@ -68,13 +68,13 @@ Ausgaben wie „Wartesignal leuchtet auf“ kann man wie in Kapitel 1 an die Üb
 
 - **vollständig**: Ein Automat ist vollständig, wenn jeder Zustand für jede Eingabe einen Pfeil hat.
 
-- **Testfolge**: Eine Testfolge ist eine Reihe von Eingaben, die beim Startzustand beginnt, mit dem Zustand, in dem der Automat laut Aufgabe danach sein soll.
+- **Testfolge**: Eine Testfolge ist eine Reihe von Eingaben ab dem Startzustand. Dazu gehört der Zustand, in dem der Automat laut Aufgabe am Ende sein soll.
 
 ### Die Bedarfsampel entwerfen
 
 Hier entwirfst du die Ampel der 9b, ohne Bewertung. Hak die Karten an, die Zustände sind. Wähl den Startzustand. Leg dann für jede Zeile das Ziel fest; das Diagramm zeichnet sich mit. „abspielen“ zeigt den Weg einer Testfolge Schritt für Schritt und wo sie endet: ✓ heißt wie verlangt, ✗ anders.
 
-Interaktiv: Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, jemand wartet, Autos gelb, Grün zum Gehen, Autos rot-gelb, Knopf drücken, Wartesignal leuchtet auf. Eingaben: Knopf, Zeit um. Testfolgen: - Zeit um, Zeit um → Autos grün - Knopf, Zeit um → Autos gelb - Knopf, Zeit um, Zeit um → Grün zum Gehen - Knopf, Zeit um, Zeit um, Zeit um, Zeit um → Autos grün - Knopf, Knopf, Zeit um → Autos gelb Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
+Interaktiv: Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, Knopf drücken, jemand wartet, Autos gelb, Wartesignal leuchtet auf, Grün zum Gehen, Autos rot-gelb. Eingaben: Knopf, Zeit um. Testfolgen: - Zeit um, Zeit um → Autos grün - Knopf, Zeit um → Autos gelb - Knopf, Zeit um, Zeit um → Grün zum Gehen - Knopf, Zeit um, Zeit um, Zeit um, Zeit um → Autos grün - Knopf, Knopf, Zeit um → Autos gelb Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
 
 ### Übung
 

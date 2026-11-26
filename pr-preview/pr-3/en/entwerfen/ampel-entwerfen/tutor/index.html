@@ -68,12 +68,12 @@
 <ul>
 <li><p><strong>complete</strong>: An automaton is complete when every state has an arrow for every input.</p>
 </li>
-<li><p><strong>test sequence</strong>: A test sequence is a series of inputs that begins at the start state, with the state the automaton should be in afterwards, according to the task.</p>
+<li><p><strong>test sequence</strong>: A test sequence is a series of inputs, starting at the start state. It comes with the state the task says the automaton should end in.</p>
 </li>
 </ul>
 <h3>Design the crossing</h3>
 <p>Here you design class 9b&#39;s lights, without a score. Tick the cards that are states. Choose the start state. Then set the target of every row; the diagram draws itself. “Play” shows the way of a test sequence step by step and where it ends: ✓ means as asked, ✗ means somewhere else.</p>
-<p>Interactive: The design of the crossing. State cards: cars green, someone waiting, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences: - time up, time up → cars green - button, time up → cars amber - button, time up, time up → green man - button, time up, time up, time up, time up → cars green - button, button, time up → cars amber With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.</p>
+<p>Interactive: The design of the crossing. State cards: cars green, press the button, someone waiting, cars amber, WAIT light comes on, green man, cars red and amber. Inputs: button, time up. Test sequences: - time up, time up → cars green - button, time up → cars amber - button, time up, time up → green man - button, time up, time up, time up, time up → cars green - button, button, time up → cars amber With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.</p>
 <h3>Practice</h3>
 <ul>
 <li><p>Exercise <code>schritte-ordnen</code> (below)</p>
@@ -86,7 +86,7 @@
 </li>
 </ul>
 <h3>What comes next?</h3>
-<p>You can now design an automaton in four steps. Mia has finished her design already, but in the test it never lets the people on foot cross. On the next page class 9b looks for such mistakes and improves designs.</p>
+<p>You can now design an automaton in four steps. Mia has finished her design already, but in the test it never lets the pedestrians cross. On the next page class 9b looks for such mistakes and improves designs.</p>
 <h3>Exercise ampel-eingaben</h3>
 <ul>
 <li>Task: What are the inputs of the crossing?</li>
@@ -121,7 +121,7 @@
 </ul>
 </li>
 <li>Solution: The lights forget the button press or switch to amber without it.</li>
-<li>Explanation: Two situations after which the same input leads to different things are two states, even if they look the same to the cars.</li>
+<li>Explanation: If the same input leads to different things in two situations, they are two states, even if they look the same to the cars.</li>
 <li>Link: <a href="../?via=tutor#warum-wartet">../?via=tutor#warum-wartet</a></li>
 </ul>
 <h3>Exercise entwurf-neu</h3>
