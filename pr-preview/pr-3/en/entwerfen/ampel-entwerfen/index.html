@@ -11,11 +11,11 @@
     <meta name="lernapps-archetype" content="explainer" />
     <link rel="alternate" hreflang="de" href="../../../entwerfen/ampel-entwerfen/" />
     <link rel="alternate" hreflang="en" href="../../../en/entwerfen/ampel-entwerfen/" />
-    <script type="module" crossorigin src="../../../assets/islands-CQWA6Y32.js"></script>
+    <script type="module" crossorigin src="../../../assets/islands-xC1qMXRH.js"></script>
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <p class="explainer-diff-banner" role="status"><strong>Changes view: preview of this version against the base</strong> (base 6049e18) <button type="button" class="explainer-diff-toggle" data-off="View without marks" data-on="View with marks" hidden>View without marks</button></p>
+    <p class="explainer-diff-banner" role="status"><strong>Changes view: preview of this version against the base</strong> (base 5363635) <button type="button" class="explainer-diff-toggle" data-off="View without marks" data-on="View with marks" hidden>View without marks</button></p>
 <aside class="explainer-diff-bar" aria-labelledby="diff-bar-title">
 <h2 id="diff-bar-title">Changes</h2>
 <div class="explainer-diff-counts" aria-label="Changes on this page"></div>
@@ -58,8 +58,8 @@
 <nav class="explainer-toc" aria-label="On this page"><p class="explainer-toc-title">On this page</p><ol><li><a href="#einstieg">The crossing outside the school</a></li><li><a href="#idee">Four steps to an automaton</a></li><li><a href="#ausprobieren">Design the crossing</a></li><li><a href="#uebung">Practice</a></li><li><a href="#ausblick">What comes next?</a></li></ol></nav>
 <section class="explainer-section">
 <h2 id="einstieg">The crossing outside the school</h2>
-<div class="explainer-block" data-block="einstieg/1" data-block-id="185a617b" data-block-type="text" data-block-order="1">
-<div class="block-text"><p>A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia are 14 now. Before they write any code, they chat in their group:</p>
+<div class="explainer-block" data-block="einstieg/1" data-block-id="4398c565" data-block-type="text" data-block-order="1">
+<div class="block-text"><p>A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia, all 14, are in it. Before they write any code, they chat in their group:</p>
 <p><strong>Selin:</strong> Plan first, code second. What do the lights have to remember?
 <strong>Jona:</strong> Which colour is on. Nothing else.
 <strong>Mia:</strong> And whether someone has pressed! The cars still have green then, but the lights already know.
@@ -106,31 +106,31 @@
 </section>
 <section class="explainer-section">
 <h2 id="idee">Four steps to an automaton</h2>
-<div class="explainer-block" data-block="idee/1" data-block-id="9a35b5a0" data-block-type="text" data-block-order="3">
+<div class="explainer-block" data-block="idee/1" data-block-id="e0c13adb" data-block-type="text" data-block-order="3">
 <div class="block-text"><ol>
-<li><strong>Collect the inputs:</strong> what comes from outside? Here: the button and “time up”.</li>
-<li><strong>Find the states:</strong> what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “cars green and someone waits”.</li>
+<li><strong>Collect the inputs:</strong> what comes from outside? A small timer outside the automaton counts the time. When it is up, it reports “time up”.</li>
+<li><strong>Find the states:</strong> what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “someone waiting”.</li>
 <li><strong>Set the transitions:</strong> for every state and every input: where does it go? If nothing changes, the arrow goes back to the same state.</li>
-<li><strong>Test:</strong> play input sequences and compare where the automaton ends with what the task says.</li>
+<li><strong>Test:</strong> play test sequences and compare where the automaton ends with what the task says.</li>
 </ol>
-<p>Outputs such as “WAIT light on” can be written at the transitions, as in chapter 1. Here you design only states and transitions.</p></div>
+<p>Outputs such as “WAIT light comes on” can be written at the transitions, as in chapter 1. Here you design only states and transitions.</p></div>
 </div>
 <div class="explainer-block" data-block="idee/2" data-block-id="1019dc6e" data-block-type="definition" data-block-order="4">
 <dl class="explainer-definition"><dt><dfn id="begriff-vollstaendig"><a href="../../../en/glossar/#vollstaendig">complete</a></dfn></dt><dd><p>An automaton is complete when every state has an arrow for every input.</p></dd></dl>
 </div>
-<div class="explainer-block" data-block="idee/3" data-block-id="93f8f7c5" data-block-type="definition" data-block-order="5">
-<dl class="explainer-definition"><dt><dfn id="begriff-eindeutig"><a href="../../../en/glossar/#eindeutig">deterministic</a></dfn></dt><dd><p>An automaton is deterministic when every state has at most one arrow for every input. Then you always know where it jumps.</p></dd></dl>
+<div class="explainer-block" data-block="idee/3" data-block-id="6290b4e9" data-block-type="definition" data-block-order="5">
+<dl class="explainer-definition"><dt><dfn id="begriff-testfolge"><a href="../../../en/glossar/#testfolge">test sequence</a></dfn></dt><dd><p>A test sequence is a series of inputs with the state the automaton should be in afterwards.</p></dd></dl>
 </div>
 </section>
 <section class="explainer-section">
 <h2 id="ausprobieren">Design the crossing</h2>
-<div class="explainer-block" data-block="ausprobieren/1" data-block-id="80bd011d" data-block-type="text" data-block-order="6">
-<div class="block-text"><p>Here you design class 9b&#39;s lights, without marks. Tick the cards that are states. Choose the start state. Then set the target of every row; the diagram draws itself. With “play” you see where a test sequence ends: ✓ means as asked, ✗ means somewhere else.</p></div>
+<div class="explainer-block" data-block="ausprobieren/1" data-block-id="220ed610" data-block-type="text" data-block-order="6">
+<div class="block-text"><p>Here you design class 9b&#39;s lights, without a score. Tick the cards that are states. Choose the start state. Then set the target of every row; the diagram draws itself. “Play” shows the way of a test sequence step by step and where it ends: ✓ means as asked, ✗ means somewhere else.</p></div>
 </div>
-<div class="explainer-block" data-block="ausprobieren/2" data-block-id="679fa754" data-block-type="vue-component" data-block-order="7">
+<div class="explainer-block" data-block="ausprobieren/2" data-block-id="42d9d606" data-block-type="vue-component" data-block-order="7">
 <div class="explainer-component" data-component="AutomatWerkstatt" data-nojs="caption" data-caption="Text description">
-<div class="explainer-island" hidden><div class="automat-werkstatt" data-v-0606cb79><p data-v-0606cb79><strong data-v-0606cb79>Pedestrian crossing outside the school.</strong> At the start the cars have green. Without a press of the button this stays so, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then amber comes for the cars, after the next time the green man, then red and amber for the cars and green again. During amber, the green man and red and amber, the button changes nothing.</p><div class="automat-editor" data-v-0606cb79 data-v-528d550a><fieldset class="automat-editor-cards" data-v-528d550a><legend data-v-528d550a>1 Choose the states: what does the automaton have to remember?</legend><!--[--><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> cars green</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> cars green and someone waits</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> cars amber</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> green man</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> cars red and amber</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> press the button</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> WAIT light comes on</label><!--]--></fieldset><!----><!----><!----><div class="automat-editor-tests" data-v-528d550a><p class="automat-editor-heading" data-v-528d550a>4 Test sequences</p><ul data-v-528d550a><!--[--><li data-v-528d550a><span data-v-528d550a>time up, time up → should be: <strong data-v-528d550a>cars green</strong></span><button type="button" data-v-528d550a>play</button><!----></li><li data-v-528d550a><span data-v-528d550a>button, time up → should be: <strong data-v-528d550a>cars amber</strong></span><button type="button" data-v-528d550a>play</button><!----></li><li data-v-528d550a><span data-v-528d550a>button, time up, time up → should be: <strong data-v-528d550a>green man</strong></span><button type="button" data-v-528d550a>play</button><!----></li><li data-v-528d550a><span data-v-528d550a>button, time up, time up, time up, time up → should be: <strong data-v-528d550a>cars green</strong></span><button type="button" data-v-528d550a>play</button><!----></li><!--]--></ul><p class="automat-editor-note" data-v-528d550a>There is no “Check” here: try things out freely.</p></div></div><p class="automat-werkstatt-reset" data-v-0606cb79><button type="button" data-v-0606cb79>Clear everything</button></p></div></div>
-<div class="explainer-nojs"><p>The design of the crossing. State cards: cars green, cars green and someone waits, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:</p>
+<div class="explainer-island" hidden><div class="automat-werkstatt" data-v-023214c2><p data-v-023214c2><strong data-v-023214c2>Pedestrian crossing outside the school.</strong> At the start the cars have green. If nobody presses the button, it stays like this, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then the cars get amber; when the time is up again, the green man shows, then the cars get red and amber, and then green again. During amber, the green man and red and amber, the button changes nothing.</p><div class="automat-editor" data-v-023214c2 data-v-4ea82185><p class="automat-editor-inputs" data-v-4ea82185><strong data-v-4ea82185>Step 1 – inputs (given by the task):</strong><!--[--><span class="automat-editor-input" data-v-4ea82185>button</span><span class="automat-editor-input" data-v-4ea82185>time up</span><!--]--></p><fieldset class="automat-editor-cards" data-v-4ea82185><legend data-v-4ea82185>Step 2 – find the states: what does the automaton have to remember?</legend><!--[--><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> cars green</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> someone waiting</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> cars amber</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> green man</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> cars red and amber</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> press the button</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> WAIT light comes on</label><!--]--><!--[--><!--]--></fieldset><p class="automat-editor-note" data-v-4ea82185>Choose states first. Then the start state, the transitions and the diagram appear.</p><!----><!----><!----><div class="automat-editor-tests" data-v-4ea82185><p class="automat-editor-heading" data-v-4ea82185>Step 4 – test</p><ul data-v-4ea82185><!--[--><li data-v-4ea82185><span data-v-4ea82185>time up, time up → should be: <strong data-v-4ea82185>cars green</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><li data-v-4ea82185><span data-v-4ea82185>button, time up → should be: <strong data-v-4ea82185>cars amber</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><li data-v-4ea82185><span data-v-4ea82185>button, time up, time up → should be: <strong data-v-4ea82185>green man</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><li data-v-4ea82185><span data-v-4ea82185>button, time up, time up, time up, time up → should be: <strong data-v-4ea82185>cars green</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><!--]--></ul><p class="automat-editor-note" data-v-4ea82185>There is no “Check” here: try things out freely.</p></div></div><p class="automat-werkstatt-reset" data-v-023214c2><button type="button" data-v-023214c2>Clear everything</button></p></div></div>
+<div class="explainer-nojs"><p>The design of the crossing. State cards: cars green, someone waiting, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:</p>
 <ul>
 <li>time up, time up → cars green</li>
 <li>button, time up → cars amber</li>
@@ -138,16 +138,13 @@
 <li>button, time up, time up, time up, time up → cars green</li>
 </ul>
 <p>With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.</p></div>
-<script type="application/json" class="explainer-component-props">{"aufgaben":[{"id":"ampel","name":"Pedestrian crossing outside the school","text":"At the start the cars have green. Without a press of the button this stays so, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then amber comes for the cars, after the next time the green man, then red and amber for the cars and green again. During amber, the green man and red and amber, the button changes nothing.","inputs":[{"id":"knopf","name":"button"},{"id":"zeit","name":"time up"}],"cards":[{"id":"gruen","name":"cars green","art":"zustand","warum":"The cars drive and nobody is waiting."},{"id":"wartet","name":"cars green and someone waits","art":"zustand","warum":"Looks like “cars green”, but the lights have remembered the button."},{"id":"gelb","name":"cars amber","art":"zustand","warum":"The cars should stop."},{"id":"gehen","name":"green man","art":"zustand","warum":"People on foot may cross."},{"id":"rotgelb","name":"cars red and amber","art":"zustand","warum":"The cars may drive again soon."},{"id":"druecken","name":"press the button","art":"eingabe","warum":"“Press the button” happens in a moment. That is an input, not a state."},{"id":"signal","name":"WAIT light comes on","art":"ausgabe","warum":"The light coming on happens during a transition. That is an output, not a state."}],"start":"gruen","loesung":[{"from":"gruen","input":"knopf","to":"wartet"},{"from":"gruen","input":"zeit","to":"gruen"},{"from":"wartet","input":"knopf","to":"wartet"},{"from":"wartet","input":"zeit","to":"gelb"},{"from":"gelb","input":"knopf","to":"gelb"},{"from":"gelb","input":"zeit","to":"gehen"},{"from":"gehen","input":"knopf","to":"gehen"},{"from":"gehen","input":"zeit","to":"rotgelb"},{"from":"rotgelb","input":"knopf","to":"rotgelb"},{"from":"rotgelb","input":"zeit","to":"gruen"}],"tests":[{"inputs":["zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","zeit"],"end":"gelb","hidden":false},{"inputs":["knopf","zeit","zeit"],"end":"gehen","hidden":false},{"inputs":["knopf","zeit","zeit","zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","knopf","zeit","knopf","zeit"],"end":"gehen","hidden":true},{"inputs":["knopf","zeit","zeit","knopf","zeit"],"end":"rotgelb","hidden":true}]},{"id":"schranke","name":"Barrier at the car park exit","text":"At the start the barrier is closed. Putting in a ticket opens it. When a car drives through, it closes again. If a car comes to the closed barrier, it stays closed. A second ticket while the barrier is open changes nothing.","inputs":[{"id":"ticket","name":"ticket"},{"id":"auto","name":"car drives through"}],"cards":[{"id":"zu","name":"barrier closed","art":"zustand","warum":"Nobody can get through."},{"id":"offen","name":"barrier open","art":"zustand","warum":"One car may drive through."},{"id":"hebt","name":"barrier goes up","art":"ausgabe","warum":"Going up happens during a transition. That is an output, not a state."},{"id":"einstecken","name":"put in a ticket","art":"eingabe","warum":"Putting it in happens in a moment. That is an input, not a state."}],"start":"zu","loesung":[{"from":"zu","input":"ticket","to":"offen"},{"from":"zu","input":"auto","to":"zu"},{"from":"offen","input":"ticket","to":"offen"},{"from":"offen","input":"auto","to":"zu"}],"tests":[{"inputs":["ticket"],"end":"offen","hidden":false},{"inputs":["ticket","auto"],"end":"zu","hidden":false},{"inputs":["auto"],"end":"zu","hidden":false},{"inputs":["ticket","ticket","auto"],"end":"zu","hidden":true},{"inputs":["auto","ticket"],"end":"offen","hidden":true}]},{"id":"schloss","name":"Locker lock with the code 2-7","text":"At the start the lock is closed. It opens when 2 and then 7 are typed straight after each other. Any other digit after the 2 cancels the start; a new 2 starts again. Once the lock is open, it stays open.","inputs":[{"id":"zwei","name":"2"},{"id":"sieben","name":"7"},{"id":"andere","name":"other digit"}],"cards":[{"id":"zu","name":"locked","art":"zustand","warum":"Nothing right typed yet."},{"id":"halb","name":"locked, 2 typed","art":"zustand","warum":"The lock has remembered the 2."},{"id":"offen","name":"open","art":"zustand","warum":"The code was right."},{"id":"tippen","name":"type 7","art":"eingabe","warum":"Typing a digit happens in a moment. That is an input, not a state."},{"id":"klick","name":"lock clicks","art":"ausgabe","warum":"The click happens during a transition. That is an output, not a state."}],"start":"zu","loesung":[{"from":"zu","input":"zwei","to":"halb"},{"from":"zu","input":"sieben","to":"zu"},{"from":"zu","input":"andere","to":"zu"},{"from":"halb","input":"zwei","to":"halb"},{"from":"halb","input":"sieben","to":"offen"},{"from":"halb","input":"andere","to":"zu"},{"from":"offen","input":"zwei","to":"offen"},{"from":"offen","input":"sieben","to":"offen"},{"from":"offen","input":"andere","to":"offen"}],"tests":[{"inputs":["zwei","sieben"],"end":"offen","hidden":false},{"inputs":["sieben","zwei"],"end":"halb","hidden":false},{"inputs":["zwei","andere","sieben"],"end":"zu","hidden":false},{"inputs":["zwei","zwei","sieben"],"end":"offen","hidden":true},{"inputs":["zwei","sieben","andere"],"end":"offen","hidden":true}]},{"id":"handy","name":"Phone lock screen","text":"At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.","inputs":[{"id":"richtig","name":"right code"},{"id":"falsch","name":"wrong code"}],"cards":[{"id":"gesperrt","name":"locked","art":"zustand","warum":"No wrong try yet."},{"id":"einmal","name":"locked, 1 mistake","art":"zustand","warum":"The phone has remembered one wrong try."},{"id":"blockiert","name":"blocked","art":"zustand","warum":"Wrong twice, now nothing works."},{"id":"entsperrt","name":"unlocked","art":"zustand","warum":"The code was right."},{"id":"eingeben","name":"type the code","art":"eingabe","warum":"Typing a code happens in a moment. That is an input, not a state."}],"start":"gesperrt","loesung":[{"from":"gesperrt","input":"richtig","to":"entsperrt"},{"from":"gesperrt","input":"falsch","to":"einmal"},{"from":"einmal","input":"richtig","to":"entsperrt"},{"from":"einmal","input":"falsch","to":"blockiert"},{"from":"blockiert","input":"richtig","to":"blockiert"},{"from":"blockiert","input":"falsch","to":"blockiert"},{"from":"entsperrt","input":"richtig","to":"entsperrt"},{"from":"entsperrt","input":"falsch","to":"entsperrt"}],"tests":[{"inputs":["richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","falsch"],"end":"blockiert","hidden":false},{"inputs":["falsch","falsch","richtig"],"end":"blockiert","hidden":true},{"inputs":["richtig","falsch"],"end":"entsperrt","hidden":true}]}],"aufgabe":"ampel","labels":{"states":"1 Choose the states: what does the automaton have to remember?","start":"Start state","arrows":"2 Set the transitions: every input for every state","choose":"– please choose –","diagram":"3 Diagram","tests":"4 Test sequences","play":"play","expected":"should be:","endsAt":"ends at:","startWord":"Start","hiddenNote":"There is no “Check” here: try things out freely."},"reset":"Clear everything"}</script>
+<script type="application/json" class="explainer-component-props">{"aufgaben":[{"id":"ampel","name":"Pedestrian crossing outside the school","text":"At the start the cars have green. If nobody presses the button, it stays like this, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then the cars get amber; when the time is up again, the green man shows, then the cars get red and amber, and then green again. During amber, the green man and red and amber, the button changes nothing.","inputs":[{"id":"knopf","name":"button"},{"id":"zeit","name":"time up"}],"cards":[{"id":"gruen","name":"cars green","art":"zustand","warum":"The cars drive and nobody is waiting.","x":0,"y":0,"loop":0},{"id":"wartet","name":"someone waiting","art":"zustand","warum":"The cars still have green, but the lights have remembered the button.","x":0,"y":0,"loop":0},{"id":"gelb","name":"cars amber","art":"zustand","warum":"The cars should stop.","x":0,"y":0,"loop":0},{"id":"gehen","name":"green man","art":"zustand","warum":"People on foot may cross.","x":0,"y":0,"loop":0},{"id":"rotgelb","name":"cars red and amber","art":"zustand","warum":"The cars may drive again soon.","x":0,"y":0,"loop":0},{"id":"druecken","name":"press the button","art":"eingabe","warum":"“Press the button” happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0},{"id":"signal","name":"WAIT light comes on","art":"ausgabe","warum":"The light coming on happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0}],"start":"gruen","loesung":[{"from":"gruen","input":"knopf","to":"wartet"},{"from":"gruen","input":"zeit","to":"gruen"},{"from":"wartet","input":"knopf","to":"wartet"},{"from":"wartet","input":"zeit","to":"gelb"},{"from":"gelb","input":"knopf","to":"gelb"},{"from":"gelb","input":"zeit","to":"gehen"},{"from":"gehen","input":"knopf","to":"gehen"},{"from":"gehen","input":"zeit","to":"rotgelb"},{"from":"rotgelb","input":"knopf","to":"rotgelb"},{"from":"rotgelb","input":"zeit","to":"gruen"}],"tests":[{"inputs":["zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","zeit"],"end":"gelb","hidden":false},{"inputs":["knopf","zeit","zeit"],"end":"gehen","hidden":false},{"inputs":["knopf","zeit","zeit","zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","knopf","zeit","knopf","zeit"],"end":"gehen","hidden":true},{"inputs":["knopf","zeit","zeit","knopf","zeit"],"end":"rotgelb","hidden":true}]},{"id":"schranke","name":"Barrier at the car park exit","text":"At the start the barrier is closed. Putting in a ticket opens it. When a car drives through, it closes again. If a car comes to the closed barrier, it stays closed. A second ticket while the barrier is open changes nothing.","inputs":[{"id":"ticket","name":"ticket"},{"id":"auto","name":"car drives through"}],"cards":[{"id":"zu","name":"barrier closed","art":"zustand","warum":"Nobody can get through.","x":0,"y":0,"loop":0},{"id":"offen","name":"barrier open","art":"zustand","warum":"One car may drive through.","x":0,"y":0,"loop":0},{"id":"hebt","name":"barrier goes up","art":"ausgabe","warum":"Going up happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0},{"id":"einstecken","name":"put in a ticket","art":"eingabe","warum":"Putting it in happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0}],"start":"zu","loesung":[{"from":"zu","input":"ticket","to":"offen"},{"from":"zu","input":"auto","to":"zu"},{"from":"offen","input":"ticket","to":"offen"},{"from":"offen","input":"auto","to":"zu"}],"tests":[{"inputs":["ticket"],"end":"offen","hidden":false},{"inputs":["ticket","auto"],"end":"zu","hidden":false},{"inputs":["auto"],"end":"zu","hidden":false},{"inputs":["ticket","ticket","auto"],"end":"zu","hidden":true},{"inputs":["auto","ticket"],"end":"offen","hidden":true}]},{"id":"schloss","name":"Combination lock on a locker, code 2-7","text":"At the start the lock is locked. It opens when 2 and then 7 are typed one right after the other. Any other digit after the 2 means starting again; a new 2 starts again too. Once the lock is open, it stays open.","inputs":[{"id":"zwei","name":"2"},{"id":"sieben","name":"7"},{"id":"andere","name":"other digit"}],"cards":[{"id":"zu","name":"locked","art":"zustand","warum":"Nothing right typed yet.","x":110,"y":170,"loop":-90},{"id":"halb","name":"2 typed","art":"zustand","warum":"The lock has remembered the 2.","x":330,"y":170,"loop":90},{"id":"offen","name":"open","art":"zustand","warum":"The code was right.","x":550,"y":170,"loop":-90},{"id":"tippen","name":"type 7","art":"eingabe","warum":"Typing a digit happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0},{"id":"klick","name":"lock clicks","art":"ausgabe","warum":"The click happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0}],"start":"zu","loesung":[{"from":"zu","input":"zwei","to":"halb"},{"from":"zu","input":"sieben","to":"zu"},{"from":"zu","input":"andere","to":"zu"},{"from":"halb","input":"zwei","to":"halb"},{"from":"halb","input":"sieben","to":"offen"},{"from":"halb","input":"andere","to":"zu"},{"from":"offen","input":"zwei","to":"offen"},{"from":"offen","input":"sieben","to":"offen"},{"from":"offen","input":"andere","to":"offen"}],"tests":[{"inputs":["zwei","sieben"],"end":"offen","hidden":false},{"inputs":["sieben","zwei"],"end":"halb","hidden":false},{"inputs":["zwei","andere","sieben"],"end":"zu","hidden":false},{"inputs":["zwei","zwei","sieben"],"end":"offen","hidden":true},{"inputs":["zwei","sieben","andere"],"end":"offen","hidden":true}]},{"id":"handy","name":"Phone lock screen","text":"At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.","inputs":[{"id":"richtig","name":"right code"},{"id":"falsch","name":"wrong code"}],"cards":[{"id":"gesperrt","name":"locked","art":"zustand","warum":"No wrong try yet.","x":100,"y":120,"loop":90},{"id":"einmal","name":"1 mistake","art":"zustand","warum":"The phone has remembered one wrong try.","x":400,"y":120,"loop":-90},{"id":"blockiert","name":"blocked","art":"zustand","warum":"Wrong twice, now nothing works.","x":700,"y":120,"loop":-90},{"id":"entsperrt","name":"unlocked","art":"zustand","warum":"The code was right.","x":250,"y":370,"loop":90},{"id":"eingeben","name":"type the code","art":"eingabe","warum":"Typing a code happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0}],"start":"gesperrt","loesung":[{"from":"gesperrt","input":"richtig","to":"entsperrt"},{"from":"gesperrt","input":"falsch","to":"einmal"},{"from":"einmal","input":"richtig","to":"entsperrt"},{"from":"einmal","input":"falsch","to":"blockiert"},{"from":"blockiert","input":"richtig","to":"blockiert"},{"from":"blockiert","input":"falsch","to":"blockiert"},{"from":"entsperrt","input":"richtig","to":"entsperrt"},{"from":"entsperrt","input":"falsch","to":"entsperrt"}],"tests":[{"inputs":["richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","falsch"],"end":"blockiert","hidden":false},{"inputs":["falsch","falsch","richtig"],"end":"blockiert","hidden":true},{"inputs":["richtig","falsch"],"end":"entsperrt","hidden":true}]}],"aufgabe":"ampel","labels":{"inputs":"Step 1 – inputs (given by the task):","states":"Step 2 – find the states: what does the automaton have to remember?","start":"Start state","arrows":"Step 3 – set the transitions: every input for every state","choose":"– please choose –","diagram":"Diagram","tests":"Step 4 – test","play":"play","expected":"should be:","endsAt":"ends at:","startWord":"Start","empty":"Choose states first. Then the start state, the transitions and the diagram appear.","hiddenNote":"There is no “Check” here: try things out freely."},"reset":"Clear everything"}</script>
 </div>
-</div>
-<div class="explainer-block" data-block="ausprobieren/3" data-block-id="6290b4e9" data-block-type="definition" data-block-order="8">
-<dl class="explainer-definition"><dt><dfn id="begriff-testfolge"><a href="../../../en/glossar/#testfolge">test sequence</a></dfn></dt><dd><p>A test sequence is a series of inputs with the state the automaton should be in afterwards.</p></dd></dl>
 </div>
 </section>
 <section class="explainer-section">
 <h2 id="uebung">Practice</h2>
-<div class="explainer-block" data-block="uebung/1" data-block-id="70f83749" data-block-type="ordering" data-block-order="9">
+<div class="explainer-block" data-block="uebung/1" data-block-id="70f83749" data-block-type="ordering" data-block-order="8">
 <div class="explainer-exercise explainer-question" id="schritte-ordnen">
 <p class="explainer-exercise-label">Exercise</p>
 <div class="question" id="frage-schritte-ordnen" data-id="schritte-ordnen" data-type="ordering">
@@ -177,13 +174,13 @@
 <script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"schritte-ordnen","text":"Put the four steps of designing in the right order.","explanation":"Without the inputs you do not know which arrows are needed. Without states there are no arrows. You can only test a finished design.","links":[],"type":"ordering","items":["collect the inputs","find the states","set the transitions","test with test sequences"]},"rendered":{}}</script>
 </div>
 </div>
-<div class="explainer-block" data-block="uebung/2" data-block-id="b9da1940" data-block-type="single-choice" data-block-order="10">
+<div class="explainer-block" data-block="uebung/2" data-block-id="a47c8211" data-block-type="single-choice" data-block-order="9">
 <div class="explainer-exercise explainer-question" id="warum-wartet">
 <p class="explainer-exercise-label">Exercise</p>
 <div class="question" id="frage-warum-wartet" data-id="warum-wartet" data-type="single-choice">
 <form class="question-form" novalidate>
 <fieldset>
-<legend class="question-text">Jona says: “‘Cars green and someone waits’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?</legend>
+<legend class="question-text">Jona says: “‘Someone waiting’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?</legend>
 <label class="question-option"><input type="radio" name="frage-warum-wartet" value="0"> <span>The lights forget the button press or switch to amber without it.</span></label>
 <label class="question-option"><input type="radio" name="frage-warum-wartet" value="1"> <span>Nothing, the lights are the same.</span></label>
 <label class="question-option"><input type="radio" name="frage-warum-wartet" value="2"> <span>The lights show red for everyone.</span></label>
@@ -208,29 +205,737 @@
 </ul>
 <p class="question-explanation">Two situations after which the same input leads to different things are two states, even if they look the same.</p>
 </details>
-<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"warum-wartet","text":"Jona says: “‘Cars green and someone waits’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?","explanation":"Two situations after which the same input leads to different things are two states, even if they look the same.","links":[],"type":"single-choice","options":[{"text":"The lights forget the button press or switch to amber without it.","correct":true,"info":"At “time up” the lights must know whether someone pressed. They can only remember that in a state of their own."},{"text":"Nothing, the lights are the same.","correct":false,"info":"The lights are the same, but what happens next is different. A state is what the automaton remembers, not what you see."},{"text":"The lights show red for everyone.","correct":false,"info":"The task gives no reason for that. The problem is the missing memory of the button."}]},"rendered":{}}</script>
+<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"warum-wartet","text":"Jona says: “‘Someone waiting’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?","explanation":"Two situations after which the same input leads to different things are two states, even if they look the same.","links":[],"type":"single-choice","options":[{"text":"The lights forget the button press or switch to amber without it.","correct":true,"info":"At “time up” the lights must know whether someone pressed. They can only remember that in a state of their own."},{"text":"Nothing, the lights are the same.","correct":false,"info":"The lights are the same, but what happens next is different. A state is what the automaton remembers, not what you see."},{"text":"The lights show red for everyone.","correct":false,"info":"The task gives no reason for that. The problem is the missing memory of the button."}]},"rendered":{}}</script>
 </div>
 </div>
-<div class="explainer-block" data-block="uebung/3" data-block-id="05fd5a69" data-block-type="vue-component" data-block-order="11">
-<div class="explainer-component" id="entwurf-neu" data-component="AutomatEntwurf" data-exercise data-seeds="[1,2,4,8]" data-checked>
+<div class="explainer-block" data-block="uebung/3" data-block-id="fbc328df" data-block-type="vue-component" data-block-order="10">
+<div class="explainer-component" id="entwurf-neu" data-component="AutomatEntwurf" data-exercise data-seeds="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22,23,24,25,27,28,29,30,32,35,36,37,38,39,40,41,42,43,45,46,48,50,51,52,54,55,56,58,60,63,64,65,67,68,69,71,74,75,77,78,79,80,81,85,86,88,90]" data-checked>
 <p class="explainer-exercise-label">Exercise</p>
 <p class="explainer-task-controls" hidden><span class="explainer-task-number" tabindex="-1" data-template="Task no. {n}">Task no. 1</span> <button type="button" class="explainer-new-task" title="New task"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg><span class="explainer-new-task-text">New task</span></button></p>
-<form class="explainer-component-form" novalidate><div class="explainer-island" hidden><div class="automat-entwurf"><p>Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here.</p><p><strong>Phone lock screen.</strong> At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.</p><div class="automat-editor" data-v-528d550a><fieldset class="automat-editor-cards" data-v-528d550a><legend data-v-528d550a>1 Choose the states: what does the automaton have to remember?</legend><!--[--><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> locked</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> locked, 1 mistake</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> blocked</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> unlocked</label><label class="automat-editor-card" data-v-528d550a><input type="checkbox" data-v-528d550a> type the code</label><!--]--></fieldset><!----><!----><!----><div class="automat-editor-tests" data-v-528d550a><p class="automat-editor-heading" data-v-528d550a>4 Test sequences</p><ul data-v-528d550a><!--[--><li data-v-528d550a><span data-v-528d550a>right code → should be: <strong data-v-528d550a>unlocked</strong></span><button type="button" data-v-528d550a>play</button><!----></li><li data-v-528d550a><span data-v-528d550a>wrong code, right code → should be: <strong data-v-528d550a>unlocked</strong></span><button type="button" data-v-528d550a>play</button><!----></li><li data-v-528d550a><span data-v-528d550a>wrong code, wrong code → should be: <strong data-v-528d550a>blocked</strong></span><button type="button" data-v-528d550a>play</button><!----></li><!--]--></ul><p class="automat-editor-note" data-v-528d550a>“Check” tests more sequences.</p></div></div></div></div><p class="question-actions" hidden><button type="submit" class="question-check">Check</button> <button type="button" class="question-solve" hidden>Solution</button></p></form>
+<form class="explainer-component-form" novalidate><div class="explainer-island" hidden><div class="automat-entwurf"><p>Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here.</p><p><strong>Phone lock screen.</strong> At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.</p><div class="automat-editor" data-v-4ea82185><p class="automat-editor-inputs" data-v-4ea82185><strong data-v-4ea82185>Step 1 – inputs (given by the task):</strong><!--[--><span class="automat-editor-input" data-v-4ea82185>right code</span><span class="automat-editor-input" data-v-4ea82185>wrong code</span><!--]--></p><fieldset class="automat-editor-cards" data-v-4ea82185><legend data-v-4ea82185>Step 2 – find the states: what does the automaton have to remember?</legend><!--[--><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> type the code</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> blocked</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> locked</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> unlocked</label><label class="automat-editor-card" data-v-4ea82185><input type="checkbox" data-v-4ea82185> 1 mistake</label><!--]--><!--[--><!--]--></fieldset><p class="automat-editor-note" data-v-4ea82185>Choose states first. Then the start state, the transitions and the diagram appear.</p><!----><!----><!----><div class="automat-editor-tests" data-v-4ea82185><p class="automat-editor-heading" data-v-4ea82185>Step 4 – test</p><ul data-v-4ea82185><!--[--><li data-v-4ea82185><span data-v-4ea82185>right code → should be: <strong data-v-4ea82185>unlocked</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><li data-v-4ea82185><span data-v-4ea82185>wrong code, right code → should be: <strong data-v-4ea82185>unlocked</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><li data-v-4ea82185><span data-v-4ea82185>wrong code, wrong code → should be: <strong data-v-4ea82185>blocked</strong></span><button type="button" data-v-4ea82185>play</button><!----><!----></li><!--]--></ul><p class="automat-editor-note" data-v-4ea82185>“Check” tests more sequences.</p></div></div></div></div><p class="question-actions" hidden><button type="submit" class="question-check">Check</button> <button type="button" class="question-solve" hidden>Solution</button></p></form>
 <div class="explainer-nojs"><div class="explainer-described"><p class="explainer-task-number">Task no. 1</p><div class="explainer-task"><p><strong>Phone lock screen.</strong> At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.</p>
-<p>„locked“, „locked, 1 mistake“, „blocked“, „unlocked“, „type the code“</p>
-<p>„right code“, „wrong code“</p>
+<p>“type the code” · “blocked” · “locked” · “unlocked” · “1 mistake”</p>
+<p>“right code” · “wrong code”</p>
 <ul>
-<li>right code → unlocked</li>
-<li>wrong code, right code → unlocked</li>
-<li>wrong code, wrong code → blocked</li>
-</ul></div><details class="explainer-solution"><summary>Solution</summary><p>locked, locked, 1 mistake, blocked, unlocked; Start: locked; locked – right code → unlocked; locked – wrong code → locked, 1 mistake; locked, 1 mistake – right code → unlocked; locked, 1 mistake – wrong code → blocked; blocked – right code → blocked; blocked – wrong code → blocked; unlocked – right code → unlocked; unlocked – wrong code → unlocked</p></details></div></div>
-<p class="question-feedback" data-right="Right!" data-wrong="That's not right." data-incomplete="Choose states and a start state. Where does the automaton begin, according to the task?"></p>
+<li>right code → “unlocked”</li>
+<li>wrong code, right code → “unlocked”</li>
+<li>wrong code, wrong code → “blocked”</li>
+</ul></div><details class="explainer-solution"><summary>Solution</summary><p>“blocked” · “locked” · “unlocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></details></div></div>
+<p class="question-feedback" data-right="Right!" data-wrong="That's not right." data-incomplete="First choose the cards that are states."></p>
 <div class="explainer-component-solution" hidden tabindex="-1"><p class="explainer-component-solution-label">Solution</p><div class="explainer-component-solution-text"></div></div>
-<template class="explainer-component-solutions"><div data-number="1"><p>locked, locked, 1 mistake, blocked, unlocked; Start: locked; locked – right code → unlocked; locked – wrong code → locked, 1 mistake; locked, 1 mistake – right code → unlocked; locked, 1 mistake – wrong code → blocked; blocked – right code → blocked; blocked – wrong code → blocked; unlocked – right code → unlocked; unlocked – wrong code → unlocked</p></div><div data-number="2"><p>cars green, cars green and someone waits, cars amber, green man, cars red and amber; Start: cars green; cars green – button → cars green and someone waits; cars green – time up → cars green; cars green and someone waits – button → cars green and someone waits; cars green and someone waits – time up → cars amber; cars amber – button → cars amber; cars amber – time up → green man; green man – button → green man; green man – time up → cars red and amber; cars red and amber – button → cars red and amber; cars red and amber – time up → cars green</p></div><div data-number="3"><p>locked, locked, 2 typed, open; Start: locked; locked – 2 → locked, 2 typed; locked – 7 → locked; locked – other digit → locked; locked, 2 typed – 2 → locked, 2 typed; locked, 2 typed – 7 → open; locked, 2 typed – other digit → locked; open – 2 → open; open – 7 → open; open – other digit → open</p></div><div data-number="4"><p>barrier closed, barrier open; Start: barrier closed; barrier closed – ticket → barrier open; barrier closed – car drives through → barrier closed; barrier open – ticket → barrier open; barrier open – car drives through → barrier closed</p></div></template>
-<script type="application/json" class="explainer-component-props">{"aufgaben":[{"id":"ampel","name":"Pedestrian crossing outside the school","text":"At the start the cars have green. Without a press of the button this stays so, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then amber comes for the cars, after the next time the green man, then red and amber for the cars and green again. During amber, the green man and red and amber, the button changes nothing.","inputs":[{"id":"knopf","name":"button"},{"id":"zeit","name":"time up"}],"cards":[{"id":"gruen","name":"cars green","art":"zustand","warum":"The cars drive and nobody is waiting."},{"id":"wartet","name":"cars green and someone waits","art":"zustand","warum":"Looks like “cars green”, but the lights have remembered the button."},{"id":"gelb","name":"cars amber","art":"zustand","warum":"The cars should stop."},{"id":"gehen","name":"green man","art":"zustand","warum":"People on foot may cross."},{"id":"rotgelb","name":"cars red and amber","art":"zustand","warum":"The cars may drive again soon."},{"id":"druecken","name":"press the button","art":"eingabe","warum":"“Press the button” happens in a moment. That is an input, not a state."},{"id":"signal","name":"WAIT light comes on","art":"ausgabe","warum":"The light coming on happens during a transition. That is an output, not a state."}],"start":"gruen","loesung":[{"from":"gruen","input":"knopf","to":"wartet"},{"from":"gruen","input":"zeit","to":"gruen"},{"from":"wartet","input":"knopf","to":"wartet"},{"from":"wartet","input":"zeit","to":"gelb"},{"from":"gelb","input":"knopf","to":"gelb"},{"from":"gelb","input":"zeit","to":"gehen"},{"from":"gehen","input":"knopf","to":"gehen"},{"from":"gehen","input":"zeit","to":"rotgelb"},{"from":"rotgelb","input":"knopf","to":"rotgelb"},{"from":"rotgelb","input":"zeit","to":"gruen"}],"tests":[{"inputs":["zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","zeit"],"end":"gelb","hidden":false},{"inputs":["knopf","zeit","zeit"],"end":"gehen","hidden":false},{"inputs":["knopf","zeit","zeit","zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","knopf","zeit","knopf","zeit"],"end":"gehen","hidden":true},{"inputs":["knopf","zeit","zeit","knopf","zeit"],"end":"rotgelb","hidden":true}]},{"id":"schranke","name":"Barrier at the car park exit","text":"At the start the barrier is closed. Putting in a ticket opens it. When a car drives through, it closes again. If a car comes to the closed barrier, it stays closed. A second ticket while the barrier is open changes nothing.","inputs":[{"id":"ticket","name":"ticket"},{"id":"auto","name":"car drives through"}],"cards":[{"id":"zu","name":"barrier closed","art":"zustand","warum":"Nobody can get through."},{"id":"offen","name":"barrier open","art":"zustand","warum":"One car may drive through."},{"id":"hebt","name":"barrier goes up","art":"ausgabe","warum":"Going up happens during a transition. That is an output, not a state."},{"id":"einstecken","name":"put in a ticket","art":"eingabe","warum":"Putting it in happens in a moment. That is an input, not a state."}],"start":"zu","loesung":[{"from":"zu","input":"ticket","to":"offen"},{"from":"zu","input":"auto","to":"zu"},{"from":"offen","input":"ticket","to":"offen"},{"from":"offen","input":"auto","to":"zu"}],"tests":[{"inputs":["ticket"],"end":"offen","hidden":false},{"inputs":["ticket","auto"],"end":"zu","hidden":false},{"inputs":["auto"],"end":"zu","hidden":false},{"inputs":["ticket","ticket","auto"],"end":"zu","hidden":true},{"inputs":["auto","ticket"],"end":"offen","hidden":true}]},{"id":"schloss","name":"Locker lock with the code 2-7","text":"At the start the lock is closed. It opens when 2 and then 7 are typed straight after each other. Any other digit after the 2 cancels the start; a new 2 starts again. Once the lock is open, it stays open.","inputs":[{"id":"zwei","name":"2"},{"id":"sieben","name":"7"},{"id":"andere","name":"other digit"}],"cards":[{"id":"zu","name":"locked","art":"zustand","warum":"Nothing right typed yet."},{"id":"halb","name":"locked, 2 typed","art":"zustand","warum":"The lock has remembered the 2."},{"id":"offen","name":"open","art":"zustand","warum":"The code was right."},{"id":"tippen","name":"type 7","art":"eingabe","warum":"Typing a digit happens in a moment. That is an input, not a state."},{"id":"klick","name":"lock clicks","art":"ausgabe","warum":"The click happens during a transition. That is an output, not a state."}],"start":"zu","loesung":[{"from":"zu","input":"zwei","to":"halb"},{"from":"zu","input":"sieben","to":"zu"},{"from":"zu","input":"andere","to":"zu"},{"from":"halb","input":"zwei","to":"halb"},{"from":"halb","input":"sieben","to":"offen"},{"from":"halb","input":"andere","to":"zu"},{"from":"offen","input":"zwei","to":"offen"},{"from":"offen","input":"sieben","to":"offen"},{"from":"offen","input":"andere","to":"offen"}],"tests":[{"inputs":["zwei","sieben"],"end":"offen","hidden":false},{"inputs":["sieben","zwei"],"end":"halb","hidden":false},{"inputs":["zwei","andere","sieben"],"end":"zu","hidden":false},{"inputs":["zwei","zwei","sieben"],"end":"offen","hidden":true},{"inputs":["zwei","sieben","andere"],"end":"offen","hidden":true}]},{"id":"handy","name":"Phone lock screen","text":"At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.","inputs":[{"id":"richtig","name":"right code"},{"id":"falsch","name":"wrong code"}],"cards":[{"id":"gesperrt","name":"locked","art":"zustand","warum":"No wrong try yet."},{"id":"einmal","name":"locked, 1 mistake","art":"zustand","warum":"The phone has remembered one wrong try."},{"id":"blockiert","name":"blocked","art":"zustand","warum":"Wrong twice, now nothing works."},{"id":"entsperrt","name":"unlocked","art":"zustand","warum":"The code was right."},{"id":"eingeben","name":"type the code","art":"eingabe","warum":"Typing a code happens in a moment. That is an input, not a state."}],"start":"gesperrt","loesung":[{"from":"gesperrt","input":"richtig","to":"entsperrt"},{"from":"gesperrt","input":"falsch","to":"einmal"},{"from":"einmal","input":"richtig","to":"entsperrt"},{"from":"einmal","input":"falsch","to":"blockiert"},{"from":"blockiert","input":"richtig","to":"blockiert"},{"from":"blockiert","input":"falsch","to":"blockiert"},{"from":"entsperrt","input":"richtig","to":"entsperrt"},{"from":"entsperrt","input":"falsch","to":"entsperrt"}],"tests":[{"inputs":["richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","falsch"],"end":"blockiert","hidden":false},{"inputs":["falsch","falsch","richtig"],"end":"blockiert","hidden":true},{"inputs":["richtig","falsch"],"end":"entsperrt","hidden":true}]}],"use":["ampel","schranke","schloss","handy"],"mode":"neu","intro":"Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here.","labels":{"states":"1 Choose the states: what does the automaton have to remember?","start":"Start state","arrows":"2 Set the transitions: every input for every state","choose":"– please choose –","diagram":"3 Diagram","tests":"4 Test sequences","play":"play","expected":"should be:","endsAt":"ends at:","startWord":"Start","hiddenNote":"“Check” tests more sequences."},"noStart":"Choose states and a start state. Where does the automaton begin, according to the task?","wrongStart":"The automaton does not begin at “{start}”. Read the first sentence of the task again.","incomplete":"Your design is not complete yet: at “{state}” the target for “{input}” is missing. If nothing changes, the arrow goes back to the same state.","testFails":"The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it and follow every step.","hiddenFails":"Another test sequence fails: {inputs} ends at “{actual}”, but should end at “{expected}”. Check what the automaton should do with each input."}</script>
+<template class="explainer-component-solutions"><div data-number="1"><p>“blocked” · “locked” · “unlocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="2"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="3"><p>“blocked” · “unlocked” · “locked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="4"><p>“open” · “2 typed” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="5"><p>“locked” · “2 typed” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="6"><p>“2 typed” · “locked” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="7"><p>“1 mistake” · “locked” · “unlocked” · “blocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="8"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="9"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="10"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="11"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="12"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="13"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="14"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="15"><p>“open” · “2 typed” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="16"><p>“locked” · “2 typed” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="17"><p>“unlocked” · “locked” · “blocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="18"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="19"><p>“2 typed” · “open” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="20"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="21"><p>“2 typed” · “locked” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="22"><p>“unlocked” · “blocked” · “1 mistake” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="23"><p>“locked” · “open” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="24"><p>“locked” · “blocked” · “unlocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="25"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="26"><p>“locked” · “blocked” · “1 mistake” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="27"><p>“1 mistake” · “blocked” · “locked” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="28"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="29"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="30"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="31"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="32"><p>“unlocked” · “locked” · “blocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="33"><p>“2 typed” · “locked” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="34"><p>“locked” · “open” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="35"><p>“1 mistake” · “unlocked” · “blocked” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="36"><p>“2 typed” · “open” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="37"><p>“open” · “2 typed” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="38"><p>“locked” · “open” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="39"><p>“unlocked” · “locked” · “blocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="40"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="41"><p>“locked” · “unlocked” · “blocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="42"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="43"><p>“blocked” · “unlocked” · “locked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="44"><p>“1 mistake” · “locked” · “unlocked” · “blocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="45"><p>“1 mistake” · “locked” · “blocked” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="46"><p>“locked” · “unlocked” · “blocked” · “1 mistake”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="47"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="48"><p>“2 typed” · “locked” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="49"><p>“locked” · “open” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="50"><p>“locked” · “1 mistake” · “unlocked” · “blocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="51"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="52"><p>“locked” · “open” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="53"><p>“unlocked” · “1 mistake” · “blocked” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="54"><p>“open” · “2 typed” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="55"><p>“open” · “locked” · “2 typed”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="56"><p>“1 mistake” · “blocked” · “locked” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="57"><p>“blocked” · “locked” · “1 mistake” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="58"><p>“blocked” · “1 mistake” · “locked” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="59"><p>“unlocked” · “blocked” · “1 mistake” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="60"><p>“unlocked” · “blocked” · “1 mistake” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="61"><p>“barrier open” · “barrier closed”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="62"><p>“locked” · “2 typed” · “open”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – 2 → “2 typed”</li>
+<li>“locked” – 7 → “locked”</li>
+<li>“locked” – other digit → “locked”</li>
+<li>“2 typed” – 2 → “2 typed”</li>
+<li>“2 typed” – 7 → “open”</li>
+<li>“2 typed” – other digit → “locked”</li>
+<li>“open” – 2 → “open”</li>
+<li>“open” – 7 → “open”</li>
+<li>“open” – other digit → “open”</li>
+</ul></div><div data-number="63"><p>“1 mistake” · “blocked” · “locked” · “unlocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="64"><p>“locked” · “1 mistake” · “unlocked” · “blocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="65"><p>“barrier closed” · “barrier open”</p>
+<p>Start: “barrier closed”</p>
+<ul>
+<li>“barrier closed” – ticket → “barrier open”</li>
+<li>“barrier closed” – car drives through → “barrier closed”</li>
+<li>“barrier open” – ticket → “barrier open”</li>
+<li>“barrier open” – car drives through → “barrier closed”</li>
+</ul></div><div data-number="66"><p>“locked” · “unlocked” · “1 mistake” · “blocked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div><div data-number="67"><p>“1 mistake” · “blocked” · “unlocked” · “locked”</p>
+<p>Start: “locked”</p>
+<ul>
+<li>“locked” – right code → “unlocked”</li>
+<li>“locked” – wrong code → “1 mistake”</li>
+<li>“1 mistake” – right code → “unlocked”</li>
+<li>“1 mistake” – wrong code → “blocked”</li>
+<li>“blocked” – right code → “blocked”</li>
+<li>“blocked” – wrong code → “blocked”</li>
+<li>“unlocked” – right code → “unlocked”</li>
+<li>“unlocked” – wrong code → “unlocked”</li>
+</ul></div></template>
+<script type="application/json" class="explainer-component-props">{"aufgaben":[{"id":"ampel","name":"Pedestrian crossing outside the school","text":"At the start the cars have green. If nobody presses the button, it stays like this, even when the time is up. If someone presses the button, the cars keep driving until the time is up. Then the cars get amber; when the time is up again, the green man shows, then the cars get red and amber, and then green again. During amber, the green man and red and amber, the button changes nothing.","inputs":[{"id":"knopf","name":"button"},{"id":"zeit","name":"time up"}],"cards":[{"id":"gruen","name":"cars green","art":"zustand","warum":"The cars drive and nobody is waiting.","x":0,"y":0,"loop":0},{"id":"wartet","name":"someone waiting","art":"zustand","warum":"The cars still have green, but the lights have remembered the button.","x":0,"y":0,"loop":0},{"id":"gelb","name":"cars amber","art":"zustand","warum":"The cars should stop.","x":0,"y":0,"loop":0},{"id":"gehen","name":"green man","art":"zustand","warum":"People on foot may cross.","x":0,"y":0,"loop":0},{"id":"rotgelb","name":"cars red and amber","art":"zustand","warum":"The cars may drive again soon.","x":0,"y":0,"loop":0},{"id":"druecken","name":"press the button","art":"eingabe","warum":"“Press the button” happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0},{"id":"signal","name":"WAIT light comes on","art":"ausgabe","warum":"The light coming on happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0}],"start":"gruen","loesung":[{"from":"gruen","input":"knopf","to":"wartet"},{"from":"gruen","input":"zeit","to":"gruen"},{"from":"wartet","input":"knopf","to":"wartet"},{"from":"wartet","input":"zeit","to":"gelb"},{"from":"gelb","input":"knopf","to":"gelb"},{"from":"gelb","input":"zeit","to":"gehen"},{"from":"gehen","input":"knopf","to":"gehen"},{"from":"gehen","input":"zeit","to":"rotgelb"},{"from":"rotgelb","input":"knopf","to":"rotgelb"},{"from":"rotgelb","input":"zeit","to":"gruen"}],"tests":[{"inputs":["zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","zeit"],"end":"gelb","hidden":false},{"inputs":["knopf","zeit","zeit"],"end":"gehen","hidden":false},{"inputs":["knopf","zeit","zeit","zeit","zeit"],"end":"gruen","hidden":false},{"inputs":["knopf","knopf","zeit","knopf","zeit"],"end":"gehen","hidden":true},{"inputs":["knopf","zeit","zeit","knopf","zeit"],"end":"rotgelb","hidden":true}]},{"id":"schranke","name":"Barrier at the car park exit","text":"At the start the barrier is closed. Putting in a ticket opens it. When a car drives through, it closes again. If a car comes to the closed barrier, it stays closed. A second ticket while the barrier is open changes nothing.","inputs":[{"id":"ticket","name":"ticket"},{"id":"auto","name":"car drives through"}],"cards":[{"id":"zu","name":"barrier closed","art":"zustand","warum":"Nobody can get through.","x":0,"y":0,"loop":0},{"id":"offen","name":"barrier open","art":"zustand","warum":"One car may drive through.","x":0,"y":0,"loop":0},{"id":"hebt","name":"barrier goes up","art":"ausgabe","warum":"Going up happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0},{"id":"einstecken","name":"put in a ticket","art":"eingabe","warum":"Putting it in happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0}],"start":"zu","loesung":[{"from":"zu","input":"ticket","to":"offen"},{"from":"zu","input":"auto","to":"zu"},{"from":"offen","input":"ticket","to":"offen"},{"from":"offen","input":"auto","to":"zu"}],"tests":[{"inputs":["ticket"],"end":"offen","hidden":false},{"inputs":["ticket","auto"],"end":"zu","hidden":false},{"inputs":["auto"],"end":"zu","hidden":false},{"inputs":["ticket","ticket","auto"],"end":"zu","hidden":true},{"inputs":["auto","ticket"],"end":"offen","hidden":true}]},{"id":"schloss","name":"Combination lock on a locker, code 2-7","text":"At the start the lock is locked. It opens when 2 and then 7 are typed one right after the other. Any other digit after the 2 means starting again; a new 2 starts again too. Once the lock is open, it stays open.","inputs":[{"id":"zwei","name":"2"},{"id":"sieben","name":"7"},{"id":"andere","name":"other digit"}],"cards":[{"id":"zu","name":"locked","art":"zustand","warum":"Nothing right typed yet.","x":110,"y":170,"loop":-90},{"id":"halb","name":"2 typed","art":"zustand","warum":"The lock has remembered the 2.","x":330,"y":170,"loop":90},{"id":"offen","name":"open","art":"zustand","warum":"The code was right.","x":550,"y":170,"loop":-90},{"id":"tippen","name":"type 7","art":"eingabe","warum":"Typing a digit happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0},{"id":"klick","name":"lock clicks","art":"ausgabe","warum":"The click happens during a transition. That is an output, not a state.","x":0,"y":0,"loop":0}],"start":"zu","loesung":[{"from":"zu","input":"zwei","to":"halb"},{"from":"zu","input":"sieben","to":"zu"},{"from":"zu","input":"andere","to":"zu"},{"from":"halb","input":"zwei","to":"halb"},{"from":"halb","input":"sieben","to":"offen"},{"from":"halb","input":"andere","to":"zu"},{"from":"offen","input":"zwei","to":"offen"},{"from":"offen","input":"sieben","to":"offen"},{"from":"offen","input":"andere","to":"offen"}],"tests":[{"inputs":["zwei","sieben"],"end":"offen","hidden":false},{"inputs":["sieben","zwei"],"end":"halb","hidden":false},{"inputs":["zwei","andere","sieben"],"end":"zu","hidden":false},{"inputs":["zwei","zwei","sieben"],"end":"offen","hidden":true},{"inputs":["zwei","sieben","andere"],"end":"offen","hidden":true}]},{"id":"handy","name":"Phone lock screen","text":"At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.","inputs":[{"id":"richtig","name":"right code"},{"id":"falsch","name":"wrong code"}],"cards":[{"id":"gesperrt","name":"locked","art":"zustand","warum":"No wrong try yet.","x":100,"y":120,"loop":90},{"id":"einmal","name":"1 mistake","art":"zustand","warum":"The phone has remembered one wrong try.","x":400,"y":120,"loop":-90},{"id":"blockiert","name":"blocked","art":"zustand","warum":"Wrong twice, now nothing works.","x":700,"y":120,"loop":-90},{"id":"entsperrt","name":"unlocked","art":"zustand","warum":"The code was right.","x":250,"y":370,"loop":90},{"id":"eingeben","name":"type the code","art":"eingabe","warum":"Typing a code happens in a moment. That is an input, not a state.","x":0,"y":0,"loop":0}],"start":"gesperrt","loesung":[{"from":"gesperrt","input":"richtig","to":"entsperrt"},{"from":"gesperrt","input":"falsch","to":"einmal"},{"from":"einmal","input":"richtig","to":"entsperrt"},{"from":"einmal","input":"falsch","to":"blockiert"},{"from":"blockiert","input":"richtig","to":"blockiert"},{"from":"blockiert","input":"falsch","to":"blockiert"},{"from":"entsperrt","input":"richtig","to":"entsperrt"},{"from":"entsperrt","input":"falsch","to":"entsperrt"}],"tests":[{"inputs":["richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","richtig"],"end":"entsperrt","hidden":false},{"inputs":["falsch","falsch"],"end":"blockiert","hidden":false},{"inputs":["falsch","falsch","richtig"],"end":"blockiert","hidden":true},{"inputs":["richtig","falsch"],"end":"entsperrt","hidden":true}]}],"use":["schranke","schloss","handy"],"mode":"neu","intro":"Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here.","labels":{"inputs":"Step 1 – inputs (given by the task):","states":"Step 2 – find the states: what does the automaton have to remember?","start":"Start state","arrows":"Step 3 – set the transitions: every input for every state","choose":"– please choose –","diagram":"Diagram","tests":"Step 4 – test","play":"play","expected":"should be:","endsAt":"ends at:","startWord":"Start","empty":"Choose states first. Then the start state, the transitions and the diagram appear.","hiddenNote":"“Check” tests more sequences."},"noStates":"First choose the cards that are states.","noStart":"You have chosen states, but no start state yet. Where does the automaton begin, according to the task?","wrongStart":"The automaton does not begin at “{start}”. Read the first sentence of the task again.","incomplete":"Your design is not complete yet: at “{state}” the target for “{input}” is missing. If nothing changes, the arrow goes back to the same state.","testFails":"The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it and follow its way.","hiddenFails":"Another test sequence fails: {inputs} ends at “{actual}”, but should end at “{expected}”. Check what the automaton should do with each input."}</script>
 </div>
 </div>
-<div class="explainer-block" data-block="uebung/4" data-block-id="313f3428" data-block-type="true-false" data-block-order="12">
+<div class="explainer-block" data-block="uebung/4" data-block-id="313f3428" data-block-type="true-false" data-block-order="11">
 <div class="explainer-exercise explainer-question" id="uhr-zustand">
 <p class="explainer-exercise-label">Exercise</p>
 <div class="question" id="frage-uhr-zustand" data-id="uhr-zustand" data-type="true-false">
@@ -258,7 +963,7 @@
 </section>
 <section class="explainer-section">
 <h2 id="ausblick">What comes next?</h2>
-<div class="explainer-block" data-block="ausblick/1" data-block-id="567c318e" data-block-type="text" data-block-order="13">
+<div class="explainer-block" data-block="ausblick/1" data-block-id="567c318e" data-block-type="text" data-block-order="12">
 <div class="block-text"><p>You can now design an automaton in four steps. Mia has finished her design already, but in the test it never lets the people on foot cross. On the next page class 9b looks for such mistakes and improves designs.</p></div>
 </div>
 </section>
@@ -300,7 +1005,7 @@
 <span class="explainer-feedback-local">Kept in this browser only</span>
 <button type="button" class="explainer-feedback-off">End</button>
 </div>
-<script type="application/json" class="explainer-feedback-data">{"storage":"informatik-automaten","app":"Automata and states","root":"../../../en/","repository":"lernapps/informatik-automaten","revision":"6049e18","page":{"title":"Designing traffic lights","order":3}}</script>
+<script type="application/json" class="explainer-feedback-data">{"storage":"informatik-automaten","app":"Automata and states","root":"../../../en/","repository":"lernapps/informatik-automaten","revision":"5363635","page":{"title":"Designing traffic lights","order":3}}</script>
 </aside>
 </template>
 <nav class="explainer-pager" aria-label="Page through"><a rel="prev" href="../../../en/alltag/zustandsdiagramm/">Back: State diagrams</a></nav>
