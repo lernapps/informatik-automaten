@@ -8,7 +8,7 @@
 // - fehler (chapter entwerfen): one arrow of an automaton is drawn wrong, and a test sequence of 2 to 4 inputs ends
 //   elsewhere than it should; the learner chooses the wrong arrow. The task is drawn so that only that arrow, set
 //   right, makes the sequence end as it should. Typical mistakes: an arrow the sequence does not pass; an arrow it
-//   passes that is right.
+//   passes that is right. The diagram shows no outputs.
 // An answer is the number of the state chosen (folge, pfeil) or of the arrow chosen, its place in the list of
 // transitions (fehler). Written for lernapps/informatik-automaten (#500).
 import { end, fill, inputName, lines, run, stateName, transition, type Automat } from "./Automat.ts";
@@ -103,8 +103,10 @@ function fehlerTask(automata: readonly Automat[], next: () => number): Task {
       right.states.map((_, n) => n).filter((n) => n !== t.to),
       next,
     );
+    // without outputs: an output on the moved arrow would contradict its new target or give the answer away
     const automat = {
       ...right,
+      outputs: [],
       transitions: right.transitions.map((x, j) => (j === index ? { ...x, to, bend: 0 } : x)),
     };
     const count = 2 + Math.floor(next() * 3);

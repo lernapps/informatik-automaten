@@ -179,6 +179,10 @@
         - zeit
       end: rotgelb
       hidden: true
+    - { inputs: [knopf, knopf, zeit], end: gelb, hidden: false }
+    - { inputs: [zeit], end: gruen, hidden: true }
+    - { inputs: [knopf], end: wartet, hidden: true }
+    - { inputs: [knopf, zeit, zeit, zeit, knopf], end: rotgelb, hidden: true }
 - id: schranke
   name:
     de: Schranke an der Ausfahrt des Parkhauses
@@ -196,8 +200,8 @@
         en: ticket
     - id: auto
       name:
-        de: Auto fährt durch
-        en: car drives through
+        de: Auto
+        en: car
   cards:
     - id: zu
       name:
@@ -282,6 +286,7 @@
         - ticket
       end: offen
       hidden: true
+    - { inputs: [ticket, ticket], end: offen, hidden: true }
 - id: schloss
   name:
     de: Zahlenschloss am Spind mit dem Code 2-7
@@ -291,7 +296,7 @@
       Am Anfang ist das Schloss zu. Es geht auf, wenn direkt nacheinander 2 und dann 7 getippt werden. Jede andere Ziffer
       nach der 2 macht den Anfang ungültig, eine neue 2 fängt ihn wieder an. Ist das Schloss offen, bleibt es offen.
     en: At the start the lock is locked. It opens when 2 and then 7 are typed one right after the other. Any other digit
-      after the 2 means starting again; a new 2 starts again too. Once the lock is open, it stays open.
+      after the 2 means starting again. If you type 2 again, that 2 is the new start of the code. Once the lock is open, it stays open.
   inputs:
     - id: zwei
       name:
@@ -419,6 +424,10 @@
         - andere
       end: offen
       hidden: true
+    - { inputs: [andere], end: zu, hidden: true }
+    - { inputs: [zwei, zwei], end: halb, hidden: true }
+    - { inputs: [zwei, sieben, zwei], end: offen, hidden: true }
+    - { inputs: [zwei, sieben, sieben], end: offen, hidden: true }
 - id: handy
   name:
     de: Sperre eines Handys
@@ -546,3 +555,5 @@
         - falsch
       end: entsperrt
       hidden: true
+    - { inputs: [falsch, falsch, falsch], end: blockiert, hidden: false }
+    - { inputs: [richtig, richtig], end: entsperrt, hidden: true }

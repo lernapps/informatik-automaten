@@ -200,3 +200,7 @@ test("fehler: one arrow drawn wrong, passed by the sequence, and only it mends t
     expect(show(solution(task), task)).toMatch(/ – .* → /);
   }
 });
+
+test("fehler: the diagram shows no outputs", () => {
+  for (let seed = 1; seed <= 20; seed++) expect(generate(seed, fehlerProps).automat.outputs).toEqual([]);
+});

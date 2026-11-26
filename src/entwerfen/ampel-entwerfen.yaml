@@ -53,13 +53,13 @@ blocks:
           - text: { de: Die Zeit ist um., en: The time is up. }
             correct: true
             info:
-              de: Ein kleiner Zähler meldet „Zeit um“. Für den Automaten ist das eine Eingabe wie der Knopf.
+              de: Ein Zeitgeber (Timer) meldet „Zeit um“. Für den Automaten ist das eine Eingabe wie der Knopf.
               en: A small timer reports “time up”. For the automaton this is an input like the button.
           - text: { de: Die Autos haben Grün., en: The cars have green. }
             correct: false
             info:
-              de: Das bleibt eine Weile so. Das ist ein Zustand, keine Eingabe.
-              en: That stays like this for a while. It is a state, not an input.
+              de: Das bleibt eine Weile so. Das gehört zu einem Zustand, ist keine Eingabe.
+              en: That stays like this for a while. It is part of a state, not an input.
           - text: { de: Das Wartesignal leuchtet auf., en: The WAIT light comes on. }
             correct: false
             info:
@@ -77,15 +77,15 @@ blocks:
       - type: text
         text:
           de: |-
-            1. **Eingaben sammeln:** Was kommt von außen? Die Zeit zählt ein kleiner Zähler außerhalb des Automaten. Ist sie um, meldet er „Zeit um“.
-            2. **Zustände finden:** Was muss sich der Automat merken? Zwei Situationen, die gleich aussehen, können zwei Zustände sein: „Autos grün“ und „jemand wartet“.
+            1. **Eingaben sammeln:** Was kommt von außen? Die Zeit zählt ein Zeitgeber (Timer) außerhalb des Automaten. Ist sie um, meldet er „Zeit um“.
+            2. **Zustände finden:** Was muss sich der Automat merken? Zwei Situationen, die für die Autos gleich aussehen, können zwei Zustände sein: „Autos grün“ und „jemand wartet“.
             3. **Übergänge festlegen:** Für jeden Zustand und jede Eingabe: Wohin geht es? Ändert sich nichts, führt der Pfeil zurück zum selben Zustand.
             4. **Testen:** Spiel Testfolgen durch und vergleiche, wo der Automat landet, mit der Aufgabe.
 
             Ausgaben wie „Wartesignal leuchtet auf“ kann man wie in Kapitel 1 an die Übergänge schreiben. Hier entwirfst du nur Zustände und Übergänge.
           en: |-
             1. **Collect the inputs:** what comes from outside? A small timer outside the automaton counts the time. When it is up, it reports “time up”.
-            2. **Find the states:** what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “someone waiting”.
+            2. **Find the states:** what does the automaton have to remember? Two situations that look the same to the cars can be two states: “cars green” and “someone waiting”.
             3. **Set the transitions:** for every state and every input: where does it go? If nothing changes, the arrow goes back to the same state.
             4. **Test:** play test sequences and compare where the automaton ends with what the task says.
 
@@ -102,8 +102,8 @@ blocks:
           de: Testfolge
           en: test sequence
         explanation:
-          de: Eine Testfolge ist eine Reihe von Eingaben mit dem Zustand, in dem der Automat danach sein soll.
-          en: A test sequence is a series of inputs with the state the automaton should be in afterwards.
+          de: Eine Testfolge ist eine Reihe von Eingaben, die beim Startzustand beginnt, mit dem Zustand, in dem der Automat laut Aufgabe danach sein soll.
+          en: A test sequence is a series of inputs that begins at the start state, with the state the automaton should be in afterwards, according to the task.
   - type: section
     id: ausprobieren
     title:
@@ -164,6 +164,7 @@ blocks:
             - Knopf, Zeit um → Autos gelb
             - Knopf, Zeit um, Zeit um → Grün zum Gehen
             - Knopf, Zeit um, Zeit um, Zeit um, Zeit um → Autos grün
+            - Knopf, Knopf, Zeit um → Autos gelb
 
             Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
           en: |-
@@ -173,6 +174,7 @@ blocks:
             - button, time up → cars amber
             - button, time up, time up → green man
             - button, time up, time up, time up, time up → cars green
+            - button, button, time up → cars amber
 
             With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.
   - type: section
@@ -192,13 +194,13 @@ blocks:
           - { de: Übergänge festlegen, en: set the transitions }
           - { de: Mit Testfolgen testen, en: test with test sequences }
         explanation:
-          de: Ohne Eingaben weiß man nicht, wofür Pfeile nötig sind. Ohne Zustände gibt es keine Pfeile. Testen kann man erst einen fertigen Entwurf.
-          en: Without the inputs you do not know which arrows are needed. Without states there are no arrows. You can only test a finished design.
+          de: Ohne Eingaben weiß man nicht, wofür Pfeile nötig sind. Ohne Zustände gibt es keine Pfeile. Testfolgen mit ihrem Soll-Ende kann man schon aus der Aufgabe aufschreiben; abspielen kann man sie erst am fertigen Entwurf.
+          en: Without the inputs you do not know which arrows are needed. Without states there are no arrows. You can write down test sequences with their expected end from the task already; you can only play them on a finished design.
       - type: single-choice
         id: warum-wartet
         text:
-          de: "Jona sagt: „‚jemand wartet‘ sieht doch aus wie ‚Autos grün‘. Ein Zustand reicht.“ Was passiert, wenn die 9b nur einen Zustand nimmt?"
-          en: "Jona says: “‘Someone waiting’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?"
+          de: "Jona sagt: „Für die Autos ist ‚jemand wartet‘ doch dasselbe wie ‚Autos grün‘. Ein Zustand reicht.“ Was passiert, wenn die 9b nur einen Zustand nimmt?"
+          en: "Jona says: “For the cars, ‘someone waiting’ is just the same as ‘cars green’. One state is enough.” What happens if class 9b uses only one state?"
         options:
           - text:
               {
@@ -220,8 +222,8 @@ blocks:
               de: Dafür gibt es in der Aufgabe keinen Grund. Das Problem ist das fehlende Gedächtnis für den Knopf.
               en: The task gives no reason for that. The problem is the missing memory of the button.
         explanation:
-          de: Zwei Lagen, nach denen bei derselben Eingabe Verschiedenes passiert, sind zwei Zustände, auch wenn sie gleich aussehen.
-          en: Two situations after which the same input leads to different things are two states, even if they look the same.
+          de: Zwei Situationen, nach denen bei derselben Eingabe Verschiedenes passiert, sind zwei Zustände, auch wenn sie für die Autos gleich aussehen.
+          en: Two situations after which the same input leads to different things are two states, even if they look the same to the cars.
       - type: vue-component
         id: entwurf-neu
         component: AutomatEntwurf
@@ -312,7 +314,7 @@ blocks:
           en: "Mia thinks: “The lights need a state of their own for every second of waiting.” Is that true for our design?"
         answer: false
         explanation:
-          de: "Die Zeit zählt ein kleiner Zähler außerhalb des Automaten. Ist sie um, meldet er „Zeit um“, und das ist für den Automaten eine Eingabe. So bleibt der Entwurf klein."
+          de: "Die Zeit zählt ein Zeitgeber (Timer) außerhalb des Automaten. Ist sie um, meldet er „Zeit um“, und das ist für den Automaten eine Eingabe. So bleibt der Entwurf klein."
           en: "A small timer outside the automaton counts the time. When it is up, it reports “time up”, and for the automaton that is an input. That keeps the design small."
   - type: section
     id: ausblick

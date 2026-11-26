@@ -48,9 +48,10 @@ Kapitel `entwerfen` „Einen Automaten entwerfen“ (9-10, Plan 02):
   Jonas Folge findet den Fehler), `AutomatBild` 0 (Mias Ampel), `warum-nicht-gefunden` (single-choice). Idee: drei
   Fehlerarten (Pfeil fehlt → nicht vollständig, `AutomatBild` 1; zwei Pfeile mit derselben Eingabe → nicht eindeutig,
   `AutomatBild` 2; Pfeil führt falsch → nur eine Testfolge über ihn zeigt es), Definition „eindeutig“ (Fachwort
-  „deterministisch“ einmal), Pfeile = Zustände mal Eingaben, gute Testfolgen laufen zusammen über jeden Pfeil. Übung:
+  „deterministisch“ einmal: eindeutig und vollständig; en: unambiguous / ambiguous, deterministic), Übergänge =
+  Zustände mal Eingaben (ein Pfeil mit zwei Eingaben sind zwei Übergänge), gute Testfolgen laufen zusammen über jeden Pfeil. Übung:
   `pfeile-zaehlen` (generated), `falscher-pfeil` (AutomatAufgabe `fehler`), `entwurf-verbessern` (AutomatEntwurf
-  `verbessern`, alle vier Aufgaben), `fehlerarten` (matching), `alle-tests-gruen` (true-false). Rückblick auf Kapitel
+  `verbessern`, alle vier Aufgaben), `fehlerarten` (matching), `gute-testfolge` (single-choice: welche Folge der Schranke läuft über alle vier Übergänge). Rückblick auf Kapitel
   und App (Mia setzt den Pfeil richtig, von der 6b bis zur 9b).
 
 `automat-entwerfen`: „Ich kann für eine konkrete Aufgabe, zum Beispiel eine
@@ -103,6 +104,9 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   wählen (Checkbox), Startzustand (Radio), je Zustand × Eingabe ein Ziel (Auswahlliste); Diagramm und Testfolgen mit
   „abspielen“ (✓/✗ sofort). Geprüft über Eigenschaften (`problem` in `AutomatEntwurf.ts`): keine Eingabe-/Ausgabe-Karte,
   Startzustand der Aufgabe, vollständig, alle Testfolgen inkl. `hidden: true` (erst „Prüfen“; die Seite sagt das).
+  Die Testfolgen einer Aufgabe laufen zusammen über jeden Übergang und enden je mindestens einmal in jedem Zustand,
+  sodass nur ein Entwurf alle besteht (fachlich geprüft); mindestens eine sichtbare Folge benutzt eine Zeile, in der
+  sich nichts ändert. Eine neue Aufgabe genauso: alle Entwürfe durchprobieren.
   `loesung` nur für „Lösung zeigen“ und den Tutor. Ohne Prüfen: Anzeige `AutomatWerkstatt` (eine Aufgabe, `aufgabe: <id>`).
   Die Ampel ist das Beispiel der Werkstatt; `entwurf-neu` zieht nur `schranke`, `schloss`, `handy`. „Prüfen“ ohne
   Zustand meldet `noStates`. Karten heißen kurz und ohne Wort über 9 Zeichen („jemand wartet“, „Grün zum Gehen“,
@@ -111,12 +115,14 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   Lösung je Zustand („↺“ = bleibt), nur der Fehler „Pfeil falsch“ als Antwort (sonst über 64 kB; Seite 2 hat
   61 kB).
 
-- **Fehler finden** (automat-entwerfen): `AutomatAufgabe` mit `mode: fehler` (`use: [0, 2, 3, 4]`): ein Pfeil eines
+- **Fehler finden** (automat-entwerfen): `AutomatAufgabe` mit `mode: fehler` (`use: [0, 2, 3]`, nicht die kleine
+  Ampel aus Kapitel 1, die anders als in Kapitel 2 drei Zustände hat; ohne Ausgaben im Diagramm): ein Pfeil eines
   Automaten aus `automaten.yaml` ist umgesetzt, eine Testfolge von 2-4 Eingaben endet deshalb falsch; ein Knopf je
   Pfeil („Mitte – runter → oben“), der gewählte Pfeil dick. Gezogen wird nur, wenn kein anderer Pfeil auf dem Weg
   die Folge reparieren kann. Antwort: die Stelle des Pfeils in `transitions`. Meldungen: Pfeil nicht auf dem Weg;
   Pfeil auf dem Weg, aber richtig. Platzhalter `{expected}`, `{actual}`.
-- **Pfeile zählen**: `generated` n Zustände (2-6), m Eingaben (2-4), `n != m`; Antwort n·m; Fehler n+m, n, m.
+- **Übergänge zählen** (`pfeile-zaehlen`): `generated` n Zustände (2-5), m Eingaben (2-3), `n != m`; Antwort n·m;
+  Fehler n+m, n, m. „Übergänge“, nicht „Pfeile“: das Diagramm legt Übergänge mit gleichem Ziel zu einem Pfeil zusammen.
 - **Verbessern**: `AutomatEntwurf` `mode: verbessern` startet mit der Lösung, in der ein Pfeil so geändert ist, dass
   eine sichtbare Testfolge scheitert. Vor der ersten Änderung meldet die Übung keine Antwort (Laufzeitprüfung):
   „Prüfen“ zeigt dann `noStates`, auf dieser Seite als Aufforderung, den falschen Pfeil zu ändern.
@@ -190,7 +196,7 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 - Alle Beispiele sind erfunden; kein Material eines Erstellers.
 
 - Kapitel 2 erzählt als Chat der 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b): ein `text`-Block mit Zeilen
-  „**Selin:** …“, je Zeile ein eigener Absatz (Leerzeile dazwischen, sonst laufen sie zusammen), ohne Bilder von Personen. Begriffe neu: vollständig, eindeutig (deterministisch), Testfolge.
+  „**Selin:** …“, je Zeile ein eigener Absatz (Leerzeile dazwischen, sonst laufen sie zusammen), ohne Bilder von Personen. Begriffe neu: vollständig, eindeutig (deterministisch = eindeutig und vollständig), Testfolge (beginnt beim Startzustand, Soll-Ende laut Aufgabe); „Zeit um“ meldet ein Zeitgeber (Timer) außerhalb des Automaten; Situationen, die „für die Autos gleich aussehen“.
 
 ## Adding a chapter or round
 

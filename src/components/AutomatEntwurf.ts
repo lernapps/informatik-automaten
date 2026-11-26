@@ -3,7 +3,7 @@
 // state cards (some of them inputs or outputs, which are no states), the start, test sequences (some hidden until
 // "Prüfen") and one valid design (loesung). A design is the cards chosen as states, the start state and one target for
 // each pair of state and input. It is checked by its properties, never against loesung: only state cards, the start
-// as the task says, complete, every test sequence ends where the task says. Many designs pass. Mode verbessern starts
+// as the task says, complete, every test sequence ends where the task says. The tests pass every arrow. Mode verbessern starts
 // from loesung with one arrow changed, so that a test sequence fails. Turned into an Automat (Automat.ts), a design is
 // drawn by AutomatDiagramm. Written for lernapps/informatik-automaten (#500).
 import { fill, type Automat } from "./Automat.ts";
@@ -412,8 +412,8 @@ export const about = {
     en: "A design: chosen states, start state, a target for each state and input. In the table: each state with its arrows; “↺” means the arrow leads back to the same state.",
   },
   correct: {
-    de: "Richtig ist jeder Entwurf ohne Eingabe- oder Ausgabe-Karte, mit dem Startzustand der Aufgabe, vollständig, bei dem alle Testfolgen (auch die verdeckten) im erwarteten Zustand enden. Es gibt mehrere richtige Entwürfe.",
-    en: "Right is any design with no input or output card, the task's start state, complete, in which every test sequence (also the hidden ones) ends in the expected state. Several designs are right.",
+    de: "Richtig ist jeder Entwurf ohne Eingabe- oder Ausgabe-Karte, mit dem Startzustand der Aufgabe, vollständig, bei dem alle Testfolgen (auch die verdeckten) im erwarteten Zustand enden. Geprüft wird über diese Eigenschaften, nicht durch Vergleich mit der Lösung; die Testfolgen laufen zusammen über jeden Pfeil, sodass nur der Entwurf der Aufgabe sie alle besteht (die Reihenfolge der Karten ist egal).",
+    en: "Right is any design with no input or output card, the task's start state, complete, in which every test sequence (also the hidden ones) ends in the expected state. It is checked by these properties, not by comparing with the solution; the test sequences pass every arrow between them, so only the design of the task passes them all (the order of the cards does not matter).",
   },
   mistakes: [
     {

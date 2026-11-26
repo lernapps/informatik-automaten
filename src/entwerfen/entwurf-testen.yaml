@@ -140,7 +140,7 @@ blocks:
           de: |-
             **2. Zwei Pfeile mit derselben Eingabe.** Im Drehkreuz B gehen aus „gesperrt“ zwei Pfeile mit „Chip“: einer zu „frei“, einer zurück zu „gesperrt“. Was soll der Automat tun? Das ist nicht eindeutig.
           en: |-
-            **2. Two arrows with the same input.** In turnstile B two arrows with “token” leave “locked”: one to “open”, one back to “locked”. What should the automaton do? That is not deterministic.
+            **2. Two arrows with the same input.** In turnstile B two arrows with “token” leave “locked”: one to “open”, one back to “locked”. What should the automaton do? That is ambiguous.
       - type: vue-component
         component: AutomatBild
         props:
@@ -171,20 +171,20 @@ blocks:
       - type: definition
         term:
           de: eindeutig
-          en: deterministic
+          en: unambiguous
         explanation:
-          de: Ein Automat ist eindeutig, wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Das Fachwort dafür ist deterministisch.
-          en: An automaton is deterministic when every state has at most one arrow for every input. In German it is also called “eindeutig” (unambiguous).
+          de: Ein Automat ist eindeutig, wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Ist er eindeutig und vollständig, nennt man ihn deterministisch.
+          en: An automaton is unambiguous when every state has at most one arrow for every input. If it is unambiguous and complete, it is called deterministic.
       - type: text
         text:
           de: |-
             **3. Ein Pfeil führt falsch.** Der Automat ist vollständig und eindeutig, tut aber nicht, was die Aufgabe will. Das zeigt nur eine Testfolge, die über diesen Pfeil läuft, wie Jonas Folge bei Mias Ampel.
 
-            Ist ein Automat vollständig und eindeutig, hat jeder Zustand für jede Eingabe genau einen Pfeil. Er hat also so viele Pfeile wie Zustände mal Eingaben. **Gute Testfolgen** laufen zusammen über jeden dieser Pfeile, nicht nur über den Normalfall.
+            Ist ein Automat vollständig und eindeutig, hat jeder Zustand für jede Eingabe genau einen Übergang. Er hat also so viele Übergänge wie Zustände mal Eingaben. Ein Pfeil mit zwei Eingaben („Chip, drücken“) zählt als zwei Übergänge. **Gute Testfolgen** laufen zusammen über jeden dieser Übergänge, nicht nur über den Normalfall.
           en: |-
-            **3. An arrow is wrong.** The automaton is complete and deterministic, but does not do what the task wants. Only a test sequence that passes this arrow shows it, like Jona's sequence for Mia's lights.
+            **3. An arrow is wrong.** The automaton is complete and unambiguous, but does not do what the task wants. Only a test sequence that passes this arrow shows it, like Jona's sequence for Mia's lights.
 
-            If an automaton is complete and deterministic, every state has exactly one arrow for every input. So it has as many arrows as states times inputs. **Good test sequences** pass all of these arrows between them, not just the usual case.
+            If an automaton is complete and unambiguous, every state has exactly one transition for every input. So it has as many transitions as states times inputs. An arrow with two inputs (“token, push”) counts as two transitions. **Good test sequences** pass all of these transitions between them, not just the usual case.
   - type: section
     id: uebung
     title:
@@ -194,41 +194,41 @@ blocks:
       - type: generated
         id: pfeile-zaehlen
         given:
-          n: { int: [2, 6] }
-          m: { int: [2, 4] }
+          n: { int: [2, 5] }
+          m: { int: [2, 3] }
         where: ["n != m"]
         task:
           text:
-            de: "Die 9b entwirft einen Automaten mit {{n}} Zuständen und {{m}} Eingaben. Er soll vollständig und eindeutig sein. Wie viele Pfeile hat er?"
-            en: "Class 9b designs an automaton with {{n}} states and {{m}} inputs. It should be complete and deterministic. How many arrows does it have?"
+            de: "Die 9b entwirft einen Automaten mit {{n}} Zuständen und {{m}} Eingaben. Er soll vollständig und eindeutig sein. Wie viele Übergänge hat er?"
+            en: "Class 9b designs an automaton with {{n}} states and {{m}} inputs. It should be complete and unambiguous. How many transitions does it have?"
         answer: { value: "n * m", compare: { number: { format: integer } } }
         mistakes:
           - value: "n + m"
             message:
-              de: "Du hast addiert. Aber jeder der {{n}} Zustände braucht für jede der {{m}} Eingaben einen eigenen Pfeil."
-              en: "You added. But each of the {{n}} states needs an arrow of its own for each of the {{m}} inputs."
+              de: "Du hast addiert. Aber jeder der {{n}} Zustände braucht für jede der {{m}} Eingaben einen eigenen Übergang."
+              en: "You added. But each of the {{n}} states needs a transition of its own for each of the {{m}} inputs."
           - value: "n"
             message:
-              de: "Das wäre ein Pfeil je Zustand. Jeder Zustand braucht aber für jede Eingabe einen Pfeil."
-              en: "That would be one arrow per state. But every state needs an arrow for every input."
+              de: "Das wäre ein Übergang je Zustand. Jeder Zustand braucht aber für jede Eingabe einen Übergang."
+              en: "That would be one transition per state. But every state needs a transition for every input."
           - value: "m"
             message:
-              de: "Das wäre ein Pfeil je Eingabe. Jeder Zustand braucht aber für jede Eingabe einen eigenen Pfeil."
-              en: "That would be one arrow per input. But every state needs an arrow of its own for every input."
+              de: "Das wäre ein Übergang je Eingabe. Jeder Zustand braucht aber für jede Eingabe einen eigenen Übergang."
+              en: "That would be one transition per input. But every state needs a transition of its own for every input."
         hint:
           de: "Denk an den Entwurf auf der Seite davor: Für jeden Zustand gibt es eine Zeile je Eingabe."
           en: "Think of the design on the page before: for every state there is one row per input."
         steps:
-          - de: "Jeder Zustand hat für jede Eingabe genau einen Pfeil: {{n}} Zustände mal {{m}} Eingaben."
-            en: "Every state has exactly one arrow for every input: {{n}} states times {{m}} inputs."
-          - de: "{{n}} · {{m}} = {{answer}} Pfeile"
-            en: "{{n}} × {{m}} = {{answer}} arrows"
+          - de: "Jeder Zustand hat für jede Eingabe genau einen Übergang: {{n}} Zustände mal {{m}} Eingaben."
+            en: "Every state has exactly one transition for every input: {{n}} states times {{m}} inputs."
+          - de: "{{n}} · {{m}} = {{answer}} Übergänge"
+            en: "{{n}} × {{m}} = {{answer}} transitions"
       - type: vue-component
         id: falscher-pfeil
         component: AutomatAufgabe
         props:
           automata: { data: automaten }
-          use: [0, 2, 3, 4]
+          use: [0, 2, 3]
           mode: fehler
           view: diagramm
           task:
@@ -344,7 +344,7 @@ blocks:
               { de: "Bei „offen“ gibt es keinen Pfeil für „Ticket“.", en: "At “open” there is no arrow for “ticket”." }
             right: { de: nicht vollständig, en: not complete }
           - left: { de: "Aus „zu“ gehen zwei Pfeile mit „2“.", en: "Two arrows with “2” leave “locked”." }
-            right: { de: nicht eindeutig, en: not deterministic }
+            right: { de: nicht eindeutig, en: ambiguous }
           - left:
               {
                 de: "Alle Zeilen haben genau ein Ziel, aber „Code falsch, Code falsch“ endet bei „gesperrt“.",
@@ -353,16 +353,36 @@ blocks:
             right: { de: ein Pfeil führt falsch, en: an arrow is wrong }
         explanation:
           de: "Fehlt ein Pfeil, ist der Automat nicht vollständig. Zwei Pfeile mit derselben Eingabe aus einem Zustand: nicht eindeutig. Endet eine Testfolge falsch, obwohl alles vollständig und eindeutig ist, führt ein Pfeil falsch."
-          en: "If an arrow is missing, the automaton is not complete. Two arrows with the same input from one state: not deterministic. If a test sequence ends wrong although everything is complete and deterministic, an arrow is wrong."
-      - type: true-false
-        id: alle-tests-gruen
+          en: "If an arrow is missing, the automaton is not complete. Two arrows with the same input from one state: ambiguous. If a test sequence ends wrong although everything is complete and unambiguous, an arrow is wrong."
+      - type: single-choice
+        id: gute-testfolge
         text:
-          de: "Selin sagt: „Alle unsere Testfolgen enden richtig. Also ist der Entwurf sicher fehlerfrei.“ Stimmt das?"
-          en: "Selin says: “All our test sequences end right. So the design is surely free of mistakes.” Is that true?"
-        answer: false
+          de: "Die Schranke am Parkhaus startet bei „Schranke zu“. Eingaben: Ticket, Auto. Welche Testfolge läuft allein über alle vier Übergänge?"
+          en: "The car park barrier starts at “barrier closed”. Inputs: ticket, car. Which test sequence on its own passes all four transitions?"
+        options:
+          - text: { de: "Ticket, Ticket, Auto, Auto", en: "ticket, ticket, car, car" }
+            correct: true
+            info:
+              de: "zu – Ticket → offen, offen – Ticket → offen, offen – Auto → zu, zu – Auto → zu: jeder Übergang einmal."
+              en: "closed – ticket → open, open – ticket → open, open – car → closed, closed – car → closed: every transition once."
+          - text: { de: "Ticket, Auto", en: "ticket, car" }
+            correct: false
+            info:
+              de: "Das ist der Normalfall. Was bei einem zweiten Ticket oder einem Auto vor der geschlossenen Schranke passiert, prüft sie nicht."
+              en: "That is the usual case. It does not check what happens with a second ticket or with a car at the closed barrier."
+          - text: { de: "Ticket, Auto, Ticket, Auto", en: "ticket, car, ticket, car" }
+            correct: false
+            info:
+              de: "Sie ist länger, läuft aber zweimal über dieselben zwei Übergänge."
+              en: "It is longer, but it passes the same two transitions twice."
+          - text: { de: "Auto, Auto, Auto", en: "car, car, car" }
+            correct: false
+            info:
+              de: "Die Schranke bleibt zu. Die Folge prüft nur einen Übergang."
+              en: "The barrier stays closed. The sequence checks only one transition."
         explanation:
-          de: "Testfolgen prüfen nur die Pfeile, über die sie laufen. Läuft keine Folge über einen falschen Pfeil, bleibt er unentdeckt. Darum sollen die Testfolgen zusammen über jeden Pfeil laufen."
-          en: "Test sequences only check the arrows they pass. If no sequence passes a wrong arrow, it stays hidden. That is why the test sequences between them should pass every arrow."
+          de: "Eine gute Testfolge kommt in jeden Zustand und probiert dort jede Eingabe aus, auch die, bei denen sich nichts ändern soll. Denn eine Testfolge prüft nur die Übergänge, über die sie läuft: Enden alle Testfolgen richtig, kann ein ungeprüfter Übergang trotzdem falsch sein."
+          en: "A good test sequence gets into every state and tries every input there, also those that should change nothing. A test sequence only checks the transitions it passes: if all test sequences end right, a transition no test passes can still be wrong."
   - type: section
     id: rueckblick
     title:
@@ -381,5 +401,5 @@ blocks:
             Mia has set the arrow “someone waiting – time up” to “cars amber”. Now her design passes all test sequences,
             and the tech club programs the lights from it. From class 6b's juice machine to class 9b's lights the same
             holds: an automaton remembers a state, and every input leads along an arrow to the next one. You can now
-            design an automaton in four steps, check whether it is complete and deterministic, and test it with good
+            design an automaton in four steps, check whether it is complete and unambiguous, and test it with good
             test sequences.

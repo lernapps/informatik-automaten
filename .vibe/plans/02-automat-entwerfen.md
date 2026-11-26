@@ -113,7 +113,7 @@ Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
   dabei mit. Testfolgen der Aufgabe lassen sich abspielen; der Simulator zeigt, wo eine Folge anders endet.
 - Prüfung über Eigenschaften: alle Zeilen gefüllt (vollständig), je Zeile ein Ziel (eindeutig, durch die Bedienung
   immer erfüllt; auf Seite 2 als Fehlerart geübt), alle Testfolgen der Aufgabe enden im erwarteten Zustand, keine
-  Eingabe- oder Ausgabe-Karte als Zustand. Mehrere richtige Entwürfe sind möglich.
+  Eingabe- oder Ausgabe-Karte als Zustand. Nach der fachlichen Prüfung laufen die Testfolgen zusammen über jeden Pfeil, sodass nur ein Entwurf alle besteht (die Reihenfolge der Karten ist egal).
 - Seite 2: drei Fehlerarten in fremden Entwürfen: Pfeil fehlt (unvollständig), zwei Pfeile mit derselben Eingabe aus
   einem Zustand (nicht eindeutig), Pfeil führt falsch (Testfolge scheitert). Gute Testfolgen: jede Eingabe in jedem
   Zustand einmal.
