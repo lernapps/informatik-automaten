@@ -82,7 +82,7 @@ const outText = computed(() => fill(props.outputLine, { output: last.value?.outp
       </button>
     </div>
     <p class="automat-simulator-status" aria-live="polite">
-      <strong>{{ nowText }}</strong
+      <strong class="automat-simulator-now">{{ nowText }}</strong
       ><br />
       <span class="automat-simulator-output">{{ outText }}</span>
     </p>
@@ -110,14 +110,31 @@ const outText = computed(() => fill(props.outputLine, { output: last.value?.outp
   margin-top: 0.5rem;
 }
 
+/* the input buttons in the input colour of the diagram (E of the IPO picture), the state green, the output orange */
+.automat-simulator {
+  --automat-input: #2f5fb3;
+  --automat-on-input: #fff;
+  --automat-state: #23704a;
+  --automat-output: #a4500f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .automat-simulator {
+    --automat-input: #8fb0ee;
+    --automat-on-input: #0d1a33;
+    --automat-state: #6cc995;
+    --automat-output: #f0a060;
+  }
+}
+
 .automat-simulator-inputs button {
   min-height: 44px;
   min-width: 6rem;
   padding: 0.4rem 1rem;
-  border: 2px solid var(--page-accent);
+  border: 2px solid var(--automat-input);
   border-radius: 0.5rem;
-  background: var(--page-accent);
-  color: var(--page-on-accent);
+  background: var(--automat-input);
+  color: var(--automat-on-input);
   font: inherit;
   font-weight: bold;
   cursor: pointer;
@@ -138,7 +155,12 @@ const outText = computed(() => fill(props.outputLine, { output: last.value?.outp
   margin: 0.75rem 0 0.25rem;
 }
 
+.automat-simulator-now {
+  color: var(--automat-state);
+}
+
 .automat-simulator-output {
+  color: var(--automat-output);
   font-style: italic;
 }
 

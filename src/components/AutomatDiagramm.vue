@@ -18,6 +18,7 @@ import {
   loop,
   nameLines,
   startArrow,
+  stateFont,
   viewBox,
   type Arrow,
 } from "./AutomatDiagramm.ts";
@@ -142,7 +143,7 @@ const box = computed(() => {
     >
       <circle v-if="i === selected" class="automat-diagramm-ring" :cx="state.x" :cy="state.y" :r="R + 7" />
       <circle :cx="state.x" :cy="state.y" :r="R" />
-      <text :x="state.x" :y="state.y" text-anchor="middle">
+      <text :x="state.x" :y="state.y" text-anchor="middle" :style="{ fontSize: `${stateFont(state.name)}px` }">
         <tspan
           v-for="(part, j) in nameLines(state.name)"
           :key="j"
@@ -158,7 +159,10 @@ const box = computed(() => {
 
 <style scoped>
 .automat-diagramm {
+  /* the colours of the IPO picture of #490: input blue, the state (what is kept) green, output orange */
   --automat-input: #2f5fb3;
+  --automat-state: #23704a;
+  --automat-on-state: #fff;
   --automat-output: #a4500f;
   display: block;
   width: 100%;
@@ -166,13 +170,15 @@ const box = computed(() => {
   height: auto;
   max-height: 70vh;
   margin: 0.5rem auto;
-  font-size: 23px;
+  font-size: 26px;
   font-family: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
   .automat-diagramm {
     --automat-input: #8fb0ee;
+    --automat-state: #6cc995;
+    --automat-on-state: #0d2418;
     --automat-output: #f0a060;
   }
 }
@@ -201,12 +207,12 @@ const box = computed(() => {
 }
 
 .automat-diagramm-arrow.used path {
-  stroke: var(--page-accent);
-  stroke-width: 5;
+  stroke: var(--automat-state);
+  stroke-width: 6;
 }
 
 .automat-diagramm-arrow.used polygon {
-  fill: var(--page-accent);
+  fill: var(--automat-state);
 }
 
 .automat-diagramm-gap path {
@@ -228,7 +234,7 @@ const box = computed(() => {
 }
 
 .automat-diagramm-state text {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .automat-diagramm-state circle {
@@ -238,12 +244,13 @@ const box = computed(() => {
 }
 
 .automat-diagramm-state.active circle {
-  fill: var(--page-accent);
-  stroke-width: 5;
+  fill: var(--automat-state);
+  stroke: var(--automat-state);
+  stroke-width: 6;
 }
 
 .automat-diagramm-state.active text {
-  fill: var(--page-on-accent);
+  fill: var(--automat-on-state);
   font-weight: bold;
 }
 

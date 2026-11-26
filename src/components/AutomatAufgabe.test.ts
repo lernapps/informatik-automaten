@@ -147,7 +147,7 @@ test("describe gives the task and the diagram as text, without the missing arrow
   expect(template(pfeil, "de")).toBe(pfeil.task);
   expect(Object.keys(params(task, pfeil, "de"))).toEqual(["automat", "text", "from", "input"]);
   const f = { mode: "folge" as const, automat: saft, inputs: [0, 1, 0], hidden: undefined };
-  expect(describe(f, folge, "de").task).toContain("Eingaben: „Münze“, „Knopf“, „Münze“.");
+  expect(describe(f, folge, "de").task).toContain("Eingaben: Münze, Knopf, Münze.");
   expect(describe(f, folge, "de").solution).toContain("**2 € drin**");
   expect(Object.keys(params(f, folge, "de"))).toEqual(["automat", "start", "inputs"]);
 });

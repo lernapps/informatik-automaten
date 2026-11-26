@@ -154,7 +154,7 @@ function values(task: Task, props: Props): Values {
   return {
     automat: a.name,
     start: stateName(a, a.start),
-    inputs: task.inputs.map((i) => `„${inputName(a, i)}“`).join(", "),
+    inputs: task.inputs.map((i) => inputName(a, i)).join(", "),
     last: last === undefined ? "" : inputName(a, last),
     text: task.hidden ? (transition(a, task.hidden.from, task.hidden.input)?.text ?? "") : "",
     from: task.hidden ? stateName(a, task.hidden.from) : "",

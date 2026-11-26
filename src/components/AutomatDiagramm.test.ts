@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { inputName, type Automat } from "./Automat.ts";
-import { arrows, head, labelText, line, loop, nameLines, startArrow, viewBox } from "./AutomatDiagramm.ts";
+import { arrows, head, labelText, line, loop, nameLines, startArrow, stateFont, viewBox } from "./AutomatDiagramm.ts";
 
 /** The juice machine of the data file, in German, and the hall light. */
 const tr = (from: number, input: number, to: number) => ({ from, input, to, bend: 0, text: `${from} ${input}` });
@@ -67,7 +67,7 @@ test("a hidden transition is left out", () => {
 
 test("a straight arrow to the right has its label above, in the middle", () => {
   const l = line({ x: 100, y: 100 }, { x: 300, y: 100 }, 0);
-  expect(l.path).toBe("M154 100 L246 100");
+  expect(l.path).toBe("M158 100 L242 100");
   expect(l.anchor).toBe("middle");
   expect(l.lx).toBe(200);
   expect(l.ly < 100).toBe(true);
@@ -93,9 +93,14 @@ test("the view box holds circles, start arrow and labels", () => {
     .split(" ")
     .map(Number);
   const [x = 0, y = 0, w = 0, h = 0] = box;
-  expect(x).toBeLessThan(110 - 54 - 64);
-  expect(x + w).toBeGreaterThan(490 + 54);
-  expect(y).toBeLessThan(170 - 54 * 2);
-  expect(y + h).toBeGreaterThan(170 + 54);
-  expect(startArrow(saft)?.path).toBe("M-8 170 L56 170");
+  expect(x).toBeLessThan(110 - 58 - 64);
+  expect(x + w).toBeGreaterThan(490 + 58);
+  expect(y).toBeLessThan(170 - 58 * 2);
+  expect(y + h).toBeGreaterThan(170 + 58);
+  expect(startArrow(saft)?.path).toBe("M-12 170 L52 170");
+});
+
+test("a long state name gets a smaller font, a short one 22", () => {
+  expect(stateFont("aus")).toBe(22);
+  expect(stateFont("Fußgänger grün")).toBeLessThan(22);
 });

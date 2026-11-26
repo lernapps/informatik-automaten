@@ -5,8 +5,8 @@
 import { output, type Automat } from "./Automat.ts";
 
 /** The radius of a state's circle, and the size of the font, in drawing units. */
-export const R = 54;
-export const FONT = 23;
+export const R = 58;
+export const FONT = 26;
 /** The height of a line of a label. */
 export const LINE = FONT * 1.15;
 
@@ -142,6 +142,12 @@ export function nameLines(name: string): string[] {
   for (let i = 0; i < name.length; i++)
     if (name[i] === " " && (best < 0 || Math.abs(i - middle) < Math.abs(best - middle))) best = i;
   return [name.slice(0, best), name.slice(best + 1)];
+}
+
+/** The font size of a state's name: 22, smaller for a long word, so that it fits inside the circle. */
+export function stateFont(name: string): number {
+  const longest = Math.max(...nameLines(name).map((l) => l.length));
+  return Math.min(22, Math.floor((2 * R * 0.82) / (longest * 0.56)));
 }
 
 /** The text of a label, for its width: the inputs joined, each with " / output". */
