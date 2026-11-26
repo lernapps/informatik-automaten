@@ -264,7 +264,7 @@ nach dem geprüften Entwurf – Rückblick vom Saftautomaten der 6b bis zur Ampe
       `references/language-tasks.md` in the same folder. A component in the plan: also `references/components.md`.
 - [x] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
-- [ ] Slice 1 (ich, kein Subagent; gemeinsame Komponenten): Entwurfs-Komponenten (AutomatEntwurf.ts/.vue mit Tests, Simulator-Ansicht entwerfen, Daten entwuerfe.yaml) und Musterseite entwerfen/ampel-entwerfen (de, en): Chat der 9b, vier Schritte, Simulator entwerfen, Definitionen vollständig/eindeutig/Testfolge, Übungen
+- [x] Slice 1 (ich, kein Subagent; gemeinsame Komponenten): Entwurfs-Komponenten (AutomatEntwurf.ts/.vue mit Tests, Simulator-Ansicht entwerfen, Daten entwuerfe.yaml) und Musterseite entwerfen/ampel-entwerfen (de, en): Chat der 9b, vier Schritte, Simulator entwerfen, Definitionen vollständig/eindeutig/Testfolge, Übungen
 - [ ] Slice 2 (ich, kein Subagent; nutzt dieselben Komponenten): Seite entwerfen/entwurf-testen (de, en): drei Fehlerarten mit Bildern, Testfolgen wählen, AutomatAufgabe Modus fehler, AutomatEntwurf Modus verbessern, generated Zeilen zählen
 <!-- tasks: slices (2 added): one per competency, as written in Plan -->
 - [ ] **Checkpoint:** the pattern page, after the first slice. A slice in a pattern the app already has: show it to
