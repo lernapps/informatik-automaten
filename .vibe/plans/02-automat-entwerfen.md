@@ -4,7 +4,7 @@
 # Archetype, as in the app's first plan. Allowed values: explainer, interactive, quiz.
 archetype: explainer
 # Current phase. Allowed values: explore, plan, code, commit.
-phase: plan
+phase: code
 # prePushFailures: failed pre-push runs of this increment, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
@@ -46,6 +46,11 @@ Eingabe, falscher Übergang) und verbessern sie.
   mit Tastatur; Text ohne JS.
 - Kein Wechsel auf ids: Kapitel 1 nutzt Nummern und funktioniert. Neue Props für Zustands-Karten bekommen `@verbatim`
   (app-templates 0.24), wo ein Text als Schlüssel dient.
+- Kein `scope`: weiter keine `open-task`, kein Material eines Erstellers (wie Plan 01).
+- Die Simulator-Ansicht „entwerfen“ ist eine eigene Anzeige-Komponente `AutomatWerkstatt`, die mit der Übung
+  `AutomatEntwurf` dieselbe Bearbeitung (`AutomatEditor.vue`) und dasselbe Modell teilt; `AutomatSimulator` bekommt
+  nur die Ansicht `bild`. Grund: andere Props (eine Entwurfsaufgabe statt eines fertigen Automaten); das Modell bleibt
+  `Automat.ts`.
 - Geschichte: Klasse 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b) als Chat (Textblock mit Zeilen
   „**Selin:** …“), ein realer Fall statt gezeichneter Kinder.
 
@@ -176,8 +181,9 @@ Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
 - [x] Draw a sketch of each new component or interactive exercise, in `.vibe/sketches/`.
 - [x] Show the creator, short: goal, new competencies by chapter, slices; in plain words what learners see and do and
       what is new. At most 2 questions.
-- [ ] **Checkpoint:** confirm the plan and the content method. Stop and wait for an explicit yes. Changes: change
+- [x] **Checkpoint:** confirm the plan and the content method. Stop and wait for an explicit yes. Changes: change
       them, then ask again.
+      Creator: Ja, so bauen. Musterseite ampel-entwerfen zuerst. ✓/✗ vor Prüfen: ja; Prüfen testet zusätzlich ein bis zwei verdeckte Testfolgen aus den Daten, Rückmeldung nennt sie erst dann; Seite sagt, dass Prüfen weitere Folgen testet.
 
 ### Content method
 
@@ -248,15 +254,15 @@ nach dem geprüften Entwurf – Rückblick vom Saftautomaten der 6b bis zur Ampe
 
 ### Tasks
 
-- [ ] `git switch -c increment/<NN>-<short name>` from `main`. Commit this plan on it.
-- [ ] Load skill `lernapps-cli`. Update the app as its section "Update" says. Commit the update alone and fix its
+- [x] `git switch -c increment/<NN>-<short name>` from `main`. Commit this plan on it.
+- [x] Load skill `lernapps-cli`. Update the app as its section "Update" says. Commit the update alone and fix its
       findings before any content. The update replaces the `lernapps-*` skills: read again those you use.
-- [ ] Load skill `lernapps-explainer` and the content guide.
-- [ ] Load skill `lernapps-content-questions`. Read whole, with your file tool:
+- [x] Load skill `lernapps-explainer` and the content guide.
+- [x] Load skill `lernapps-content-questions`. Read whole, with your file tool:
       `.agents/skills/lernapps-explainer/references/blocks.md` and
       `.agents/skills/lernapps-explainer/references/exercises.md`. A foreign language: also
       `references/language-tasks.md` in the same folder. A component in the plan: also `references/components.md`.
-- [ ] Decide whether the app needs `scope`, as "`scope`" in
+- [x] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
 - [ ] Slice 1 (ich, kein Subagent; gemeinsame Komponenten): Entwurfs-Komponenten (AutomatEntwurf.ts/.vue mit Tests, Simulator-Ansicht entwerfen, Daten entwuerfe.yaml) und Musterseite entwerfen/ampel-entwerfen (de, en): Chat der 9b, vier Schritte, Simulator entwerfen, Definitionen vollständig/eindeutig/Testfolge, Übungen
 - [ ] Slice 2 (ich, kein Subagent; nutzt dieselben Komponenten): Seite entwerfen/entwurf-testen (de, en): drei Fehlerarten mit Bildern, Testfolgen wählen, AutomatAufgabe Modus fehler, AutomatEntwurf Modus verbessern, generated Zeilen zählen

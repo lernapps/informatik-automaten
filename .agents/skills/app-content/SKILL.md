@@ -39,7 +39,14 @@ Kapitel `alltag` „Automaten im Alltag“:
   `folge-lesen` (AutomatAufgabe folge, diagramm), `pfeil-ergaenzen` (AutomatAufgabe pfeil), `diagramm-jetzt`
   (true-false).
 
-Kapitel `entwerfen` (Inkrement): `automat-entwerfen`: „Ich kann für eine konkrete Aufgabe, zum Beispiel eine
+Kapitel `entwerfen` „Einen Automaten entwerfen“ (9-10, Plan 02):
+
+- Seite `entwerfen/ampel-entwerfen`, `competencies: [automat-entwerfen]`. Übungen: `ampel-eingaben`
+  (multiple-choice), `schritte-ordnen` (ordering), `warum-wartet` (single-choice), `entwurf-neu` (AutomatEntwurf
+  `neu`), `uhr-zustand` (true-false).
+- Seite `entwerfen/entwurf-testen`, `competencies: [automat-entwerfen]` (Slice 2).
+
+`automat-entwerfen`: „Ich kann für eine konkrete Aufgabe, zum Beispiel eine
 Ampelsteuerung, einen Automaten mit Zuständen und Übergängen entwerfen.“
 
 Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns“.
@@ -83,6 +90,13 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 - Produktnamen nur als Beispiel; keine Marken.
 
 ## Exercise patterns
+
+- **Entwerfen** (automat-entwerfen): Übungskomponente `AutomatEntwurf` (`mode: neu` oder `verbessern`) mit Aufgaben aus
+  `src/data/entwuerfe.yaml` (`ampel`, `schranke`, `schloss`, `handy`; `use: [ids]`, `@verbatim`). Zustandskarten
+  wählen (Checkbox), Startzustand (Radio), je Zustand × Eingabe ein Ziel (Auswahlliste); Diagramm und Testfolgen mit
+  „abspielen“ (✓/✗ sofort). Geprüft über Eigenschaften (`problem` in `AutomatEntwurf.ts`): keine Eingabe-/Ausgabe-Karte,
+  Startzustand der Aufgabe, vollständig, alle Testfolgen inkl. `hidden: true` (erst „Prüfen“; die Seite sagt das).
+  `loesung` nur für „Lösung zeigen“ und den Tutor. Ohne Prüfen: Anzeige `AutomatWerkstatt` (eine Aufgabe, `aufgabe: <id>`).
 
 - **Reaktion vorhersagen** (automaten-im-alltag): `generated` mit `pick: 1` aus `src/data/saft-situationen.yaml`,
   Antwort `{ choice: [...] }` über die festen Reaktionen; `mistakes` für „gleicher Knopf, gleiche Reaktion“.
@@ -143,6 +157,9 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 - Englische Begriffe: Isaac Computer Science „Finite state machines“,
   https://isaaccomputerscience.org/concepts/dsa_toc_fsm; National Curriculum England, Computing KS3.
 - Alle Beispiele sind erfunden; kein Material eines Erstellers.
+
+- Kapitel 2 erzählt als Chat der 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b): ein `text`-Block mit Zeilen
+  „**Selin:** …“, ohne Bilder von Personen. Begriffe neu: vollständig, eindeutig (deterministisch), Testfolge.
 
 ## Adding a chapter or round
 

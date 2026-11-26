@@ -1,0 +1,317 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+title:
+  de: Eine Ampel entwerfen
+  en: Designing traffic lights
+description:
+  de: "Einen Automaten selbst entwerfen: Eingaben sammeln, Zustände finden, Übergänge festlegen, mit Testfolgen prüfen."
+  en: "Design an automaton yourself: collect the inputs, find the states, set the transitions, check with test sequences."
+competencies: [automat-entwerfen]
+blocks:
+  - type: section
+    id: einstieg
+    title:
+      de: Die Ampel vor der Schule
+      en: The crossing outside the school
+    blocks:
+      - type: text
+        text:
+          de: |-
+            Vor der Schule kommt eine Bedarfsampel. Die Technik-AG der 9b baut ein Modell davon, das ein kleiner Computer steuert. Jona, Selin und Mia sind jetzt 14. Bevor sie programmieren, schreiben sie im Gruppenchat:
+
+            **Selin:** Erst der Plan, dann der Code. Was muss sich die Ampel merken?
+            **Jona:** Welche Farbe gerade leuchtet. Mehr nicht.
+            **Mia:** Und ob jemand gedrückt hat! Die Autos haben dann noch Grün, aber die Ampel weiß es schon.
+            **Selin:** Dann entwerfen wir sie als Automaten, wie damals unseren Saftautomaten in der 6.
+
+            Auf dieser Seite entwirfst du selbst einen Automaten und testest ihn. Wie man ein Zustandsdiagramm liest, steht auf der Seite [Zustandsdiagramm](/alltag/zustandsdiagramm/).
+          en: |-
+            A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia are 14 now. Before they write any code, they chat in their group:
+
+            **Selin:** Plan first, code second. What do the lights have to remember?
+            **Jona:** Which colour is on. Nothing else.
+            **Mia:** And whether someone has pressed! The cars still have green then, but the lights already know.
+            **Selin:** Then we design them as an automaton, like our juice machine back in year 6.
+
+            On this page you design an automaton yourself and test it. How to read a state diagram is on the page [State diagrams](/alltag/zustandsdiagramm/).
+      - type: multiple-choice
+        id: ampel-eingaben
+        text:
+          de: Was sind die Eingaben der Bedarfsampel?
+          en: What are the inputs of the crossing?
+        options:
+          - text: { de: Jemand drückt den Knopf., en: Someone presses the button. }
+            correct: true
+            info:
+              de: Der Knopfdruck kommt von außen und passiert in einem Moment. Das ist eine Eingabe.
+              en: The button press comes from outside and happens in a moment. That is an input.
+          - text: { de: Die Zeit ist um., en: The time is up. }
+            correct: true
+            info:
+              de: Ein kleiner Zähler meldet „Zeit um“. Für den Automaten ist das eine Eingabe wie der Knopf.
+              en: A small timer reports “time up”. For the automaton this is an input like the button.
+          - text: { de: Die Autos haben Grün., en: The cars have green. }
+            correct: false
+            info:
+              de: Das bleibt eine Weile so. Das ist ein Zustand, keine Eingabe.
+              en: That stays like this for a while. It is a state, not an input.
+          - text: { de: Das Wartesignal leuchtet auf., en: The WAIT light comes on. }
+            correct: false
+            info:
+              de: Das macht die Ampel selbst, wenn jemand drückt. Das ist eine Ausgabe.
+              en: The lights do this themselves when someone presses. That is an output.
+        explanation:
+          de: Eingaben kommen von außen und lösen einen Übergang aus. Hier sind es der Knopf und „Zeit um“.
+          en: Inputs come from outside and set off a transition. Here they are the button and “time up”.
+  - type: section
+    id: idee
+    title:
+      de: In vier Schritten zum Automaten
+      en: Four steps to an automaton
+    blocks:
+      - type: text
+        text:
+          de: |-
+            1. **Eingaben sammeln:** Was kommt von außen? Hier: Knopf und „Zeit um“.
+            2. **Zustände finden:** Was muss sich der Automat merken? Zwei Lagen, die gleich aussehen, können zwei Zustände sein: „Autos grün“ und „Autos grün und jemand wartet“.
+            3. **Übergänge festlegen:** Für jeden Zustand und jede Eingabe: Wohin geht es? Ändert sich nichts, führt der Pfeil zurück zum selben Zustand.
+            4. **Testen:** Spiel Eingabefolgen durch und vergleiche, wo der Automat landet, mit der Aufgabe.
+
+            Ausgaben wie „Wartesignal an“ kann man wie in Kapitel 1 an die Übergänge schreiben. Hier entwirfst du nur Zustände und Übergänge.
+          en: |-
+            1. **Collect the inputs:** what comes from outside? Here: the button and “time up”.
+            2. **Find the states:** what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “cars green and someone waits”.
+            3. **Set the transitions:** for every state and every input: where does it go? If nothing changes, the arrow goes back to the same state.
+            4. **Test:** play input sequences and compare where the automaton ends with what the task says.
+
+            Outputs such as “WAIT light on” can be written at the transitions, as in chapter 1. Here you design only states and transitions.
+      - type: definition
+        term:
+          de: vollständig
+          en: complete
+        explanation:
+          de: Ein Automat ist vollständig, wenn jeder Zustand für jede Eingabe einen Pfeil hat.
+          en: An automaton is complete when every state has an arrow for every input.
+      - type: definition
+        term:
+          de: eindeutig
+          en: deterministic
+        explanation:
+          de: Ein Automat ist eindeutig (Fachwort deterministisch), wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Dann weiß man immer, wohin er springt.
+          en: An automaton is deterministic when every state has at most one arrow for every input. Then you always know where it jumps.
+  - type: section
+    id: ausprobieren
+    title:
+      de: Die Bedarfsampel entwerfen
+      en: Design the crossing
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Hier entwirfst du die Ampel der 9b, ohne Bewertung. Hak die Karten an, die Zustände sind. Wähl den
+            Startzustand. Leg dann für jede Zeile das Ziel fest; das Diagramm zeichnet sich mit. Mit „abspielen“ siehst
+            du, wo eine Testfolge endet: ✓ heißt wie verlangt, ✗ anders.
+          en: >-
+            Here you design class 9b's lights, without marks. Tick the cards that are states. Choose the start state.
+            Then set the target of every row; the diagram draws itself. With “play” you see where a test sequence ends:
+            ✓ means as asked, ✗ means somewhere else.
+      - type: vue-component
+        component: AutomatWerkstatt
+        props:
+          aufgaben: { data: entwuerfe }
+          aufgabe: ampel
+          labels:
+            states:
+              {
+                de: "1 Zustände wählen: Was muss sich der Automat merken?",
+                en: "1 Choose the states: what does the automaton have to remember?",
+              }
+            start: { de: Startzustand, en: Start state }
+            arrows:
+              {
+                de: "2 Übergänge festlegen: Für jeden Zustand jede Eingabe",
+                en: "2 Set the transitions: every input for every state",
+              }
+            choose: { de: "– bitte wählen –", en: "– please choose –" }
+            diagram: { de: 3 Diagramm, en: 3 Diagram }
+            tests: { de: 4 Testfolgen, en: 4 Test sequences }
+            play: { de: abspielen, en: play }
+            expected: { de: "soll:", en: "should be:" }
+            endsAt: { de: "endet bei:", en: "ends at:" }
+            startWord: { de: Start, en: Start }
+            hiddenNote:
+              {
+                de: "Hier gibt es kein „Prüfen“: Probier frei aus.",
+                en: "There is no “Check” here: try things out freely.",
+              }
+          reset: { de: Alles leeren, en: Clear everything }
+        nojs:
+          de: |-
+            Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, Autos grün und jemand wartet, Autos gelb, Fußgänger grün, Autos rot-gelb, Knopf drücken, Wartesignal leuchtet auf. Eingaben: Knopf, Zeit um. Testfolgen:
+
+            - Zeit um, Zeit um → Autos grün
+            - Knopf, Zeit um → Autos gelb
+            - Knopf, Zeit um, Zeit um → Fußgänger grün
+            - Knopf, Zeit um, Zeit um, Zeit um, Zeit um → Autos grün
+
+            Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
+          en: |-
+            The design of the crossing. State cards: cars green, cars green and someone waits, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:
+
+            - time up, time up → cars green
+            - button, time up → cars amber
+            - button, time up, time up → green man
+            - button, time up, time up, time up, time up → cars green
+
+            With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.
+      - type: definition
+        term:
+          de: Testfolge
+          en: test sequence
+        explanation:
+          de: Eine Testfolge ist eine Reihe von Eingaben mit dem Zustand, in dem der Automat danach sein soll.
+          en: A test sequence is a series of inputs with the state the automaton should be in afterwards.
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: ordering
+        id: schritte-ordnen
+        text:
+          de: Bring die vier Schritte beim Entwerfen in die richtige Reihenfolge.
+          en: Put the four steps of designing in the right order.
+        items:
+          - { de: Eingaben sammeln, en: collect the inputs }
+          - { de: Zustände finden, en: find the states }
+          - { de: Übergänge festlegen, en: set the transitions }
+          - { de: Mit Testfolgen testen, en: test with test sequences }
+        explanation:
+          de: Ohne Eingaben weiß man nicht, wofür Pfeile nötig sind. Ohne Zustände gibt es keine Pfeile. Testen kann man erst einen fertigen Entwurf.
+          en: Without the inputs you do not know which arrows are needed. Without states there are no arrows. You can only test a finished design.
+      - type: single-choice
+        id: warum-wartet
+        text:
+          de: "Jona sagt: „‚Autos grün und jemand wartet‘ sieht doch aus wie ‚Autos grün‘. Ein Zustand reicht.“ Was passiert, wenn die 9b nur einen Zustand nimmt?"
+          en: "Jona says: “‘Cars green and someone waits’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?"
+        options:
+          - text:
+              {
+                de: Die Ampel vergisst den Knopfdruck oder schaltet auch ohne ihn auf Gelb.,
+                en: The lights forget the button press or switch to amber without it.,
+              }
+            correct: true
+            info:
+              de: Bei „Zeit um“ muss die Ampel wissen, ob jemand gedrückt hat. Das kann sie sich nur in einem eigenen Zustand merken.
+              en: At “time up” the lights must know whether someone pressed. They can only remember that in a state of their own.
+          - text: { de: "Nichts, die Lichter sind ja dieselben.", en: "Nothing, the lights are the same." }
+            correct: false
+            info:
+              de: Die Lichter sind gleich, aber was danach passiert, ist verschieden. Ein Zustand ist, was sich der Automat merkt, nicht, was man sieht.
+              en: The lights are the same, but what happens next is different. A state is what the automaton remembers, not what you see.
+          - text: { de: Die Ampel zeigt Rot für alle., en: The lights show red for everyone. }
+            correct: false
+            info:
+              de: Dafür gibt es in der Aufgabe keinen Grund. Das Problem ist das fehlende Gedächtnis für den Knopf.
+              en: The task gives no reason for that. The problem is the missing memory of the button.
+        explanation:
+          de: Zwei Lagen, nach denen bei derselben Eingabe Verschiedenes passiert, sind zwei Zustände, auch wenn sie gleich aussehen.
+          en: Two situations after which the same input leads to different things are two states, even if they look the same.
+      - type: vue-component
+        id: entwurf-neu
+        component: AutomatEntwurf
+        props:
+          aufgaben: { data: entwuerfe }
+          use: [ampel, schranke, schloss, handy]
+          mode: neu
+          intro:
+            de: "Entwirf einen Automaten für diese Aufgabe. Spiel die Testfolgen ab, dann drück „Prüfen“. „Prüfen“ testet noch weitere Folgen, die du hier nicht siehst."
+            en: "Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here."
+          labels:
+            states:
+              {
+                de: "1 Zustände wählen: Was muss sich der Automat merken?",
+                en: "1 Choose the states: what does the automaton have to remember?",
+              }
+            start: { de: Startzustand, en: Start state }
+            arrows:
+              {
+                de: "2 Übergänge festlegen: Für jeden Zustand jede Eingabe",
+                en: "2 Set the transitions: every input for every state",
+              }
+            choose: { de: "– bitte wählen –", en: "– please choose –" }
+            diagram: { de: 3 Diagramm, en: 3 Diagram }
+            tests: { de: 4 Testfolgen, en: 4 Test sequences }
+            play: { de: abspielen, en: play }
+            expected: { de: "soll:", en: "should be:" }
+            endsAt: { de: "endet bei:", en: "ends at:" }
+            startWord: { de: Start, en: Start }
+            hiddenNote: { de: "„Prüfen“ testet noch weitere Folgen.", en: "“Check” tests more sequences." }
+          noStart:
+            de: Wähle Zustände und einen Startzustand. Womit fängt der Automat laut Aufgabe an?
+            en: Choose states and a start state. Where does the automaton begin, according to the task?
+          wrongStart:
+            de: "Der Automat fängt nicht bei „{start}“ an. Lies den ersten Satz der Aufgabe noch einmal."
+            en: "The automaton does not begin at “{start}”. Read the first sentence of the task again."
+          incomplete:
+            de: "Dein Entwurf ist noch nicht vollständig: Bei „{state}“ fehlt das Ziel für „{input}“. Ändert sich nichts, führt der Pfeil zurück zum selben Zustand."
+            en: "Your design is not complete yet: at “{state}” the target for “{input}” is missing. If nothing changes, the arrow goes back to the same state."
+          testFails:
+            de: "Die Testfolge {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Spiel sie ab und folge jedem Schritt."
+            en: "The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it and follow every step."
+          hiddenFails:
+            de: "Eine weitere Testfolge scheitert: {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Prüf, was der Automat bei jeder Eingabe tun soll."
+            en: "Another test sequence fails: {inputs} ends at “{actual}”, but should end at “{expected}”. Check what the automaton should do with each input."
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                states: [gesperrt, einmal, blockiert, entsperrt]
+                start: gesperrt
+                arrows:
+                  - { from: gesperrt, input: richtig, to: entsperrt }
+                  - { from: gesperrt, input: falsch, to: einmal }
+                  - { from: einmal, input: richtig, to: entsperrt }
+                  - { from: einmal, input: falsch, to: blockiert }
+                  - { from: blockiert, input: richtig, to: blockiert }
+                  - { from: blockiert, input: falsch, to: blockiert }
+                  - { from: entsperrt, input: richtig, to: entsperrt }
+                  - { from: entsperrt, input: falsch, to: entsperrt }
+          rejected:
+            - seed: 1
+              answer:
+                states: [gesperrt, einmal, blockiert, entsperrt]
+                start: gesperrt
+                arrows:
+                  - { from: gesperrt, input: richtig, to: entsperrt }
+                  - { from: gesperrt, input: falsch, to: einmal }
+                  - { from: einmal, input: richtig, to: entsperrt }
+                  - { from: einmal, input: falsch, to: blockiert }
+                  - { from: blockiert, input: richtig, to: entsperrt }
+                  - { from: blockiert, input: falsch, to: blockiert }
+                  - { from: entsperrt, input: richtig, to: entsperrt }
+                  - { from: entsperrt, input: falsch, to: entsperrt }
+      - type: true-false
+        id: uhr-zustand
+        text:
+          de: "Mia meint: „Für jede Sekunde Wartezeit braucht die Ampel einen eigenen Zustand.“ Stimmt das für unseren Entwurf?"
+          en: "Mia thinks: “The lights need a state of their own for every second of waiting.” Is that true for our design?"
+        answer: false
+        explanation:
+          de: "Die Zeit zählt ein kleiner Zähler außerhalb des Automaten. Ist sie um, meldet er „Zeit um“, und das ist für den Automaten eine Eingabe. So bleibt der Entwurf klein."
+          en: "A small timer outside the automaton counts the time. When it is up, it reports “time up”, and for the automaton that is an input. That keeps the design small."
+  - type: section
+    id: ausblick
+    title:
+      de: Wie geht es weiter?
+      en: What comes next?
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Du kannst jetzt einen Automaten in vier Schritten entwerfen. Mia hat ihren Entwurf schon fertig, aber beim
+            Test lässt er die Fußgänger nie gehen. Auf der nächsten Seite sucht die 9b solche Fehler und verbessert
+            Entwürfe.
+          en: >-
+            You can now design an automaton in four steps. Mia has finished her design already, but in the test it never
+            lets the people on foot cross. On the next page class 9b looks for such mistakes and improves designs.
