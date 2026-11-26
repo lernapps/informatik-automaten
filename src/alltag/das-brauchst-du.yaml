@@ -1,0 +1,85 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+title:
+  de: Das brauchst du hier
+  en: What you need here
+description:
+  de: "Kurz wiederholt: das EVA-Prinzip, am Saftautomaten der 6b, und was es nicht sagt."
+  en: "A short reminder: the IPO model, shown with class 6b's juice machine, and what it does not tell you."
+recap: informatik/eva-prinzip
+blocks:
+  - type: text
+    text:
+      de: >-
+        Kannst du das schon? „Ich kann das EVA-Prinzip (Eingabe, Verarbeitung, Ausgabe) erklären und Geräte und
+        Vorgänge den drei Phasen zuordnen.“ Die Klasse 6b plant für ihr Schulfest einen Saftautomaten aus einem Karton.
+        Jona, Selin und Mia sind alle elf. Jona will im Karton sitzen und der Automat sein, Mia will kaufen, Selin
+        schreibt alles auf. Ein Saft soll 2 € kosten. So sieht der Automat im EVA-Bild aus:
+      en: >-
+        Can you do this already? “I can explain the IPO model (input, process, output) and sort devices and steps into
+        its three stages.” Class 6b is planning a juice machine made from a cardboard box for their school fair. Jona,
+        Selin and Mia are all eleven. Jona wants to sit in the box and be the machine, Mia wants to buy, and Selin
+        writes everything down. A juice is going to cost €2. This is how the machine looks in the IPO picture:
+  - type: vue-component
+    component: EvaBild
+    props:
+      boxes:
+        - { de: Eingabe, en: Input }
+        - { de: Verarbeitung, en: Process }
+        - { de: Ausgabe, en: Output }
+      letters:
+        - { de: E, en: I }
+        - { de: V, en: P }
+        - { de: A, en: O }
+      items:
+        - { de: "Münze einwerfen, Knopf drücken", en: "put in a coin, press the button" }
+        - { de: "Jona prüft: Reicht das Geld?", en: "Jona checks: is there enough money?" }
+        - { de: "Saft fällt heraus", en: "juice drops out" }
+      drawer: { de: Speicher – hebt auf, en: "storage: keeps things" }
+      drawerItem: { de: "Wie viel Geld ist schon drin?", en: "How much money is inside already?" }
+    nojs:
+      de: >-
+        Das EVA-Bild des Saftautomaten: drei Kästen mit Pfeilen. Kasten E „Eingabe“ (blau): Münze einwerfen, Knopf
+        drücken. Kasten V „Verarbeitung“ (grün): Jona prüft, ob das Geld reicht. Kasten A „Ausgabe“ (orange): Saft
+        fällt heraus. An den Kasten Verarbeitung ist eine gestrichelte Schublade angehängt: „Speicher – hebt auf“, mit
+        der Frage „Wie viel Geld ist schon drin?“.
+      en: >-
+        The IPO picture of the juice machine: three boxes with arrows. Box I “Input” (blue): put in a coin, press the
+        button. Box P “Process” (green): Jona checks whether there is enough money. Box O “Output” (orange): juice drops
+        out. A dashed drawer is attached to the box Process: “storage: keeps things”, with the question “How much money is
+        inside already?”.
+  - type: text
+    text:
+      de: >-
+        Das EVA-Bild zeigt den Weg von der Eingabe zur Ausgabe. Es sagt aber nicht, ob beim Knopf wirklich ein Saft
+        kommt. Dafür muss Jona wissen, was schon passiert ist: wie viel Geld schon drin ist. Das EVA-Bild hat dafür nur
+        den Kasten „Speicher“. Es zeigt nicht, wie sich das Gemerkte bei jeder Eingabe ändert. Um dieses Gedächtnis geht es auf
+        den nächsten Seiten.
+      en: >-
+        The IPO picture shows the way from input to output. But it does not tell you whether a juice really comes out
+        when you press the button. For that, Jona has to know what has happened before: how much money is inside
+        already. The IPO picture only has the box “storage” for that. It does not show how what is kept changes with each
+        input. The next pages are about this memory.
+  - type: single-choice
+    id: eva-was-fehlt
+    text:
+      de: Mia drückt den Knopf. Was sagt dir das EVA-Bild darüber, ob ein Saft herauskommt?
+      en: Mia presses the button. What does the IPO picture tell you about whether a juice comes out?
+    options:
+      - text: { de: "Das hängt vom Geld ab, das schon drin ist.", en: "It depends on the money already inside." }
+        correct: true
+        info:
+          de: Das EVA-Bild zeigt nur den Weg. Ob Saft kommt, hängt davon ab, was vorher eingeworfen wurde.
+          en: The IPO picture only shows the way. Whether juice comes out depends on what was put in before.
+      - text: { de: Es kommt immer ein Saft., en: A juice always comes out. }
+        correct: false
+        info:
+          de: Ohne genug Geld gibt der Automat keinen Saft, auch wenn der Knopf gedrückt wird.
+          en: Without enough money the machine gives no juice, even when the button is pressed.
+      - text: { de: Es kommt nie ein Saft., en: A juice never comes out. }
+        correct: false
+        info:
+          de: Wenn genug Geld drin ist, bringt der Knopf einen Saft.
+          en: When there is enough money inside, the button brings a juice.
+    explanation:
+      de: Derselbe Knopf kann einmal Saft bringen und einmal nicht. Was den Unterschied macht, lernst du auf der nächsten Seite.
+      en: The same button can bring a juice one time and nothing another time. What makes the difference is on the next page.

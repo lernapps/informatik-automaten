@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+format: 2
+strand: informatik/sprachen-automaten
+title:
+  de: Automaten und Zustände
+  en: Automata and states
+intro:
+  de: >-
+    Die Klasse 6b baut für ihr Schulfest einen Saftautomaten aus einem Karton. Jona sitzt drin und ist der Automat,
+    Mia kauft, Selin schreibt den Plan. Du spielst mit und lernst, was sich ein Automat merkt und wie man ihn als
+    Zustandsdiagramm zeichnet.
+  en: >-
+    Class 6b is building a juice machine out of a cardboard box for their school fair. Jona sits inside and is the
+    machine, Mia buys, and Selin writes the plan. You join in and learn what a machine remembers and how to draw it as
+    a state diagram.
+languages: [de, en]
+chapters: [alltag]

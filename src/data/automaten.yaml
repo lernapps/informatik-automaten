@@ -1,0 +1,376 @@
+# Die Automaten des Simulators. Ein Automat heißt mit seiner Nummer nr (0 Saftautomat, 1 Lampe, 2 Drehkreuz,
+# 3 Aufzug, 4 Fußgängerampel); Zustände und Eingaben heißen mit ihrer Stelle in der Liste, ab 0 (from, to, input,
+# start). Nummern statt Namen, weil jeder Text, den der Build an eine Komponente gibt, ein Lerntext je Sprache ist.
+# Jeder Automat ist vollständig: Jeder Zustand hat für jede Eingabe genau einen Pfeil.
+# x, y: Mitte des Kreises in einer Fläche von etwa 600 × 300. loop: Richtung des Pfeils zurück zum selben Kreis
+# (-90 oben, 90 unten). bend: 0 gerade (bei Gegenrichtung von selbst gebogen), sonst die Biegung nach links in
+# Fahrtrichtung. text: was passiert, in Alltagsworten, für die Übung „Pfeil ergänzen“; nennt den Zielzustand nicht, das Kind
+# erschließt ihn (die Münze bleibt drin → 1 € drin).
+# outputs: was beim Übergang herauskommt. Kein Automat braucht eine Uhr: „Zeit um“ ist eine Eingabe.
+# saft
+- nr: 0
+  name:
+    de: Saftautomat
+    en: Juice machine
+  start: 0
+  states:
+    - name:
+        de: 0 € drin
+        en: €0 paid
+      x: 110
+      y: 170
+      loop: -90
+    - name:
+        de: 1 € drin
+        en: €1 paid
+      x: 310
+      y: 170
+      loop: -90
+    - name:
+        de: 2 € drin
+        en: €2 paid
+      x: 510
+      y: 170
+      loop: -90
+  inputs:
+    - name:
+        de: Münze
+        en: coin
+    - name:
+        de: Knopf
+        en: button
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Der Automat ist leer. Du wirfst eine Münze ein. Sie bleibt im Automaten.
+        en: The machine is empty. You put in a coin. It stays inside the machine.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Automat ist leer. Du drückst den Knopf. Es kommt kein Saft heraus.
+        en: The machine is empty. You press the button. No juice comes out.
+    - from: 1
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Eine Münze ist im Automaten. Du wirfst noch eine ein. Auch sie bleibt im Automaten.
+        en: One coin is inside the machine. You put in another one. It stays inside too.
+    - from: 1
+      input: 1
+      to: 1
+      bend: 0
+      text:
+        de: Eine Münze ist im Automaten. Du drückst den Knopf. Es kommt kein Saft, und die Münze bleibt drin.
+        en: One coin is inside the machine. You press the button. No juice comes out, and the coin stays inside.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Zwei Münzen sind im Automaten. Du wirfst noch eine ein. Sie fällt unten wieder heraus.
+        en: Two coins are inside the machine. You put in one more. It drops out again at the bottom.
+    - from: 2
+      input: 1
+      to: 0
+      bend: 55
+      text:
+        de:
+          Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die zwei Münzen sind damit bezahlt.
+          Für den nächsten Saft musst du neu Geld einwerfen.
+        en:
+          Two coins are inside the machine. You press the button. A juice drops out. The two coins have now paid for it.
+          For the next juice you have to pay again.
+  outputs:
+    - from: 2
+      input: 0
+      text:
+        de: Münze kommt zurück
+        en: coin comes back
+    - from: 2
+      input: 1
+      text:
+        de: Saft fällt heraus
+        en: juice drops out
+# lampe
+- nr: 1
+  name:
+    de: Lampe mit Druckknopf
+    en: Lamp with a push button
+  start: 0
+  states:
+    - name:
+        de: aus
+        en: "off"
+      x: 170
+      y: 150
+      loop: -90
+    - name:
+        de: an
+        en: "on"
+      x: 430
+      y: 150
+      loop: -90
+  inputs:
+    - name:
+        de: Knopf
+        en: button
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Im Zimmer ist es dunkel. Du drückst den Knopf an der Lampe. Danach kannst du im Zimmer gut sehen.
+        en: The room is dark. You press the button on the lamp. Afterwards you can see well in the room.
+    - from: 1
+      input: 0
+      to: 0
+      bend: 0
+      text:
+        de: Im Zimmer ist es hell. Du drückst den Knopf an der Lampe. Danach ist es im Zimmer wieder dunkel.
+        en: The room is bright. You press the button on the lamp. Afterwards the room is dark again.
+  outputs:
+    - from: 0
+      input: 0
+      text:
+        de: Licht geht an
+        en: light comes on
+    - from: 1
+      input: 0
+      text:
+        de: Licht geht aus
+        en: light goes out
+# drehkreuz
+- nr: 2
+  name:
+    de: Drehkreuz am Schwimmbad
+    en: Turnstile at the swimming pool
+  start: 0
+  states:
+    - name:
+        de: gesperrt
+        en: locked
+      x: 170
+      y: 160
+      loop: -90
+    - name:
+        de: frei
+        en: open
+      x: 430
+      y: 160
+      loop: -90
+  inputs:
+    - name:
+        de: Chip
+        en: token
+    - name:
+        de: drücken
+        en: push
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Das Drehkreuz ist gesperrt. Du steckst einen Chip hinein. Nun lässt es sich drehen.
+        en: The turnstile is locked. You put in a token. Now it can turn.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Das Drehkreuz ist gesperrt. Du drückst dagegen, ohne zu bezahlen. Es bewegt sich nicht.
+        en: The turnstile is locked. You push it without paying. It does not move.
+    - from: 1
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Du hast bezahlt und gehst durch. Das nächste Kind kann nicht einfach hinterher.
+        en: You have paid and you go through. The next child cannot just follow you.
+    - from: 1
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Du hast bezahlt und steckst noch einen Chip hinein. Der Chip fällt wieder heraus. Du kannst immer noch durch.
+        en: You have paid and you put in another token. The token drops out again. You can still go through.
+  outputs:
+    - from: 1
+      input: 0
+      text:
+        de: Chip kommt zurück
+        en: token comes back
+# aufzug
+- nr: 3
+  name:
+    de: Aufzug mit drei Stockwerken
+    en: Lift with three floors
+  start: 0
+  states:
+    - name:
+        de: unten
+        en: bottom
+      x: 300
+      y: 400
+      loop: 90
+    - name:
+        de: Mitte
+        en: middle
+      x: 300
+      y: 230
+      loop: 0
+    - name:
+        de: oben
+        en: top
+      x: 300
+      y: 60
+      loop: -90
+  inputs:
+    - name:
+        de: hoch
+        en: up
+    - name:
+        de: runter
+        en: down
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz unten. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben.
+        en: The lift is at the very bottom. Someone presses “up”. It goes up one floor.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz unten. Jemand drückt „runter“. Tiefer gibt es kein Stockwerk.
+        en: The lift is at the very bottom. Someone presses “down”. There is no floor below.
+    - from: 1
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Der Aufzug steht in der Mitte. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben.
+        en: The lift is in the middle. Someone presses “up”. It goes up one floor.
+    - from: 1
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Der Aufzug steht in der Mitte. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten.
+        en: The lift is in the middle. Someone presses “down”. It goes down one floor.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz oben. Jemand drückt „hoch“. Höher gibt es kein Stockwerk.
+        en: The lift is at the very top. Someone presses “up”. There is no floor above.
+    - from: 2
+      input: 1
+      to: 1
+      bend: 0
+      text:
+        de: Der Aufzug steht ganz oben. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten.
+        en: The lift is at the very top. Someone presses “down”. It goes down one floor.
+  outputs: []
+# ampel
+- nr: 4
+  name:
+    de: Fußgängerampel mit Knopf
+    en: Pedestrian crossing with a button
+  start: 0
+  states:
+    - name:
+        de: Autos grün
+        en: green for cars
+      x: 130
+      y: 230
+      loop: 90
+    - name:
+        de: wartet
+        en: waiting
+      x: 470
+      y: 230
+      loop: 90
+    - name:
+        de: Grün zum Gehen
+        en: green man
+      x: 300
+      y: 60
+      loop: -90
+  inputs:
+    - name:
+        de: Knopf
+        en: button
+    - name:
+        de: Zeit um
+        en: time up
+  transitions:
+    - from: 0
+      input: 0
+      to: 1
+      bend: -22
+      text:
+        de: Die Autos haben Grün. Ein Kind drückt den Knopf. Die Autos fahren noch, aber das Wartesignal leuchtet.
+        en: The lights are green for cars. A child presses the button. The cars still drive, but the WAIT light comes on.
+    - from: 0
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Die Autos haben Grün, und niemand hat gedrückt. Die Zeit ist um. Die Autos fahren weiter.
+        en: The lights are green for cars, and nobody has pressed. The time is up. The cars keep driving.
+    - from: 1
+      input: 0
+      to: 1
+      bend: 0
+      text:
+        de: Das Wartesignal leuchtet schon. Ein Kind drückt noch einmal. Die Autos fahren noch.
+        en: The WAIT light is already on. A child presses again. The cars still drive.
+    - from: 1
+      input: 1
+      to: 2
+      bend: 0
+      text:
+        de: Das Wartesignal leuchtet. Die Zeit ist um. Die Autos halten an, und die Kinder dürfen gehen.
+        en: The WAIT light is on. The time is up. The cars stop, and the children may cross.
+    - from: 2
+      input: 0
+      to: 2
+      bend: 0
+      text:
+        de: Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Die Kinder gehen weiter über die Straße.
+        en: The green man is showing. A child presses the button. The children keep crossing.
+    - from: 2
+      input: 1
+      to: 0
+      bend: 0
+      text:
+        de: Die Fußgänger haben Grün. Die Zeit ist um. Die Fußgänger bekommen Rot, und die Autos fahren los.
+        en: The green man is showing. The time is up. The red man comes on, and the cars drive off.
+  outputs:
+    - from: 0
+      input: 0
+      text:
+        de: Wartesignal an
+        en: WAIT light on
+    - from: 1
+      input: 1
+      text:
+        de: Autos Rot, Fußgänger Grün
+        en: red for cars, green man
+    - from: 2
+      input: 1
+      text:
+        de: Fußgänger Rot, Autos Grün
+        en: red man, green for cars

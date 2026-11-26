@@ -1,0 +1,42 @@
+<!-- Skizze: Automaten-Simulator, Ansicht "diagramm", Saftautomat (Seite alltag/zustandsdiagramm).
+     Kreise = Zustände, Pfeile = Übergänge, am Pfeil "Eingabe / Ausgabe" (Eingabe blau, Ausgabe orange),
+     Startpfeil von links. Aktiver Zustand: gefüllt und dick umrandet. Darunter Knöpfe, Ausgabezeile, Verlauf. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" font-family="sans-serif" font-size="15">
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="598" height="418" fill="#fff" stroke="#ccc"/>
+  <!-- Start -->
+  <line x1="18" y1="170" x2="80" y2="170" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="22" y="160">Start</text>
+  <!-- Zustände -->
+  <circle cx="120" cy="170" r="38" fill="#e8eefb" stroke="#2f5fb3" stroke-width="5"/>
+  <text x="120" y="175" text-anchor="middle" font-weight="bold">0 € drin</text>
+  <circle cx="300" cy="170" r="38" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="300" y="175" text-anchor="middle">1 € drin</text>
+  <circle cx="480" cy="170" r="38" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="480" y="175" text-anchor="middle">2 € drin</text>
+  <!-- 0 -> 1, 1 -> 2 : Münze -->
+  <line x1="158" y1="170" x2="260" y2="170" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="209" y="160" text-anchor="middle" fill="#2f5fb3">Münze</text>
+  <line x1="338" y1="170" x2="440" y2="170" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="389" y="160" text-anchor="middle" fill="#2f5fb3">Münze</text>
+  <!-- Schleifen oben -->
+  <path d="M100 138 C80 70 160 70 140 138" fill="none" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="120" y="68" text-anchor="middle" fill="#2f5fb3">Knopf</text>
+  <path d="M280 138 C260 70 340 70 320 138" fill="none" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="300" y="68" text-anchor="middle" fill="#2f5fb3">Knopf</text>
+  <path d="M460 138 C440 70 520 70 500 138" fill="none" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="480" y="50" text-anchor="middle"><tspan fill="#2f5fb3">Münze</tspan> / <tspan fill="#a4500f">Münze kommt zurück</tspan></text>
+  <!-- 2 -> 0 : Knopf / Saft, unten gebogen -->
+  <path d="M470 207 C430 290 170 290 130 207" fill="none" stroke="#333" stroke-width="2" marker-end="url(#spitze)"/>
+  <text x="300" y="292" text-anchor="middle"><tspan fill="#2f5fb3">Knopf</tspan> / <tspan fill="#a4500f">Saft fällt heraus</tspan></text>
+  <!-- Bedienung -->
+  <rect x="40" y="320" width="150" height="40" rx="6" fill="#2f5fb3"/><text x="115" y="345" text-anchor="middle" fill="#fff">Münze</text>
+  <rect x="205" y="320" width="150" height="40" rx="6" fill="#2f5fb3"/><text x="280" y="345" text-anchor="middle" fill="#fff">Knopf</text>
+  <rect x="400" y="320" width="160" height="40" rx="6" fill="#fff" stroke="#333"/><text x="480" y="345" text-anchor="middle">Zurück zum Start</text>
+  <text x="40" y="390">Ausgabe: <tspan fill="#a4500f">–</tspan>   ·   Jetzt: 0 € drin</text>
+  <text x="40" y="410" fill="#666">Verlauf: Start (0 € drin)</text>
+</svg>
