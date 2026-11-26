@@ -379,9 +379,9 @@ Ampelsteuerung als Fall).
 - [x] Seite alltag/automaten-im-alltag (de, en): Bild schulfest mit Klasse 6b, Simulator Ansicht kasten, Definition Zustand, Spielanleitung, generated aus saft-situationen, AutomatAufgabe folge, matching Alltagsautomaten, true-false; zeigt Reaktion abhängig von Eingabe und Zustand
 - [x] Seite alltag/das-brauchst-du (de, en): recap eva-prinzip mit EvaBild (Kopie aus #490) am Saftautomaten und einer Frage; zeigt, was dem EVA-Bild fehlt
 <!-- tasks: pages (2 added): the other pages or screens, after the pattern -->
-- [ ] Update the content guide so that it describes the app as built (`app-content-matches`).
-- [ ] Run `npx --no -- lernapps check` until it passes.
-- [ ] Look at every screen and state, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
+- [x] Update the content guide so that it describes the app as built (`app-content-matches`).
+- [x] Run `npx --no -- lernapps check` until it passes.
+- [x] Look at every screen and state, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
       Compare each with its sketch.
 - [ ] Do the whole-app check of skill `lernapps-learner-check`. Fix what it finds and write under "Notes" what you
       fixed.

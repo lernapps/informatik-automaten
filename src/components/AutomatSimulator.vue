@@ -81,7 +81,7 @@ const outText = computed(() => fill(props.outputLine, { output: last.value?.outp
         {{ input.name }}
       </button>
     </div>
-    <p class="automat-simulator-status" aria-live="polite">
+    <p :class="['automat-simulator-status', { 'automat-simulator-sr': view === 'kasten' }]" aria-live="polite">
       <strong class="automat-simulator-now">{{ nowText }}</strong
       ><br />
       <span class="automat-simulator-output">{{ outText }}</span>
@@ -153,6 +153,16 @@ const outText = computed(() => fill(props.outputLine, { output: last.value?.outp
 
 .automat-simulator-status {
   margin: 0.75rem 0 0.25rem;
+}
+
+/* in the view kasten the note and the drawer show the state and the output; the line stays for screen readers */
+.automat-simulator-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .automat-simulator-now {
