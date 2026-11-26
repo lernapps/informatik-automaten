@@ -97,6 +97,11 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   „abspielen“ (✓/✗ sofort). Geprüft über Eigenschaften (`problem` in `AutomatEntwurf.ts`): keine Eingabe-/Ausgabe-Karte,
   Startzustand der Aufgabe, vollständig, alle Testfolgen inkl. `hidden: true` (erst „Prüfen“; die Seite sagt das).
   `loesung` nur für „Lösung zeigen“ und den Tutor. Ohne Prüfen: Anzeige `AutomatWerkstatt` (eine Aufgabe, `aufgabe: <id>`).
+  Die Ampel ist das Beispiel der Werkstatt; `entwurf-neu` zieht nur `schranke`, `schloss`, `handy`. „Prüfen“ ohne
+  Zustand meldet `noStates`. Karten heißen kurz und ohne Wort über 9 Zeichen („jemand wartet“, „Grün zum Gehen“,
+  „2 getippt“, „1 Fehler“); jede Karte hat `x`, `y`, `loop`. Sind alle gewählten Karten platziert (`x > 0`), zeichnet
+  das Diagramm sie dort (Handy: entsperrt unten zwischen gesperrt und 1 Fehler), sonst im Kreis. Tutor-Tabelle: kurze
+  Lösung je Zustand, nur der Fehler „Pfeil falsch“ als Antwort (sonst über 64 kB).
 
 - **Reaktion vorhersagen** (automaten-im-alltag): `generated` mit `pick: 1` aus `src/data/saft-situationen.yaml`,
   Antwort `{ choice: [...] }` über die festen Reaktionen; `mistakes` für „gleicher Knopf, gleiche Reaktion“.
@@ -127,6 +132,8 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   - Beschriftung am Pfeil: Eingabe blau fett #2f5fb3 (dunkel: #8fb0ee), mit Ausgabe gefolgt von „ /“ und darunter die
     Ausgabe orange kursiv #a4500f (dunkel: #f0a060), wie E und A im EVA-Bild (#490); der Schrägstrich ist das zweite
     Zeichen neben der Farbe. Gleicher Start und gleiches Ziel: eine Beschriftung „Münze, Knopf“.
+  - Seite der Beschriftung eines geraden Pfeils: weg von der Mitte aller Kreise; liegt der Pfeil nah an der Mitte, auf
+    der Seite weiter weg von den Mitten der anderen Pfeile (`line` in `AutomatDiagramm.ts`).
   - Schmaler Bildschirm (unter 30rem, erst nach dem Laden): lange Ausgaben in Zeilen bis 11 Zeichen, Zustandsnamen in
     Zeilen bis 6 Zeichen und bis Schriftgröße 30. Gemessen bei 360 px: jede Schrift ≥ 12 px. Zustandsnamen ohne ein
     Wort über 9 Zeichen (deshalb „Grün zum Gehen“ statt „Fußgänger grün“).

@@ -8,8 +8,8 @@ const aufgabe: Aufgabe = {
   text: "",
   inputs: [{ id: "knopf", name: "Knopf" }],
   cards: [
-    { id: "aus", name: "aus", art: "zustand", warum: "" },
-    { id: "an", name: "an", art: "zustand", warum: "" },
+    { id: "aus", name: "aus", art: "zustand", warum: "", x: 0, y: 0, loop: 0 },
+    { id: "an", name: "an", art: "zustand", warum: "", x: 0, y: 0, loop: 0 },
   ],
   start: "aus",
   loesung: [],

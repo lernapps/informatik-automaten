@@ -27,6 +27,9 @@ const props = defineProps<{
       /** @verbatim */
       art: string;
       warum: string;
+      x: number;
+      y: number;
+      loop: number;
     }[];
     /** @verbatim */
     start: string;
@@ -43,6 +46,7 @@ const props = defineProps<{
   intro: string;
   /** The headings, buttons and words of the editing. */
   labels: {
+    inputs: string;
     states: string;
     start: string;
     arrows: string;
@@ -54,8 +58,11 @@ const props = defineProps<{
     endsAt: string;
     startWord: string;
     hiddenNote: string;
+    empty: string;
   };
-  /** No state or no start chosen yet. */
+  /** No state chosen yet. */
+  noStates: string;
+  /** States chosen, but no start. */
   noStart: string;
   /** Another start than the task says, with {start}. */
   wrongStart: string;
@@ -92,6 +99,7 @@ function change(next: Entwurf): void {
       :entwurf="entwurf"
       :uid="`entwurf-${seed}-${current.aufgabe.id}`"
       :labels="labels"
+      :hints="false"
       @change="change"
     />
   </div>

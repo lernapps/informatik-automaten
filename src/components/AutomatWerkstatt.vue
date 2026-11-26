@@ -27,6 +27,9 @@ const props = defineProps<{
       /** @verbatim */
       art: string;
       warum: string;
+      x: number;
+      y: number;
+      loop: number;
     }[];
     /** @verbatim */
     start: string;
@@ -39,6 +42,7 @@ const props = defineProps<{
   aufgabe: string;
   /** The headings, buttons and words of the editing. */
   labels: {
+    inputs: string;
     states: string;
     start: string;
     arrows: string;
@@ -50,6 +54,7 @@ const props = defineProps<{
     endsAt: string;
     startWord: string;
     hiddenNote: string;
+    empty: string;
   };
   /** The label of the button that empties the design. */
   reset: string;
@@ -61,6 +66,8 @@ const shown = computed(() => {
   return found;
 });
 const entwurf = ref<Entwurf>(empty());
+// "Alles leeren" mounts the editing afresh, so that the results of played tests go too
+const round = ref(0);
 </script>
 
 <template>
@@ -69,14 +76,24 @@ const entwurf = ref<Entwurf>(empty());
       <strong>{{ shown.name }}.</strong> {{ shown.text }}
     </p>
     <AutomatEditor
+      :key="round"
       :aufgabe="shown"
       :entwurf="entwurf"
       :uid="`werkstatt-${shown.id}`"
       :labels="labels"
+      :hints="true"
       @change="entwurf = $event"
     />
     <p class="automat-werkstatt-reset">
-      <button type="button" @click="entwurf = empty()">{{ reset }}</button>
+      <button
+        type="button"
+        @click="
+          entwurf = empty();
+          round++;
+        "
+      >
+        {{ reset }}
+      </button>
     </p>
   </div>
 </template>

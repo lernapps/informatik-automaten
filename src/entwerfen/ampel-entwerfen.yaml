@@ -16,7 +16,7 @@ blocks:
       - type: text
         text:
           de: |-
-            Vor der Schule kommt eine Bedarfsampel. Die Technik-AG der 9b baut ein Modell davon, das ein kleiner Computer steuert. Jona, Selin und Mia sind jetzt 14. Bevor sie programmieren, schreiben sie im Gruppenchat:
+            Vor der Schule kommt eine Bedarfsampel. Die Technik-AG der 9b baut ein Modell davon, das ein kleiner Computer steuert. Dabei sind Jona, Selin und Mia, alle 14. Bevor sie programmieren, schreiben sie im Gruppenchat:
 
             **Selin:** Erst der Plan, dann der Code. Was muss sich die Ampel merken?
             **Jona:** Welche Farbe gerade leuchtet. Mehr nicht.
@@ -25,7 +25,7 @@ blocks:
 
             Auf dieser Seite entwirfst du selbst einen Automaten und testest ihn. Wie man ein Zustandsdiagramm liest, steht auf der Seite [Zustandsdiagramm](/alltag/zustandsdiagramm/).
           en: |-
-            A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia are 14 now. Before they write any code, they chat in their group:
+            A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia, all 14, are in it. Before they write any code, they chat in their group:
 
             **Selin:** Plan first, code second. What do the lights have to remember?
             **Jona:** Which colour is on. Nothing else.
@@ -71,19 +71,19 @@ blocks:
       - type: text
         text:
           de: |-
-            1. **Eingaben sammeln:** Was kommt von außen? Hier: Knopf und „Zeit um“.
-            2. **Zustände finden:** Was muss sich der Automat merken? Zwei Lagen, die gleich aussehen, können zwei Zustände sein: „Autos grün“ und „Autos grün und jemand wartet“.
+            1. **Eingaben sammeln:** Was kommt von außen? Die Zeit zählt ein kleiner Zähler außerhalb des Automaten. Ist sie um, meldet er „Zeit um“.
+            2. **Zustände finden:** Was muss sich der Automat merken? Zwei Situationen, die gleich aussehen, können zwei Zustände sein: „Autos grün“ und „jemand wartet“.
             3. **Übergänge festlegen:** Für jeden Zustand und jede Eingabe: Wohin geht es? Ändert sich nichts, führt der Pfeil zurück zum selben Zustand.
-            4. **Testen:** Spiel Eingabefolgen durch und vergleiche, wo der Automat landet, mit der Aufgabe.
+            4. **Testen:** Spiel Testfolgen durch und vergleiche, wo der Automat landet, mit der Aufgabe.
 
-            Ausgaben wie „Wartesignal an“ kann man wie in Kapitel 1 an die Übergänge schreiben. Hier entwirfst du nur Zustände und Übergänge.
+            Ausgaben wie „Wartesignal leuchtet auf“ kann man wie in Kapitel 1 an die Übergänge schreiben. Hier entwirfst du nur Zustände und Übergänge.
           en: |-
-            1. **Collect the inputs:** what comes from outside? Here: the button and “time up”.
-            2. **Find the states:** what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “cars green and someone waits”.
+            1. **Collect the inputs:** what comes from outside? A small timer outside the automaton counts the time. When it is up, it reports “time up”.
+            2. **Find the states:** what does the automaton have to remember? Two situations that look the same can be two states: “cars green” and “someone waiting”.
             3. **Set the transitions:** for every state and every input: where does it go? If nothing changes, the arrow goes back to the same state.
-            4. **Test:** play input sequences and compare where the automaton ends with what the task says.
+            4. **Test:** play test sequences and compare where the automaton ends with what the task says.
 
-            Outputs such as “WAIT light on” can be written at the transitions, as in chapter 1. Here you design only states and transitions.
+            Outputs such as “WAIT light comes on” can be written at the transitions, as in chapter 1. Here you design only states and transitions.
       - type: definition
         term:
           de: vollständig
@@ -93,11 +93,11 @@ blocks:
           en: An automaton is complete when every state has an arrow for every input.
       - type: definition
         term:
-          de: eindeutig
-          en: deterministic
+          de: Testfolge
+          en: test sequence
         explanation:
-          de: Ein Automat ist eindeutig (Fachwort deterministisch), wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Dann weiß man immer, wohin er springt.
-          en: An automaton is deterministic when every state has at most one arrow for every input. Then you always know where it jumps.
+          de: Eine Testfolge ist eine Reihe von Eingaben mit dem Zustand, in dem der Automat danach sein soll.
+          en: A test sequence is a series of inputs with the state the automaton should be in afterwards.
   - type: section
     id: ausprobieren
     title:
@@ -108,36 +108,42 @@ blocks:
         text:
           de: >-
             Hier entwirfst du die Ampel der 9b, ohne Bewertung. Hak die Karten an, die Zustände sind. Wähl den
-            Startzustand. Leg dann für jede Zeile das Ziel fest; das Diagramm zeichnet sich mit. Mit „abspielen“ siehst
-            du, wo eine Testfolge endet: ✓ heißt wie verlangt, ✗ anders.
+            Startzustand. Leg dann für jede Zeile das Ziel fest; das Diagramm zeichnet sich mit. „abspielen“ zeigt den Weg
+            einer Testfolge Schritt für Schritt und wo sie endet: ✓ heißt wie verlangt, ✗ anders.
           en: >-
-            Here you design class 9b's lights, without marks. Tick the cards that are states. Choose the start state.
-            Then set the target of every row; the diagram draws itself. With “play” you see where a test sequence ends:
-            ✓ means as asked, ✗ means somewhere else.
+            Here you design class 9b's lights, without a score. Tick the cards that are states. Choose the start state.
+            Then set the target of every row; the diagram draws itself. “Play” shows the way of a test sequence step by
+            step and where it ends: ✓ means as asked, ✗ means somewhere else.
       - type: vue-component
         component: AutomatWerkstatt
         props:
           aufgaben: { data: entwuerfe }
           aufgabe: ampel
           labels:
+            inputs: { de: "Schritt 1 – Eingaben (stehen in der Aufgabe):", en: "Step 1 – inputs (given by the task):" }
             states:
               {
-                de: "1 Zustände wählen: Was muss sich der Automat merken?",
-                en: "1 Choose the states: what does the automaton have to remember?",
+                de: "Schritt 2 – Zustände finden: Was muss sich der Automat merken?",
+                en: "Step 2 – find the states: what does the automaton have to remember?",
               }
             start: { de: Startzustand, en: Start state }
             arrows:
               {
-                de: "2 Übergänge festlegen: Für jeden Zustand jede Eingabe",
-                en: "2 Set the transitions: every input for every state",
+                de: "Schritt 3 – Übergänge festlegen: für jeden Zustand jede Eingabe",
+                en: "Step 3 – set the transitions: every input for every state",
               }
             choose: { de: "– bitte wählen –", en: "– please choose –" }
-            diagram: { de: 3 Diagramm, en: 3 Diagram }
-            tests: { de: 4 Testfolgen, en: 4 Test sequences }
+            diagram: { de: Diagramm, en: Diagram }
+            tests: { de: Schritt 4 – Testen, en: Step 4 – test }
             play: { de: abspielen, en: play }
             expected: { de: "soll:", en: "should be:" }
             endsAt: { de: "endet bei:", en: "ends at:" }
             startWord: { de: Start, en: Start }
+            empty:
+              {
+                de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
+                en: "Choose states first. Then the start state, the transitions and the diagram appear.",
+              }
             hiddenNote:
               {
                 de: "Hier gibt es kein „Prüfen“: Probier frei aus.",
@@ -146,16 +152,16 @@ blocks:
           reset: { de: Alles leeren, en: Clear everything }
         nojs:
           de: |-
-            Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, Autos grün und jemand wartet, Autos gelb, Fußgänger grün, Autos rot-gelb, Knopf drücken, Wartesignal leuchtet auf. Eingaben: Knopf, Zeit um. Testfolgen:
+            Der Entwurf der Bedarfsampel. Zustandskarten: Autos grün, jemand wartet, Autos gelb, Grün zum Gehen, Autos rot-gelb, Knopf drücken, Wartesignal leuchtet auf. Eingaben: Knopf, Zeit um. Testfolgen:
 
             - Zeit um, Zeit um → Autos grün
             - Knopf, Zeit um → Autos gelb
-            - Knopf, Zeit um, Zeit um → Fußgänger grün
+            - Knopf, Zeit um, Zeit um → Grün zum Gehen
             - Knopf, Zeit um, Zeit um, Zeit um, Zeit um → Autos grün
 
             Mit JavaScript wählst du Karten, den Startzustand und für jede Zeile das Ziel und spielst die Testfolgen ab.
           en: |-
-            The design of the crossing. State cards: cars green, cars green and someone waits, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:
+            The design of the crossing. State cards: cars green, someone waiting, cars amber, green man, cars red and amber, press the button, WAIT light comes on. Inputs: button, time up. Test sequences:
 
             - time up, time up → cars green
             - button, time up → cars amber
@@ -163,13 +169,6 @@ blocks:
             - button, time up, time up, time up, time up → cars green
 
             With JavaScript you choose the cards, the start state and the target of every row, and play the test sequences.
-      - type: definition
-        term:
-          de: Testfolge
-          en: test sequence
-        explanation:
-          de: Eine Testfolge ist eine Reihe von Eingaben mit dem Zustand, in dem der Automat danach sein soll.
-          en: A test sequence is a series of inputs with the state the automaton should be in afterwards.
   - type: section
     id: uebung
     title:
@@ -192,8 +191,8 @@ blocks:
       - type: single-choice
         id: warum-wartet
         text:
-          de: "Jona sagt: „‚Autos grün und jemand wartet‘ sieht doch aus wie ‚Autos grün‘. Ein Zustand reicht.“ Was passiert, wenn die 9b nur einen Zustand nimmt?"
-          en: "Jona says: “‘Cars green and someone waits’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?"
+          de: "Jona sagt: „‚jemand wartet‘ sieht doch aus wie ‚Autos grün‘. Ein Zustand reicht.“ Was passiert, wenn die 9b nur einen Zustand nimmt?"
+          en: "Jona says: “‘Someone waiting’ looks just like ‘cars green’. One state is enough.” What happens if class 9b uses only one state?"
         options:
           - text:
               {
@@ -222,34 +221,43 @@ blocks:
         component: AutomatEntwurf
         props:
           aufgaben: { data: entwuerfe }
-          use: [ampel, schranke, schloss, handy]
+          use: [schranke, schloss, handy]
           mode: neu
           intro:
             de: "Entwirf einen Automaten für diese Aufgabe. Spiel die Testfolgen ab, dann drück „Prüfen“. „Prüfen“ testet noch weitere Folgen, die du hier nicht siehst."
             en: "Design an automaton for this task. Play the test sequences, then press “Check”. “Check” tests more sequences that you cannot see here."
           labels:
+            inputs: { de: "Schritt 1 – Eingaben (stehen in der Aufgabe):", en: "Step 1 – inputs (given by the task):" }
             states:
               {
-                de: "1 Zustände wählen: Was muss sich der Automat merken?",
-                en: "1 Choose the states: what does the automaton have to remember?",
+                de: "Schritt 2 – Zustände finden: Was muss sich der Automat merken?",
+                en: "Step 2 – find the states: what does the automaton have to remember?",
               }
             start: { de: Startzustand, en: Start state }
             arrows:
               {
-                de: "2 Übergänge festlegen: Für jeden Zustand jede Eingabe",
-                en: "2 Set the transitions: every input for every state",
+                de: "Schritt 3 – Übergänge festlegen: für jeden Zustand jede Eingabe",
+                en: "Step 3 – set the transitions: every input for every state",
               }
             choose: { de: "– bitte wählen –", en: "– please choose –" }
-            diagram: { de: 3 Diagramm, en: 3 Diagram }
-            tests: { de: 4 Testfolgen, en: 4 Test sequences }
+            diagram: { de: Diagramm, en: Diagram }
+            tests: { de: Schritt 4 – Testen, en: Step 4 – test }
             play: { de: abspielen, en: play }
             expected: { de: "soll:", en: "should be:" }
             endsAt: { de: "endet bei:", en: "ends at:" }
             startWord: { de: Start, en: Start }
+            empty:
+              {
+                de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
+                en: "Choose states first. Then the start state, the transitions and the diagram appear.",
+              }
             hiddenNote: { de: "„Prüfen“ testet noch weitere Folgen.", en: "“Check” tests more sequences." }
+          noStates:
+            de: Wähl zuerst die Karten, die Zustände sind.
+            en: First choose the cards that are states.
           noStart:
-            de: Wähle Zustände und einen Startzustand. Womit fängt der Automat laut Aufgabe an?
-            en: Choose states and a start state. Where does the automaton begin, according to the task?
+            de: Du hast Zustände gewählt, aber noch keinen Startzustand. Womit fängt der Automat laut Aufgabe an?
+            en: You have chosen states, but no start state yet. Where does the automaton begin, according to the task?
           wrongStart:
             de: "Der Automat fängt nicht bei „{start}“ an. Lies den ersten Satz der Aufgabe noch einmal."
             en: "The automaton does not begin at “{start}”. Read the first sentence of the task again."
@@ -257,8 +265,8 @@ blocks:
             de: "Dein Entwurf ist noch nicht vollständig: Bei „{state}“ fehlt das Ziel für „{input}“. Ändert sich nichts, führt der Pfeil zurück zum selben Zustand."
             en: "Your design is not complete yet: at “{state}” the target for “{input}” is missing. If nothing changes, the arrow goes back to the same state."
           testFails:
-            de: "Die Testfolge {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Spiel sie ab und folge jedem Schritt."
-            en: "The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it and follow every step."
+            de: "Die Testfolge {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Spiel sie ab und folge ihrem Weg."
+            en: "The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it and follow its way."
           hiddenFails:
             de: "Eine weitere Testfolge scheitert: {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Prüf, was der Automat bei jeder Eingabe tun soll."
             en: "Another test sequence fails: {inputs} ends at “{actual}”, but should end at “{expected}”. Check what the automaton should do with each input."

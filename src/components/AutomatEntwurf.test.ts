@@ -28,9 +28,9 @@ const schranke: Aufgabe = {
     { id: "auto", name: "Auto fährt durch" },
   ],
   cards: [
-    { id: "zu", name: "Schranke zu", art: "zustand", warum: "Niemand kommt durch." },
-    { id: "offen", name: "Schranke offen", art: "zustand", warum: "Ein Auto darf durch." },
-    { id: "hebt", name: "Schranke geht hoch", art: "ausgabe", warum: "Das ist eine Ausgabe." },
+    { id: "zu", name: "Schranke zu", art: "zustand", warum: "Niemand kommt durch.", x: 0, y: 0, loop: 0 },
+    { id: "offen", name: "Schranke offen", art: "zustand", warum: "Ein Auto darf durch.", x: 0, y: 0, loop: 0 },
+    { id: "hebt", name: "Schranke geht hoch", art: "ausgabe", warum: "Das ist eine Ausgabe.", x: 0, y: 0, loop: 0 },
   ],
   start: "zu",
   loesung: [
@@ -46,6 +46,7 @@ const schranke: Aufgabe = {
   ],
 };
 const texts = {
+  noStates: "Wähle Zustände.",
   noStart: "Wähle einen Startzustand.",
   wrongStart: "Start {start} passt nicht.",
   incomplete: "Leer: {state} – {input}.",
@@ -120,7 +121,7 @@ test("the drawing: the start state on the left, one arrow per row set", () => {
 
 test("describe shows the visible tests only", () => {
   const d = describe(generate(1, neu), neu, "de");
-  expect(d.task).toContain("- Ticket → Schranke offen");
+  expect(d.task).toContain("- Ticket → „Schranke offen“");
   expect(d.task).not.toContain("Ticket, Ticket");
-  expect(d.solution).toContain("Start: Schranke zu");
+  expect(d.solution).toContain("Start: „Schranke zu“");
 });

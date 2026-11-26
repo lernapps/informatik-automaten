@@ -15,6 +15,10 @@ export interface Card {
   name: string;
   art: string;
   warum: string;
+  /** Its place in the drawing; 0, 0: on a circle with the others. loop: the direction of its arrow back to itself. */
+  x: number;
+  y: number;
+  loop: number;
 }
 
 /** A design task of the data file entwuerfe. */
@@ -38,7 +42,9 @@ export interface Entwurf {
 
 /** The texts of the exercise's feedback, with placeholders. */
 export interface Texts {
-  /** No state chosen yet, or no start. */
+  /** No state chosen yet. */
+  noStates: string;
+  /** States chosen, but no start. */
   noStart: string;
   /** The start is another state than the task says, with {start}. */
   wrongStart: string;
@@ -76,6 +82,16 @@ function random(seed: number): () => number {
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
+}
+
+/** The items of `list` in an order drawn with `next`. */
+function shuffle<T>(list: readonly T[], next: () => number): T[] {
+  const out = [...list];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(next() * (i + 1));
+    [out[i], out[j]] = [out[j] as T, out[i] as T];
+  }
+  return out;
 }
 
 /** An empty design. */
@@ -167,8 +183,10 @@ export function generate(seed: number, props: Props): Task {
   next();
   next();
   const tasks = props.aufgaben.filter((a) => props.use.includes(a.id));
-  const aufgabe = tasks[Math.floor(next() * tasks.length)] ?? props.aufgaben[0];
-  if (aufgabe === undefined) throw new Error("AutomatEntwurf: the data file entwuerfe is empty");
+  const drawn = tasks[Math.floor(next() * tasks.length)] ?? props.aufgaben[0];
+  if (drawn === undefined) throw new Error("AutomatEntwurf: the data file entwuerfe is empty");
+  // the cards in an order of the task, so that neither the start nor the cards that are no states keep their place
+  const aufgabe = { ...drawn, cards: shuffle(drawn.cards, next) };
   if (props.mode === "neu") return { aufgabe, start: empty() };
   const right = loesung(aufgabe);
   const candidates = right.arrows.flatMap((arrow, index) =>
@@ -176,7 +194,10 @@ export function generate(seed: number, props: Props): Task {
       .filter((s) => s !== arrow.to)
       .map((to) => ({ index, to }))
       .filter(({ index: i, to }) => {
-        const changed = { ...right, arrows: right.arrows.map((a, j) => (j === i ? { ...a, to } : a)) };
+        const changed = {
+          ...right,
+          arrows: right.arrows.map((a, j) => (j === i ? { ...a, to } : a)),
+        };
         const failing = problem(aufgabe, changed);
         return failing?.kind === "test" && !failing.test.hidden;
       }),
@@ -185,7 +206,10 @@ export function generate(seed: number, props: Props): Task {
   if (pick === undefined) return { aufgabe, start: right };
   return {
     aufgabe,
-    start: { ...right, arrows: right.arrows.map((a, j) => (j === pick.index ? { ...a, to: pick.to } : a)) },
+    start: {
+      ...right,
+      arrows: right.arrows.map((a, j) => (j === pick.index ? { ...a, to: pick.to } : a)),
+    },
   };
 }
 
@@ -206,25 +230,24 @@ export function wrong(task: Task): Entwurf {
   return extra ? { ...right, states: [...right.states, extra.id] } : { ...right, start: "" };
 }
 
-/** The answer of each typical mistake of about.mistakes: a card that is no state; a row left empty; an arrow wrong. */
+/**
+ * The answer of each typical mistake of about.mistakes, for the tutor's table: only the wrong arrow, since a card that
+ * is no state and a row left empty are the solution with one piece more or less, which about.mistakes already says and
+ * which would make the tutor page too long.
+ */
 export function mistakes(task: Task, _props?: Props): (Entwurf | undefined)[] {
-  const right = loesung(task.aufgabe);
-  const extra = task.aufgabe.cards.find((c) => c.art !== "zustand");
   const changed = generate(1, {
     aufgaben: [task.aufgabe],
     use: [task.aufgabe.id],
     mode: "verbessern",
+    noStates: "",
     noStart: "",
     wrongStart: "",
     incomplete: "",
     testFails: "",
     hiddenFails: "",
   }).start;
-  return [
-    extra ? { ...right, states: [...right.states, extra.id] } : undefined,
-    { ...right, arrows: right.arrows.slice(1) },
-    check(task, changed) ? undefined : changed,
-  ];
+  return [undefined, undefined, check(task, changed) ? undefined : changed];
 }
 
 const name = (aufgabe: Aufgabe, id: string) =>
@@ -235,7 +258,7 @@ export const sequence = (aufgabe: Aufgabe, inputs: readonly string[]) => inputs.
 
 /** The app's message for a wrong design: the first problem, never the solution. A card that is no state: its reason. */
 export function reason(task: Task, answer: Answer, props: Props, _lang?: string): string | undefined {
-  if (answer === undefined) return props.noStart;
+  if (answer === undefined || answer.states.length === 0) return props.noStates;
   const p = problem(task.aufgabe, answer);
   if (p === undefined) return undefined;
   const a = task.aufgabe;
@@ -247,7 +270,10 @@ export function reason(task: Task, answer: Answer, props: Props, _lang?: string)
     case "wrongStart":
       return fill(props.wrongStart, { start: name(a, answer.start) });
     case "incomplete":
-      return fill(props.incomplete, { state: name(a, p.state), input: name(a, p.input) });
+      return fill(props.incomplete, {
+        state: name(a, p.state),
+        input: name(a, p.input),
+      });
     case "test":
       return fill(p.test.hidden ? props.hiddenFails : props.testFails, {
         inputs: sequence(a, p.test.inputs),
@@ -263,7 +289,10 @@ export function automat(aufgabe: Aufgabe, entwurf: Entwurf): Automat {
   const n = ids.length;
   const startIndex = Math.max(0, ids.indexOf(entwurf.start));
   const radius = n <= 2 ? 150 : n === 3 ? 160 : 190;
+  const placed = ids.every((id) => (aufgabe.cards.find((c) => c.id === id)?.x ?? 0) > 0);
   const states = ids.map((id, i) => {
+    const card = aufgabe.cards.find((c) => c.id === id);
+    if (placed && card) return { name: name(aufgabe, id), x: card.x, y: card.y, loop: card.loop };
     // the start state at 180°, the others clockwise around the centre
     const angle = Math.PI + ((i - startIndex) * 2 * Math.PI) / Math.max(n, 1);
     const x = 300 + Math.cos(angle) * radius;
@@ -272,7 +301,12 @@ export function automat(aufgabe: Aufgabe, entwurf: Entwurf): Automat {
     let loop = (angle * 180) / Math.PI;
     if (n <= 2) loop = -90;
     else if (i === startIndex) loop = -90;
-    return { name: name(aufgabe, id), x: Math.round(x), y: Math.round(y), loop: Math.round(loop) };
+    return {
+      name: name(aufgabe, id),
+      x: Math.round(x),
+      y: Math.round(y),
+      loop: Math.round(loop),
+    };
   });
   const inputs = aufgabe.inputs.map((i) => ({ name: i.name }));
   const transitions = entwurf.arrows
@@ -288,7 +322,8 @@ export function automat(aufgabe: Aufgabe, entwurf: Entwurf): Automat {
   const drawn: Automat = {
     nr: 0,
     name: aufgabe.name,
-    start: n === 0 ? 0 : startIndex,
+    // no start chosen: no start arrow (-1 names no state)
+    start: entwurf.start === "" ? -1 : startIndex,
     states,
     inputs,
     transitions,
@@ -296,35 +331,54 @@ export function automat(aufgabe: Aufgabe, entwurf: Entwurf): Automat {
   };
   // the start state's loop goes where there is most room (the start arrow comes from the left)
   const first = states[startIndex];
-  if (first && n > 2)
+  if (first && n > 2 && !placed)
     first.loop = freeDirection(
-      { ...drawn, states: states.map((s, i) => (i === startIndex ? { ...s, loop: 180 } : s)) },
+      {
+        ...drawn,
+        states: states.map((s, i) => (i === startIndex ? { ...s, loop: 180 } : s)),
+      },
       startIndex,
     );
   return drawn;
 }
 
 /** A design as text: its states, its start and its arrows. */
+/** A name in the quotation marks of the language. */
+const quote = (text: string, lang = "de") => (lang === "en" ? `“${text}”` : `„${text}“`);
+
+/** A design as a list, for "Lösung zeigen": the states, the start, then one line per arrow. */
+export function listing(entwurf: Entwurf, aufgabe: Aufgabe, lang: string): string {
+  const q = (id: string) => quote(name(aufgabe, id), lang);
+  const arrows = entwurf.arrows.map((r) => `- ${q(r.from)} – ${name(aufgabe, r.input)} → ${q(r.to)}`).join("\n");
+  return `${entwurf.states.map(q).join(" · ")}\n\nStart: ${q(entwurf.start)}\n\n${arrows}`;
+}
+
+/** A design as short text, for the tutor. */
 export function show(answer: Answer, task: Task, _props?: Props, _lang?: string): string {
   if (answer === undefined) return "–";
   const a = task.aufgabe;
-  const arrows = answer.arrows.map((r) => `${name(a, r.from)} – ${name(a, r.input)} → ${name(a, r.to)}`);
-  return `${answer.states.map((s) => name(a, s)).join(", ")}; Start: ${name(a, answer.start)}; ${arrows.join("; ")}`;
+  // short, one part per state: "Start A · A: x → B, y → A · B: …"; a state without arrows has "–"
+  const parts = answer.states.map((state) => {
+    const rows = answer.arrows.filter((r) => r.from === state).map((r) => `${name(a, r.input)} → ${name(a, r.to)}`);
+    return `${name(a, state)}: ${rows.length > 0 ? rows.join(", ") : "–"}`;
+  });
+  const start = answer.start === "" ? "–" : name(a, answer.start);
+  return [`Start ${start}`, ...parts].join(" · ");
 }
 
 /** The task as a learner sees it (the visible test sequences only), and one valid design. */
-export function describe(task: Task, props: Props, _lang: string): { task: string; solution: string } {
+export function describe(task: Task, props: Props, lang: string): { task: string; solution: string } {
   const a = task.aufgabe;
-  const cards = a.cards.map((c) => `„${c.name}“`).join(", ");
-  const inputs = a.inputs.map((i) => `„${i.name}“`).join(", ");
+  const cards = a.cards.map((c) => quote(c.name, lang)).join(" · ");
+  const inputs = a.inputs.map((i) => quote(i.name, lang)).join(" · ");
   const tests = a.tests
     .filter((t) => !t.hidden)
-    .map((t) => `- ${sequence(a, t.inputs)} → ${name(a, t.end)}`)
+    .map((t) => `- ${sequence(a, t.inputs)} → ${quote(name(a, t.end), lang)}`)
     .join("\n");
-  const begin = props.mode === "verbessern" ? `\n\n${show(task.start, task)}` : "";
+  const begin = props.mode === "verbessern" ? `\n\n${listing(task.start, a, lang)}` : "";
   return {
     task: `**${a.name}.** ${a.text}\n\n${cards}\n\n${inputs}\n\n${tests}${begin}`,
-    solution: show(solution(task), task),
+    solution: listing(solution(task), a, lang),
   };
 }
 
@@ -335,12 +389,12 @@ export function template(_props: Props, _lang: string): string {
 
 /** What sets a task: the design task by its name. */
 export function params(task: Task, _props: Props, _lang: string): Record<string, string> {
-  return { Aufgabe: `${task.aufgabe.name}: ${task.aufgabe.text}` };
+  return { Aufgabe: task.aufgabe.name };
 }
 
 /** What "Prüfen" says before a design is given: the block's message for no start. */
 export function unanswered(props: Props, _lang: string): string {
-  return props.noStart;
+  return props.noStates;
 }
 
 /** What the exercise is, for a tutor. */

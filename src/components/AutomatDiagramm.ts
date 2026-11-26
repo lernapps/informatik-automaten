@@ -43,8 +43,14 @@ export function head(tip: P, back: P, size = 13): string {
   const len = Math.hypot(dx, dy) || 1;
   const ux = dx / len;
   const uy = dy / len;
-  const left = { x: tip.x - ux * size - uy * size * 0.5, y: tip.y - uy * size + ux * size * 0.5 };
-  const right = { x: tip.x - ux * size + uy * size * 0.5, y: tip.y - uy * size - ux * size * 0.5 };
+  const left = {
+    x: tip.x - ux * size - uy * size * 0.5,
+    y: tip.y - uy * size + ux * size * 0.5,
+  };
+  const right = {
+    x: tip.x - ux * size + uy * size * 0.5,
+    y: tip.y - uy * size - ux * size * 0.5,
+  };
   return `${pt(tip)} ${pt(left)} ${pt(right)}`;
 }
 
@@ -57,23 +63,50 @@ export function arrows(automat: Automat, hidden?: { from: number; input: number 
   for (const t of automat.transitions) {
     if (hidden && t.from === hidden.from && t.input === hidden.input) continue;
     const key = `${t.from}>${t.to}`;
-    const group = groups.get(key) ?? { from: t.from, to: t.to, bend: t.bend, parts: [] };
-    group.parts.push({ input: t.input, output: output(automat, t.from, t.input) });
+    const group = groups.get(key) ?? {
+      from: t.from,
+      to: t.to,
+      bend: t.bend,
+      parts: [],
+    };
+    group.parts.push({
+      input: t.input,
+      output: output(automat, t.from, t.input),
+    });
     if (t.bend !== 0) group.bend = t.bend;
     groups.set(key, group);
   }
+  // the middle of all circles: a straight arrow's label goes to the side away from it, out of the way of the others
+  const n = automat.states.length || 1;
+  const centre = {
+    x: automat.states.reduce((sum, st) => sum + st.x, 0) / n,
+    y: automat.states.reduce((sum, st) => sum + st.y, 0) / n,
+  };
+  // the middles of all arrows between two circles: a label near the middle goes to the side further from them
+  const middles = [...groups.values()].flatMap((g) => {
+    const a = automat.states[g.from];
+    const b = automat.states[g.to];
+    return a && b && g.from !== g.to ? [{ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }] : [];
+  });
   return [...groups.entries()].flatMap(([key, g]) => {
     const a = automat.states[g.from];
     const b = automat.states[g.to];
     if (!a || !b) return [];
     const reverse = g.from !== g.to && groups.has(`${g.to}>${g.from}`);
-    const shape = g.from === g.to ? loop(a, a.loop) : line(a, b, g.bend !== 0 ? g.bend : reverse ? 34 : 0);
+    const shape =
+      g.from === g.to ? loop(a, a.loop) : line(a, b, g.bend !== 0 ? g.bend : reverse ? 34 : 0, centre, middles);
     return [{ key, from: g.from, to: g.to, parts: g.parts, ...shape }];
   });
 }
 
 /** An arrow from circle `a` to circle `b`, straight or bent by `bend` to its left. */
-export function line(a: P, b: P, bend: number): Omit<Arrow, "key" | "from" | "to" | "parts"> {
+export function line(
+  a: P,
+  b: P,
+  bend: number,
+  centre?: P,
+  middles: P[] = [],
+): Omit<Arrow, "key" | "from" | "to" | "parts"> {
   const dx = b.x - a.x;
   const dy = b.y - a.y;
   const len = Math.hypot(dx, dy) || 1;
@@ -82,7 +115,10 @@ export function line(a: P, b: P, bend: number): Omit<Arrow, "key" | "from" | "to
   // the normal to the left of the direction of travel (in screen coordinates, y down)
   const nx = uy;
   const ny = -ux;
-  const mid = { x: (a.x + b.x) / 2 + nx * bend * 2, y: (a.y + b.y) / 2 + ny * bend * 2 };
+  const mid = {
+    x: (a.x + b.x) / 2 + nx * bend * 2,
+    y: (a.y + b.y) / 2 + ny * bend * 2,
+  };
   const toward = (from: P, to: P) => {
     const ex = to.x - from.x;
     const ey = to.y - from.y;
@@ -98,12 +134,36 @@ export function line(a: P, b: P, bend: number): Omit<Arrow, "key" | "from" | "to
   // runs up or down
   let side = Math.sign(bend);
   if (side === 0) side = ny < -0.2 || (Math.abs(ny) <= 0.2 && nx > 0) ? 1 : -1;
+  // a straight arrow clearly off the middle of the drawing: its label on the outer side
+  if (bend === 0 && centre) {
+    const away = ((a.x + b.x) / 2 - centre.x) * nx + ((a.y + b.y) / 2 - centre.y) * ny;
+    if (Math.abs(away) > 20) side = away > 0 ? 1 : -1;
+    else {
+      // near the middle: the side further from the middles of the other arrows
+      const own = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      const room = (s: number) =>
+        Math.min(
+          Infinity,
+          ...middles
+            .filter((m) => Math.hypot(m.x - own.x, m.y - own.y) > 1)
+            .map((m) => Math.hypot(m.x - own.x - nx * s * 60, m.y - own.y - ny * s * 60)),
+        );
+      if (room(-side) > room(side) + 20) side = -side;
+    }
+  }
   const ox = nx * side;
   const oy = ny * side;
   const gap = 14;
   const lx = half.x + ox * gap;
   const ly = half.y + oy * gap + (oy > 0.3 ? FONT * 0.8 : oy < -0.3 ? 0 : FONT * 0.35);
-  return { path, head: head(tip, bend === 0 ? start : mid), lx, ly, anchor: anchorOf(ox), up: oy < -0.3 };
+  return {
+    path,
+    head: head(tip, bend === 0 ? start : mid),
+    lx,
+    ly,
+    anchor: anchorOf(ox),
+    up: oy < -0.3,
+  };
 }
 
 /** The point halfway along a quadratic curve. */
@@ -116,7 +176,10 @@ const quadHalf = (p0: P, c: P, p1: P): P => ({
 export function loop(s: P, degrees: number): Omit<Arrow, "key" | "from" | "to" | "parts"> {
   const rad = (degrees * Math.PI) / 180;
   const spread = (24 * Math.PI) / 180;
-  const on = (angle: number, dist: number) => ({ x: s.x + Math.cos(angle) * dist, y: s.y + Math.sin(angle) * dist });
+  const on = (angle: number, dist: number) => ({
+    x: s.x + Math.cos(angle) * dist,
+    y: s.y + Math.sin(angle) * dist,
+  });
   const start = on(rad - spread, R);
   const tip = on(rad + spread, R);
   const c1 = on(rad - spread * 1.6, R * 2.5);
@@ -277,5 +340,10 @@ export function startArrow(automat: Automat): { path: string; head: string; lx: 
   if (!s) return undefined;
   const from = { x: s.x - R - 64, y: s.y };
   const tip = { x: s.x - R, y: s.y };
-  return { path: `M${pt(from)} L${pt(tip)}`, head: head(tip, from), lx: from.x, ly: s.y - 10 };
+  return {
+    path: `M${pt(from)} L${pt(tip)}`,
+    head: head(tip, from),
+    lx: from.x,
+    ly: s.y - 10,
+  };
 }

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-// Editing a design (chapter entwerfen), shared by the exercise AutomatEntwurf and the display AutomatWerkstatt: 1 the
-// state cards to switch on or off (checkboxes), the start state (radio buttons), 2 one row per state and input with a
-// list of targets, 3 the diagram, drawn as the design grows (AutomatDiagramm), 4 the test sequences of the task, each
-// with a button that runs it and says where it ends, ✓ or ✗ beside it. No dragging; everything works with the keyboard.
+// Editing a design (chapter entwerfen), shared by the exercise AutomatEntwurf and the display AutomatWerkstatt, in the
+// four steps of the page: 1 the inputs (given by the task), 2 the state cards to switch on or off (checkboxes) and the
+// start state (radio buttons), 3 one row per state and input with a list of targets, and the diagram, drawn as the
+// design grows (AutomatDiagramm), 4 the test sequences of the task, each with a button that runs it and shows its way
+// step by step and where it ends, ✓ or ✗ beside it. With hints (the workshop), a ticked card that is no state says why.
+// No dragging; everything works with the keyboard.
 // Logic in AutomatEntwurf.ts. Written for lernapps/informatik-automaten (#500).
 import { computed, ref } from "vue";
 import AutomatDiagramm from "./AutomatDiagramm.vue";
@@ -13,7 +15,10 @@ const props = defineProps<{
   entwurf: Entwurf;
   /** A key that makes the ids of the fields unique on the page. */
   uid: string;
+  /** Whether a ticked card that is no state says why (the workshop, not the exercise). */
+  hints: boolean;
   labels: {
+    inputs: string;
     states: string;
     start: string;
     arrows: string;
@@ -25,6 +30,7 @@ const props = defineProps<{
     endsAt: string;
     startWord: string;
     hiddenNote: string;
+    empty: string;
   };
 }>();
 const emit = defineEmits<{ change: [Entwurf] }>();
@@ -34,12 +40,14 @@ const name = (id: string) =>
 
 const drawn = computed(() => automat(props.aufgabe, props.entwurf));
 const visible = computed(() => props.aufgabe.tests.filter((t) => !t.hidden));
-// the test played last: its end is shown in the diagram, each played test shows its end
+// the test played last: its end is shown in the diagram, each played test shows its way and its end
 const played = ref<Record<number, string>>({});
+const ways = ref<Record<number, string>>({});
 const lastEnd = ref("");
 
 function change(next: Entwurf): void {
   played.value = {};
+  ways.value = {};
   lastEnd.value = "";
   emit("change", next);
 }
@@ -48,6 +56,15 @@ function play(index: number): void {
   const test = visible.value[index];
   if (!test) return;
   const end = runEnd(props.entwurf, test.inputs);
+  // the way: the start, then each input and the state it leads to, until a row is empty
+  const parts = [props.entwurf.start === "" ? "–" : name(props.entwurf.start)];
+  let state = props.entwurf.start;
+  for (const input of test.inputs) {
+    if (state === "") break;
+    state = target(props.entwurf, state, input);
+    parts.push(`${name(input)} → ${state === "" ? "–" : name(state)}`);
+  }
+  ways.value = { ...ways.value, [index]: parts.join(" · ") };
   played.value = { ...played.value, [index]: end };
   lastEnd.value = end;
 }
@@ -57,6 +74,10 @@ const active = computed(() => props.entwurf.states.indexOf(lastEnd.value));
 
 <template>
   <div class="automat-editor">
+    <p class="automat-editor-inputs">
+      <strong>{{ labels.inputs }}</strong>
+      <span v-for="input in aufgabe.inputs" :key="input.id" class="automat-editor-input">{{ input.name }}</span>
+    </p>
     <fieldset class="automat-editor-cards">
       <legend>{{ labels.states }}</legend>
       <label v-for="card in aufgabe.cards" :key="card.id" class="automat-editor-card">
@@ -67,7 +88,15 @@ const active = computed(() => props.entwurf.states.indexOf(lastEnd.value));
         />
         {{ card.name }}
       </label>
+      <p
+        v-for="card in hints ? aufgabe.cards.filter((c) => c.art !== 'zustand' && entwurf.states.includes(c.id)) : []"
+        :key="`hint-${card.id}`"
+        class="automat-editor-hint"
+      >
+        {{ card.name }}: {{ card.warum }}
+      </p>
     </fieldset>
+    <p v-if="entwurf.states.length === 0" class="automat-editor-note">{{ labels.empty }}</p>
     <fieldset v-if="entwurf.states.length > 0" class="automat-editor-start">
       <legend>{{ labels.start }}</legend>
       <label v-for="state in entwurf.states" :key="state" class="automat-editor-card">
@@ -117,6 +146,7 @@ const active = computed(() => props.entwurf.states.indexOf(lastEnd.value));
             >{{ sequence(aufgabe, test.inputs) }} → {{ labels.expected }} <strong>{{ name(test.end) }}</strong></span
           >
           <button type="button" @click="play(i)">{{ labels.play }}</button>
+          <span v-if="ways[i]" class="automat-editor-way">{{ ways[i] }}</span>
           <span v-if="played[i] !== undefined" class="automat-editor-result" aria-live="polite">
             {{ labels.endsAt }} {{ played[i] === "" ? "–" : name(played[i] ?? "") }}
             <span :class="played[i] === test.end ? 'automat-editor-ok' : 'automat-editor-bad'">{{
@@ -239,6 +269,25 @@ const active = computed(() => props.entwurf.states.indexOf(lastEnd.value));
 .automat-editor-bad {
   color: var(--automat-bad);
   font-weight: bold;
+}
+
+.automat-editor-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+}
+
+.automat-editor-hint {
+  flex-basis: 100%;
+  margin: 0.25rem 0 0;
+  color: var(--page-muted);
+}
+
+.automat-editor-way {
+  display: block;
+  color: var(--page-muted);
+  font-size: 0.9em;
 }
 
 .automat-editor-note {
