@@ -43,11 +43,11 @@ Diese Seite ist eine Wiederholung: Sie wiederholt etwas, das das Kind schon kön
 
 Kurz wiederholt: das EVA-Prinzip, am Saftautomaten der 6b, und was es nicht sagt.
 
-Kannst du das schon? „Ich kann das EVA-Prinzip (Eingabe, Verarbeitung, Ausgabe) erklären und Geräte und Vorgänge den drei Phasen zuordnen.“ Die Klasse 6b plant für ihr Schulfest einen Saftautomaten aus einem Karton. So sieht er im EVA-Bild aus:
+Kannst du das schon? „Ich kann das EVA-Prinzip (Eingabe, Verarbeitung, Ausgabe) erklären und Geräte und Vorgänge den drei Phasen zuordnen.“ Die Klasse 6b plant für ihr Schulfest einen Saftautomaten aus einem Karton. Jona, Selin und Mia sind alle elf. Jona will im Karton sitzen und der Automat sein, Mia will kaufen, Selin schreibt alles auf. Ein Saft soll 2 € kosten. So sieht der Automat im EVA-Bild aus:
 
 Interaktiv: Das EVA-Bild des Saftautomaten: drei Kästen mit Pfeilen. Kasten E „Eingabe“ (blau): Münze einwerfen, Knopf drücken. Kasten V „Verarbeitung“ (grün): Jona prüft, ob das Geld reicht. Kasten A „Ausgabe“ (orange): Saft fällt heraus. An den Kasten Verarbeitung ist eine gestrichelte Schublade angehängt: „Speicher – hebt auf“, mit der Frage „Wie viel Geld ist schon drin?“.
 
-Das EVA-Bild zeigt den Weg von der Eingabe zur Ausgabe. Es sagt aber nicht, ob beim Knopf wirklich ein Saft kommt. Dafür muss Jona wissen, was schon passiert ist: wie viel Geld schon drin ist. Das EVA-Bild hat dafür nur die Schublade. Es zeigt nicht, wie sich das Gemerkte bei jeder Eingabe ändert. Um dieses Gedächtnis geht es auf den nächsten Seiten.
+Das EVA-Bild zeigt den Weg von der Eingabe zur Ausgabe. Es sagt aber nicht, ob beim Knopf wirklich ein Saft kommt. Dafür muss Jona wissen, was schon passiert ist: wie viel Geld schon drin ist. Das EVA-Bild hat dafür nur den Kasten „Speicher“. Es zeigt nicht, wie sich das Gemerkte bei jeder Eingabe ändert. Um dieses Gedächtnis geht es auf den nächsten Seiten.
 
 - Aufgabe `eva-was-fehlt` (unten)
 
@@ -56,9 +56,9 @@ Das EVA-Bild zeigt den Weg von der Eingabe zur Ausgabe. Es sagt aber nicht, ob b
 - Aufgabe: Mia drückt den Knopf. Was sagt dir das EVA-Bild darüber, ob ein Saft herauskommt?
 - Antwortformat: eine Antwort wählen
 - Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
-  - ✓ Es sagt nicht, ob Saft kommt. Das hängt davon ab, wie viel Geld schon drin ist. – Das EVA-Bild zeigt nur den Weg. Ob Saft kommt, hängt davon ab, was vorher eingeworfen wurde.
+  - ✓ Das hängt vom Geld ab, das schon drin ist. – Das EVA-Bild zeigt nur den Weg. Ob Saft kommt, hängt davon ab, was vorher eingeworfen wurde.
   - ✗ Es kommt immer ein Saft. – Ohne genug Geld gibt der Automat keinen Saft, auch wenn der Knopf gedrückt wird.
-  - ✗ Es kommt nie ein Saft. – Mit 2 € im Automaten bringt der Knopf einen Saft.
-- Lösung: Es sagt nicht, ob Saft kommt. Das hängt davon ab, wie viel Geld schon drin ist.
+  - ✗ Es kommt nie ein Saft. – Wenn genug Geld drin ist, bringt der Knopf einen Saft.
+- Lösung: Das hängt vom Geld ab, das schon drin ist.
 - Erklärung: Derselbe Knopf kann einmal Saft bringen und einmal nicht. Was den Unterschied macht, lernst du auf der nächsten Seite.
 - Link: [../?via=tutor#eva-was-fehlt](../?via=tutor#eva-was-fehlt)

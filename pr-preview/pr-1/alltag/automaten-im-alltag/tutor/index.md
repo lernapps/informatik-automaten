@@ -43,17 +43,17 @@ Ein Automat reagiert auf dieselbe Eingabe verschieden: Es hängt davon ab, was e
 
 ### Mias erster Saft
 
-Bild: Jona sitzt in einem Karton mit Münzschlitz, rotem Knopf und Ausgabefach. Links steht Mia mit einer Münze, rechts Selin mit einem Notizblock. Bildunterschrift: Der Saftautomat der 6b. Jona sitzt im Karton und ist der Automat.
+Bild: Jona sitzt in einem Karton mit Münzschlitz, rotem Knopf und Ausgabefach. Links steht Mia mit einer Münze, rechts Selin mit einem Notizblock. Bildunterschrift: Der Saftautomat der 6b. Jona sitzt im Karton und ist der Automat, Mia kauft, Selin schreibt mit.
 
-Schulfest der 6b. Die Klasse hat einen Saftautomaten aus einem Karton gebaut. Ein Saft kostet 2 €, der Automat nimmt nur 1-€-Münzen. Jona sitzt im Karton und ist der Automat. Mia wirft eine Münze ein und drückt den Knopf. Es kommt kein Saft. Auf dieser Seite findest du heraus, warum ein Automat auf denselben Knopf einmal so und einmal anders reagiert.
+Schulfest der 6b. Die Klasse hat einen Saftautomaten aus einem Karton gebaut. Ein Saft kostet 2 €, der Automat nimmt nur 1-€-Münzen. Jona sitzt im Karton und ist der Automat. Selin schreibt mit, was passiert. Mia wirft eine Münze ein und drückt den Knopf. Es kommt kein Saft. Auf dieser Seite findest du heraus, warum ein Automat auf denselben Knopf einmal so und einmal anders reagiert.
 
 - Aufgabe `kein-saft` (unten)
 
 ### Jona spielt den Automaten
 
-Hier spielst du Mia. Drück „Münze“ oder „Knopf“. Auf dem Zettel im Karton steht, was Jona sich gerade merkt. Im Fach unten erscheint, was herauskommt. Drück den Knopf einmal bei 1 € und einmal bei 2 €.
+Hier spielst du Mia. Drück „Münze“ oder „Knopf“. Auf dem Zettel im Karton steht, was Jona sich gerade merkt. Im Fach unten erscheint, was herauskommt. Drück den Knopf einmal bei 1 € und einmal bei 2 €. Wirf auch einmal eine dritte Münze ein.
 
-Interaktiv: Ein Karton-Saftautomat mit Jonas Zettel. Am Anfang steht darauf „0 € drin“. Was passiert: - Münze bei 0 € oder 1 €: Jona behält sie und merkt sich 1 € mehr. - Münze bei 2 €: Die Münze fällt wieder heraus. - Knopf bei 0 € oder 1 €: Nichts passiert. - Knopf bei 2 €: Ein Saft fällt heraus, danach merkt sich Jona „0 € drin“. Mit JavaScript drückst du selbst „Münze“ und „Knopf“.
+Interaktiv: Ein Karton-Saftautomat mit Jonas Zettel. Am Anfang steht darauf „0 € drin“. Was passiert: - Münze bei 0 € oder 1 €: Jona behält sie und merkt sich 1 € mehr. - Münze bei 2 €: Die Münze kommt zurück. - Knopf bei 0 € oder 1 €: Nichts passiert. - Knopf bei 2 €: Ein Saft fällt heraus, danach merkt sich Jona „0 € drin“. Mit JavaScript drückst du selbst „Münze“ und „Knopf“.
 
 ### Was sich der Automat merkt
 
@@ -76,7 +76,7 @@ Spielt den Saftautomaten zu zweit, ohne Computer:
 1. Eine Person ist der Automat. Sie hat einen Zettel, auf dem „0 € drin“ steht.
 2. Die andere Person kauft. Sie sagt „Münze“ oder „Knopf“.
 3. Der Automat schaut auf seinen Zettel, sagt, was herauskommt, und schreibt den neuen Betrag auf.
-4. Tauscht nach fünf Eingaben. Wer merkt sich falsch?
+4. Tauscht nach fünf Eingaben. Wem passiert ein Fehler?
 
 ### Übung
 
@@ -107,7 +107,7 @@ Gut gemacht: Du weißt jetzt, warum Mia beim ersten Mal keinen Saft bekam, und d
 
 ### Aufgabe immer-gleich
 
-- Aufgabe: Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich.“ Stimmt das?
+- Aufgabe: Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich, egal was er sich gemerkt hat.“ Stimmt das?
 - Antwortformat: „Stimmt“ oder „Stimmt nicht“ wählen
 - Lösung: Die Aussage stimmt nicht.
 - Erklärung: Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab. Nur im selben Zustand ist sie immer gleich.
@@ -127,12 +127,12 @@ Gut gemacht: Du weißt jetzt, warum Mia beim ersten Mal keinen Saft bekam, und d
 
 ```
 Nr. | s.jetzt | s.tut | s.grund | s.warum | Zur Wahl | Lösung | F1
-1 | 2 € drin | wirft eine Münze ein | Es ist schon genug Geld drin. Die Münze fällt wieder heraus, Jona merkt sich weiter „2 € drin“. | Mehr als 2 € braucht der Automat nie. Auf Jonas Zettel gibt es kein „3 € drin“. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Die Münze fällt wieder heraus. | Nichts kommt heraus, Jona merkt sich mehr Geld.
-2 | 1 € drin | drückt den Knopf | 1 € reicht nicht für einen Saft. Jona merkt sich weiter „1 € drin“. | Der Knopf allein reicht nicht. Jona schaut auf seinen Zettel: Erst 1 € ist drin, ein Saft kostet 2 €. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Nichts passiert. | Ein Saft fällt heraus.
-3 | 1 € drin | wirft eine Münze ein | Jona behält die Münze und schreibt „2 € drin“ auf seinen Zettel. Einen Saft gibt es erst beim Knopf. | Jetzt ist zwar genug Geld drin, aber den Saft gibt es erst, wenn Mia den Knopf drückt. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Nichts kommt heraus, Jona merkt sich mehr Geld. | Ein Saft fällt heraus.
-4 | 0 € drin | wirft eine Münze ein | Jona behält die Münze und schreibt „1 € drin“ auf seinen Zettel. | Der Automat ist leer. Er behält die Münze, denn ein Saft kostet 2 €. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Nichts kommt heraus, Jona merkt sich mehr Geld. | Die Münze fällt wieder heraus.
-5 | 0 € drin | drückt den Knopf | Ohne Geld gibt es keinen Saft. Jona merkt sich weiter „0 € drin“. | Der Knopf allein reicht nicht. Jona schaut auf seinen Zettel: Es ist noch gar kein Geld drin. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Nichts passiert. | Ein Saft fällt heraus.
-6 | 2 € drin | drückt den Knopf | 2 € reichen. Ein Saft fällt heraus, und Jona merkt sich danach „0 € drin“. | Schau auf Jonas Zettel: 2 € sind drin. Das reicht für einen Saft. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze fällt wieder heraus. | Ein Saft fällt heraus. | Nichts passiert.
+1 | 2 € drin | wirft eine Münze ein | Es ist schon genug Geld drin. Die Münze kommt zurück, Jona merkt sich weiter „2 € drin“. | Mehr als 2 € braucht der Automat nie. Auf Jonas Zettel gibt es kein „3 € drin“. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Die Münze kommt zurück. | Nichts kommt heraus, Jona merkt sich mehr Geld.
+2 | 1 € drin | drückt den Knopf | 1 € reicht nicht für einen Saft. Jona merkt sich weiter „1 € drin“. | Der Knopf allein reicht nicht. Jona schaut auf seinen Zettel: Erst 1 € ist drin, ein Saft kostet 2 €. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Nichts passiert. | Ein Saft fällt heraus.
+3 | 1 € drin | wirft eine Münze ein | Jona behält die Münze und schreibt „2 € drin“ auf seinen Zettel. Einen Saft gibt es erst beim Knopf. | Jetzt ist zwar genug Geld drin, aber den Saft gibt es erst, wenn Mia den Knopf drückt. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Nichts kommt heraus, Jona merkt sich mehr Geld. | Ein Saft fällt heraus.
+4 | 0 € drin | wirft eine Münze ein | Jona behält die Münze und schreibt „1 € drin“ auf seinen Zettel. | Der Automat ist leer. Er behält die Münze, denn ein Saft kostet 2 €. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Nichts kommt heraus, Jona merkt sich mehr Geld. | Die Münze kommt zurück.
+5 | 0 € drin | drückt den Knopf | Ohne Geld gibt es keinen Saft. Jona merkt sich weiter „0 € drin“. | Der Knopf allein reicht nicht. Jona schaut auf seinen Zettel: Es ist noch gar kein Geld drin. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Nichts passiert. | Ein Saft fällt heraus.
+6 | 2 € drin | drückt den Knopf | 2 € reichen. Ein Saft fällt heraus, und Jona merkt sich danach „0 € drin“. | Schau auf Jonas Zettel: 2 € sind drin. Das reicht für einen Saft. | Ein Saft fällt heraus.; Nichts passiert.; Nichts kommt heraus, Jona merkt sich mehr Geld.; Die Münze kommt zurück. | Ein Saft fällt heraus. | Nichts passiert.
 ```
 
 ### Aufgabe zettel-am-ende
@@ -152,41 +152,41 @@ Nr. | s.jetzt | s.tut | s.grund | s.warum | Zur Wahl | Lösung | F1
 
 ```
 Nr. | automat (verdeckt) | start | inputs | Lösung | F1 | F2 | F3
-1 | Saftautomat | 0 € drin | Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-2 | Saftautomat | 0 € drin | Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+1 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+2 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
 3 | Saftautomat | 0 € drin | Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-4 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-5 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-6 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
-7 | Saftautomat | 0 € drin | Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-8 | Saftautomat | 0 € drin | Münze, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
-9 | Saftautomat | 0 € drin | Münze, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-10 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-11 | Saftautomat | 0 € drin | Münze, Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-12 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-13 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-14 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-15 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-16 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-17 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Knopf, Münze | 1 € drin | 0 € drin | 0 € drin | 0 € drin
-18 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-19 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
-20 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-21 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-22 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-23 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
-24 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
-25 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-26 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-27 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-28 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
+4 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+5 | Saftautomat | 0 € drin | Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+6 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+7 | Saftautomat | 0 € drin | Münze, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
+8 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+9 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
+10 | Saftautomat | 0 € drin | Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+11 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
+12 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+13 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+14 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+15 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+16 | Saftautomat | 0 € drin | Knopf, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+17 | Saftautomat | 0 € drin | Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+18 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+19 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+20 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+21 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Knopf, Münze | 1 € drin | 0 € drin | 0 € drin | 0 € drin
+22 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+23 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+24 | Saftautomat | 0 € drin | Münze, Münze, Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+25 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+26 | Saftautomat | 0 € drin | Münze, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+27 | Saftautomat | 0 € drin | Münze, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
+28 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
 ```
 
 ### Aufgabe alltag-merken
 
 - Aufgabe: Auch andere Automaten im Alltag merken sich etwas. Was merkt sich welcher Automat?
 - Antwortformat: jedem Eintrag links den passenden rechts zuordnen
-- Lösung: Ampel – wer Grün hat und ob schon jemand gedrückt hat; Aufzug – in welchem Stockwerk er gerade ist; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Lampe mit Druckknopf – ob sie gerade an ist
+- Lösung: Fußgängerampel mit Knopf – wer Grün hat und ob schon jemand gedrückt hat; Aufzug – das Stockwerk, an dem man gerade einsteigen kann; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Lampe mit Druckknopf – ob das Licht an ist
 - Erklärung: Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf an der Lampe schaltet ein, wenn sie aus ist, und aus, wenn sie an ist. Bei der Ampel sieht man nicht alles: Ob jemand gedrückt hat, merkt sie sich, auch wenn die Autos noch Grün haben.
 - Link: [../?via=tutor#alltag-merken](../?via=tutor#alltag-merken)
 
@@ -198,7 +198,7 @@ Nr. | automat (verdeckt) | start | inputs | Lösung | F1 | F2 | F3
   - ✓ „1 € drin“ – Das merkt sich Jona auf seinem Zettel. Es bleibt so, bis die nächste Eingabe kommt.
   - ✗ „Münze einwerfen“ – Das ist eine Eingabe. Sie passiert in einem Moment und kann den Zustand ändern.
   - ✗ „Knopf drücken“ – Das ist eine Eingabe, wie die Münze. Was dann passiert, hängt vom Zustand ab.
-  - ✗ „Saft fällt heraus“ – Das ist eine Ausgabe. Sie kommt beim Sprung heraus, der Automat merkt sie sich nicht.
+  - ✗ „Saft fällt heraus“ – Das ist eine Ausgabe. Sie kommt heraus, wenn der Automat reagiert. Er merkt sie sich nicht.
 - Lösung: „1 € drin“
 - Erklärung: Ein Zustand ist, was der Automat sich merkt. Eingaben und Ausgaben passieren in einem Moment.
 - Link: [../?via=tutor#zustand-oder-eingabe](../?via=tutor#zustand-oder-eingabe)

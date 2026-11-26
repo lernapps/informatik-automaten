@@ -43,11 +43,11 @@ This page is a recap: it goes over something the child should already know, and 
 
 A short reminder: the IPO model, shown with class 6b's juice machine, and what it does not tell you.
 
-Can you do this already? “I can explain the IPO model (input, process, output) and sort devices and steps into its three stages.” Class 6b is planning a juice machine made from a cardboard box for their school fair. This is how it looks in the IPO picture:
+Can you do this already? “I can explain the IPO model (input, process, output) and sort devices and steps into its three stages.” Class 6b is planning a juice machine made from a cardboard box for their school fair. Jona, Selin and Mia are all eleven. Jona wants to sit in the box and be the machine, Mia wants to buy, and Selin writes everything down. A juice is going to cost €2. This is how the machine looks in the IPO picture:
 
-Interactive: The IPO picture of the juice machine: three boxes with arrows. Box I “Input” (blue): put in a coin, press the button. Box P “Process” (green): Jona checks whether there is enough money. Box O “Output” (orange): juice drops out. A dashed drawer is attached to the box Process: “storage – keeps”, with the question “How much money is inside already?”.
+Interactive: The IPO picture of the juice machine: three boxes with arrows. Box I “Input” (blue): put in a coin, press the button. Box P “Process” (green): Jona checks whether there is enough money. Box O “Output” (orange): juice drops out. A dashed drawer is attached to the box Process: “storage: keeps things”, with the question “How much money is inside already?”.
 
-The IPO picture shows the way from input to output. But it does not tell you whether a juice really comes out when you press the button. For that, Jona has to know what has happened before: how much money is inside already. The IPO picture only has the drawer for that. It does not show how what is kept changes with each input. The next pages are about this memory.
+The IPO picture shows the way from input to output. But it does not tell you whether a juice really comes out when you press the button. For that, Jona has to know what has happened before: how much money is inside already. The IPO picture only has the box “storage” for that. It does not show how what is kept changes with each input. The next pages are about this memory.
 
 - Exercise `eva-was-fehlt` (below)
 
@@ -56,9 +56,9 @@ The IPO picture shows the way from input to output. But it does not tell you whe
 - Task: Mia presses the button. What does the IPO picture tell you about whether a juice comes out?
 - Answer format: choose one answer
 - Choices (✓ right, ✗ wrong, with the app's message):
-  - ✓ It does not say whether juice comes out. That depends on how much money is inside already. – The IPO picture only shows the way. Whether juice comes out depends on what was put in before.
+  - ✓ It depends on the money already inside. – The IPO picture only shows the way. Whether juice comes out depends on what was put in before.
   - ✗ A juice always comes out. – Without enough money the machine gives no juice, even when the button is pressed.
-  - ✗ A juice never comes out. – With €2 paid the machine, the button brings a juice.
-- Solution: It does not say whether juice comes out. That depends on how much money is inside already.
+  - ✗ A juice never comes out. – When there is enough money inside, the button brings a juice.
+- Solution: It depends on the money already inside.
 - Explanation: The same button can bring a juice one time and nothing another time. What makes the difference is on the next page.
 - Link: [../?via=tutor#eva-was-fehlt](../?via=tutor#eva-was-fehlt)
