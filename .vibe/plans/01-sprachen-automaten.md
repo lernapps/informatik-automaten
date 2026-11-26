@@ -372,11 +372,12 @@ Ampelsteuerung als Fall).
 - [x] Simulator-Kern: Automat.ts, AutomatDiagramm, AutomatSimulator, AutomatAufgabe mit Tests und data/automaten.yaml; zeigt Kreise, Pfeile, Eingabe und Ausgabe am Pfeil, Startpfeil, Tastaturbedienung
 - [x] Musterseite alltag/zustandsdiagramm in de und en: Selins Tabelle, Diagramm des Saftautomaten im Simulator, Merke zu Lesefehlern, Spielstein-Anleitung, Übungen number, matching, AutomatAufgabe folge und pfeil, single-choice, true-false; zeigt das Seitenmuster und den Simulator
 <!-- tasks: pattern (2 added): the one page or screen that is the pattern for the others -->
-- [ ] **Checkpoint:** the pattern page. Load skill `lernapps-learner-check` and do its learner check on the page. Fix
+- [x] **Checkpoint:** the pattern page. Load skill `lernapps-learner-check` and do its learner check on the page. Fix
       what it finds. Then show the creator the page and ask whether the others may follow it. Stop and wait. A
       change: change the pattern first.
-- [ ] Seite alltag/automaten-im-alltag (de, en): Bild schulfest mit Klasse 6b, Simulator Ansicht kasten, Definition Zustand, Spielanleitung, generated aus saft-situationen, AutomatAufgabe folge, matching Alltagsautomaten, true-false; zeigt Reaktion abhängig von Eingabe und Zustand
-- [ ] Seite alltag/das-brauchst-du (de, en): recap eva-prinzip mit EvaBild (Kopie aus #490) am Saftautomaten und einer Frage; zeigt, was dem EVA-Bild fehlt
+      Creator: Ja, die beiden übrigen Seiten folgen diesem Muster. Grün aktiver Zustand, Blau Eingabe, Orange Ausgabe festgelegt. 360 px: mindestens 12 px. Zweiter Lernenden-Check vor Veröffentlichen mit der Musterseite.
+- [x] Seite alltag/automaten-im-alltag (de, en): Bild schulfest mit Klasse 6b, Simulator Ansicht kasten, Definition Zustand, Spielanleitung, generated aus saft-situationen, AutomatAufgabe folge, matching Alltagsautomaten, true-false; zeigt Reaktion abhängig von Eingabe und Zustand
+- [x] Seite alltag/das-brauchst-du (de, en): recap eva-prinzip mit EvaBild (Kopie aus #490) am Saftautomaten und einer Frage; zeigt, was dem EVA-Bild fehlt
 <!-- tasks: pages (2 added): the other pages or screens, after the pattern -->
 - [ ] Update the content guide so that it describes the app as built (`app-content-matches`).
 - [ ] Run `npx --no -- lernapps check` until it passes.
