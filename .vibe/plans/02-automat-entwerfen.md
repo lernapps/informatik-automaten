@@ -290,7 +290,7 @@ nach dem geprüften Entwurf – Rückblick vom Saftautomaten der 6b bis zur Ampe
 
 - [x] If pages or exercises changed, load skill `lernapps-explainer-self-assessment` and update the self-assessment
       as it says. Commit.
-- [ ] Load skill `lernapps-github`. Push the branch, open the preview pull request and see its checks to green, as it
+- [x] Load skill `lernapps-github`. Push the branch, open the preview pull request and see its checks to green, as it
       says.
 - [ ] **Checkpoint:** publish. Show what the increment adds and the preview link. Ask whether it may go online. Stop
       and wait for the yes.
