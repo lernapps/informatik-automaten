@@ -37,9 +37,9 @@
       warum:
         de: Die Autos fahren, niemand wartet.
         en: The cars drive and nobody is waiting.
-      x: 0
-      y: 0
-      loop: 0
+      x: 110
+      y: 250
+      loop: 135
     - id: wartet
       name:
         de: jemand wartet
@@ -48,9 +48,9 @@
       warum:
         de: Die Autos haben noch Grün, aber die Ampel hat sich den Knopf gemerkt.
         en: The cars still have green, but the lights have remembered the button.
-      x: 0
-      y: 0
-      loop: 0
+      x: 200
+      y: 70
+      loop: -120
     - id: gelb
       name:
         de: Autos gelb
@@ -59,9 +59,9 @@
       warum:
         de: Die Autos sollen anhalten.
         en: The cars should stop.
-      x: 0
-      y: 0
-      loop: 0
+      x: 430
+      y: 70
+      loop: -60
     - id: gehen
       name:
         de: Grün zum Gehen
@@ -70,8 +70,8 @@
       warum:
         de: Die Fußgänger dürfen gehen.
         en: People on foot may cross.
-      x: 0
-      y: 0
+      x: 520
+      y: 250
       loop: 0
     - id: rotgelb
       name:
@@ -81,9 +81,9 @@
       warum:
         de: Die Autos dürfen gleich wieder fahren.
         en: The cars may drive again soon.
-      x: 0
-      y: 0
-      loop: 0
+      x: 380
+      y: 400
+      loop: 90
     - id: druecken
       name:
         de: Knopf drücken
@@ -207,9 +207,9 @@
       warum:
         de: Niemand kommt durch.
         en: Nobody can get through.
-      x: 0
-      y: 0
-      loop: 0
+      x: 170
+      y: 160
+      loop: -90
     - id: offen
       name:
         de: Schranke offen
@@ -218,9 +218,9 @@
       warum:
         de: Ein Auto darf durchfahren.
         en: One car may drive through.
-      x: 0
-      y: 0
-      loop: 0
+      x: 430
+      y: 160
+      loop: -90
     - id: hebt
       name:
         de: Schranke geht hoch

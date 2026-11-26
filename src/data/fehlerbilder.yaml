@@ -1,0 +1,89 @@
+# Entwürfe mit einem Fehler, als Bild gezeichnet von AutomatBild auf der Seite entwerfen/entwurf-testen. Form wie
+# automaten.yaml, ohne Texte und Ausgaben; Zustände und Eingaben heißen mit ihrer Stelle in der Liste, ab 0.
+# 0 Mias Bedarfsampel: der Pfeil „jemand wartet – Zeit um“ führt zurück zu „Autos grün“ (ein Pfeil falsch).
+# 1 Drehkreuz A: bei „frei“ fehlt der Pfeil für „Chip“ (nicht vollständig).
+# 2 Drehkreuz B: aus „gesperrt“ gehen zwei Pfeile mit „Chip“ (nicht eindeutig).
+- nr: 0
+  name:
+    de: Mias Entwurf der Bedarfsampel
+    en: Mia's design of the crossing
+  start: 0
+  states:
+    - name: { de: Autos grün, en: cars green }
+      x: 110
+      y: 250
+      loop: 135
+    - name: { de: jemand wartet, en: someone waiting }
+      x: 200
+      y: 70
+      loop: -120
+    - name: { de: Autos gelb, en: cars amber }
+      x: 430
+      y: 70
+      loop: -60
+    - name: { de: Grün zum Gehen, en: green man }
+      x: 520
+      y: 250
+      loop: 0
+    - name: { de: Autos rot-gelb, en: cars red and amber }
+      x: 380
+      y: 400
+      loop: 90
+  inputs:
+    - name: { de: Knopf, en: button }
+    - name: { de: Zeit um, en: time up }
+  transitions:
+    - { from: 0, input: 0, to: 1, bend: 0 }
+    - { from: 0, input: 1, to: 0, bend: 0 }
+    - { from: 1, input: 0, to: 1, bend: 0 }
+    - { from: 1, input: 1, to: 0, bend: 0 }
+    - { from: 2, input: 0, to: 2, bend: 0 }
+    - { from: 2, input: 1, to: 3, bend: 0 }
+    - { from: 3, input: 0, to: 3, bend: 0 }
+    - { from: 3, input: 1, to: 4, bend: 0 }
+    - { from: 4, input: 0, to: 4, bend: 0 }
+    - { from: 4, input: 1, to: 0, bend: 0 }
+- nr: 1
+  name:
+    de: Drehkreuz, Entwurf A
+    en: Turnstile, design A
+  start: 0
+  states:
+    - name: { de: gesperrt, en: locked }
+      x: 170
+      y: 160
+      loop: -90
+    - name: { de: frei, en: open }
+      x: 430
+      y: 160
+      loop: -90
+  inputs:
+    - name: { de: Chip, en: token }
+    - name: { de: drücken, en: push }
+  transitions:
+    - { from: 0, input: 0, to: 1, bend: 0 }
+    - { from: 0, input: 1, to: 0, bend: 0 }
+    - { from: 1, input: 1, to: 0, bend: 0 }
+- nr: 2
+  name:
+    de: Drehkreuz, Entwurf B
+    en: Turnstile, design B
+  start: 0
+  states:
+    - name: { de: gesperrt, en: locked }
+      x: 170
+      y: 160
+      loop: -90
+    - name: { de: frei, en: open }
+      x: 430
+      y: 160
+      loop: -90
+  inputs:
+    - name: { de: Chip, en: token }
+    - name: { de: drücken, en: push }
+  transitions:
+    - { from: 0, input: 0, to: 1, bend: 0 }
+    - { from: 0, input: 0, to: 0, bend: 0 }
+    - { from: 0, input: 1, to: 0, bend: 0 }
+    - { from: 1, input: 0, to: 1, bend: 0 }
+    - { from: 1, input: 1, to: 0, bend: 0 }

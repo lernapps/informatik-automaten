@@ -236,6 +236,8 @@ export function wrong(task: Task): Entwurf {
  * which would make the tutor page too long.
  */
 export function mistakes(task: Task, _props?: Props): (Entwurf | undefined)[] {
+  // verbessern: the design given, left as it is
+  if (task.start.states.length > 0) return [undefined, undefined, check(task, task.start) ? undefined : task.start];
   const changed = generate(1, {
     aufgaben: [task.aufgabe],
     use: [task.aufgabe.id],
@@ -357,9 +359,11 @@ export function listing(entwurf: Entwurf, aufgabe: Aufgabe, lang: string): strin
 export function show(answer: Answer, task: Task, _props?: Props, _lang?: string): string {
   if (answer === undefined) return "–";
   const a = task.aufgabe;
-  // short, one part per state: "Start A · A: x → B, y → A · B: …"; a state without arrows has "–"
+  // short, one part per state: "Start A · A: x → B, y ↺ · B: …"; ↺ stays in the state, a state without arrows has "–"
   const parts = answer.states.map((state) => {
-    const rows = answer.arrows.filter((r) => r.from === state).map((r) => `${name(a, r.input)} → ${name(a, r.to)}`);
+    const rows = answer.arrows
+      .filter((r) => r.from === state)
+      .map((r) => (r.to === state ? `${name(a, r.input)} ↺` : `${name(a, r.input)} → ${name(a, r.to)}`));
     return `${name(a, state)}: ${rows.length > 0 ? rows.join(", ") : "–"}`;
   });
   const start = answer.start === "" ? "–" : name(a, answer.start);
@@ -404,8 +408,8 @@ export const about = {
     en: "The learners design an automaton for a task (pedestrian crossing, car park barrier, combination lock, phone lock): from cards they choose the states (some cards are inputs or outputs), the start state and for each state and each input the target. They can play the visible test sequences. Then they press “Check”, which also tests hidden sequences.",
   },
   answer: {
-    de: "Ein Entwurf: gewählte Zustände, Startzustand, je Zustand und Eingabe ein Ziel.",
-    en: "A design: chosen states, start state, a target for each state and input.",
+    de: "Ein Entwurf: gewählte Zustände, Startzustand, je Zustand und Eingabe ein Ziel. In der Tabelle: je Zustand seine Pfeile, „↺“ heißt, der Pfeil führt zurück zum selben Zustand.",
+    en: "A design: chosen states, start state, a target for each state and input. In the table: each state with its arrows; “↺” means the arrow leads back to the same state.",
   },
   correct: {
     de: "Richtig ist jeder Entwurf ohne Eingabe- oder Ausgabe-Karte, mit dem Startzustand der Aufgabe, vollständig, bei dem alle Testfolgen (auch die verdeckten) im erwarteten Zustand enden. Es gibt mehrere richtige Entwürfe.",

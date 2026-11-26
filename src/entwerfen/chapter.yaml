@@ -5,4 +5,4 @@ title:
 summary:
   de: Die 9b entwirft die Steuerung einer Bedarfsampel als Automaten, testet sie mit Eingabefolgen und verbessert Entwürfe.
   en: Class 9b designs the control of a pedestrian crossing as an automaton, tests it with input sequences and improves designs.
-pages: [ampel-entwerfen]
+pages: [ampel-entwerfen, entwurf-testen]

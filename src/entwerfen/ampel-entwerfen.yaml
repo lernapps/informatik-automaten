@@ -19,8 +19,11 @@ blocks:
             Vor der Schule kommt eine Bedarfsampel. Die Technik-AG der 9b baut ein Modell davon, das ein kleiner Computer steuert. Dabei sind Jona, Selin und Mia, alle 14. Bevor sie programmieren, schreiben sie im Gruppenchat:
 
             **Selin:** Erst der Plan, dann der Code. Was muss sich die Ampel merken?
+
             **Jona:** Welche Farbe gerade leuchtet. Mehr nicht.
+
             **Mia:** Und ob jemand gedrückt hat! Die Autos haben dann noch Grün, aber die Ampel weiß es schon.
+
             **Selin:** Dann entwerfen wir sie als Automaten, wie damals unseren Saftautomaten in der 6.
 
             Auf dieser Seite entwirfst du selbst einen Automaten und testest ihn. Wie man ein Zustandsdiagramm liest, steht auf der Seite [Zustandsdiagramm](/alltag/zustandsdiagramm/).
@@ -28,8 +31,11 @@ blocks:
             A pedestrian crossing with a button is coming outside the school. The tech club of class 9b builds a model of it, controlled by a small computer. Jona, Selin and Mia, all 14, are in it. Before they write any code, they chat in their group:
 
             **Selin:** Plan first, code second. What do the lights have to remember?
+
             **Jona:** Which colour is on. Nothing else.
+
             **Mia:** And whether someone has pressed! The cars still have green then, but the lights already know.
+
             **Selin:** Then we design them as an automaton, like our juice machine back in year 6.
 
             On this page you design an automaton yourself and test it. How to read a state diagram is on the page [State diagrams](/alltag/zustandsdiagramm/).

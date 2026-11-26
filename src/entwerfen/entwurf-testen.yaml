@@ -1,0 +1,385 @@
+# yaml-language-server: $schema=../../node_modules/@lernapps/app-templates/runtime/explainer/explainer.v2.schema.json
+title:
+  de: Entwürfe testen und verbessern
+  en: Testing and improving designs
+description:
+  de: "Drei Fehlerarten in Entwürfen erkennen: Pfeil fehlt, zwei Pfeile mit derselben Eingabe, Pfeil führt falsch. Mit guten Testfolgen finden und verbessern."
+  en: "Spot three kinds of mistakes in designs: an arrow missing, two arrows with the same input, an arrow wrong. Find them with good test sequences and fix them."
+competencies: [automat-entwerfen]
+blocks:
+  - type: section
+    id: einstieg
+    title:
+      de: Mias Entwurf im Test
+      en: Testing Mia's design
+    blocks:
+      - type: text
+        text:
+          de: |-
+            Mia hat die Bedarfsampel entworfen. Jona testet ihren Entwurf und schreibt in den Gruppenchat:
+
+            **Mia:** Ich hab „Zeit um, Zeit um“ getestet. Endet bei „Autos grün“, wie es soll. Fertig!
+
+            **Jona:** Ich hab „Knopf, Zeit um, Zeit um“ gespielt. Soll bei „Grün zum Gehen“ enden. Endet bei „Autos grün“.
+
+            **Selin:** Dann warten die Leute am Knopf für immer.
+
+            **Mia:** Mist. Ich hab nur getestet, was ohne Knopf passiert.
+          en: |-
+            Mia has designed the crossing. Jona tests her design and writes in the group chat:
+
+            **Mia:** I tested “time up, time up”. It ends at “cars green”, as it should. Done!
+
+            **Jona:** I played “button, time up, time up”. It should end at “green man”. It ends at “cars green”.
+
+            **Selin:** Then the people at the button wait forever.
+
+            **Mia:** Oh no. I only tested what happens without the button.
+      - type: vue-component
+        component: AutomatBild
+        props:
+          bilder: { data: fehlerbilder }
+          bild: 0
+          startWord: { de: Start, en: Start }
+        nojs:
+          de: |-
+            Mias Entwurf der Bedarfsampel. Start bei „Autos grün“. Die Pfeile:
+
+            - Autos grün – Knopf → jemand wartet
+            - Autos grün – Zeit um → Autos grün
+            - jemand wartet – Knopf → jemand wartet
+            - jemand wartet – Zeit um → Autos grün
+            - Autos gelb – Knopf → Autos gelb
+            - Autos gelb – Zeit um → Grün zum Gehen
+            - Grün zum Gehen – Knopf → Grün zum Gehen
+            - Grün zum Gehen – Zeit um → Autos rot-gelb
+            - Autos rot-gelb – Knopf → Autos rot-gelb
+            - Autos rot-gelb – Zeit um → Autos grün
+          en: |-
+            Mia's design of the crossing. Start at “cars green”. The arrows:
+
+            - cars green – button → someone waiting
+            - cars green – time up → cars green
+            - someone waiting – button → someone waiting
+            - someone waiting – time up → cars green
+            - cars amber – button → cars amber
+            - cars amber – time up → green man
+            - green man – button → green man
+            - green man – time up → cars red and amber
+            - cars red and amber – button → cars red and amber
+            - cars red and amber – time up → cars green
+      - type: single-choice
+        id: warum-nicht-gefunden
+        text:
+          de: Warum hat Mias Testfolge „Zeit um, Zeit um“ den Fehler nicht gefunden?
+          en: Why did Mia's test sequence “time up, time up” not find the mistake?
+        options:
+          - text:
+              {
+                de: Ihre Folge läuft nie über den Pfeil nach dem Knopf. Genau der ist falsch.,
+                en: Her sequence never passes the arrow after the button. That is the wrong one.,
+              }
+            correct: true
+            info:
+              de: "Ohne „Knopf“ bleibt die Ampel bei „Autos grün“. Den Pfeil „jemand wartet – Zeit um“ benutzt die Folge nie."
+              en: "Without “button” the lights stay at “cars green”. The sequence never uses the arrow “someone waiting – time up”."
+          - text: { de: Ihre Folge war zu kurz., en: Her sequence was too short. }
+            correct: false
+            info:
+              de: "Länge allein hilft nicht: Auch zehnmal „Zeit um“ bleibt bei „Autos grün“. Es kommt darauf an, über welche Pfeile eine Folge läuft."
+              en: "Length alone does not help: ten times “time up” still stays at “cars green”. What matters is which arrows a sequence passes."
+          - text: { de: Testfolgen können keine Fehler finden., en: Test sequences cannot find mistakes. }
+            correct: false
+            info:
+              de: Jonas Testfolge hat den Fehler gefunden.
+              en: Jona's test sequence found the mistake.
+        explanation:
+          de: Eine Testfolge prüft nur die Pfeile, über die sie läuft. Mias Folge hat den Knopf nie benutzt.
+          en: A test sequence only checks the arrows it passes. Mia's sequence never used the button.
+  - type: section
+    id: idee
+    title:
+      de: Drei Fehlerarten
+      en: Three kinds of mistakes
+    blocks:
+      - type: text
+        text:
+          de: |-
+            Ein Entwurf kann auf drei Arten falsch sein.
+
+            **1. Ein Pfeil fehlt.** Der Automat ist nicht vollständig: In einem Zustand weiß er bei einer Eingabe nicht, was er tun soll. Im Drehkreuz A fehlt bei „frei“ der Pfeil für „Chip“.
+          en: |-
+            A design can be wrong in three ways.
+
+            **1. An arrow is missing.** The automaton is not complete: in one state it does not know what to do with one input. In turnstile A the arrow for “token” is missing at “open”.
+      - type: vue-component
+        component: AutomatBild
+        props:
+          bilder: { data: fehlerbilder }
+          bild: 1
+          startWord: { de: Start, en: Start }
+        nojs:
+          de: |-
+            Drehkreuz, Entwurf A. Start bei „gesperrt“. Die Pfeile:
+
+            - gesperrt – Chip → frei
+            - gesperrt – drücken → gesperrt
+            - frei – drücken → gesperrt
+
+            Bei „frei“ fehlt der Pfeil für „Chip“.
+          en: |-
+            Turnstile, design A. Start at “locked”. The arrows:
+
+            - locked – token → open
+            - locked – push → locked
+            - open – push → locked
+
+            At “open” the arrow for “token” is missing.
+      - type: text
+        text:
+          de: |-
+            **2. Zwei Pfeile mit derselben Eingabe.** Im Drehkreuz B gehen aus „gesperrt“ zwei Pfeile mit „Chip“: einer zu „frei“, einer zurück zu „gesperrt“. Was soll der Automat tun? Das ist nicht eindeutig.
+          en: |-
+            **2. Two arrows with the same input.** In turnstile B two arrows with “token” leave “locked”: one to “open”, one back to “locked”. What should the automaton do? That is not deterministic.
+      - type: vue-component
+        component: AutomatBild
+        props:
+          bilder: { data: fehlerbilder }
+          bild: 2
+          startWord: { de: Start, en: Start }
+        nojs:
+          de: |-
+            Drehkreuz, Entwurf B. Start bei „gesperrt“. Die Pfeile:
+
+            - gesperrt – Chip → frei
+            - gesperrt – Chip → gesperrt
+            - gesperrt – drücken → gesperrt
+            - frei – Chip → frei
+            - frei – drücken → gesperrt
+
+            Aus „gesperrt“ gehen zwei Pfeile mit „Chip“.
+          en: |-
+            Turnstile, design B. Start at “locked”. The arrows:
+
+            - locked – token → open
+            - locked – token → locked
+            - locked – push → locked
+            - open – token → open
+            - open – push → locked
+
+            Two arrows with “token” leave “locked”.
+      - type: definition
+        term:
+          de: eindeutig
+          en: deterministic
+        explanation:
+          de: Ein Automat ist eindeutig, wenn jeder Zustand für jede Eingabe höchstens einen Pfeil hat. Das Fachwort dafür ist deterministisch.
+          en: An automaton is deterministic when every state has at most one arrow for every input. In German it is also called “eindeutig” (unambiguous).
+      - type: text
+        text:
+          de: |-
+            **3. Ein Pfeil führt falsch.** Der Automat ist vollständig und eindeutig, tut aber nicht, was die Aufgabe will. Das zeigt nur eine Testfolge, die über diesen Pfeil läuft, wie Jonas Folge bei Mias Ampel.
+
+            Ist ein Automat vollständig und eindeutig, hat jeder Zustand für jede Eingabe genau einen Pfeil. Er hat also so viele Pfeile wie Zustände mal Eingaben. **Gute Testfolgen** laufen zusammen über jeden dieser Pfeile, nicht nur über den Normalfall.
+          en: |-
+            **3. An arrow is wrong.** The automaton is complete and deterministic, but does not do what the task wants. Only a test sequence that passes this arrow shows it, like Jona's sequence for Mia's lights.
+
+            If an automaton is complete and deterministic, every state has exactly one arrow for every input. So it has as many arrows as states times inputs. **Good test sequences** pass all of these arrows between them, not just the usual case.
+  - type: section
+    id: uebung
+    title:
+      de: Übung
+      en: Practice
+    blocks:
+      - type: generated
+        id: pfeile-zaehlen
+        given:
+          n: { int: [2, 6] }
+          m: { int: [2, 4] }
+        where: ["n != m"]
+        task:
+          text:
+            de: "Die 9b entwirft einen Automaten mit {{n}} Zuständen und {{m}} Eingaben. Er soll vollständig und eindeutig sein. Wie viele Pfeile hat er?"
+            en: "Class 9b designs an automaton with {{n}} states and {{m}} inputs. It should be complete and deterministic. How many arrows does it have?"
+        answer: { value: "n * m", compare: { number: { format: integer } } }
+        mistakes:
+          - value: "n + m"
+            message:
+              de: "Du hast addiert. Aber jeder der {{n}} Zustände braucht für jede der {{m}} Eingaben einen eigenen Pfeil."
+              en: "You added. But each of the {{n}} states needs an arrow of its own for each of the {{m}} inputs."
+          - value: "n"
+            message:
+              de: "Das wäre ein Pfeil je Zustand. Jeder Zustand braucht aber für jede Eingabe einen Pfeil."
+              en: "That would be one arrow per state. But every state needs an arrow for every input."
+          - value: "m"
+            message:
+              de: "Das wäre ein Pfeil je Eingabe. Jeder Zustand braucht aber für jede Eingabe einen eigenen Pfeil."
+              en: "That would be one arrow per input. But every state needs an arrow of its own for every input."
+        hint:
+          de: "Denk an den Entwurf auf der Seite davor: Für jeden Zustand gibt es eine Zeile je Eingabe."
+          en: "Think of the design on the page before: for every state there is one row per input."
+        steps:
+          - de: "Jeder Zustand hat für jede Eingabe genau einen Pfeil: {{n}} Zustände mal {{m}} Eingaben."
+            en: "Every state has exactly one arrow for every input: {{n}} states times {{m}} inputs."
+          - de: "{{n}} · {{m}} = {{answer}} Pfeile"
+            en: "{{n}} × {{m}} = {{answer}} arrows"
+      - type: vue-component
+        id: falscher-pfeil
+        component: AutomatAufgabe
+        props:
+          automata: { data: automaten }
+          use: [0, 2, 3, 4]
+          mode: fehler
+          view: diagramm
+          task:
+            de: "{automat}, Start bei „{start}“: Die Testfolge {inputs} soll bei „{expected}“ enden. Im Diagramm endet sie bei „{actual}“. Ein Pfeil ist falsch gezeichnet. Welcher?"
+            en: "{automat}, start at “{start}”: the test sequence {inputs} should end at “{expected}”. In the diagram it ends at “{actual}”. One arrow is drawn wrong. Which one?"
+          startWord: { de: Start, en: Start }
+          chooseLabel: { de: Pfeile, en: Arrows }
+          outputWord: { de: Ausgabe, en: output }
+          mistakes:
+            - de: "Über diesen Pfeil läuft die Testfolge gar nicht. Fang bei „{start}“ an und folge den Eingaben {inputs}."
+              en: "The test sequence does not pass this arrow at all. Start at “{start}” and follow the inputs {inputs}."
+            - de: "Über diesen Pfeil läuft die Testfolge, aber er ist richtig. Geh ihren Weg Schritt für Schritt und frag bei jedem Pfeil: Tut der Automat das wirklich?"
+              en: "The test sequence passes this arrow, but it is right. Follow its way step by step and ask at every arrow: does the automaton really do this?"
+          other:
+            de: "Fang bei „{start}“ an und folge den Eingaben {inputs} Pfeil für Pfeil."
+            en: "Start at “{start}” and follow the inputs {inputs} arrow by arrow."
+        examples:
+          accepted:
+            - { seed: 1, answer: 0 }
+          rejected:
+            - { seed: 1, answer: 1 }
+            - { seed: 1, answer: 2 }
+      - type: vue-component
+        id: entwurf-verbessern
+        component: AutomatEntwurf
+        props:
+          aufgaben: { data: entwuerfe }
+          use: [ampel, schranke, schloss, handy]
+          mode: verbessern
+          intro:
+            de: "In diesem Entwurf führt ein Pfeil falsch. Spiel die Testfolgen ab, such die Zeile und ändere sie. Dann drück „Prüfen“. „Prüfen“ testet noch weitere Folgen, die du hier nicht siehst."
+            en: "In this design one arrow is wrong. Play the test sequences, find the row and change it. Then press “Check”. “Check” tests more sequences that you cannot see here."
+          labels:
+            inputs: { de: "Schritt 1 – Eingaben (stehen in der Aufgabe):", en: "Step 1 – inputs (given by the task):" }
+            states:
+              {
+                de: "Schritt 2 – Zustände finden: Was muss sich der Automat merken?",
+                en: "Step 2 – find the states: what does the automaton have to remember?",
+              }
+            start: { de: Startzustand, en: Start state }
+            arrows:
+              {
+                de: "Schritt 3 – Übergänge festlegen: für jeden Zustand jede Eingabe",
+                en: "Step 3 – set the transitions: every input for every state",
+              }
+            choose: { de: "– bitte wählen –", en: "– please choose –" }
+            diagram: { de: Diagramm, en: Diagram }
+            tests: { de: Schritt 4 – Testen, en: Step 4 – test }
+            play: { de: abspielen, en: play }
+            expected: { de: "soll:", en: "should be:" }
+            endsAt: { de: "endet bei:", en: "ends at:" }
+            startWord: { de: Start, en: Start }
+            empty:
+              {
+                de: "Wähl zuerst Zustände. Dann erscheinen Startzustand, Übergänge und Diagramm.",
+                en: "Choose states first. Then the start state, the transitions and the diagram appear.",
+              }
+            hiddenNote: { de: "„Prüfen“ testet noch weitere Folgen.", en: "“Check” tests more sequences." }
+          noStates:
+            de: "Ändere zuerst den falschen Pfeil: Spiel die Testfolgen ab und such die Zeile. Hast du Karten abgewählt, wähl die Zustände wieder."
+            en: "First change the wrong arrow: play the test sequences and find the row. If you unticked cards, tick the states again."
+          noStart:
+            de: Du hast Zustände gewählt, aber keinen Startzustand. Womit fängt der Automat laut Aufgabe an?
+            en: You have chosen states, but no start state. Where does the automaton begin, according to the task?
+          wrongStart:
+            de: "Der Automat fängt nicht bei „{start}“ an. Lies den ersten Satz der Aufgabe noch einmal."
+            en: "The automaton does not begin at “{start}”. Read the first sentence of the task again."
+          incomplete:
+            de: "Jetzt ist der Entwurf nicht mehr vollständig: Bei „{state}“ fehlt das Ziel für „{input}“."
+            en: "Now the design is no longer complete: at “{state}” the target for “{input}” is missing."
+          testFails:
+            de: "Die Testfolge {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Spiel sie ab: Bei welchem Schritt geht sie in die falsche Richtung?"
+            en: "The test sequence {inputs} ends at “{actual}”, but should end at “{expected}”. Play it: at which step does it go the wrong way?"
+          hiddenFails:
+            de: "Eine weitere Testfolge scheitert: {inputs} endet bei „{actual}“, soll aber bei „{expected}“ enden. Hast du einen richtigen Pfeil geändert?"
+            en: "Another test sequence fails: {inputs} ends at “{actual}”, but should end at “{expected}”. Did you change a right arrow?"
+        examples:
+          accepted:
+            - seed: 1
+              answer:
+                states: [blockiert, gesperrt, entsperrt, einmal]
+                start: gesperrt
+                arrows:
+                  - { from: gesperrt, input: richtig, to: entsperrt }
+                  - { from: gesperrt, input: falsch, to: einmal }
+                  - { from: einmal, input: richtig, to: entsperrt }
+                  - { from: einmal, input: falsch, to: blockiert }
+                  - { from: blockiert, input: richtig, to: blockiert }
+                  - { from: blockiert, input: falsch, to: blockiert }
+                  - { from: entsperrt, input: richtig, to: entsperrt }
+                  - { from: entsperrt, input: falsch, to: entsperrt }
+          rejected:
+            - seed: 1
+              answer:
+                states: [blockiert, gesperrt, entsperrt, einmal]
+                start: gesperrt
+                arrows:
+                  - { from: gesperrt, input: richtig, to: entsperrt }
+                  - { from: gesperrt, input: falsch, to: einmal }
+                  - { from: einmal, input: richtig, to: entsperrt }
+                  - { from: einmal, input: falsch, to: einmal }
+                  - { from: blockiert, input: richtig, to: blockiert }
+                  - { from: blockiert, input: falsch, to: blockiert }
+                  - { from: entsperrt, input: richtig, to: entsperrt }
+                  - { from: entsperrt, input: falsch, to: entsperrt }
+      - type: matching
+        id: fehlerarten
+        text:
+          de: Welcher Fehler steckt in welchem Entwurf?
+          en: Which mistake is in which design?
+        pairs:
+          - left:
+              { de: "Bei „offen“ gibt es keinen Pfeil für „Ticket“.", en: "At “open” there is no arrow for “ticket”." }
+            right: { de: nicht vollständig, en: not complete }
+          - left: { de: "Aus „zu“ gehen zwei Pfeile mit „2“.", en: "Two arrows with “2” leave “locked”." }
+            right: { de: nicht eindeutig, en: not deterministic }
+          - left:
+              {
+                de: "Alle Zeilen haben genau ein Ziel, aber „Code falsch, Code falsch“ endet bei „gesperrt“.",
+                en: "Every row has exactly one target, but “wrong code, wrong code” ends at “locked”.",
+              }
+            right: { de: ein Pfeil führt falsch, en: an arrow is wrong }
+        explanation:
+          de: "Fehlt ein Pfeil, ist der Automat nicht vollständig. Zwei Pfeile mit derselben Eingabe aus einem Zustand: nicht eindeutig. Endet eine Testfolge falsch, obwohl alles vollständig und eindeutig ist, führt ein Pfeil falsch."
+          en: "If an arrow is missing, the automaton is not complete. Two arrows with the same input from one state: not deterministic. If a test sequence ends wrong although everything is complete and deterministic, an arrow is wrong."
+      - type: true-false
+        id: alle-tests-gruen
+        text:
+          de: "Selin sagt: „Alle unsere Testfolgen enden richtig. Also ist der Entwurf sicher fehlerfrei.“ Stimmt das?"
+          en: "Selin says: “All our test sequences end right. So the design is surely free of mistakes.” Is that true?"
+        answer: false
+        explanation:
+          de: "Testfolgen prüfen nur die Pfeile, über die sie laufen. Läuft keine Folge über einen falschen Pfeil, bleibt er unentdeckt. Darum sollen die Testfolgen zusammen über jeden Pfeil laufen."
+          en: "Test sequences only check the arrows they pass. If no sequence passes a wrong arrow, it stays hidden. That is why the test sequences between them should pass every arrow."
+  - type: section
+    id: rueckblick
+    title:
+      de: Rückblick
+      en: Looking back
+    blocks:
+      - type: text
+        text:
+          de: >-
+            Mia hat den Pfeil „jemand wartet – Zeit um“ auf „Autos gelb“ gesetzt. Jetzt besteht ihr Entwurf alle
+            Testfolgen, und die Technik-AG programmiert die Ampel danach. Vom Saftautomaten der 6b bis zur Ampel der 9b
+            gilt dasselbe: Ein Automat merkt sich einen Zustand, und jede Eingabe führt über einen Pfeil zum nächsten. Du
+            kannst jetzt einen Automaten in vier Schritten entwerfen, prüfen, ob er vollständig und eindeutig ist, und
+            ihn mit guten Testfolgen testen.
+          en: >-
+            Mia has set the arrow “someone waiting – time up” to “cars amber”. Now her design passes all test sequences,
+            and the tech club programs the lights from it. From class 6b's juice machine to class 9b's lights the same
+            holds: an automaton remembers a state, and every input leads along an arrow to the next one. You can now
+            design an automaton in four steps, check whether it is complete and deterministic, and test it with good
+            test sequences.

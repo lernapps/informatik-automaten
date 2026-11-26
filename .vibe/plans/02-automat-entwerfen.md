@@ -4,11 +4,11 @@
 # Archetype, as in the app's first plan. Allowed values: explainer, interactive, quiz.
 archetype: explainer
 # Current phase. Allowed values: explore, plan, code, commit.
-phase: code
+phase: commit
 # prePushFailures: failed pre-push runs of this increment, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
-failedChecks: { checks-pass: 1 }
+failedChecks: { checks-pass: 3 }
 ---
 
 # Increment: automat-entwerfen
@@ -51,6 +51,10 @@ Eingabe, falscher Übergang) und verbessern sie.
   `AutomatEntwurf` dieselbe Bearbeitung (`AutomatEditor.vue`) und dasselbe Modell teilt; `AutomatSimulator` bekommt
   nur die Ansicht `bild`. Grund: andere Props (eine Entwurfsaufgabe statt eines fertigen Automaten); das Modell bleibt
   `Automat.ts`.
+- Fehlerbilder als eigene Anzeige-Komponente `AutomatBild` mit Daten `fehlerbilder.yaml` statt einer Ansicht `bild`
+  im Simulator (guess): Ein Bild hat keine Knöpfe und darf unvollständig oder nicht eindeutig sein, das Modell des
+  Simulators nicht. `AutomatAufgabe` `fehler` zieht nur Aufgaben, bei denen genau ein Pfeil die Folge repariert.
+- Verbessern meldet vor der ersten Änderung keine Antwort (Laufzeitregel); „Prüfen“ fordert dann zum Ändern auf.
 - Geschichte: Klasse 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b) als Chat (Textblock mit Zeilen
   „**Selin:** …“), ein realer Fall statt gezeichneter Kinder.
 
@@ -265,14 +269,15 @@ nach dem geprüften Entwurf – Rückblick vom Saftautomaten der 6b bis zur Ampe
 - [x] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
 - [x] Slice 1 (ich, kein Subagent; gemeinsame Komponenten): Entwurfs-Komponenten (AutomatEntwurf.ts/.vue mit Tests, Simulator-Ansicht entwerfen, Daten entwuerfe.yaml) und Musterseite entwerfen/ampel-entwerfen (de, en): Chat der 9b, vier Schritte, Simulator entwerfen, Definitionen vollständig/eindeutig/Testfolge, Übungen
-- [ ] Slice 2 (ich, kein Subagent; nutzt dieselben Komponenten): Seite entwerfen/entwurf-testen (de, en): drei Fehlerarten mit Bildern, Testfolgen wählen, AutomatAufgabe Modus fehler, AutomatEntwurf Modus verbessern, generated Zeilen zählen
+- [x] Slice 2 (ich, kein Subagent; nutzt dieselben Komponenten): Seite entwerfen/entwurf-testen (de, en): drei Fehlerarten mit Bildern, Testfolgen wählen, AutomatAufgabe Modus fehler, AutomatEntwurf Modus verbessern, generated Zeilen zählen
 <!-- tasks: slices (2 added): one per competency, as written in Plan -->
-- [ ] **Checkpoint:** the pattern page, after the first slice. A slice in a pattern the app already has: show it to
+- [x] **Checkpoint:** the pattern page, after the first slice. A slice in a pattern the app already has: show it to
       the creator and go on. A new pattern: load skill `lernapps-learner-check`, do its learner check, fix what it
       finds, then ask the creator whether the others may follow it, and wait.
-- [ ] Update the content guide so that it describes the app as it is now (`app-content-matches`).
-- [ ] Run `npx --no -- lernapps check` until it passes.
-- [ ] Look at every changed screen, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
+      Creator: Ja, Seite 2 entwurf-testen folgt diesem Muster. Die verdeckten Testfolgen und die eigene Meldung bei leerer Auswahl sind gut umgesetzt.
+- [x] Update the content guide so that it describes the app as it is now (`app-content-matches`).
+- [x] Run `npx --no -- lernapps check` until it passes.
+- [x] Look at every changed screen, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
 
 ## Commit
 
