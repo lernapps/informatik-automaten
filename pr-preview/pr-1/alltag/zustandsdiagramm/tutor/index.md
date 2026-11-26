@@ -153,7 +153,7 @@ Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne
 ```
 Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
 1 | Saftautomat | 0 € drin | Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
-2 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+2 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Zeit um | Autos grün | Grün zum Gehen | wartet | –
 3 | Saftautomat | 0 € drin | Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
 4 | Aufzug mit drei Stockwerken | unten | runter, runter, hoch, hoch | oben | Mitte | unten | unten
 5 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen | gesperrt | frei | frei | –
@@ -170,12 +170,12 @@ Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
 16 | Aufzug mit drei Stockwerken | unten | hoch, hoch, runter, runter, hoch | Mitte | unten | – | unten
 17 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
 18 | Saftautomat | 0 € drin | Münze, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
-19 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
-20 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um | Fußgänger grün | wartet | wartet | Autos grün
+19 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Grün zum Gehen | wartet | –
+20 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um | Grün zum Gehen | wartet | wartet | Autos grün
 21 | Aufzug mit drei Stockwerken | unten | runter, hoch, runter, hoch | Mitte | unten | unten | unten
 22 | Drehkreuz am Schwimmbad | gesperrt | Chip, Durchgehen, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
 23 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch, runter, hoch | Mitte | unten | unten | unten
-24 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Knopf, Knopf, Zeit um | Autos grün | Fußgänger grün | wartet | –
+24 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Knopf, Knopf, Zeit um | Autos grün | Grün zum Gehen | wartet | –
 25 | Aufzug mit drei Stockwerken | unten | hoch, hoch, hoch, hoch, runter | Mitte | oben | – | unten
 26 | Aufzug mit drei Stockwerken | unten | hoch, hoch, runter, hoch | oben | Mitte | unten | unten
 27 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
@@ -184,19 +184,19 @@ Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
 30 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
 31 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
 32 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Durchgehen | gesperrt | frei | frei | –
-33 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | – | Autos grün
+33 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Knopf, Zeit um | Grün zum Gehen | wartet | – | Autos grün
 34 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
 35 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Durchgehen, Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
 36 | Saftautomat | 0 € drin | Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-37 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Fußgänger grün | Fußgänger grün | –
-38 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+37 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Grün zum Gehen | Grün zum Gehen | –
+38 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Zeit um | Autos grün | Grün zum Gehen | wartet | –
 39 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Chip, Durchgehen | gesperrt | frei | frei | –
 40 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch, runter | unten | Mitte | Mitte | –
 41 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
 42 | Aufzug mit drei Stockwerken | unten | runter, hoch, runter | unten | Mitte | Mitte | –
 43 | Aufzug mit drei Stockwerken | unten | hoch, hoch, hoch, runter, hoch | oben | Mitte | unten | unten
 44 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
-45 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+45 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Grün zum Gehen | wartet | –
 46 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
 47 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
 48 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
@@ -207,15 +207,15 @@ Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
 53 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
 54 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
 55 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, hoch, runter | Mitte | oben | – | unten
-56 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Fußgänger grün | wartet | –
+56 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Grün zum Gehen | wartet | –
 57 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, runter, hoch | oben | Mitte | unten | unten
 58 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch | oben | Mitte | unten | unten
 59 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, runter, runter | unten | Mitte | oben | –
-60 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | wartet | Autos grün
+60 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Knopf, Zeit um | Grün zum Gehen | wartet | wartet | Autos grün
 61 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
 62 | Aufzug mit drei Stockwerken | unten | runter, runter, hoch, runter | unten | Mitte | oben | –
 63 | Aufzug mit drei Stockwerken | unten | hoch, runter, runter, runter, hoch | Mitte | unten | – | unten
-64 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | – | Autos grün
+64 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Knopf, Zeit um | Grün zum Gehen | wartet | – | Autos grün
 65 | Aufzug mit drei Stockwerken | unten | hoch, runter, runter, hoch | Mitte | unten | – | unten
 66 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch | Mitte | unten | unten | unten
 67 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
@@ -243,7 +243,7 @@ Nr. | automat | text | from | input | Lösung | F4 | F5
 3 | Aufzug mit drei Stockwerken | Der Aufzug steht in der Mitte. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten. | Mitte | runter | unten | Mitte | –
 4 | Aufzug mit drei Stockwerken | Der Aufzug steht in der Mitte. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben. | Mitte | hoch | oben | Mitte | –
 5 | Drehkreuz am Schwimmbad | Das Drehkreuz ist gesperrt. Du steckst einen Chip hinein. Nun lässt es sich drehen. | gesperrt | Chip | frei | gesperrt | –
-6 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Die Zeit ist um. Die Fußgänger bekommen Rot, und die Autos fahren los. | Fußgänger grün | Zeit um | Autos grün | Fußgänger grün | –
+6 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Die Zeit ist um. Die Fußgänger bekommen Rot, und die Autos fahren los. | Grün zum Gehen | Zeit um | Autos grün | Grün zum Gehen | –
 7 | Flurlicht mit Knopf | Im Flur ist es dunkel. Du drückst den Knopf an der Wand. Danach kannst du im Flur gut sehen. | aus | Knopf | an | aus | –
 8 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz unten. Jemand drückt „runter“. Tiefer gibt es kein Stockwerk. | unten | runter | unten | – | Mitte
 9 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz oben. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten. | oben | runter | Mitte | oben | –
@@ -256,10 +256,10 @@ Nr. | automat | text | from | input | Lösung | F4 | F5
 16 | Saftautomat | Eine Münze ist im Automaten. Du wirfst noch eine ein. Auch sie bleibt im Automaten. | 1 € drin | Münze | 2 € drin | 1 € drin | –
 17 | Saftautomat | Der Automat ist leer. Du drückst den Knopf. Es kommt kein Saft heraus. | 0 € drin | Knopf | 0 € drin | – | 1 € drin
 18 | Saftautomat | Eine Münze ist im Automaten. Du drückst den Knopf. Es kommt kein Saft, und die Münze bleibt drin. | 1 € drin | Knopf | 1 € drin | – | 0 € drin
-19 | Fußgängerampel mit Knopf | Das Wartesignal leuchtet. Die Zeit ist um. Die Autos halten an, und die Kinder dürfen gehen. | wartet | Zeit um | Fußgänger grün | wartet | –
+19 | Fußgängerampel mit Knopf | Das Wartesignal leuchtet. Die Zeit ist um. Die Autos halten an, und die Kinder dürfen gehen. | wartet | Zeit um | Grün zum Gehen | wartet | –
 20 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz unten. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben. | unten | hoch | Mitte | unten | –
 21 | Drehkreuz am Schwimmbad | Du hast bezahlt und gehst durch. Das nächste Kind kann nicht einfach hinterher. | frei | Durchgehen | gesperrt | frei | –
-22 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Die Kinder gehen weiter über die Straße. | Fußgänger grün | Knopf | Fußgänger grün | – | Autos grün
+22 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Die Kinder gehen weiter über die Straße. | Grün zum Gehen | Knopf | Grün zum Gehen | – | Autos grün
 23 | Fußgängerampel mit Knopf | Das Wartesignal leuchtet schon. Ein Kind drückt noch einmal. Die Autos fahren noch. | wartet | Knopf | wartet | – | Autos grün
 24 | Saftautomat | Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die zwei Münzen hat der Automat für den Saft behalten. | 2 € drin | Knopf | 0 € drin | 2 € drin | –
 ```
