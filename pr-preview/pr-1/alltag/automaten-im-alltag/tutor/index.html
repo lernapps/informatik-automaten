@@ -57,7 +57,7 @@
 <p>Hier spielst du Mia. Drück „Münze“ oder „Knopf“. Auf dem Zettel im Karton steht, was Jona sich gerade merkt. Im Fach unten erscheint, was herauskommt. Drück den Knopf einmal bei 1 € und einmal bei 2 €.</p>
 <p>Interaktiv: Ein Karton-Saftautomat mit Jonas Zettel. Am Anfang steht darauf „0 € drin“. Was passiert: - Münze bei 0 € oder 1 €: Jona behält sie und merkt sich 1 € mehr. - Münze bei 2 €: Die Münze fällt wieder heraus. - Knopf bei 0 € oder 1 €: Nichts passiert. - Knopf bei 2 €: Ein Saft fällt heraus, danach merkt sich Jona „0 € drin“. Mit JavaScript drückst du selbst „Münze“ und „Knopf“.</p>
 <h3>Was sich der Automat merkt</h3>
-<p>Zweimal derselbe Knopf: einmal kommt nichts, einmal ein Saft. Der Unterschied steht auf Jonas Zettel. Ein Gerät nach dem EVA-Prinzip macht aus einer Eingabe eine Ausgabe. Ein <strong>Automat</strong> merkt sich dazu etwas. Was er sich gerade merkt, heißt sein <strong>Zustand</strong>. Bei einer Eingabe kann sich der Zustand ändern: Nach einer Münze steht auf dem Zettel 1 € mehr.</p>
+<p>Zweimal derselbe Knopf: einmal kommt nichts, einmal ein Saft. Der Unterschied steht auf Jonas Zettel. Das EVA-Bild zeigt, was hineinkommt und was herauskommt. Schaust du das Gerät als <strong>Automat</strong> an, zählt auch, was es sich gerade merkt. Das heißt sein <strong>Zustand</strong>. Bei einer Eingabe kann sich der Zustand ändern: Nach einer Münze steht auf dem Zettel 1 € mehr.</p>
 <ul>
 <li><p><strong>Automat</strong>: Ein Automat reagiert auf Eingaben und merkt sich dabei etwas. Was er tut, hängt von der Eingabe und von dem ab, was er sich gemerkt hat.</p>
 </li>
@@ -65,7 +65,7 @@
 </li>
 </ul>
 <p><strong>Merke: Merke</strong></p>
-<p>Was ein Automat tut, hängt von zwei Dingen ab, von der Eingabe und von seinem Zustand.</p>
+<p>Was ein Automat tut, hängt von zwei Dingen ab, von der Eingabe und von seinem Zustand. Im selben Zustand reagiert er auf dieselbe Eingabe immer gleich.</p>
 <ul>
 <li>Aufgabe <code>immer-gleich</code> (unten)</li>
 </ul>
@@ -84,6 +84,8 @@
 <li><p>Aufgabe <code>zettel-am-ende</code> (unten)</p>
 </li>
 <li><p>Aufgabe <code>alltag-merken</code> (unten)</p>
+</li>
+<li><p>Aufgabe <code>zustand-oder-eingabe</code> (unten)</p>
 </li>
 </ul>
 <h3>Wie geht es weiter?</h3>
@@ -108,7 +110,7 @@
 <li>Aufgabe: Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich.“ Stimmt das?</li>
 <li>Antwortformat: „Stimmt“ oder „Stimmt nicht“ wählen</li>
 <li>Lösung: Die Aussage stimmt nicht.</li>
-<li>Erklärung: Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab.</li>
+<li>Erklärung: Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab. Nur im selben Zustand ist sie immer gleich.</li>
 <li>Link: <a href="../?via=tutor#immer-gleich">../?via=tutor#immer-gleich</a></li>
 </ul>
 <h3>Aufgabe was-passiert</h3>
@@ -186,9 +188,24 @@
 <ul>
 <li>Aufgabe: Auch andere Automaten im Alltag merken sich etwas. Was merkt sich welcher Automat?</li>
 <li>Antwortformat: jedem Eintrag links den passenden rechts zuordnen</li>
-<li>Lösung: Ampel – welche Farbe gerade leuchtet; Aufzug – in welchem Stockwerk er gerade ist; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Flurlicht mit Knopf – ob das Licht gerade an ist</li>
-<li>Erklärung: Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf am Flurlicht schaltet ein, wenn es aus ist, und aus, wenn es an ist.</li>
+<li>Lösung: Ampel – wer Grün hat und ob schon jemand gedrückt hat; Aufzug – in welchem Stockwerk er gerade ist; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Lampe mit Druckknopf – ob sie gerade an ist</li>
+<li>Erklärung: Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf an der Lampe schaltet ein, wenn sie aus ist, und aus, wenn sie an ist. Bei der Ampel sieht man nicht alles: Ob jemand gedrückt hat, merkt sie sich, auch wenn die Autos noch Grün haben.</li>
 <li>Link: <a href="../?via=tutor#alltag-merken">../?via=tutor#alltag-merken</a></li>
+</ul>
+<h3>Aufgabe zustand-oder-eingabe</h3>
+<ul>
+<li>Aufgabe: Selin schreibt Karten für das Spiel: „Münze einwerfen“, „1 € drin“, „Knopf drücken“, „Saft fällt heraus“. Welche Karte nennt einen Zustand?</li>
+<li>Antwortformat: eine Antwort wählen</li>
+<li>Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):<ul>
+<li>✓ „1 € drin“ – Das merkt sich Jona auf seinem Zettel. Es bleibt so, bis die nächste Eingabe kommt.</li>
+<li>✗ „Münze einwerfen“ – Das ist eine Eingabe. Sie passiert in einem Moment und kann den Zustand ändern.</li>
+<li>✗ „Knopf drücken“ – Das ist eine Eingabe, wie die Münze. Was dann passiert, hängt vom Zustand ab.</li>
+<li>✗ „Saft fällt heraus“ – Das ist eine Ausgabe. Sie kommt beim Sprung heraus, der Automat merkt sie sich nicht.</li>
+</ul>
+</li>
+<li>Lösung: „1 € drin“</li>
+<li>Erklärung: Ein Zustand ist, was der Automat sich merkt. Eingaben und Ausgaben passieren in einem Moment.</li>
+<li>Link: <a href="../?via=tutor#zustand-oder-eingabe">../?via=tutor#zustand-oder-eingabe</a></li>
 </ul>
 </main>
 </body>

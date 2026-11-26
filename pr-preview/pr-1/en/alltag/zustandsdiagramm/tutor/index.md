@@ -49,32 +49,32 @@ Jona has been the juice machine for a long time. Now he needs a break. Who takes
 
 ### From the plan to the diagram
 
-Selin's plan as a table: where does the machine jump in which state with which input? What comes out?:
-- Now | Input | After
-- €0 in | coin | €1 in
-- €0 in | button | €0 in
-- €1 in | coin | €2 in
-- €1 in | button | €1 in
-- €2 in | coin | €2 in, output: money comes back
-- €2 in | button | €0 in, output: juice drops out
+Selin's plan as a table: where does the machine jump in which state with which input, and what comes out on the way?:
+- Now | Input / output | After
+- €0 paid | coin | €1 paid
+- €0 paid | button | €0 paid
+- €1 paid | coin | €2 paid
+- €1 paid | button | €1 paid
+- €2 paid | coin / coin comes back | €2 paid
+- €2 paid | button / juice drops out | €0 paid
 
-The table is right, but it is long. So Selin draws it as a picture: each state becomes a circle. Each row becomes an arrow from the “Now” circle to the “After” circle. The input is written next to the arrow in blue. If something comes out, the output follows after a slash in orange. An arrow with the word “Start” points to the circle where the machine begins. Below you can try out Selin's picture.
+The table is right, but it is long. So Selin draws it as a picture: each state becomes a circle. Each row becomes an arrow from the “Now” circle to the “After” circle. As in the table, the input is written next to the arrow in blue and the output after the slash in orange. An arrow with the word “Start” points to the circle where the machine begins. Below you can try out Selin's picture.
 
 - **state diagram**: A state diagram (also called a state transition diagram) shows all states of a machine as circles and all transitions as arrows, with their input and output.
 
-- **transition**: A transition is the jump from one state to the next when there is an input. In the diagram it is an arrow.
+- **transition**: A transition is the jump from one state to a state when there is an input. It can be the same state. In the diagram it is an arrow.
 
 - **start state**: The start state is the state a machine begins in. In the diagram, the arrow marked “Start” points to it.
 
 ### Try it out
 
-Interactive: The simulator shows Selin's state diagram of the juice machine. Three circles: “€0 in” (start state), “€1 in” and “€2 in”. The arrows: - €0 in – coin → €1 in - €0 in – button → €0 in - €1 in – coin → €2 in - €1 in – button → €1 in - €2 in – coin → €2 in (output: money comes back) - €2 in – button → €0 in (output: juice drops out) With JavaScript you press the inputs “coin” and “button” and watch the machine jump.
+Interactive: The simulator shows Selin's state diagram of the juice machine. Three circles: “€0 paid” (start state), “€1 paid” and “€2 paid”. The arrows: - €0 paid – coin → €1 paid - €0 paid – button → €0 paid - €1 paid – coin → €2 paid - €1 paid – button → €1 paid - €2 paid – coin → €2 paid (output: coin comes back) - €2 paid – button → €0 paid (output: juice drops out) With JavaScript you press the inputs “coin” and “button” and watch the machine jump.
 
 - Exercise `saft-bekommen` (below)
 
 **Remember: Remember**
 
-- Every state needs an arrow for every input. If the state does not change, the arrow goes back to the same circle, even when something comes out.
+- In our plans every state gets an arrow for every input. If the state does not change, the arrow goes back to the same circle, even when something comes out.
 - The machine always jumps to the head of the arrow.
 
 ### Play by the plan
@@ -88,7 +88,7 @@ Play the machine in pairs by Selin's plan, without a computer:
 
 ### Practice
 
-Selin has drawn more plans: for the hall light with a button, the turnstile at the swimming pool (first put in a token, then push through), the lift and the pedestrian crossing. At the crossing, “time up” is an input too: the lights get it when their waiting time is over.
+Selin has drawn more plans: for the lamp with a push button, the turnstile at the swimming pool (first put in a token, then push), the lift and the pedestrian crossing. At the crossing, “time up” is an input too: the lights get it when a phase of the lights is over.
 
 - Exercise `diagramm-teile` (below)
 
@@ -100,7 +100,7 @@ Selin has drawn more plans: for the hall light with a button, the turnstile at t
 
 ### Looking back
 
-Done: Selin's plan now hangs on the box, and Mia plays the machine without a mistake. You can read a state diagram and add missing arrows: circles are states, arrows are transitions, and next to each arrow are its input and output. In year 9 or 10 you will design a whole machine yourself, for example the traffic lights at a crossroads.
+Done: Selin's plan now hangs on the box, and Mia plays the machine without a mistake. You can read a state diagram and add missing arrows: circles are states, arrows are transitions, and next to each arrow are its input and output. In a few years you will design a whole machine yourself, for example the traffic lights at a crossroads.
 
 ### Exercise zustaende-zaehlen
 
@@ -110,7 +110,7 @@ Done: Selin's plan now hangs on the box, and Mia plays the machine without a mis
 - Explanation: Jona only remembers the money: €0, €1 or €2. Those are three states.
 - The app's hint: What can Jona have written on his note? Count the amounts of money.
 - Typical mistakes and what the app says:
-  - 2: Did you forget the empty machine? “€0 in” is a state too.
+  - 2: Did you forget the empty machine? “€0 paid” is a state too.
   - 4: There is never more than €2 inside: a third coin comes back.
 - Link: [../?via=tutor#zustaende-zaehlen](../?via=tutor#zustaende-zaehlen)
 
@@ -119,19 +119,19 @@ Done: Selin's plan now hangs on the box, and Mia plays the machine without a mis
 - Task: Press “coin” and “button” in the simulator. The green circle shows the state now, the thick green arrow the last jump. With which inputs do you get a juice from the empty machine?
 - Answer format: choose one answer
 - Choices (✓ right, ✗ wrong, with the app's message):
-  - ✓ coin, coin, button – After two coins the machine is at “€2 in”. From there the arrow “button” gives the output “juice drops out”.
-  - ✗ coin, button – After one coin the machine is at “€1 in”. From there the arrow “button” goes back to the same circle, with no output.
+  - ✓ coin, coin, button – After two coins the machine is at “€2 paid”. From there the arrow “button” gives the output “juice drops out”.
+  - ✗ coin, button – After one coin the machine is at “€1 paid”. From there the arrow “button” goes back to the same circle, with no output.
   - ✗ button, coin, coin – The button at the beginning does nothing, because the machine is empty. At the end €2 is inside, but nobody presses the button any more.
   - ✗ coin, button, coin – When you press the button only €1 is inside, which is not enough. After that €2 is inside, but there is no more button press.
 - Solution: coin, coin, button
-- Explanation: Follow the arrows from the start. A juice only comes with the arrow from “€2 in” with the input “button”.
+- Explanation: Follow the arrows from the start. A juice only comes with the arrow from “€2 paid” with the input “button”.
 - Link: [../?via=tutor#saft-bekommen](../?via=tutor#saft-bekommen)
 
 ### Exercise diagramm-teile
 
 - Task: What does each part of a state diagram mean?
 - Answer format: match each item on the left with one on the right
-- Solution: a circle – a state; an arrow from circle to circle – a transition; the blue word next to an arrow – the input; the orange text after the slash – the output; the circle that “Start” points to – the start state
+- Solution: a circle – a state; an arrow – a transition; the blue word next to an arrow – the input; the orange text after the slash – the output; the circle that “Start” points to – the start state
 - Explanation: Circles are what the machine can remember. Arrows are the jumps. Next to an arrow comes first what goes in, then what comes out.
 - Link: [../?via=tutor#diagramm-teile](../?via=tutor#diagramm-teile)
 
@@ -152,60 +152,60 @@ Done: Selin's plan now hangs on the box, and Mia plays the machine without a mis
 
 ```
 No. | automat | start | inputs | Solution | F1 | F2 | F3
-1 | Juice machine | €0 in | coin, coin, button | €0 in | €2 in | €2 in | –
+1 | Juice machine | €0 paid | coin, coin, button | €0 paid | €2 paid | €2 paid | –
 2 | Pedestrian crossing with a button | green for cars | button, button, time up, time up | green for cars | green man | waiting | –
-3 | Juice machine | €0 in | button, button, coin | €1 in | €0 in | – | €0 in
+3 | Juice machine | €0 paid | button, button, coin | €1 paid | €0 paid | – | €0 paid
 4 | Lift with three floors | bottom | down, down, up, up | top | middle | bottom | bottom
-5 | Turnstile at the swimming pool | locked | push, token, push | locked | open | open | –
-6 | Turnstile at the swimming pool | locked | push, push, token | open | locked | locked | locked
+5 | Turnstile at the swimming pool | locked | push, token, push | locked | – | – | –
+6 | Turnstile at the swimming pool | locked | push, push, token | open | – | – | –
 7 | Pedestrian crossing with a button | green for cars | time up, button, time up, time up, button | waiting | green for cars | green for cars | green for cars
-8 | Hall light with a button | off | button, button, button, button | off | on | – | –
+8 | Lamp with a push button | off | button, button, button, button | off | – | – | –
 9 | Lift with three floors | bottom | up, down, up, up | top | middle | bottom | bottom
 10 | Lift with three floors | bottom | up, up, down | middle | top | – | bottom
 11 | Lift with three floors | bottom | down, up, down, up, up | top | middle | bottom | bottom
-12 | Turnstile at the swimming pool | locked | token, push, token | open | locked | locked | locked
-13 | Hall light with a button | off | button, button, button | on | off | – | off
-14 | Hall light with a button | off | button, button, button, button, button | on | off | – | off
-15 | Juice machine | €0 in | button, button, coin, button, coin | €2 in | €1 in | €0 in | €0 in
+12 | Turnstile at the swimming pool | locked | token, push, token | open | – | – | –
+13 | Lamp with a push button | off | button, button, button | on | – | – | –
+14 | Lamp with a push button | off | button, button, button, button, button | on | – | – | –
+15 | Juice machine | €0 paid | button, button, coin, button, coin | €2 paid | €1 paid | €0 paid | €0 paid
 16 | Lift with three floors | bottom | up, up, down, down, up | middle | bottom | – | bottom
 17 | Pedestrian crossing with a button | green for cars | button, button, time up, time up, button | waiting | green for cars | green for cars | green for cars
-18 | Juice machine | €0 in | coin, button, coin | €2 in | €1 in | €1 in | €0 in
+18 | Juice machine | €0 paid | coin, button, coin | €2 paid | €1 paid | €1 paid | €0 paid
 19 | Pedestrian crossing with a button | green for cars | time up, button, time up, time up | green for cars | green man | waiting | –
 20 | Pedestrian crossing with a button | green for cars | time up, button, time up | green man | waiting | waiting | green for cars
 21 | Lift with three floors | bottom | down, up, down, up | middle | bottom | bottom | bottom
-22 | Turnstile at the swimming pool | locked | token, push, token, token, push | locked | open | open | –
+22 | Turnstile at the swimming pool | locked | token, push, token, token, push | locked | – | – | –
 23 | Lift with three floors | bottom | up, down, up, down, up | middle | bottom | bottom | bottom
 24 | Pedestrian crossing with a button | green for cars | button, time up, button, button, time up | green for cars | green man | waiting | –
 25 | Lift with three floors | bottom | up, up, up, up, down | middle | top | – | bottom
 26 | Lift with three floors | bottom | up, up, down, up | top | middle | bottom | bottom
-27 | Turnstile at the swimming pool | locked | push, token, push, token | open | locked | locked | locked
-28 | Turnstile at the swimming pool | locked | token, push, push, push, token | open | locked | locked | locked
+27 | Turnstile at the swimming pool | locked | push, token, push, token | open | – | – | –
+28 | Turnstile at the swimming pool | locked | token, push, push, push, token | open | – | – | –
 29 | Lift with three floors | bottom | down, down, down, up, down | bottom | middle | top | –
-30 | Juice machine | €0 in | button, coin, coin, button, coin | €1 in | €0 in | – | €0 in
-31 | Juice machine | €0 in | button, coin, button, coin | €2 in | €1 in | €0 in | €0 in
-32 | Turnstile at the swimming pool | locked | token, token, push | locked | open | open | –
+30 | Juice machine | €0 paid | button, coin, coin, button, coin | €1 paid | €0 paid | – | €0 paid
+31 | Juice machine | €0 paid | button, coin, button, coin | €2 paid | €1 paid | €0 paid | €0 paid
+32 | Turnstile at the swimming pool | locked | token, token, push | locked | – | – | –
 33 | Pedestrian crossing with a button | green for cars | button, button, button, time up | green man | waiting | – | green for cars
-34 | Juice machine | €0 in | coin, coin, button, button, coin | €1 in | €0 in | – | €0 in
-35 | Turnstile at the swimming pool | locked | push, push, push, push, token | open | locked | locked | locked
-36 | Juice machine | €0 in | button, coin, coin | €2 in | €1 in | €0 in | €0 in
+34 | Juice machine | €0 paid | coin, coin, button, button, coin | €1 paid | €0 paid | – | €0 paid
+35 | Turnstile at the swimming pool | locked | push, push, push, push, token | open | – | – | –
+36 | Juice machine | €0 paid | button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
 37 | Pedestrian crossing with a button | green for cars | time up, button, time up, button, time up | green for cars | green man | green man | –
 38 | Pedestrian crossing with a button | green for cars | button, time up, time up | green for cars | green man | waiting | –
-39 | Turnstile at the swimming pool | locked | push, token, push, token, push | locked | open | open | –
+39 | Turnstile at the swimming pool | locked | push, token, push, token, push | locked | – | – | –
 40 | Lift with three floors | bottom | up, down, up, down | bottom | middle | middle | –
-41 | Turnstile at the swimming pool | locked | push, token, token, push | locked | open | open | –
+41 | Turnstile at the swimming pool | locked | push, token, token, push | locked | – | – | –
 42 | Lift with three floors | bottom | down, up, down | bottom | middle | middle | –
 43 | Lift with three floors | bottom | up, up, up, down, up | top | middle | bottom | bottom
-44 | Turnstile at the swimming pool | locked | token, token, token, push, token | open | locked | locked | locked
+44 | Turnstile at the swimming pool | locked | token, token, token, push, token | open | – | – | –
 45 | Pedestrian crossing with a button | green for cars | time up, time up, button, time up, time up | green for cars | green man | waiting | –
-46 | Turnstile at the swimming pool | locked | push, token, push, push, token | open | locked | locked | locked
-47 | Turnstile at the swimming pool | locked | token, token, token, push | locked | open | open | –
+46 | Turnstile at the swimming pool | locked | push, token, push, push, token | open | – | – | –
+47 | Turnstile at the swimming pool | locked | token, token, token, push | locked | – | – | –
 48 | Pedestrian crossing with a button | green for cars | time up, time up, time up, button | waiting | green for cars | green for cars | green for cars
 49 | Lift with three floors | bottom | down, down, up | middle | bottom | – | bottom
-50 | Turnstile at the swimming pool | locked | token, token, push, token | open | locked | locked | locked
-51 | Turnstile at the swimming pool | locked | push, token, token, push, token | open | locked | locked | locked
+50 | Turnstile at the swimming pool | locked | token, token, push, token | open | – | – | –
+51 | Turnstile at the swimming pool | locked | push, token, token, push, token | open | – | – | –
 52 | Lift with three floors | bottom | down, up, up, down | middle | top | – | bottom
-53 | Juice machine | €0 in | coin, coin, button, coin | €1 in | €0 in | – | €0 in
-54 | Juice machine | €0 in | button, button, coin, coin | €2 in | €1 in | €0 in | €0 in
+53 | Juice machine | €0 paid | coin, coin, button, coin | €1 paid | €0 paid | – | €0 paid
+54 | Juice machine | €0 paid | button, button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
 55 | Lift with three floors | bottom | down, up, up, up, down | middle | top | – | bottom
 56 | Pedestrian crossing with a button | green for cars | button, button, time up, button, time up | green for cars | green man | waiting | –
 57 | Lift with three floors | bottom | down, up, up, down, up | top | middle | bottom | bottom
@@ -218,7 +218,7 @@ No. | automat | start | inputs | Solution | F1 | F2 | F3
 64 | Pedestrian crossing with a button | green for cars | time up, time up, button, button, time up | green man | waiting | – | green for cars
 65 | Lift with three floors | bottom | up, down, down, up | middle | bottom | – | bottom
 66 | Lift with three floors | bottom | up, down, up | middle | bottom | bottom | bottom
-67 | Juice machine | €0 in | coin, button, button, coin, button | €0 in | €2 in | €1 in | –
+67 | Juice machine | €0 paid | coin, button, button, coin, button | €0 paid | €2 paid | €1 paid | –
 ```
 
 ### Exercise pfeil-ergaenzen
@@ -238,30 +238,30 @@ No. | automat | start | inputs | Solution | F1 | F2 | F3
 
 ```
 No. | automat | text | from | input | Solution | F4 | F5
-1 | Juice machine | The machine is empty. You put in a coin. It stays inside the machine. | €0 in | coin | €1 in | €0 in | –
+1 | Juice machine | The machine is empty. You put in a coin. It stays inside the machine. | €0 paid | coin | €1 paid | €0 paid | –
 2 | Lift with three floors | The lift is at the very top. Someone presses “up”. There is no floor above. | top | up | top | – | bottom
 3 | Lift with three floors | The lift is in the middle. Someone presses “down”. It goes down one floor. | middle | down | bottom | middle | –
 4 | Lift with three floors | The lift is in the middle. Someone presses “up”. It goes up one floor. | middle | up | top | middle | –
 5 | Turnstile at the swimming pool | The turnstile is locked. You put in a token. Now it can turn. | locked | token | open | locked | –
 6 | Pedestrian crossing with a button | The green man is showing. The time is up. The red man comes on, and the cars drive off. | green man | time up | green for cars | green man | –
-7 | Hall light with a button | The hall is dark. You press the button on the wall. Afterwards you can see well in the hall. | off | button | on | off | –
+7 | Lamp with a push button | The room is dark. You press the button on the lamp. Afterwards you can see well in the room. | off | button | on | off | –
 8 | Lift with three floors | The lift is at the very bottom. Someone presses “down”. There is no floor below. | bottom | down | bottom | – | middle
 9 | Lift with three floors | The lift is at the very top. Someone presses “down”. It goes down one floor. | top | down | middle | top | –
 10 | Turnstile at the swimming pool | The turnstile is locked. You push it without paying. It does not move. | locked | push | locked | – | open
 11 | Pedestrian crossing with a button | The lights are green for cars, and nobody has pressed. The time is up. The cars keep driving. | green for cars | time up | green for cars | – | waiting
-12 | Hall light with a button | The hall is bright. You press the button on the wall. Afterwards the hall is dark again. | on | button | off | on | –
-13 | Juice machine | Two coins are inside the machine. You put in one more. It drops out again at the bottom. | €2 in | coin | €2 in | – | €0 in
+12 | Lamp with a push button | The room is bright. You press the button on the lamp. Afterwards the room is dark again. | on | button | off | on | –
+13 | Juice machine | Two coins are inside the machine. You put in one more. It drops out again at the bottom. | €2 paid | coin | €2 paid | – | €0 paid
 14 | Pedestrian crossing with a button | The lights are green for cars. A child presses the button. The cars still drive, but the WAIT light comes on. | green for cars | button | waiting | green for cars | –
 15 | Turnstile at the swimming pool | You have paid and you put in another token. The token drops out again. You can still go through. | open | token | open | – | locked
-16 | Juice machine | One coin is inside the machine. You put in another one. It stays inside too. | €1 in | coin | €2 in | €1 in | –
-17 | Juice machine | The machine is empty. You press the button. No juice comes out. | €0 in | button | €0 in | – | €1 in
-18 | Juice machine | One coin is inside the machine. You press the button. No juice comes out, and the coin stays inside. | €1 in | button | €1 in | – | €0 in
+16 | Juice machine | One coin is inside the machine. You put in another one. It stays inside too. | €1 paid | coin | €2 paid | €1 paid | –
+17 | Juice machine | The machine is empty. You press the button. No juice comes out. | €0 paid | button | €0 paid | – | €1 paid
+18 | Juice machine | One coin is inside the machine. You press the button. No juice comes out, and the coin stays inside. | €1 paid | button | €1 paid | – | €0 paid
 19 | Pedestrian crossing with a button | The WAIT light is on. The time is up. The cars stop, and the children may cross. | waiting | time up | green man | waiting | –
 20 | Lift with three floors | The lift is at the very bottom. Someone presses “up”. It goes up one floor. | bottom | up | middle | bottom | –
 21 | Turnstile at the swimming pool | You have paid and you go through. The next child cannot just follow you. | open | push | locked | open | –
 22 | Pedestrian crossing with a button | The green man is showing. A child presses the button. The children keep crossing. | green man | button | green man | – | green for cars
 23 | Pedestrian crossing with a button | The WAIT light is already on. A child presses again. The cars still drive. | waiting | button | waiting | – | green for cars
-24 | Juice machine | Two coins are inside the machine. You press the button. A juice drops out. The machine has kept the two coins to pay for it. | €2 in | button | €0 in | €2 in | –
+24 | Juice machine | Two coins are inside the machine. You press the button. A juice drops out. The coins go into Jona's cash box. For the next juice you have to pay again. | €2 paid | button | €0 paid | €2 paid | –
 ```
 
 ### Exercise diagramm-jetzt

@@ -56,9 +56,9 @@ Das EVA-Bild zeigt den Weg von der Eingabe zur Ausgabe. Es sagt aber nicht, ob b
 - Aufgabe: Mia drückt den Knopf. Was sagt dir das EVA-Bild darüber, ob ein Saft herauskommt?
 - Antwortformat: eine Antwort wählen
 - Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
-  - ✓ Nichts: Es kommt darauf an, wie viel Geld schon drin ist. – Das EVA-Bild zeigt nur den Weg. Ob Saft kommt, hängt davon ab, was vorher eingeworfen wurde.
+  - ✓ Es sagt nicht, ob Saft kommt. Das hängt davon ab, wie viel Geld schon drin ist. – Das EVA-Bild zeigt nur den Weg. Ob Saft kommt, hängt davon ab, was vorher eingeworfen wurde.
   - ✗ Es kommt immer ein Saft. – Ohne genug Geld gibt der Automat keinen Saft, auch wenn der Knopf gedrückt wird.
   - ✗ Es kommt nie ein Saft. – Mit 2 € im Automaten bringt der Knopf einen Saft.
-- Lösung: Nichts: Es kommt darauf an, wie viel Geld schon drin ist.
+- Lösung: Es sagt nicht, ob Saft kommt. Das hängt davon ab, wie viel Geld schon drin ist.
 - Erklärung: Derselbe Knopf kann einmal Saft bringen und einmal nicht. Was den Unterschied macht, lernst du auf der nächsten Seite.
 - Link: [../?via=tutor#eva-was-fehlt](../?via=tutor#eva-was-fehlt)

@@ -57,7 +57,7 @@ Interaktiv: Ein Karton-Saftautomat mit Jonas Zettel. Am Anfang steht darauf „0
 
 ### Was sich der Automat merkt
 
-Zweimal derselbe Knopf: einmal kommt nichts, einmal ein Saft. Der Unterschied steht auf Jonas Zettel. Ein Gerät nach dem EVA-Prinzip macht aus einer Eingabe eine Ausgabe. Ein **Automat** merkt sich dazu etwas. Was er sich gerade merkt, heißt sein **Zustand**. Bei einer Eingabe kann sich der Zustand ändern: Nach einer Münze steht auf dem Zettel 1 € mehr.
+Zweimal derselbe Knopf: einmal kommt nichts, einmal ein Saft. Der Unterschied steht auf Jonas Zettel. Das EVA-Bild zeigt, was hineinkommt und was herauskommt. Schaust du das Gerät als **Automat** an, zählt auch, was es sich gerade merkt. Das heißt sein **Zustand**. Bei einer Eingabe kann sich der Zustand ändern: Nach einer Münze steht auf dem Zettel 1 € mehr.
 
 - **Automat**: Ein Automat reagiert auf Eingaben und merkt sich dabei etwas. Was er tut, hängt von der Eingabe und von dem ab, was er sich gemerkt hat.
 
@@ -65,7 +65,7 @@ Zweimal derselbe Knopf: einmal kommt nichts, einmal ein Saft. Der Unterschied st
 
 **Merke: Merke**
 
-Was ein Automat tut, hängt von zwei Dingen ab, von der Eingabe und von seinem Zustand.
+Was ein Automat tut, hängt von zwei Dingen ab, von der Eingabe und von seinem Zustand. Im selben Zustand reagiert er auf dieselbe Eingabe immer gleich.
 
 - Aufgabe `immer-gleich` (unten)
 
@@ -85,6 +85,8 @@ Spielt den Saftautomaten zu zweit, ohne Computer:
 - Aufgabe `zettel-am-ende` (unten)
 
 - Aufgabe `alltag-merken` (unten)
+
+- Aufgabe `zustand-oder-eingabe` (unten)
 
 ### Wie geht es weiter?
 
@@ -108,7 +110,7 @@ Gut gemacht: Du weißt jetzt, warum Mia beim ersten Mal keinen Saft bekam, und d
 - Aufgabe: Jemand sagt: „Ein Automat reagiert auf dieselbe Eingabe immer gleich.“ Stimmt das?
 - Antwortformat: „Stimmt“ oder „Stimmt nicht“ wählen
 - Lösung: Die Aussage stimmt nicht.
-- Erklärung: Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab.
+- Erklärung: Beim Saftautomaten gibt der Knopf bei 2 € einen Saft, bei 1 € nichts. Die Reaktion hängt von der Eingabe und vom Zustand ab. Nur im selben Zustand ist sie immer gleich.
 - Link: [../?via=tutor#immer-gleich](../?via=tutor#immer-gleich)
 
 ### Aufgabe was-passiert
@@ -184,6 +186,19 @@ Nr. | automat (verdeckt) | start | inputs | Lösung | F1 | F2 | F3
 
 - Aufgabe: Auch andere Automaten im Alltag merken sich etwas. Was merkt sich welcher Automat?
 - Antwortformat: jedem Eintrag links den passenden rechts zuordnen
-- Lösung: Ampel – welche Farbe gerade leuchtet; Aufzug – in welchem Stockwerk er gerade ist; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Flurlicht mit Knopf – ob das Licht gerade an ist
-- Erklärung: Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf am Flurlicht schaltet ein, wenn es aus ist, und aus, wenn es an ist.
+- Lösung: Ampel – wer Grün hat und ob schon jemand gedrückt hat; Aufzug – in welchem Stockwerk er gerade ist; Drehkreuz am Schwimmbad – ob schon bezahlt ist; Lampe mit Druckknopf – ob sie gerade an ist
+- Erklärung: Jeder dieser Automaten reagiert auf dieselbe Eingabe verschieden, je nachdem, was er sich gerade merkt. Der Knopf an der Lampe schaltet ein, wenn sie aus ist, und aus, wenn sie an ist. Bei der Ampel sieht man nicht alles: Ob jemand gedrückt hat, merkt sie sich, auch wenn die Autos noch Grün haben.
 - Link: [../?via=tutor#alltag-merken](../?via=tutor#alltag-merken)
+
+### Aufgabe zustand-oder-eingabe
+
+- Aufgabe: Selin schreibt Karten für das Spiel: „Münze einwerfen“, „1 € drin“, „Knopf drücken“, „Saft fällt heraus“. Welche Karte nennt einen Zustand?
+- Antwortformat: eine Antwort wählen
+- Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
+  - ✓ „1 € drin“ – Das merkt sich Jona auf seinem Zettel. Es bleibt so, bis die nächste Eingabe kommt.
+  - ✗ „Münze einwerfen“ – Das ist eine Eingabe. Sie passiert in einem Moment und kann den Zustand ändern.
+  - ✗ „Knopf drücken“ – Das ist eine Eingabe, wie die Münze. Was dann passiert, hängt vom Zustand ab.
+  - ✗ „Saft fällt heraus“ – Das ist eine Ausgabe. Sie kommt beim Sprung heraus, der Automat merkt sie sich nicht.
+- Lösung: „1 € drin“
+- Erklärung: Ein Zustand ist, was der Automat sich merkt. Eingaben und Ausgaben passieren in einem Moment.
+- Link: [../?via=tutor#zustand-oder-eingabe](../?via=tutor#zustand-oder-eingabe)

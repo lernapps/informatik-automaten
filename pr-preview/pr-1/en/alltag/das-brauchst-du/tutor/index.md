@@ -56,9 +56,9 @@ The IPO picture shows the way from input to output. But it does not tell you whe
 - Task: Mia presses the button. What does the IPO picture tell you about whether a juice comes out?
 - Answer format: choose one answer
 - Choices (✓ right, ✗ wrong, with the app's message):
-  - ✓ Nothing: it depends on how much money is inside already. – The IPO picture only shows the way. Whether juice comes out depends on what was put in before.
+  - ✓ It does not say whether juice comes out. That depends on how much money is inside already. – The IPO picture only shows the way. Whether juice comes out depends on what was put in before.
   - ✗ A juice always comes out. – Without enough money the machine gives no juice, even when the button is pressed.
-  - ✗ A juice never comes out. – With €2 in the machine, the button brings a juice.
-- Solution: Nothing: it depends on how much money is inside already.
+  - ✗ A juice never comes out. – With €2 paid the machine, the button brings a juice.
+- Solution: It does not say whether juice comes out. That depends on how much money is inside already.
 - Explanation: The same button can bring a juice one time and nothing another time. What makes the difference is on the next page.
 - Link: [../?via=tutor#eva-was-fehlt](../?via=tutor#eva-was-fehlt)

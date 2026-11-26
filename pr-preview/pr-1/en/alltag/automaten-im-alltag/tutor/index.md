@@ -53,19 +53,19 @@ It is class 6b's school fair. The class has built a juice machine out of a cardb
 
 Here you play Mia. Press “coin” or “button”. The note in the box shows what Jona remembers right now. The drawer at the bottom shows what comes out. Press the button once at €1 and once at €2.
 
-Interactive: A cardboard juice machine with Jona's note. At the start it says “€0 in”. What happens: - Coin at €0 or €1: Jona keeps it and remembers €1 more. - Coin at €2: the coin drops out again. - Button at €0 or €1: nothing happens. - Button at €2: a juice drops out, and afterwards Jona remembers “€0 in”. With JavaScript you press “coin” and “button” yourself.
+Interactive: A cardboard juice machine with Jona's note. At the start it says “€0 paid”. What happens: - Coin at €0 or €1: Jona keeps it and remembers €1 more. - Coin at €2: the coin drops out again. - Button at €0 or €1: nothing happens. - Button at €2: a juice drops out, and afterwards Jona remembers “€0 paid”. With JavaScript you press “coin” and “button” yourself.
 
 ### What the machine remembers
 
-The same button twice: once nothing comes out, once a juice. The difference is on Jona's note. A device that follows the IPO model turns an input into an output. An **automaton** (a machine like this) also remembers something. What it remembers right now is called its **state**. An input can change the state: after a coin, the note says €1 more.
+The same button twice: once nothing comes out, once a juice. The difference is on Jona's note. The IPO picture shows what goes in and what comes out. If you look at the device as an **automaton** (a state machine), what it remembers right now counts too. That is called its **state**. An input can change the state: after a coin, the note says €1 more.
 
 - **automaton**: An automaton (plural automata) reacts to inputs and remembers something as it does. What it does depends on the input and on what it has remembered.
 
-- **state**: The state is what a machine remembers right now, for example “€1 in”.
+- **state**: The state is what a machine remembers right now, for example “€1 paid”.
 
 **Remember: Remember**
 
-What a machine does depends on two things, the input and its state.
+What a machine does depends on two things, the input and its state. In the same state it always reacts to the same input in the same way.
 
 - Exercise `immer-gleich` (below)
 
@@ -73,7 +73,7 @@ What a machine does depends on two things, the input and its state.
 
 Play the juice machine in pairs, without a computer:
 
-1. One person is the machine. They have a note that says “€0 in”.
+1. One person is the machine. They have a note that says “€0 paid”.
 2. The other person buys. They say “coin” or “button”.
 3. The machine looks at its note, says what comes out and writes down the new amount.
 4. Swap after five inputs. Who remembers wrongly?
@@ -85,6 +85,8 @@ Play the juice machine in pairs, without a computer:
 - Exercise `zettel-am-ende` (below)
 
 - Exercise `alltag-merken` (below)
+
+- Exercise `zustand-oder-eingabe` (below)
 
 ### What comes next?
 
@@ -108,7 +110,7 @@ Well done: you now know why Mia got no juice the first time, and you can tell wh
 - Task: Someone says: “A machine always reacts to the same input in the same way.” Is that true?
 - Answer format: choose “true” or “false”
 - Solution: The statement is false.
-- Explanation: In the juice machine the button gives a juice at €2 and nothing at €1. The reaction depends on the input and on the state.
+- Explanation: In the juice machine the button gives a juice at €2 and nothing at €1. The reaction depends on the input and on the state. Only in the same state is it always the same.
 - Link: [../?via=tutor#immer-gleich](../?via=tutor#immer-gleich)
 
 ### Exercise was-passiert
@@ -125,12 +127,12 @@ Well done: you now know why Mia got no juice the first time, and you can tell wh
 
 ```
 No. | s.jetzt | s.tut | s.grund | s.warum | Choices | Solution | F1
-1 | €2 in | puts in a coin | There is already enough money inside. The coin drops out again, and Jona still remembers “€2 in”. | The machine never needs more than €2. There is no “€3 in” on Jona's note. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | The coin drops out again. | Nothing comes out, Jona remembers more money.
-2 | €1 in | presses the button | €1 is not enough for a juice. Jona still remembers “€1 in”. | The button alone is not enough. Jona looks at his note: only €1 is inside, and a juice costs €2. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing happens. | A juice drops out.
-3 | €1 in | puts in a coin | Jona keeps the coin and writes “€2 in” on his note. The juice only comes with the button. | Now there is enough money inside, but the juice only comes when Mia presses the button. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing comes out, Jona remembers more money. | A juice drops out.
-4 | €0 in | puts in a coin | Jona keeps the coin and writes “€1 in” on his note. | The machine is empty. It keeps the coin, because a juice costs €2. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing comes out, Jona remembers more money. | The coin drops out again.
-5 | €0 in | presses the button | Without money there is no juice. Jona still remembers “€0 in”. | The button alone is not enough. Jona looks at his note: there is no money inside yet. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing happens. | A juice drops out.
-6 | €2 in | presses the button | €2 is enough. A juice drops out, and afterwards Jona remembers “€0 in”. | Look at Jona's note: €2 is inside. That is enough for a juice. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | A juice drops out. | Nothing happens.
+1 | €2 paid | puts in a coin | There is already enough money inside. The coin drops out again, and Jona still remembers “€2 paid”. | The machine never needs more than €2. There is no “€3 paid” on Jona's note. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | The coin drops out again. | Nothing comes out, Jona remembers more money.
+2 | €1 paid | presses the button | €1 is not enough for a juice. Jona still remembers “€1 paid”. | The button alone is not enough. Jona looks at his note: only €1 is inside, and a juice costs €2. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing happens. | A juice drops out.
+3 | €1 paid | puts in a coin | Jona keeps the coin and writes “€2 paid” on his note. The juice only comes with the button. | Now there is enough money inside, but the juice only comes when Mia presses the button. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing comes out, Jona remembers more money. | A juice drops out.
+4 | €0 paid | puts in a coin | Jona keeps the coin and writes “€1 paid” on his note. | The machine is empty. It keeps the coin, because a juice costs €2. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing comes out, Jona remembers more money. | The coin drops out again.
+5 | €0 paid | presses the button | Without money there is no juice. Jona still remembers “€0 paid”. | The button alone is not enough. Jona looks at his note: there is no money inside yet. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | Nothing happens. | A juice drops out.
+6 | €2 paid | presses the button | €2 is enough. A juice drops out, and afterwards Jona remembers “€0 paid”. | Look at Jona's note: €2 is inside. That is enough for a juice. | A juice drops out.; Nothing happens.; Nothing comes out, Jona remembers more money.; The coin drops out again. | A juice drops out. | Nothing happens.
 ```
 
 ### Exercise zettel-am-ende
@@ -150,40 +152,53 @@ No. | s.jetzt | s.tut | s.grund | s.warum | Choices | Solution | F1
 
 ```
 No. | automat (hidden) | start | inputs | Solution | F1 | F2 | F3
-1 | Juice machine | €0 in | coin, coin, button | €0 in | €2 in | €2 in | –
-2 | Juice machine | €0 in | button, coin, coin | €2 in | €1 in | €0 in | €0 in
-3 | Juice machine | €0 in | button, button, coin | €1 in | €0 in | – | €0 in
-4 | Juice machine | €0 in | button, button, coin, coin | €2 in | €1 in | €0 in | €0 in
-5 | Juice machine | €0 in | button, coin, button, button, coin | €2 in | €1 in | €0 in | €0 in
-6 | Juice machine | €0 in | coin, button, button, coin | €2 in | €1 in | €1 in | €0 in
-7 | Juice machine | €0 in | coin, coin, coin, button | €0 in | €2 in | €2 in | –
-8 | Juice machine | €0 in | coin, button, coin | €2 in | €1 in | €1 in | €0 in
-9 | Juice machine | €0 in | coin, coin, coin, button, coin | €1 in | €0 in | – | €0 in
-10 | Juice machine | €0 in | button, button, coin, button, coin | €2 in | €1 in | €0 in | €0 in
-11 | Juice machine | €0 in | coin, coin, coin, coin, button | €0 in | €2 in | €2 in | –
-12 | Juice machine | €0 in | coin, coin, button, button, coin | €1 in | €0 in | – | €0 in
-13 | Juice machine | €0 in | coin, coin, button, coin, coin | €2 in | €1 in | €0 in | €0 in
-14 | Juice machine | €0 in | button, button, button, coin, coin | €2 in | €1 in | €0 in | €0 in
-15 | Juice machine | €0 in | button, coin, button, coin | €2 in | €1 in | €0 in | €0 in
-16 | Juice machine | €0 in | coin, button, coin, coin, button | €0 in | €2 in | €2 in | –
-17 | Juice machine | €0 in | coin, button, coin, button, coin | €1 in | €0 in | €0 in | €0 in
-18 | Juice machine | €0 in | coin, coin, button, coin | €1 in | €0 in | – | €0 in
-19 | Juice machine | €0 in | coin, button, button, button, coin | €2 in | €1 in | €1 in | €0 in
-20 | Juice machine | €0 in | button, coin, coin, button | €0 in | €2 in | €2 in | –
-21 | Juice machine | €0 in | button, coin, coin, button, coin | €1 in | €0 in | – | €0 in
-22 | Juice machine | €0 in | button, button, button, coin | €1 in | €0 in | – | €0 in
-23 | Juice machine | €0 in | button, button, button, button, coin | €1 in | €0 in | – | €0 in
-24 | Juice machine | €0 in | coin, button, coin, button | €0 in | €2 in | €1 in | –
-25 | Juice machine | €0 in | button, coin, button, coin, button | €0 in | €2 in | €2 in | –
-26 | Juice machine | €0 in | button, coin, coin, coin, button | €0 in | €2 in | €2 in | –
-27 | Juice machine | €0 in | button, button, coin, coin, button | €0 in | €2 in | €2 in | –
-28 | Juice machine | €0 in | coin, button, button, coin, button | €0 in | €2 in | €1 in | –
+1 | Juice machine | €0 paid | coin, coin, button | €0 paid | €2 paid | €2 paid | –
+2 | Juice machine | €0 paid | button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
+3 | Juice machine | €0 paid | button, button, coin | €1 paid | €0 paid | – | €0 paid
+4 | Juice machine | €0 paid | button, button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
+5 | Juice machine | €0 paid | button, coin, button, button, coin | €2 paid | €1 paid | €0 paid | €0 paid
+6 | Juice machine | €0 paid | coin, button, button, coin | €2 paid | €1 paid | €1 paid | €0 paid
+7 | Juice machine | €0 paid | coin, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+8 | Juice machine | €0 paid | coin, button, coin | €2 paid | €1 paid | €1 paid | €0 paid
+9 | Juice machine | €0 paid | coin, coin, coin, button, coin | €1 paid | €0 paid | – | €0 paid
+10 | Juice machine | €0 paid | button, button, coin, button, coin | €2 paid | €1 paid | €0 paid | €0 paid
+11 | Juice machine | €0 paid | coin, coin, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+12 | Juice machine | €0 paid | coin, coin, button, button, coin | €1 paid | €0 paid | – | €0 paid
+13 | Juice machine | €0 paid | coin, coin, button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
+14 | Juice machine | €0 paid | button, button, button, coin, coin | €2 paid | €1 paid | €0 paid | €0 paid
+15 | Juice machine | €0 paid | button, coin, button, coin | €2 paid | €1 paid | €0 paid | €0 paid
+16 | Juice machine | €0 paid | coin, button, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+17 | Juice machine | €0 paid | coin, button, coin, button, coin | €1 paid | €0 paid | €0 paid | €0 paid
+18 | Juice machine | €0 paid | coin, coin, button, coin | €1 paid | €0 paid | – | €0 paid
+19 | Juice machine | €0 paid | coin, button, button, button, coin | €2 paid | €1 paid | €1 paid | €0 paid
+20 | Juice machine | €0 paid | button, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+21 | Juice machine | €0 paid | button, coin, coin, button, coin | €1 paid | €0 paid | – | €0 paid
+22 | Juice machine | €0 paid | button, button, button, coin | €1 paid | €0 paid | – | €0 paid
+23 | Juice machine | €0 paid | button, button, button, button, coin | €1 paid | €0 paid | – | €0 paid
+24 | Juice machine | €0 paid | coin, button, coin, button | €0 paid | €2 paid | €1 paid | –
+25 | Juice machine | €0 paid | button, coin, button, coin, button | €0 paid | €2 paid | €2 paid | –
+26 | Juice machine | €0 paid | button, coin, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+27 | Juice machine | €0 paid | button, button, coin, coin, button | €0 paid | €2 paid | €2 paid | –
+28 | Juice machine | €0 paid | coin, button, button, coin, button | €0 paid | €2 paid | €1 paid | –
 ```
 
 ### Exercise alltag-merken
 
 - Task: Other machines in everyday life remember something too. What does each machine remember?
 - Answer format: match each item on the left with one on the right
-- Solution: traffic lights – which colour is showing; lift – which floor it is on; turnstile at the swimming pool – whether someone has paid; hall light with a button – whether the light is on
-- Explanation: Each of these machines reacts to the same input in different ways, depending on what it remembers. The button of the hall light switches it on when it is off, and off when it is on.
+- Solution: traffic lights – who has green and whether someone has pressed; lift – which floor it is on; turnstile at the swimming pool – whether someone has paid; lamp with a push button – whether it is on
+- Explanation: Each of these machines reacts to the same input in different ways, depending on what it remembers. The button of the lamp switches it on when it is off, and off when it is on. You cannot see everything at the crossing: the lights remember that someone has pressed, even while the cars still have green.
 - Link: [../?via=tutor#alltag-merken](../?via=tutor#alltag-merken)
+
+### Exercise zustand-oder-eingabe
+
+- Task: Selin writes cards for the game: “put in a coin”, “€1 paid”, “press the button”, “juice drops out”. Which card names a state?
+- Answer format: choose one answer
+- Choices (✓ right, ✗ wrong, with the app's message):
+  - ✓ “€1 paid” – Jona remembers this on his note. It stays like this until the next input comes.
+  - ✗ “put in a coin” – That is an input. It happens in a moment and can change the state.
+  - ✗ “press the button” – That is an input, like the coin. What happens then depends on the state.
+  - ✗ “juice drops out” – That is an output. It comes out during the jump; the machine does not remember it.
+- Solution: “€1 paid”
+- Explanation: A state is what the machine remembers. Inputs and outputs happen in a moment.
+- Link: [../?via=tutor#zustand-oder-eingabe](../?via=tutor#zustand-oder-eingabe)
