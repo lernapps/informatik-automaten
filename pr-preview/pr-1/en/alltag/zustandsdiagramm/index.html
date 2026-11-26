@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" crossorigin src="../../../assets/index-B8ecXKUy.js"></script>
+    <link rel="modulepreload" crossorigin href="../../../assets/tasks-DADUYy52-D5IfZDbd.js">
+    <link rel="stylesheet" crossorigin href="../../../assets/index-DYVfKw6-.css">
+    <title>State diagrams – Automata and states</title>
+    <meta name="description" content="Draw and read a machine as a state diagram: circles for states, arrows for transitions." />
+    <meta name="lernapps-archetype" content="explainer" />
+    <link rel="alternate" hreflang="de" href="../../../alltag/zustandsdiagramm/" />
+    <link rel="alternate" hreflang="en" href="../../../en/alltag/zustandsdiagramm/" />
+    <script type="module" crossorigin src="../../../assets/islands-Bt0x50E-.js"></script>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <header class="page-header"><nav class="page-languages" aria-label="Language"><ul><li><a href="../../../alltag/zustandsdiagramm/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../../../en/alltag/zustandsdiagramm/" hreflang="en" lang="en" aria-current="page">English</a></li></ul></nav></header>
+<nav class="explainer-breadcrumbs" aria-label="You are here"><ol><li><a href="../../../en/">Start</a></li><li aria-current="page">State diagrams</li></ol></nav>
+<main class="explainer" id="inhalt-der-seite">
+<div class="explainer-title-row">
+<h1>State diagrams</h1>
+<div class="explainer-tutor explainer-tutor-page">
+<details class="explainer-tutor-off">
+<summary>Learn with an AI tutor</summary>
+<p>An AI tutor explains this page to you and helps you with the exercises. Choose your assistant:</p>
+<p class="explainer-tutor-actions"><span class="explainer-tutor-way" hidden><select class="explainer-tutor-select" aria-label="Assistant"><option value="Claude">Claude</option><option value="ChatGPT">ChatGPT</option><option value="Mistral Vibe" data-hint="Mistral Vibe does not load web pages when the link comes from a button. So we copy the sentence with the link for you. A click on “Learn with Mistral Vibe” opens Mistral Vibe with a short message. Then paste the copied sentence (Ctrl+V, ⌘+V on a Mac) and send it.">Mistral Vibe</option><option value="copy">Another one: copy the text</option></select> <button type="button" class="explainer-tutor-on">Switch on</button></span> <span class="explainer-tutor-plain"><a class="explainer-tutor-provider" href="https://claude.ai/new" rel="noopener" target="_blank">Open with Claude</a> <a class="explainer-tutor-provider" href="https://chatgpt.com/" rel="noopener" target="_blank">Open with ChatGPT</a> <a class="explainer-tutor-provider" href="https://chat.mistral.ai/chat" rel="noopener" target="_blank">Open with Mistral Vibe</a></span></p>
+<p class="explainer-tutor-hint" role="status" aria-live="polite" hidden></p>
+<p class="explainer-tutor-note">You use your own account with the provider. The assistant is not offered by lernapps.net: lernapps only provides the content and the exercises. The choice holds for all pages, on this device only.</p>
+<p><a class="explainer-tutor-guide" href="../../../en/alltag/zustandsdiagramm/tutor/">See what your tutor gets for this page</a></p>
+</details>
+<p class="explainer-tutor-bar" hidden><button type="button" class="explainer-tutor-go"></button></p>
+<p class="explainer-tutor-status" role="status" aria-live="polite"></p>
+<script type="application/json" class="explainer-tutor-prompt">{"start":"Load ⟦base⟧alltag/zustandsdiagramm/tutor/⟦query⟧ and be my tutor.","base":"⟦base⟧","query":"⟦query⟧","root":"../../../en/","storage":"sprachen-automaten","page":{"id":"zustandsdiagramm","title":"State diagrams","exercises":[{"id":"zustaende-zaehlen","section":"einstieg","numbered":false},{"id":"diagramm-teile","section":"idee","numbered":false},{"id":"folge-lesen","section":"uebung","numbered":true},{"id":"pfeil-ergaenzen","section":"uebung","numbered":true},{"id":"pfeil-weglassen","section":"uebung","numbered":false},{"id":"startzustand-finden","section":"uebung","numbered":false}],"sections":["einstieg","idee","mitmachen","uebung","rueckblick"]},"tutor":"alltag/zustandsdiagramm/tutor/","markdown":"alltag/zustandsdiagramm/tutor/index.md","ways":[{"name":"Claude","url":"https://claude.ai/new?q={prompt}"},{"name":"ChatGPT","url":"https://chatgpt.com/?q={prompt}"},{"name":"Mistral Vibe","url":"https://chat.mistral.ai/chat?q={prompt}","paste":true}],"placeholder":"I need help with a learning unit. I will tell you in a moment what it is about.","go":"Learn with {name}","done":"✓ Copied – now paste it into {name}","copy":"Copy the text","copied":"The prompt is copied. Paste it into the chat of your AI assistant.","failed":"Copying did not work. Try again."}</script>
+</div>
+</div>
+
+<nav class="explainer-toc" aria-label="On this page"><p class="explainer-toc-title">On this page</p><ol><li><a href="#einstieg">Selin's plan</a></li><li><a href="#idee">From the plan to the diagram</a></li><li><a href="#mitmachen">Play by the plan</a></li><li><a href="#uebung">Practice</a></li><li><a href="#rueckblick">Looking back</a></li></ol></nav>
+<section class="explainer-section">
+<h2 id="einstieg">Selin's plan</h2>
+<div class="explainer-block" data-block="einstieg/1" data-block-id="ba60bbbb" data-block-type="text" data-block-order="1">
+<div class="block-text"><p>Jona has been the juice machine for a long time. Now he needs a break. Who takes over? Selin writes a plan so that any child can play the machine. On this page you draw such a plan as a picture and learn to read it.</p></div>
+</div>
+<div class="explainer-block" data-block="einstieg/2" data-block-id="13ebb3b3" data-block-type="number" data-block-order="2">
+<div class="explainer-exercise explainer-question" id="zustaende-zaehlen">
+<p class="explainer-exercise-label">Exercise</p>
+<div class="question" id="frage-zustaende-zaehlen" data-id="zustaende-zaehlen" data-type="number">
+<form class="question-form" novalidate>
+<fieldset>
+<legend class="question-text">First Selin writes down what the machine has to remember. How many different states does the juice machine have?</legend>
+<label class="question-number">Your answer <input type="text" inputmode="decimal" autocomplete="off" name="frage-zustaende-zaehlen">  </label>
+</fieldset>
+<div class="question-feedback-row"><div class="question-feedback" role="status"></div></div>
+<div class="question-reveal" hidden>
+<p><strong>Right answer:</strong> 3</p>
+<p class="question-explanation">Jona only remembers the money: €0, €1 or €2. Those are three states.</p>
+</div>
+<p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p>
+</form>
+</div>
+<details class="explainer-solution"><summary>Solution</summary>
+<p><strong>Right answer:</strong> 3</p>
+<p class="question-explanation">Jona only remembers the money: €0, €1 or €2. Those are three states.</p>
+</details>
+<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"zustaende-zaehlen","text":"First Selin writes down what the machine has to remember. How many different states does the juice machine have?","explanation":"Jona only remembers the money: €0, €1 or €2. Those are three states.","links":[],"type":"number","answer":3,"tolerance":0,"mistakes":[{"answer":2,"message":"Did you forget “€0 in”? An empty machine is in a state too."},{"answer":4,"message":"There is never more than €2 inside: a third coin comes back."}]},"rendered":{}}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="einstieg/3" data-block-id="5b243d9c" data-block-type="table" data-block-order="3">
+<div class="block-table" role="region" aria-label="Selin's plan as a table: what does the machine do in which state with which input?" tabindex="0"><table><caption>Selin's plan as a table: what does the machine do in which state with which input?</caption><thead><tr><th scope="col">Now</th><th scope="col">Input</th><th scope="col">After (output)</th></tr></thead><tbody><tr><td>€0 in</td><td>coin</td><td>€1 in</td></tr><tr><td>€0 in</td><td>button</td><td>€0 in</td></tr><tr><td>€1 in</td><td>coin</td><td>€2 in</td></tr><tr><td>€1 in</td><td>button</td><td>€1 in</td></tr><tr><td>€2 in</td><td>coin</td><td>€2 in (coin comes back)</td></tr><tr><td>€2 in</td><td>button</td><td>€0 in (juice drops out)</td></tr></tbody></table></div>
+</div>
+</section>
+<section class="explainer-section">
+<h2 id="idee">From the plan to the diagram</h2>
+<div class="explainer-block" data-block="idee/1" data-block-id="9985a1c1" data-block-type="text" data-block-order="4">
+<div class="block-text"><p>The table is right, but it is long. So Selin draws it as a <strong>state diagram</strong>. Each state becomes a circle. Each row of the table becomes an arrow: it starts at the “Now” circle and its head points at the “After” circle. The input is written at the arrow. If something comes out, the output follows after a slash. Try Selin&#39;s diagram: press “coin” and “button” below. The filled circle shows the state now, the thick arrow the last jump. How do you get a juice?</p></div>
+</div>
+<div class="explainer-block" data-block="idee/2" data-block-id="2438fea1" data-block-type="vue-component" data-block-order="5">
+<div class="explainer-component" data-component="AutomatSimulator">
+<div class="explainer-island" hidden><div class="automat-simulator" data-v-b6f7707c><svg class="automat-diagramm" viewbox="-22 1 617 307" role="presentation" aria-hidden="true" data-v-b6f7707c data-v-c0d9353a><g class="automat-diagramm-start" data-v-c0d9353a><path d="M-8 170 L56 170" data-v-c0d9353a></path><polygon points="56 170 43 176.5 43 163.5" data-v-c0d9353a></polygon><text x="-8" y="160" data-v-c0d9353a>Start</text></g><!--[--><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M164 170 L246 170" data-v-c0d9353a></path><polygon points="246 170 233 176.5 233 163.5" data-v-c0d9353a></polygon><text y="160" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="205" dy="0" class="automat-diagramm-input" data-v-c0d9353a>coin <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M88 120.7 C26.1 64.2 193.9 64.2 132 120.7" data-v-c0d9353a></path><polygon points="132 120.7 137.2 107.1 145.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M354 170 L436 170" data-v-c0d9353a></path><polygon points="436 170 423 176.5 423 163.5" data-v-c0d9353a></polygon><text y="160" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="395" dy="0" class="automat-diagramm-input" data-v-c0d9353a>coin <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M278 120.7 C216.1 64.2 383.9 64.2 322 120.7" data-v-c0d9353a></path><polygon points="322 120.7 327.2 107.1 335.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M468 120.7 C406.1 64.2 573.9 64.2 512 120.7" data-v-c0d9353a></path><polygon points="512 120.7 517.2 107.1 525.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="-26.45" class="automat-diagramm-input" data-v-c0d9353a>coin <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="490" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>coin comes back <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M443.3 197.1 Q300 280 156.7 197.1" data-v-c0d9353a></path><polygon points="156.7 197.1 171.2 197.9 164.7 209.2" data-v-c0d9353a></polygon><text y="266.927979304626" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="300" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>juice drops out <!----></tspan><!--]--></text></g><!--]--><!----><!--[--><g class="automat-diagramm-state active" data-v-c0d9353a><!----><circle cx="110" cy="170" r="54" data-v-c0d9353a></circle><text x="110" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="8.049999999999999" data-v-c0d9353a>€0 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="300" cy="170" r="54" data-v-c0d9353a></circle><text x="300" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="8.049999999999999" data-v-c0d9353a>€1 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="490" cy="170" r="54" data-v-c0d9353a></circle><text x="490" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="8.049999999999999" data-v-c0d9353a>€2 in</tspan><!--]--></text></g><!--]--></svg><div class="automat-simulator-inputs" role="group" aria-label="Inputs" data-v-b6f7707c><!--[--><button type="button" data-v-b6f7707c>coin</button><button type="button" data-v-b6f7707c>button</button><!--]--></div><p class="automat-simulator-status" aria-live="polite" data-v-b6f7707c><strong data-v-b6f7707c>Now: €0 in</strong><br data-v-b6f7707c><span class="automat-simulator-output" data-v-b6f7707c>Output: nothing</span></p><p class="automat-simulator-history" data-v-b6f7707c>History: €0 in</p><p class="automat-simulator-reset" data-v-b6f7707c><button type="button" data-v-b6f7707c>Back to start</button></p></div></div>
+<div class="explainer-nojs"><p>The simulator shows Selin&#39;s state diagram of the juice machine. Three circles: “€0 in” (start state), “€1 in” and “€2 in”. The arrows:</p>
+<ul>
+<li>€0 in – coin → €1 in</li>
+<li>€0 in – button → €0 in</li>
+<li>€1 in – coin → €2 in</li>
+<li>€1 in – button → €1 in</li>
+<li>€2 in – coin → €2 in (output: coin comes back)</li>
+<li>€2 in – button → €0 in (output: juice drops out)</li>
+</ul>
+<p>With JavaScript you can press the inputs “coin” and “button” and watch the machine jump.</p></div>
+<script type="application/json" class="explainer-component-props">{"automata":[{"nr":0,"name":"juice machine","start":0,"states":[{"name":"€0 in","x":110,"y":170,"loop":-90},{"name":"€1 in","x":300,"y":170,"loop":-90},{"name":"€2 in","x":490,"y":170,"loop":-90}],"inputs":[{"name":"coin"},{"name":"button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The machine is empty. You put in a coin. Now it has some money, but not enough yet."},{"from":0,"input":1,"to":0,"bend":0,"text":"The machine is empty. You press the button. Nothing happens, it stays empty."},{"from":1,"input":0,"to":2,"bend":0,"text":"One coin is already in. You put in another one. Now there is enough money for a juice."},{"from":1,"input":1,"to":1,"bend":0,"text":"One coin is in. You press the button. It is not enough money, so the machine keeps the coin."},{"from":2,"input":0,"to":2,"bend":0,"text":"There is already enough money in. You put in one more coin. It comes back, and there is still enough money in."},{"from":2,"input":1,"to":0,"bend":55,"text":"There is enough money in. You press the button. A juice drops out, and the money is used up."}],"outputs":[{"from":2,"input":0,"text":"coin comes back"},{"from":2,"input":1,"text":"juice drops out"}]},{"nr":1,"name":"hall light with a push button","start":0,"states":[{"name":"off","x":170,"y":150,"loop":-90},{"name":"on","x":430,"y":150,"loop":-90}],"inputs":[{"name":"push button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The hall is dark. You press the push button. The light comes on."},{"from":1,"input":0,"to":0,"bend":0,"text":"The light in the hall is on. You press the push button. The light goes out."}],"outputs":[{"from":0,"input":0,"text":"light comes on"},{"from":1,"input":0,"text":"light goes out"}]},{"nr":2,"name":"turnstile at the swimming pool","start":0,"states":[{"name":"locked","x":170,"y":160,"loop":-90},{"name":"open","x":430,"y":160,"loop":-90}],"inputs":[{"name":"token"},{"name":"push"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The turnstile is locked. You put in a token. Now you may go through."},{"from":0,"input":1,"to":0,"bend":0,"text":"The turnstile is locked. You push it without paying. It does not move."},{"from":1,"input":1,"to":0,"bend":0,"text":"You have paid and you go through. Behind you, the turnstile locks again."},{"from":1,"input":0,"to":1,"bend":0,"text":"You have already paid and you put in another token. It comes back, and you may still go through."}],"outputs":[{"from":1,"input":0,"text":"token comes back"}]},{"nr":3,"name":"lift with three floors","start":0,"states":[{"name":"bottom","x":300,"y":400,"loop":90},{"name":"middle","x":300,"y":230,"loop":0},{"name":"top","x":300,"y":60,"loop":-90}],"inputs":[{"name":"up"},{"name":"down"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The lift is at the very bottom. Someone presses “up”. It goes up one floor."},{"from":0,"input":1,"to":0,"bend":0,"text":"The lift is at the very bottom. Someone presses “down”. It cannot go lower, so it stays."},{"from":1,"input":0,"to":2,"bend":0,"text":"The lift is in the middle. Someone presses “up”. It goes up one floor."},{"from":1,"input":1,"to":0,"bend":0,"text":"The lift is in the middle. Someone presses “down”. It goes down one floor."},{"from":2,"input":0,"to":2,"bend":0,"text":"The lift is at the very top. Someone presses “up”. It cannot go higher, so it stays."},{"from":2,"input":1,"to":1,"bend":0,"text":"The lift is at the very top. Someone presses “down”. It goes down one floor."}],"outputs":[]},{"nr":4,"name":"pedestrian crossing with a button","start":0,"states":[{"name":"cars green","x":130,"y":210,"loop":90},{"name":"waiting","x":470,"y":210,"loop":90},{"name":"walkers green","x":300,"y":60,"loop":-90}],"inputs":[{"name":"button"},{"name":"time up"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The cars have green. A child presses the button. The lights remember it, but the cars still drive."},{"from":0,"input":1,"to":0,"bend":0,"text":"The cars have green and nobody has pressed. Time is up. The cars keep green."},{"from":1,"input":0,"to":1,"bend":0,"text":"Someone has already pressed. A child presses again. Nothing changes, the lights keep waiting."},{"from":1,"input":1,"to":2,"bend":0,"text":"Someone has pressed. Time is up. Now the people on foot may cross."},{"from":2,"input":0,"to":2,"bend":0,"text":"The people on foot have green. A child presses the button. Nothing changes."},{"from":2,"input":1,"to":0,"bend":0,"text":"The people on foot have green. Time is up. Now the cars may drive again."}],"outputs":[{"from":0,"input":0,"text":"“WAIT” lights"}]}],"automat":0,"view":"diagramm","startWord":"Start","inputsLabel":"Inputs","now":"Now: {state}","outputLine":"Output: {output}","noOutput":"nothing","historyWord":"History:","reset":"Back to start"}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="idee/3" data-block-id="7ff962d1" data-block-type="definition" data-block-order="6">
+<dl class="explainer-definition"><dt><dfn id="begriff-uebergang"><a href="../../../en/glossar/#uebergang">transition</a></dfn></dt><dd><p>A transition is the jump from one state to the next when there is an input. In the diagram it is an arrow.</p></dd></dl>
+</div>
+<div class="explainer-block" data-block="idee/4" data-block-id="acacb59f" data-block-type="definition" data-block-order="7">
+<dl class="explainer-definition"><dt><dfn id="begriff-startzustand"><a href="../../../en/glossar/#startzustand">start state</a></dfn></dt><dd><p>The start state is the state a machine begins in. In the diagram, an arrow marked “Start” points to it.</p></dd></dl>
+</div>
+<div class="explainer-block" data-block="idee/5" data-block-id="e83b91d7" data-block-type="definition" data-block-order="8">
+<dl class="explainer-definition"><dt><dfn id="begriff-zustandsdiagramm"><a href="../../../en/glossar/#zustandsdiagramm">state diagram</a></dfn></dt><dd><p>A state diagram (also called a state transition diagram) shows all states of a machine as circles and all transitions as arrows with their input.</p></dd></dl>
+</div>
+<div class="explainer-block" data-block="idee/6" data-block-id="e549edc3" data-block-type="matching" data-block-order="9">
+<div class="explainer-exercise explainer-question" id="diagramm-teile">
+<p class="explainer-exercise-label">Exercise</p>
+<div class="question" id="frage-diagramm-teile" data-id="diagramm-teile" data-type="matching">
+<form class="question-form" novalidate>
+<fieldset>
+<legend class="question-text">What does each part of a state diagram mean?</legend>
+<p class="question-hint">Choose the match for each entry.</p>
+<ul class="question-pairs">
+<li><label><span>a circle</span> <select name="frage-diagramm-teile-0" data-left="0"><option value="">please choose</option><option value="2">the input</option><option value="3">the output</option><option value="1">a transition</option><option value="4">the start state</option><option value="0">a state</option></select></label></li>
+<li><label><span>an arrow</span> <select name="frage-diagramm-teile-1" data-left="1"><option value="">please choose</option><option value="2">the input</option><option value="3">the output</option><option value="1">a transition</option><option value="4">the start state</option><option value="0">a state</option></select></label></li>
+<li><label><span>the word before the slash</span> <select name="frage-diagramm-teile-2" data-left="2"><option value="">please choose</option><option value="2">the input</option><option value="3">the output</option><option value="1">a transition</option><option value="4">the start state</option><option value="0">a state</option></select></label></li>
+<li><label><span>the word after the slash</span> <select name="frage-diagramm-teile-3" data-left="3"><option value="">please choose</option><option value="2">the input</option><option value="3">the output</option><option value="1">a transition</option><option value="4">the start state</option><option value="0">a state</option></select></label></li>
+<li><label><span>the arrow marked “Start”</span> <select name="frage-diagramm-teile-4" data-left="4"><option value="">please choose</option><option value="2">the input</option><option value="3">the output</option><option value="1">a transition</option><option value="4">the start state</option><option value="0">a state</option></select></label></li>
+</ul>
+</fieldset>
+<div class="question-feedback-row"><div class="question-feedback" role="status"></div></div>
+<div class="question-reveal" hidden>
+<p><strong>Right answer:</strong> a circle – a state; an arrow – a transition; the word before the slash – the input; the word after the slash – the output; the arrow marked “Start” – the start state</p>
+<p class="question-explanation">Circles are what the machine remembers. Arrows are the jumps. At an arrow, first comes what goes in, then what comes out.</p>
+</div>
+<p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p>
+</form>
+</div>
+<details class="explainer-solution"><summary>Solution</summary>
+<p><strong>Right answer:</strong> a circle – a state; an arrow – a transition; the word before the slash – the input; the word after the slash – the output; the arrow marked “Start” – the start state</p>
+<p class="question-explanation">Circles are what the machine remembers. Arrows are the jumps. At an arrow, first comes what goes in, then what comes out.</p>
+</details>
+<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"diagramm-teile","text":"What does each part of a state diagram mean?","explanation":"Circles are what the machine remembers. Arrows are the jumps. At an arrow, first comes what goes in, then what comes out.","links":[],"type":"matching","pairs":[{"left":"a circle","right":"a state"},{"left":"an arrow","right":"a transition"},{"left":"the word before the slash","right":"the input"},{"left":"the word after the slash","right":"the output"},{"left":"the arrow marked “Start”","right":"the start state"}]},"rendered":{}}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="idee/7" data-block-id="3d12184f" data-block-type="note" data-block-order="10">
+<div class="explainer-box explainer-note">
+<h3 class="explainer-box-title">Remember</h3>
+<div class="explainer-block" data-block="idee/7/1" data-block-id="4d4cf7e2" data-block-type="text" data-block-order="11">
+<div class="block-text"><ul>
+<li>Every state needs an arrow for every input. If nothing changes, the arrow goes back to the same circle.</li>
+<li>Always read an arrow from its tail to its head.</li>
+<li>Always begin at the start state.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
+<section class="explainer-section">
+<h2 id="mitmachen">Play by the plan</h2>
+<div class="explainer-block" data-block="mitmachen/1" data-block-id="911f20a7" data-block-type="text" data-block-order="12">
+<div class="block-text"><p>Play the machine in pairs by Selin&#39;s plan:</p>
+<ol>
+<li>Draw the diagram large on a sheet of paper.</li>
+<li>Put a counter on the circle with the start arrow.</li>
+<li>One person says an input. The other moves the counter along the matching arrow and says the output.</li>
+<li>Swap after five inputs.</li>
+</ol></div>
+</div>
+</section>
+<section class="explainer-section">
+<h2 id="uebung">Practice</h2>
+<div class="explainer-block" data-block="uebung/1" data-block-id="e8cf33b0" data-block-type="vue-component" data-block-order="13">
+<div class="explainer-component" id="folge-lesen" data-component="AutomatAufgabe" data-exercise data-seeds="[1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,20,22,23,24,25,26,27,28,32,33,34,35,36,38,40,42,43,44,48,52,55,59,62,63,64,66,67,68,69,70,77,80,81,86,91,92,95,96,98,104,108,111,115,116,117,122,124,129,130,131,133,137]" data-checked>
+<p class="explainer-task-controls" hidden><span class="explainer-task-number" tabindex="-1" data-template="Task no. {n}">Task no. 1</span> <button type="button" class="explainer-new-task" title="New task"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg><span class="explainer-new-task-text">New task</span></button></p>
+<form class="explainer-component-form" novalidate><div class="explainer-island" hidden><div class="automat-aufgabe" data-v-af2e8254><svg class="automat-diagramm" viewbox="-22 1 617 307" role="presentation" aria-hidden="true" data-v-af2e8254 data-v-c0d9353a><g class="automat-diagramm-start" data-v-c0d9353a><path d="M-8 170 L56 170" data-v-c0d9353a></path><polygon points="56 170 43 176.5 43 163.5" data-v-c0d9353a></polygon><text x="-8" y="160" data-v-c0d9353a>Start</text></g><!--[--><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M164 170 L246 170" data-v-c0d9353a></path><polygon points="246 170 233 176.5 233 163.5" data-v-c0d9353a></polygon><text y="160" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="205" dy="0" class="automat-diagramm-input" data-v-c0d9353a>coin <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M88 120.7 C26.1 64.2 193.9 64.2 132 120.7" data-v-c0d9353a></path><polygon points="132 120.7 137.2 107.1 145.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M354 170 L436 170" data-v-c0d9353a></path><polygon points="436 170 423 176.5 423 163.5" data-v-c0d9353a></polygon><text y="160" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="395" dy="0" class="automat-diagramm-input" data-v-c0d9353a>coin <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M278 120.7 C216.1 64.2 383.9 64.2 322 120.7" data-v-c0d9353a></path><polygon points="322 120.7 327.2 107.1 335.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M468 120.7 C406.1 64.2 573.9 64.2 512 120.7" data-v-c0d9353a></path><polygon points="512 120.7 517.2 107.1 525.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="-26.45" class="automat-diagramm-input" data-v-c0d9353a>coin <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="490" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>coin comes back <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M443.3 197.1 Q300 280 156.7 197.1" data-v-c0d9353a></path><polygon points="156.7 197.1 171.2 197.9 164.7 209.2" data-v-c0d9353a></polygon><text y="266.927979304626" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="300" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>juice drops out <!----></tspan><!--]--></text></g><!--]--><!----><!--[--><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="110" cy="170" r="54" data-v-c0d9353a></circle><text x="110" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="8.049999999999999" data-v-c0d9353a>€0 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="300" cy="170" r="54" data-v-c0d9353a></circle><text x="300" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="8.049999999999999" data-v-c0d9353a>€1 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="490" cy="170" r="54" data-v-c0d9353a></circle><text x="490" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="8.049999999999999" data-v-c0d9353a>€2 in</tspan><!--]--></text></g><!--]--></svg><p data-v-af2e8254>juice machine: the machine begins at the start state “€0 in”. Then come the inputs „coin“, „coin“, „button“. Which state is it in at the end?</p><div class="automat-aufgabe-states" role="group" aria-label="State at the end" data-v-af2e8254><!--[--><button type="button" aria-pressed="false" data-v-af2e8254>€0 in</button><button type="button" aria-pressed="false" data-v-af2e8254>€1 in</button><button type="button" aria-pressed="false" data-v-af2e8254>€2 in</button><!--]--></div></div></div><p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p></form>
+<div class="explainer-nojs"><div class="explainer-described"><p class="explainer-task-number">Task no. 1</p><div class="explainer-task"><p>juice machine: the machine begins at the start state “€0 in”. Then come the inputs „coin“, „coin“, „button“. Which state is it in at the end?</p>
+<p><strong>juice machine</strong> (Start: €0 in):</p>
+<ul>
+<li>€0 in – coin → €1 in</li>
+<li>€0 in – button → €0 in</li>
+<li>€1 in – coin → €2 in</li>
+<li>€1 in – button → €1 in</li>
+<li>€2 in – coin → €2 in (output: coin comes back)</li>
+<li>€2 in – button → €0 in (output: juice drops out)</li>
+</ul></div><details class="explainer-solution"><summary>Solution</summary><p>€0 in: coin → €1 in, coin → €2 in, button → €0 in. → <strong>€0 in</strong></p></details></div></div>
+<p class="question-feedback" data-right="Right!" data-wrong="Sorry, that is not right." data-incomplete="Answer first: choose, type or match everything."></p>
+<script type="application/json" class="explainer-component-props">{"automata":[{"nr":0,"name":"juice machine","start":0,"states":[{"name":"€0 in","x":110,"y":170,"loop":-90},{"name":"€1 in","x":300,"y":170,"loop":-90},{"name":"€2 in","x":490,"y":170,"loop":-90}],"inputs":[{"name":"coin"},{"name":"button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The machine is empty. You put in a coin. Now it has some money, but not enough yet."},{"from":0,"input":1,"to":0,"bend":0,"text":"The machine is empty. You press the button. Nothing happens, it stays empty."},{"from":1,"input":0,"to":2,"bend":0,"text":"One coin is already in. You put in another one. Now there is enough money for a juice."},{"from":1,"input":1,"to":1,"bend":0,"text":"One coin is in. You press the button. It is not enough money, so the machine keeps the coin."},{"from":2,"input":0,"to":2,"bend":0,"text":"There is already enough money in. You put in one more coin. It comes back, and there is still enough money in."},{"from":2,"input":1,"to":0,"bend":55,"text":"There is enough money in. You press the button. A juice drops out, and the money is used up."}],"outputs":[{"from":2,"input":0,"text":"coin comes back"},{"from":2,"input":1,"text":"juice drops out"}]},{"nr":1,"name":"hall light with a push button","start":0,"states":[{"name":"off","x":170,"y":150,"loop":-90},{"name":"on","x":430,"y":150,"loop":-90}],"inputs":[{"name":"push button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The hall is dark. You press the push button. The light comes on."},{"from":1,"input":0,"to":0,"bend":0,"text":"The light in the hall is on. You press the push button. The light goes out."}],"outputs":[{"from":0,"input":0,"text":"light comes on"},{"from":1,"input":0,"text":"light goes out"}]},{"nr":2,"name":"turnstile at the swimming pool","start":0,"states":[{"name":"locked","x":170,"y":160,"loop":-90},{"name":"open","x":430,"y":160,"loop":-90}],"inputs":[{"name":"token"},{"name":"push"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The turnstile is locked. You put in a token. Now you may go through."},{"from":0,"input":1,"to":0,"bend":0,"text":"The turnstile is locked. You push it without paying. It does not move."},{"from":1,"input":1,"to":0,"bend":0,"text":"You have paid and you go through. Behind you, the turnstile locks again."},{"from":1,"input":0,"to":1,"bend":0,"text":"You have already paid and you put in another token. It comes back, and you may still go through."}],"outputs":[{"from":1,"input":0,"text":"token comes back"}]},{"nr":3,"name":"lift with three floors","start":0,"states":[{"name":"bottom","x":300,"y":400,"loop":90},{"name":"middle","x":300,"y":230,"loop":0},{"name":"top","x":300,"y":60,"loop":-90}],"inputs":[{"name":"up"},{"name":"down"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The lift is at the very bottom. Someone presses “up”. It goes up one floor."},{"from":0,"input":1,"to":0,"bend":0,"text":"The lift is at the very bottom. Someone presses “down”. It cannot go lower, so it stays."},{"from":1,"input":0,"to":2,"bend":0,"text":"The lift is in the middle. Someone presses “up”. It goes up one floor."},{"from":1,"input":1,"to":0,"bend":0,"text":"The lift is in the middle. Someone presses “down”. It goes down one floor."},{"from":2,"input":0,"to":2,"bend":0,"text":"The lift is at the very top. Someone presses “up”. It cannot go higher, so it stays."},{"from":2,"input":1,"to":1,"bend":0,"text":"The lift is at the very top. Someone presses “down”. It goes down one floor."}],"outputs":[]},{"nr":4,"name":"pedestrian crossing with a button","start":0,"states":[{"name":"cars green","x":130,"y":210,"loop":90},{"name":"waiting","x":470,"y":210,"loop":90},{"name":"walkers green","x":300,"y":60,"loop":-90}],"inputs":[{"name":"button"},{"name":"time up"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The cars have green. A child presses the button. The lights remember it, but the cars still drive."},{"from":0,"input":1,"to":0,"bend":0,"text":"The cars have green and nobody has pressed. Time is up. The cars keep green."},{"from":1,"input":0,"to":1,"bend":0,"text":"Someone has already pressed. A child presses again. Nothing changes, the lights keep waiting."},{"from":1,"input":1,"to":2,"bend":0,"text":"Someone has pressed. Time is up. Now the people on foot may cross."},{"from":2,"input":0,"to":2,"bend":0,"text":"The people on foot have green. A child presses the button. Nothing changes."},{"from":2,"input":1,"to":0,"bend":0,"text":"The people on foot have green. Time is up. Now the cars may drive again."}],"outputs":[{"from":0,"input":0,"text":"“WAIT” lights"}]}],"use":[0,1,2,3,4],"mode":"folge","view":"diagramm","task":"{automat}: the machine begins at the start state “{start}”. Then come the inputs {inputs}. Which state is it in at the end?","startWord":"Start","chooseLabel":"State at the end","outputWord":"output","mistakes":["Almost. The last input “{last}” is still missing: follow its arrow too.","You went along an arrow backwards. An arrow leads from its tail to its head, never back.","You are still at the start. With each input the machine jumps along the arrow with that word."],"other":"Begin at “{start}” and go through the inputs one by one. Look out for arrows that go back to the same circle."}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="uebung/2" data-block-id="2cc265bf" data-block-type="vue-component" data-block-order="14">
+<div class="explainer-component" id="pfeil-ergaenzen" data-component="AutomatAufgabe" data-exercise data-seeds="[1,2,3,4,5,7,8,11,12,13,14,15,16,25,27,31,37,42,44,46,48,70,81,94]" data-checked>
+<p class="explainer-task-controls" hidden><span class="explainer-task-number" tabindex="-1" data-template="Task no. {n}">Task no. 1</span> <button type="button" class="explainer-new-task" title="New task"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg><span class="explainer-new-task-text">New task</span></button></p>
+<form class="explainer-component-form" novalidate><div class="explainer-island" hidden><div class="automat-aufgabe" data-v-af2e8254><svg class="automat-diagramm" viewbox="-22 1 617 307" role="presentation" aria-hidden="true" data-v-af2e8254 data-v-c0d9353a><g class="automat-diagramm-start" data-v-c0d9353a><path d="M-8 170 L56 170" data-v-c0d9353a></path><polygon points="56 170 43 176.5 43 163.5" data-v-c0d9353a></polygon><text x="-8" y="160" data-v-c0d9353a>Start</text></g><!--[--><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M88 120.7 C26.1 64.2 193.9 64.2 132 120.7" data-v-c0d9353a></path><polygon points="132 120.7 137.2 107.1 145.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M354 170 L436 170" data-v-c0d9353a></path><polygon points="436 170 423 176.5 423 163.5" data-v-c0d9353a></polygon><text y="160" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="395" dy="0" class="automat-diagramm-input" data-v-c0d9353a>coin <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M278 120.7 C216.1 64.2 383.9 64.2 322 120.7" data-v-c0d9353a></path><polygon points="322 120.7 327.2 107.1 335.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M468 120.7 C406.1 64.2 573.9 64.2 512 120.7" data-v-c0d9353a></path><polygon points="512 120.7 517.2 107.1 525.9 116.7" data-v-c0d9353a></polygon><text y="58.7" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="-26.45" class="automat-diagramm-input" data-v-c0d9353a>coin <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="490" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>coin comes back <!----></tspan><!--]--></text></g><g class="automat-diagramm-arrow" data-v-c0d9353a><path d="M443.3 197.1 Q300 280 156.7 197.1" data-v-c0d9353a></path><polygon points="156.7 197.1 171.2 197.9 164.7 209.2" data-v-c0d9353a></polygon><text y="266.927979304626" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="0" class="automat-diagramm-input" data-v-c0d9353a>button <tspan class="automat-diagramm-slash" data-v-c0d9353a> /</tspan></tspan><tspan x="300" dy="26.45" class="automat-diagramm-output" data-v-c0d9353a>juice drops out <!----></tspan><!--]--></text></g><!--]--><g class="automat-diagramm-arrow automat-diagramm-gap" data-v-c0d9353a><path d="M96.02377156446387 222.15999461960968 L84.11809548974792 266.5925826289068" data-v-c0d9353a></path><!----><text x="92.11809548974792" y="289.5925826289068" text-anchor="start" data-v-c0d9353a><tspan class="automat-diagramm-input" data-v-c0d9353a>coin</tspan><tspan dx="6" data-v-c0d9353a>?</tspan></text></g><!--[--><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="110" cy="170" r="54" data-v-c0d9353a></circle><text x="110" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="110" dy="8.049999999999999" data-v-c0d9353a>€0 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="300" cy="170" r="54" data-v-c0d9353a></circle><text x="300" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="300" dy="8.049999999999999" data-v-c0d9353a>€1 in</tspan><!--]--></text></g><g class="automat-diagramm-state" data-v-c0d9353a><!----><circle cx="490" cy="170" r="54" data-v-c0d9353a></circle><text x="490" y="170" text-anchor="middle" data-v-c0d9353a><!--[--><tspan x="490" dy="8.049999999999999" data-v-c0d9353a>€2 in</tspan><!--]--></text></g><!--]--></svg><p data-v-af2e8254>juice machine: one arrow is missing. The machine is empty. You put in a coin. Now it has some money, but not enough yet. Where does the arrow “coin” from “€0 in” lead?</p><div class="automat-aufgabe-states" role="group" aria-label="The arrow leads to" data-v-af2e8254><!--[--><button type="button" aria-pressed="false" data-v-af2e8254>€0 in</button><button type="button" aria-pressed="false" data-v-af2e8254>€1 in</button><button type="button" aria-pressed="false" data-v-af2e8254>€2 in</button><!--]--></div></div></div><p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p></form>
+<div class="explainer-nojs"><div class="explainer-described"><p class="explainer-task-number">Task no. 1</p><div class="explainer-task"><p>juice machine: one arrow is missing. The machine is empty. You put in a coin. Now it has some money, but not enough yet. Where does the arrow “coin” from “€0 in” lead?</p>
+<p><strong>juice machine</strong> (Start: €0 in):</p>
+<ul>
+<li>€0 in – button → €0 in</li>
+<li>€1 in – coin → €2 in</li>
+<li>€1 in – button → €1 in</li>
+<li>€2 in – coin → €2 in (output: coin comes back)</li>
+<li>€2 in – button → €0 in (output: juice drops out)</li>
+</ul></div><details class="explainer-solution"><summary>Solution</summary><p>→ <strong>€1 in</strong></p></details></div></div>
+<p class="question-feedback" data-right="Right!" data-wrong="Sorry, that is not right." data-incomplete="Answer first: choose, type or match everything."></p>
+<script type="application/json" class="explainer-component-props">{"automata":[{"nr":0,"name":"juice machine","start":0,"states":[{"name":"€0 in","x":110,"y":170,"loop":-90},{"name":"€1 in","x":300,"y":170,"loop":-90},{"name":"€2 in","x":490,"y":170,"loop":-90}],"inputs":[{"name":"coin"},{"name":"button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The machine is empty. You put in a coin. Now it has some money, but not enough yet."},{"from":0,"input":1,"to":0,"bend":0,"text":"The machine is empty. You press the button. Nothing happens, it stays empty."},{"from":1,"input":0,"to":2,"bend":0,"text":"One coin is already in. You put in another one. Now there is enough money for a juice."},{"from":1,"input":1,"to":1,"bend":0,"text":"One coin is in. You press the button. It is not enough money, so the machine keeps the coin."},{"from":2,"input":0,"to":2,"bend":0,"text":"There is already enough money in. You put in one more coin. It comes back, and there is still enough money in."},{"from":2,"input":1,"to":0,"bend":55,"text":"There is enough money in. You press the button. A juice drops out, and the money is used up."}],"outputs":[{"from":2,"input":0,"text":"coin comes back"},{"from":2,"input":1,"text":"juice drops out"}]},{"nr":1,"name":"hall light with a push button","start":0,"states":[{"name":"off","x":170,"y":150,"loop":-90},{"name":"on","x":430,"y":150,"loop":-90}],"inputs":[{"name":"push button"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The hall is dark. You press the push button. The light comes on."},{"from":1,"input":0,"to":0,"bend":0,"text":"The light in the hall is on. You press the push button. The light goes out."}],"outputs":[{"from":0,"input":0,"text":"light comes on"},{"from":1,"input":0,"text":"light goes out"}]},{"nr":2,"name":"turnstile at the swimming pool","start":0,"states":[{"name":"locked","x":170,"y":160,"loop":-90},{"name":"open","x":430,"y":160,"loop":-90}],"inputs":[{"name":"token"},{"name":"push"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The turnstile is locked. You put in a token. Now you may go through."},{"from":0,"input":1,"to":0,"bend":0,"text":"The turnstile is locked. You push it without paying. It does not move."},{"from":1,"input":1,"to":0,"bend":0,"text":"You have paid and you go through. Behind you, the turnstile locks again."},{"from":1,"input":0,"to":1,"bend":0,"text":"You have already paid and you put in another token. It comes back, and you may still go through."}],"outputs":[{"from":1,"input":0,"text":"token comes back"}]},{"nr":3,"name":"lift with three floors","start":0,"states":[{"name":"bottom","x":300,"y":400,"loop":90},{"name":"middle","x":300,"y":230,"loop":0},{"name":"top","x":300,"y":60,"loop":-90}],"inputs":[{"name":"up"},{"name":"down"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The lift is at the very bottom. Someone presses “up”. It goes up one floor."},{"from":0,"input":1,"to":0,"bend":0,"text":"The lift is at the very bottom. Someone presses “down”. It cannot go lower, so it stays."},{"from":1,"input":0,"to":2,"bend":0,"text":"The lift is in the middle. Someone presses “up”. It goes up one floor."},{"from":1,"input":1,"to":0,"bend":0,"text":"The lift is in the middle. Someone presses “down”. It goes down one floor."},{"from":2,"input":0,"to":2,"bend":0,"text":"The lift is at the very top. Someone presses “up”. It cannot go higher, so it stays."},{"from":2,"input":1,"to":1,"bend":0,"text":"The lift is at the very top. Someone presses “down”. It goes down one floor."}],"outputs":[]},{"nr":4,"name":"pedestrian crossing with a button","start":0,"states":[{"name":"cars green","x":130,"y":210,"loop":90},{"name":"waiting","x":470,"y":210,"loop":90},{"name":"walkers green","x":300,"y":60,"loop":-90}],"inputs":[{"name":"button"},{"name":"time up"}],"transitions":[{"from":0,"input":0,"to":1,"bend":0,"text":"The cars have green. A child presses the button. The lights remember it, but the cars still drive."},{"from":0,"input":1,"to":0,"bend":0,"text":"The cars have green and nobody has pressed. Time is up. The cars keep green."},{"from":1,"input":0,"to":1,"bend":0,"text":"Someone has already pressed. A child presses again. Nothing changes, the lights keep waiting."},{"from":1,"input":1,"to":2,"bend":0,"text":"Someone has pressed. Time is up. Now the people on foot may cross."},{"from":2,"input":0,"to":2,"bend":0,"text":"The people on foot have green. A child presses the button. Nothing changes."},{"from":2,"input":1,"to":0,"bend":0,"text":"The people on foot have green. Time is up. Now the cars may drive again."}],"outputs":[{"from":0,"input":0,"text":"“WAIT” lights"}]}],"use":[0,1,2,3,4],"mode":"pfeil","view":"diagramm","task":"{automat}: one arrow is missing. {text} Where does the arrow “{input}” from “{from}” lead?","startWord":"Start","chooseLabel":"The arrow leads to","outputWord":"output","mistakes":["Read the sentence again: something changes. Then the arrow leads to another circle.","Read the sentence again: nothing changes. Then the arrow goes back to the same circle."],"other":"Read the sentence again: what does the machine remember afterwards? Find the circle with exactly that state."}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="uebung/3" data-block-id="659091f0" data-block-type="true-false" data-block-order="15">
+<div class="explainer-exercise explainer-question" id="pfeil-weglassen">
+<p class="explainer-exercise-label">Exercise</p>
+<div class="question" id="frage-pfeil-weglassen" data-id="pfeil-weglassen" data-type="true-false">
+<form class="question-form" novalidate>
+<fieldset>
+<legend class="question-text">Selin says: “If nothing happens with an input, I don't need an arrow for it.” Is that right in our plans?</legend>
+<label class="question-option"><input type="radio" name="frage-pfeil-weglassen" value="true"> <span>True</span></label>
+<label class="question-option"><input type="radio" name="frage-pfeil-weglassen" value="false"> <span>False</span></label>
+</fieldset>
+<div class="question-feedback-row"><div class="question-feedback" role="status"></div></div>
+<div class="question-reveal" hidden>
+<p><strong>Right answer:</strong> The statement is false.</p>
+<p class="question-explanation">In our plans every state needs an arrow for every input. Otherwise the person playing the machine does not know what to do. If nothing changes, the arrow goes back to the same circle.</p>
+</div>
+<p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p>
+</form>
+</div>
+<details class="explainer-solution"><summary>Solution</summary>
+<p><strong>Right answer:</strong> The statement is false.</p>
+<p class="question-explanation">In our plans every state needs an arrow for every input. Otherwise the person playing the machine does not know what to do. If nothing changes, the arrow goes back to the same circle.</p>
+</details>
+<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"pfeil-weglassen","text":"Selin says: “If nothing happens with an input, I don't need an arrow for it.” Is that right in our plans?","explanation":"In our plans every state needs an arrow for every input. Otherwise the person playing the machine does not know what to do. If nothing changes, the arrow goes back to the same circle.","links":[],"type":"true-false","answer":false},"rendered":{}}</script>
+</div>
+</div>
+<div class="explainer-block" data-block="uebung/4" data-block-id="59f787ed" data-block-type="single-choice" data-block-order="16">
+<div class="explainer-exercise explainer-question" id="startzustand-finden">
+<p class="explainer-exercise-label">Exercise</p>
+<div class="question" id="frage-startzustand-finden" data-id="startzustand-finden" data-type="single-choice">
+<form class="question-form" novalidate>
+<fieldset>
+<legend class="question-text">Mia wants to play by Selin's plan. How does she know which circle to begin at?</legend>
+<label class="question-option"><input type="radio" name="frage-startzustand-finden" value="0"> <span>By the arrow marked “Start”</span></label>
+<label class="question-option"><input type="radio" name="frage-startzustand-finden" value="1"> <span>By the circle on the far left</span></label>
+<label class="question-option"><input type="radio" name="frage-startzustand-finden" value="2"> <span>By the circle with the most arrows</span></label>
+<label class="question-option"><input type="radio" name="frage-startzustand-finden" value="3"> <span>By the filled circle in the simulator</span></label>
+</fieldset>
+<div class="question-feedback-row"><div class="question-feedback" role="status"></div></div>
+<div class="question-reveal" hidden>
+<ul class="question-infos">
+<li class="question-info question-info-right" data-option="0"><p class="question-info-head"><strong>By the arrow marked “Start”</strong> <span class="question-badge question-badge-right">right answer</span></p><p>The start arrow comes from nowhere and points to the start state.</p></li>
+<li class="question-info" data-option="1"><p class="question-info-head"><strong>By the circle on the far left</strong></p><p>In the juice machine the start happens to be on the left. In another diagram it can be anywhere.</p></li>
+<li class="question-info" data-option="2"><p class="question-info-head"><strong>By the circle with the most arrows</strong></p><p>How many arrows a circle has says nothing about where to begin.</p></li>
+<li class="question-info" data-option="3"><p class="question-info-head"><strong>By the filled circle in the simulator</strong></p><p>The filled circle only shows where the machine is right now. On paper there is no such circle.</p></li>
+</ul>
+<p class="question-explanation">You can spot the start state by the arrow marked “Start”, wherever it is in the picture.</p>
+</div>
+<p class="question-actions" hidden><button type="submit" class="question-check">Check</button></p>
+</form>
+</div>
+<details class="explainer-solution"><summary>Solution</summary>
+<ul class="question-infos">
+<li class="question-info question-info-right" data-option="0"><p class="question-info-head"><strong>By the arrow marked “Start”</strong> <span class="question-badge question-badge-right">right answer</span></p><p>The start arrow comes from nowhere and points to the start state.</p></li>
+<li class="question-info" data-option="1"><p class="question-info-head"><strong>By the circle on the far left</strong></p><p>In the juice machine the start happens to be on the left. In another diagram it can be anywhere.</p></li>
+<li class="question-info" data-option="2"><p class="question-info-head"><strong>By the circle with the most arrows</strong></p><p>How many arrows a circle has says nothing about where to begin.</p></li>
+<li class="question-info" data-option="3"><p class="question-info-head"><strong>By the filled circle in the simulator</strong></p><p>The filled circle only shows where the machine is right now. On paper there is no such circle.</p></li>
+</ul>
+<p class="question-explanation">You can spot the start state by the arrow marked “Start”, wherever it is in the picture.</p>
+</details>
+<script type="application/json" class="explainer-exercise-data">{"kind":"question","lang":"en","question":{"id":"startzustand-finden","text":"Mia wants to play by Selin's plan. How does she know which circle to begin at?","explanation":"You can spot the start state by the arrow marked “Start”, wherever it is in the picture.","links":[],"type":"single-choice","options":[{"text":"By the arrow marked “Start”","correct":true,"info":"The start arrow comes from nowhere and points to the start state."},{"text":"By the circle on the far left","correct":false,"info":"In the juice machine the start happens to be on the left. In another diagram it can be anywhere."},{"text":"By the circle with the most arrows","correct":false,"info":"How many arrows a circle has says nothing about where to begin."},{"text":"By the filled circle in the simulator","correct":false,"info":"The filled circle only shows where the machine is right now. On paper there is no such circle."}]},"rendered":{}}</script>
+</div>
+</div>
+</section>
+<section class="explainer-section">
+<h2 id="rueckblick">Looking back</h2>
+<div class="explainer-block" data-block="rueckblick/1" data-block-id="9d1253f4" data-block-type="text" data-block-order="17">
+<div class="block-text"><p>Done: Selin&#39;s plan now hangs on the box, and Mia plays the machine without a mistake. You can draw and read a machine as a state diagram: circles are states, arrows are transitions, and the input is written at the arrow. In year 9 or 10 you will design a machine yourself, for example for traffic lights.</p></div>
+</div>
+</section>
+<p class="explainer-feedback-invite" hidden><span>Found a mistake or have an idea for this app?</span> <button type="button" class="explainer-feedback-switch">Give feedback on “Automata and states”</button></p>
+</main>
+<template class="explainer-feedback-template">
+<aside class="explainer-feedback" aria-labelledby="feedback-titel" hidden>
+<div class="explainer-feedback-head">
+<h2 id="feedback-titel">Feedback</h2>
+<button type="button" class="explainer-feedback-help-open" aria-expanded="false" aria-controls="feedback-hilfe">Help</button>
+<button type="button" class="explainer-feedback-collapse" aria-expanded="true" aria-controls="feedback-inhalt" aria-label="Collapse the bar" title="Collapse the bar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+<button type="button" class="explainer-feedback-expand" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Expand the feedback bar</span></button>
+<div class="explainer-feedback-body" id="feedback-inhalt">
+<section class="explainer-feedback-help" id="feedback-hilfe" aria-labelledby="feedback-hilfe-titel" hidden>
+<h3 id="feedback-hilfe-titel">How to give feedback</h3>
+<ol><li>Go through the pages. Every paragraph, figure and exercise shows “Note”.</li><li>If you mark text in the block first, the note quotes it.</li><li>When you are done, choose “Open an issue on GitHub”. The app copies your notes, and you paste them into the issue. You need a GitHub account for this.</li></ol>
+<p class="explainer-feedback-privacy">Your notes stay in this browser on this device only. The app sends nothing. If you clear the browser's data, the notes are gone.</p>
+<p><button type="button" class="explainer-feedback-help-done">Got it</button></p>
+</section>
+<form class="explainer-feedback-form" hidden>
+<p class="explainer-feedback-new">New note on</p>
+<p class="explainer-feedback-where"></p>
+<blockquote class="explainer-feedback-quote" hidden></blockquote>
+<label for="feedback-text">Your note</label>
+<textarea id="feedback-text" class="explainer-feedback-text" rows="5" required></textarea>
+<p class="explainer-feedback-buttons"><button type="submit" class="explainer-feedback-save">Save</button> <button type="button" class="explainer-feedback-cancel">Cancel</button></p>
+</form>
+<p class="explainer-feedback-status" role="status" aria-live="polite"></p>
+<section class="explainer-feedback-notes" aria-labelledby="feedback-notizen">
+<h3 id="feedback-notizen" class="explainer-feedback-count"></h3>
+<p class="explainer-feedback-actions"><button type="button" class="explainer-feedback-copy">Copy</button> <a class="explainer-feedback-issue" href="#" target="_blank" rel="noopener">Open an issue on GitHub</a></p>
+<textarea class="explainer-feedback-export" readonly rows="6" aria-label="Text to copy" hidden></textarea>
+<div class="explainer-feedback-list"></div>
+</section>
+</div>
+<div class="explainer-feedback-foot">
+<button type="button" class="explainer-feedback-delete-all">Delete all …</button>
+<span class="explainer-feedback-local">Kept in this browser only</span>
+<button type="button" class="explainer-feedback-off">End</button>
+</div>
+<script type="application/json" class="explainer-feedback-data">{"storage":"sprachen-automaten","app":"Automata and states","root":"../../../en/","repository":"lernapps/informatik-automaten","revision":"9c2a167","page":{"title":"State diagrams","order":0}}</script>
+</aside>
+</template>
+<nav class="explainer-pager" aria-label="Page through"></nav>
+<footer class="page-footer"><p>An explainer on lernapps.net · <a href="https://lernapps.net/imprint/">Imprint</a> · <a href="https://lernapps.net/privacy/">Privacy</a></p></footer>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "strand": "informatik/sprachen-automaten",
+  "pages": [
+    {
+      "path": "alltag/zustandsdiagramm/",
+      "title": {
+        "de": "Zustandsdiagramm",
+        "en": "State diagrams"
+      },
+      "competencies": [
+        "zustandsdiagramm"
+      ]
+    }
+  ]
+}
