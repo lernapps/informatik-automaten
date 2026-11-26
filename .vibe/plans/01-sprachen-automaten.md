@@ -4,7 +4,7 @@
 # Archetype, null until chosen in Explore. Allowed values: explainer, interactive, quiz.
 archetype: explainer
 # Current phase. Allowed values: explore, plan, code, commit.
-phase: explore
+phase: plan
 # prePushFailures: failed pre-push runs, written by the hook.
 prePushFailures: 0
 # failedChecks: failed rules and runs, written by lernapps check and the hooks.
@@ -36,9 +36,8 @@ Zustandsdiagramme (Ampel, Drehkreuz) und sagen voraus, wohin ein Automat bei ein
   Komponenten), braucht der Auftrag nicht.
 - Strang `informatik/sprachen-automaten`, Welle 1 nur Kapitel 1 (5-6) mit `automaten-im-alltag` und `zustandsdiagramm`.
   Kapitel 2 (`automat-entwerfen`, 9-10) kommt als Inkrement auf `increment/9-10`; ich plane es mit, baue es nicht.
-- Sammel-Wiederholung am Kapitelanfang (`recap`): Die Karte nennt als Voraussetzung `eva-prinzip`
-  (requires von `automaten-im-alltag`); der Auftrag nennt `informatiksysteme-im-alltag`. Ich wiederhole beide kompakt
-  (guess, Frage an der Checkpoint Recherche).
+- Sammel-Wiederholung am Kapitelanfang (`recap: informatik/eva-prinzip`), nur `eva-prinzip` wie die Karte
+  (Orchestrator). Sie zeigt das EVA-Bild (Kopie von `EvaBild` aus #490) und daran, was ihm fehlt: das Gedächtnis.
 - Der Simulator ist eine Komponentenfamilie mit einem gemeinsamen Modell `Automat.ts` (Zustände, Übergänge,
   Startzustand, Schritt): `AutomatDiagramm` zeichnet, `AutomatSimulator` spielt (Anzeige), `AutomatAufgabe` ist die
   Übungskomponente. Automaten liegen als Daten in `src/data/automaten.yaml`. Kapitel 2 ergänzt einen Entwurfsmodus,
@@ -55,7 +54,7 @@ Bausteine von Welle 1 haben `practisedBy: []` (Lücken).
 
 | Kapitel | Seite (Datei) | Baustein (id) | Stufe, Schritt | requires | opens |
 |---|---|---|---|---|---|
-| 1 Automaten im Alltag | `alltag/das-brauchst-du` | recap: `informatik/informatiksysteme-im-alltag`, `informatik/eva-prinzip` | – | – | – |
+| 1 Automaten im Alltag | `alltag/das-brauchst-du` | recap: `informatik/eva-prinzip` | – | – | – |
 | 1 | `alltag/automaten-im-alltag` | automaten-im-alltag | 5-6, 5 | eva-prinzip | 2 |
 | 1 | `alltag/zustandsdiagramm` | zustandsdiagramm | 5-6, 6 | automaten-im-alltag | 1 |
 | 2 Einen Automaten entwerfen (Inkrement) | `entwerfen/automat-entwerfen` | automat-entwerfen | 9-10, 1 | zustandsdiagramm | 0 |
@@ -68,8 +67,8 @@ Bausteine von Welle 1 haben `practisedBy: []` (Lücken).
 - automat-entwerfen (Kapitel 2): „Ich kann für eine konkrete Aufgabe, zum Beispiel eine Ampelsteuerung, einen
   Automaten mit Zuständen und Übergängen entwerfen.“
 
-Voraussetzungen von außerhalb: `eva-prinzip` (direkt), `informatiksysteme-im-alltag` (über die Kette in #490). Beide
-auf der Sammel-Wiederholung „Das brauchst du hier“, kompakt, ohne neue Inhalte. #490 (informatik-computer) ist noch im
+Voraussetzung von außerhalb: `eva-prinzip` (direkt, aus #490). Sie steht auf der Sammel-Wiederholung „Das brauchst du
+hier“, kompakt, ohne neue Inhalte. #490 (informatik-computer) ist noch im
 Bau; ich verlinke keine Seite dort, die Runtime verlinkt die Bausteine auf der Karte.
 
 ### Quellen (geöffnet und gelesen; Lehrpläne hat ein Hilfsagent gelesen, die Kernstellen GI und NRW habe ich im Text
@@ -117,7 +116,7 @@ nachgesehen)
   #2f5fb3, V grün #23704a, A orange #a4500f); die Seite `automaten-im-alltag` stellt die Frage, die EVA allein nicht
   beantwortet.
 - Geschichte (bis Klasse 6: gezeichnete, erfundene Kinder): Die Klasse 6b (Jona, Selin, Mia, je 11, Aussehen wie in
-  #490) baut für das Schulfest einen Saftautomaten aus einem Karton. Jona sitzt im Karton und *ist* der Automat, Mia
+  #490) baut für das „Schulfest der 6b“ (so genannt, ohne Datum; #494 knüpft dort an) einen Saftautomaten aus einem Karton. Jona sitzt im Karton und *ist* der Automat, Mia
   kauft, Selin schreibt den Plan auf. Seite 1: Jona spielt und merkt, dass er sich das Geld merken muss. Seite 2: Selin
   zeichnet den Plan als Zustandsdiagramm, damit auch andere Kinder den Automaten spielen können; danach lesen sie
   weitere Pläne (Drehkreuz am Schwimmbad, Fußgängerampel). Ausblick: In Klasse 9-10 entwirfst du selbst einen Automaten.
@@ -126,8 +125,8 @@ nachgesehen)
   1 →(Münze) 2, 2 →(Münze) 2 mit Ausgabe „Münze kommt zurück“, 0 und 1 →(Knopf) bleiben, 2 →(Knopf) 0 mit Ausgabe „Saft
   fällt heraus“. Jeder Zustand hat für jede Eingabe einen Pfeil, auch wenn sich nichts ändert (Schleife). So ist das
   Diagramm vollständig und der Simulator weiß immer, wohin.
-- Ausgaben: an den Übergängen (was beim Springen passiert). Im Diagramm steht am Pfeil oben die Eingabe, darunter die
-  Ausgabe, im Simulator als Satz. Keine deutsche Quelle legt eine Schreibweise fest; Isaac Computer Science schreibt die
+- Ausgaben: an den Übergängen (was beim Springen passiert). Im Diagramm steht am Pfeil „Eingabe / Ausgabe“, im Simulator
+  die Ausgabe als Satz. Keine deutsche Quelle legt eine Schreibweise fest; Isaac Computer Science schreibt die
   Ausgabe ebenfalls an den Übergang. Farben aus EVA: Eingabe blau #2f5fb3, Ausgabe orange #a4500f, dazu je ein
   Wort-Zeichen (kein Farbcode allein). Die Begriffe Mealy und Moore kommen nicht vor.
 - Unplugged (Anleitung auf der Seite, geprüft wird mit Übungen): S. 1 „Automat spielen“: ein Kind ist der Automat mit
@@ -198,9 +197,10 @@ nachgesehen)
       off), and which misconception the feedback catches.
 - [x] Write under "Notes" the scope: what is in, what is out and why, the data range (for example "all main-group
       elements", never a silent "1–20"), the languages.
-- [ ] **Checkpoint:** research. Show in plain words: the strand or why none, the competencies by chapter, the didactic
+- [x] **Checkpoint:** research. Show in plain words: the strand or why none, the competencies by chapter, the didactic
       approach, the scope, every "(guess)", the sources and what is unchecked, the archetype and its reason. Stop and
       wait. Changes: change them, then ask again.
+      Creator: Einverstanden, weiter mit dem Plan. Sammel-Wiederholung: nur eva-prinzip, wie die Karte; EVA-Bild aus #490 nutzen und zeigen, was ihm fehlt: das Gedächtnis. Geschichte passt; 'Schulfest der 6b' ohne Datum. Typische Fehler vom fachlichen Prüfer bestätigen lassen.
 
 ### Answers
 
@@ -236,15 +236,15 @@ Die Rolle „Ersteller“ hat in diesem Epic der Orchestrator (lernapps/apps#509
 
 ### Tasks
 
-- [ ] Map the content as "Map the content" of skill `lernapps-explainer-design` says, and write the result under
+- [x] Map the content as "Map the content" of skill `lernapps-explainer-design` says, and write the result under
       "Content method".
-- [ ] Choose a pattern per competency as skill `lernapps-exercise-patterns` says, and add it to "Content method".
-- [ ] Add to "Content method" one line per page, as "Engagement" of skill `lernapps-explainer-design` says: the
+- [x] Choose a pattern per competency as skill `lernapps-exercise-patterns` says, and add it to "Content method".
+- [x] Add to "Content method" one line per page, as "Engagement" of skill `lernapps-explainer-design` says: the
       opening task, the change of activity, the reward, the story.
-- [ ] Add the tasks of Code, each one a piece of work that ends in a commit. First the pattern: one complete page or
+- [x] Add the tasks of Code, each one a piece of work that ends in a commit. First the pattern: one complete page or
       screen, `npx --no -- lernapps plan add --at pattern "<task>"`. Then the others, one call each:
       `npx --no -- lernapps plan add --at pages "<task>"`. Each task says what it builds and what it shows.
-- [ ] Draw a sketch of each screen, component or interactive exercise: a static SVG or image, or the steps with what
+- [x] Draw a sketch of each screen, component or interactive exercise: a static SVG or image, or the steps with what
       learners see after each. Keep the files in `.vibe/sketches/`.
 - [ ] Show the creator, short: goal, competencies by chapter, the Code tasks, the sketches, and the content method in
       plain words (what learners see and do, what the app cannot do). At most 2 questions.
@@ -253,11 +253,96 @@ Die Rolle „Ersteller“ hat in diesem Epic der Orchestrator (lernapps/apps#509
 
 ### Content method
 
-<!-- One line each: the patterns and where; the figures and how they are made; the data files; each component, what it
-checks and what it cannot; how a later agent adds a chapter. It becomes the content guide in Code. -->
-<!-- An explainer: per figure, model and component its learning action in two to four sentences
-(`explainer-representation-explained`); per page its prerequisites the app does not practise, and which get a recap
-page, which a link. -->
+**Aufbau.** `src/app.yaml` mit `format: 2`, `strand: informatik/sprachen-automaten`, `languages: [de, en]`, Kapitel
+`alltag` (Welle 1) mit den Seiten `das-brauchst-du` (recap `informatik/eva-prinzip`), `automaten-im-alltag`,
+`zustandsdiagramm`. Kapitel 2 später als Ordner `entwerfen`. Abschnitte mit gleichen ids auf jeder Seite:
+`einstieg` (Szene und erste Aufgabe), `ausprobieren` (nur wo der Simulator bedient wird), `idee` (das Neue, mit
+Definition und „Merke“), `mitmachen` (unplugged-Anleitung), `uebung`. Titel passen zur Seite.
+
+**Voraussetzungen:** `eva-prinzip` → Sammel-Wiederholung (Seite 0). `automaten-im-alltag` → von Seite 1 geübt, kein
+recap für Seite 2. Kein Link nach #490 (noch nicht veröffentlicht); die Runtime verlinkt den Baustein auf der Karte.
+
+**Muster je Baustein** (Fehler und Rückmeldungen wie unter Notes):
+- Wiederholung (recap, höchstens 1 Übung): `EvaBild` mit dem Saftautomaten (E: Münze, Knopf; V: prüft das Geld;
+  A: Saft); ein `single-choice` „Mia drückt den Knopf. Was sagt dir das EVA-Bild darüber, ob Saft kommt?“ → „Nichts:
+  Es hängt davon ab, was vorher passiert ist“. Text: Das EVA-Bild zeigt den Weg, aber kein Gedächtnis.
+- automaten-im-alltag (erklären, wie er abhängig von Eingabe und Zustand reagiert):
+  - `single-choice` Einstieg: Mia drückt den Knopf, Jona hat bisher 1 € bekommen. Was passiert? (Wiederholungsfehler:
+    „Saft kommt, weil sie gedrückt hat“).
+  - `generated` mit `pick: 1` aus `data/saft-situationen.yaml` (Felder `geld`, `eingabe`, `reaktion`, `neu`, je
+    Datensatz der richtige Satz) und `compare: { choice: [...] }` über die festen vier Reaktionen („Saft fällt heraus“,
+    „Nichts passiert“, „Der Automat merkt sich 1 € mehr“, „Die Münze kommt zurück“); `mistakes` für „gleicher Knopf,
+    gleiche Reaktion“. Pflichtübung.
+  - `AutomatAufgabe` Modus `folge`, Ansicht `kasten` (ohne Diagramm): Start „0 € drin“, 3-5 Eingaben gezogen; „Was
+    merkt sich Jona am Ende?“ Antwort ist ein Zustand. `reason`: erster Schritt, an dem die Folge falsch weitergeht
+    („Nach dem dritten Schritt sind 2 € drin; Knopf gibt Saft und der Automat ist wieder leer“).
+  - `matching` Alltagsautomat → was er sich merkt (Ampel → welche Farbe leuchtet; Aufzug → in welchem Stockwerk er
+    ist; Drehkreuz → ob schon bezahlt ist; Waschmaschine → welcher Schritt dran ist).
+  - `true-false` „Ein Automat reagiert auf dieselbe Eingabe immer gleich.“ (falsch, mit Grund).
+- zustandsdiagramm (darstellen und lesen):
+  - `number` Einstieg: „Wie viele verschiedene Dinge muss sich Jona merken können?“ (3: 0 €, 1 €, 2 €).
+  - `matching` Teil des Diagramms → Bedeutung (Kreis → Zustand; Pfeil → Übergang; Wort oben am Pfeil → Eingabe; Wort
+    unten am Pfeil → Ausgabe; Pfeil „Start“ → Startzustand), mit dem Diagramm als `material`.
+  - `AutomatAufgabe` Modus `folge`, Ansicht `diagramm`, aus allen Automaten der Datendatei: Startzustand, Eingabefolge,
+    Endzustand anklicken. `reason` nennt den ersten falschen Schritt und den Fehler (Pfeilrichtung, nicht beim Start
+    begonnen, Schleife übersehen).
+  - `AutomatAufgabe` Modus `pfeil` (darstellen): ein Pfeil des Diagramms fehlt (gestrichelt mit „?“); ein Satz sagt,
+    was passiert („Wenn 1 € drin ist und du eine Münze einwirfst, …“); das Kind wählt den Zielzustand. `reason`:
+    Ziel = Start des Pfeils („das ist der Zustand, aus dem der Pfeil kommt“), Ziel ohne Bezug zum Satz.
+  - `single-choice` „Welche Zeile fehlt in Selins Tabelle?“ (Tabelle ↔ Diagramm), Pflichtübung neben `true-false`
+    „Wenn sich nichts ändert, braucht es keinen Pfeil.“ (falsch in diesem Explainer: Wir zeichnen eine Schleife).
+- Je Seite mindestens 4 Übungen, höchstens die Hälfte ratbar, jede falsche Option mit `info`, `generated` mit
+  `mistakes` und `hint`.
+
+**Bilder** (eigene SVG, `source: eigene Zeichnung`, `licence: CC-BY-4.0`, ohne Text im Bild):
+- `schulfest.svg` (Seite 1, Einstieg): Jona im Karton-Saftautomaten mit Schlitz und Knopf, Mia davor mit einer Münze,
+  Selin mit Notizblock. Figuren aus `klasse-6b.svg` (#490, Herkunft im Dateikopf). Zeigt die Szene, nicht die Antwort.
+- Der Simulator ist das wiederkehrende Bild; er ist eine Komponente, weil sein Text übersetzt wird.
+
+**Komponenten** (kein Block kann einen Automaten zeichnen, schalten oder eine Zustandsfolge prüfen;
+`prefer-built-in-block`; Code zusammen unter 20 kB gzip):
+- `Automat.ts` (Modell, rein): Typ `Automat` mit `states` (`id`, `name`, `x`, `y`), `start`, `inputs` (`id`, `name`),
+  `transitions` (`from`, `input`, `to`, optional `output`, `bend`); `step`, `run`, `isComplete`. Kapitel 2 nutzt es
+  zum Prüfen eines entworfenen Automaten gegen Testfolgen.
+- `AutomatDiagramm.vue` (Zeichnung, SVG): Zustände als Kreise mit Namen (aktiver dick umrandet und gefüllt), Startpfeil
+  von links mit „Start“, Übergänge als Pfeile, Schleifen über oder unter dem Kreis, gebogen bei Gegenrichtung. Am Pfeil
+  „Eingabe / Ausgabe“: die Eingabe blau, nach dem Schrägstrich die Ausgabe orange (Schrägstrich als Zeichen neben der
+  Farbe); ohne Ausgabe nur die Eingabe. Pfeile mit gleichem Start und Ziel werden zusammengefasst („Münze, Knopf“).
+  Was es zeigt: Die Kinder lesen Kreis = was er sich merkt, Pfeil = wohin er bei einer Eingabe springt.
+- `AutomatSimulator.vue` (Anzeige, `nojs` mit der Tabelle aller Übergänge): Ansicht `kasten` (Seite 1: nur der
+  Zettel „Jona merkt sich: …“) oder `diagramm` (Seite 2); Knöpfe je Eingabe, Ausgabezeile, Verlauf, „Zurück zum
+  Start“. Tastatur: Knöpfe sind `button`; der aktive Zustand wird mit `aria-live` angesagt. Kapitel 2 bekommt die
+  Ansicht `entwerfen`.
+- `AutomatAufgabe.vue` (Übungskomponente, `AutomatAufgabe.ts` mit `generate`, `check`, `solution`, `wrong`, `reason`,
+  `describe`, `about`, `template`, `params`, `mistakes`, `show`): Modi `folge` und `pfeil`. Prüft den gewählten
+  Zustand. Kann nicht: freie Diagramme zeichnen (Kapitel 2), nicht-deterministische Automaten.
+- `EvaBild.vue` (Kopie aus #490 mit Herkunft im Dateikopf, nur auf der Wiederholung).
+
+**Datendateien** (`src/data/`, Texte als `{ de, en }`): `automaten.yaml` (Saftautomat, Drehkreuz, Fußgängerampel mit
+Knopf, Tür mit Zahlencode, Lichtschalter mit Taster; je Automat `id`, `name`, `states`, `start`, `inputs`,
+`transitions`), `saft-situationen.yaml` (Zustand, Eingabe, Reaktion). Jeder Automat steht einmal, alle Blöcke lesen ihn
+mit `{ data: automaten }`.
+
+**Engagement je Seite:**
+0. das-brauchst-du: Einstieg „Mia wirft 1 € ein und drückt den Knopf“ im EVA-Bild – Wechsel: EVA-Bild ansehen, eine
+   Frage – Lohn: Du weißt, was dem EVA-Bild fehlt – Geschichte: Die 6b plant den Saftautomaten fürs Schulfest der 6b;
+   nächste Seite: Jona spielt den Automaten.
+1. automaten-im-alltag: Einstieg „Mia drückt den Knopf, aber es kommt kein Saft. Warum?“ (Bild Schulfest) – Wechsel:
+   Bild, Frage, Simulator (Kasten) bedienen, Definition Zustand, Spielanleitung, Alltagsautomaten zuordnen,
+   Folgen durchrechnen – Lohn: Jona spielt den Automaten ohne Fehler; du erkennst, was Alltagsautomaten sich merken –
+   Geschichte: Jona braucht eine Pause; nächste Seite: Selin schreibt einen Plan, nach dem jedes Kind Automat sein kann.
+2. zustandsdiagramm (Musterseite): Einstieg „Wie viele Dinge muss sich Jona merken?“ – Wechsel: Selins Tabelle, das
+   Diagramm entsteht, Simulator (Diagramm) bedienen, Merke-Kasten zu Lesefehlern, Spielstein-Spiel, Diagramme lesen und
+   Pfeile ergänzen – Lohn: Selins Plan hängt am Automaten, Mia spielt ihn nach Plan; Rückblick aufs Kapitel – Geschichte:
+   Das Schulfest beginnt; Ausblick: In Klasse 9-10 entwirfst du selbst einen Automaten (Ampel).
+
+**Wiederholen mit Absicht:** Der Saftautomat kommt auf allen drei Seiten vor: als EVA-Bild (was fehlt), als Kasten mit
+Zettel (Zustand), als Diagramm (Zustände und Übergänge). Die Alltagsautomaten von Seite 1 kommen auf Seite 2 als
+Diagramme wieder.
+
+**Ein neues Kapitel:** eigener Ordner (`entwerfen`), gleiche Abschnitts-ids, Simulator mit Ansicht `entwerfen`,
+Automaten in `automaten.yaml` ergänzen, Figuren wie im Inhaltsleitfaden (in 9-10 ohne gezeichnete Kinder: eine
+Ampelsteuerung als Fall).
 
 ## Code
 
@@ -282,11 +367,15 @@ page, which a link. -->
       `references/language-tasks.md` in the same folder. A component in the plan: also `references/components.md`.
 - [ ] Decide whether the app needs `scope`, as "`scope`" in
       `.agents/skills/lernapps-explainer/references/structure.md` says. Write the choice under "Key decisions".
-<!-- tasks: pattern: the one page or screen that is the pattern for the others -->
+- [ ] Simulator-Kern: Automat.ts, AutomatDiagramm, AutomatSimulator, AutomatAufgabe mit Tests und data/automaten.yaml; zeigt Kreise, Pfeile, Eingabe und Ausgabe am Pfeil, Startpfeil, Tastaturbedienung
+- [ ] Musterseite alltag/zustandsdiagramm in de und en: Selins Tabelle, Diagramm des Saftautomaten im Simulator, Merke zu Lesefehlern, Spielstein-Anleitung, Übungen number, matching, AutomatAufgabe folge und pfeil, single-choice, true-false; zeigt das Seitenmuster und den Simulator
+<!-- tasks: pattern (2 added): the one page or screen that is the pattern for the others -->
 - [ ] **Checkpoint:** the pattern page. Load skill `lernapps-learner-check` and do its learner check on the page. Fix
       what it finds. Then show the creator the page and ask whether the others may follow it. Stop and wait. A
       change: change the pattern first.
-<!-- tasks: pages: the other pages or screens, after the pattern -->
+- [ ] Seite alltag/automaten-im-alltag (de, en): Bild schulfest mit Klasse 6b, Simulator Ansicht kasten, Definition Zustand, Spielanleitung, generated aus saft-situationen, AutomatAufgabe folge, matching Alltagsautomaten, true-false; zeigt Reaktion abhängig von Eingabe und Zustand
+- [ ] Seite alltag/das-brauchst-du (de, en): recap eva-prinzip mit EvaBild (Kopie aus #490) am Saftautomaten und einer Frage; zeigt, was dem EVA-Bild fehlt
+<!-- tasks: pages (2 added): the other pages or screens, after the pattern -->
 - [ ] Update the content guide so that it describes the app as built (`app-content-matches`).
 - [ ] Run `npx --no -- lernapps check` until it passes.
 - [ ] Look at every screen and state, at 360 px and on a desktop, as "Look at the app" of skill `lernapps-cli` says.
