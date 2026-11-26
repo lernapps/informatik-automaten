@@ -62,6 +62,32 @@ Eingabe, falscher Übergang) und verbessern sie.
 entwerfen.“ (Karte, wörtlich). Voraussetzung `zustandsdiagramm` übt Kapitel 1: keine Wiederholungsseite; Seite 1 von
 Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
 
+### Quellen (gelesen; Lehrpläne hat ein Hilfsagent gelesen, die NRW-Kernstellen habe ich im Text nachgesehen)
+
+- Lernlandkarte Informatik, `automat-entwerfen` (9-10, Schritt 1, requires `zustandsdiagramm`).
+- GI-Bildungsstandards Sek I 2025, 5.3, S. 18: „SA-4 modellieren Sachverhalte zustandsorientiert“ (Jg. 7-10); keine
+  weitere Erläuterung, kein Beispiel.
+- NRW, Kernlehrplan Wahlpflicht Informatik Gymnasium (G9) 2023,
+  https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_wpif_klp_2023_06_01.pdf, S. 13: „Für eine
+  konkrete Problemstellung kann ein Automat entwickelt werden. Automaten arbeiten schrittweise Eingabefolgen ab …“;
+  S. 17: „entwickeln einen Automaten für eine konkrete Problemstellung (MI)“, „analysieren die Funktionsweise eines
+  Automaten mit Hilfe eines Zustandsübergangsdiagramms (DI)“. Realschule/Gesamtschule (WP, Ende Jg. 8) gleich, dazu
+  „identifizieren unterschiedliche Zustände von Automaten“.
+- Bayern: Realschule IT, Wahlmodul 2.7.2 (nach Jg. 8): „erzeugen Modelle, um Zustände und Verhalten … zu planen“,
+  „Zustandsübergangsdiagramm“. Gymnasium: Automaten erst Inf13 (deterministisch, Startzustand …), nicht 9-10.
+- Hessen KC Informatik Wahlunterricht Sek I (2021): Automaten nur nach EVA, keine Zustände. Niedersachsen KC Sek I
+  (2014, Kopie gelesen, Original nicht geprüft), Modul „Modellierung von Automaten“: „entwickeln und implementieren ein
+  Automatenmodell in Form eines Zustandsgraphen“, „analysieren die Funktionsfähigkeit …“.
+- England: KS3 „model the state and behaviour of real-world problems“; GCSE (AQA 8525, OCR J277) ohne FSM; AQA A-level
+  „state transition diagrams and state transition tables … Mealy machines only“.
+- Lehrmaterial (keine Lehrplanquelle): inf-schule.de, Zustandsbasierte Modellierung: Ampel mit Taster und Timer;
+  „Drückt ein Benutzer den Knopf, während ein Timer läuft, so geschieht nichts“; Determinismus: „Pro Zustand darf jedes
+  Ereignis höchstens einmal an einem ausgehenden Übergang vorkommen.“ Ausgabe am Übergang wie in diesem Explainer.
+- Nicht geprüft: Hessen „KI und Digitale Welt“ (404), RLP 7/8 (502), Edexcel GCSE, Volltext Henry et al. 2022.
+- Begriffe neu in Kapitel 2 (guess): „vollständig“ (jeder Zustand hat für jede Eingabe einen Pfeil) und „eindeutig“
+  (höchstens einen), mit dem Fachwort „deterministisch“ einmal genannt; „Testfolge“. Kein Lehrplan für 7-10 nennt
+  sie, inf-schule nennt „deterministisch“.
+
 ### Didaktik
 
 - Fall statt Bildergeschichte (9-10): Die 9b (Jona, Selin, Mia, alle 14) baut in der Technik-AG ein Modell der neuen
@@ -113,10 +139,10 @@ Kapitel 2 erinnert in zwei Sätzen und verlinkt `/alltag/zustandsdiagramm/`.
 - [x] Interview, one topic per question, the creator's words under "Answers": which competencies, chapters or rounds,
       for which school years; hurdles and examples; the amount; any change of look and feel or of terms. No answer:
       ask once more, then write your assumption with "(guess)".
-- [ ] Load skill `lernapps-content-research`. Research what the content guide does not cover. Write under "Notes":
+- [x] Load skill `lernapps-content-research`. Research what the content guide does not cover. Write under "Notes":
       the new competencies by chapter with their ids, the sources you opened.
-- [ ] Write under "Notes" the didactic approach per competency and the scope (in, out, data range).
-- [ ] The increment needs a kind of content the guide does not cover (a new page structure, screen, component or kind
+- [x] Write under "Notes" the didactic approach per competency and the scope (in, out, data range).
+- [x] The increment needs a kind of content the guide does not cover (a new page structure, screen, component or kind
       of exercise): load skills `lernapps-explainer-design` and `lernapps-exercise-patterns`. Else skip this task.
 - [ ] **Checkpoint:** research. Show in plain words: the new competencies by chapter, the didactic approach, the
       scope, every "(guess)", the sources and what is unchecked. Stop and wait. Changes: change them, then ask again.
