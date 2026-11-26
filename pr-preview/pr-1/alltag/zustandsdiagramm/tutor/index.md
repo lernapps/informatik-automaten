@@ -39,65 +39,68 @@ Nennt die Adresse dieser Seite `bedarf=`, gilt jeder Abschnitt, den sie nennt, m
 
 ## Kontext: die Seite „Zustandsdiagramm“
 
-Einen Automaten als Zustandsdiagramm zeichnen und lesen: Kreise für Zustände, Pfeile für Übergänge.
+Einen Automaten als Zustandsdiagramm lesen und ergänzen: Kreise für Zustände, Pfeile für Übergänge.
 
 ### Selins Plan
 
-Jona war lange der Saftautomat. Jetzt braucht er eine Pause. Wer spielt weiter? Selin schreibt einen Plan, damit jedes Kind den Automaten spielen kann. Auf dieser Seite zeichnest du so einen Plan als Bild und lernst, ihn zu lesen.
+Jona war lange der Saftautomat. Jetzt braucht er eine Pause. Wer spielt weiter? Selin schreibt einen Plan, damit jedes Kind den Automaten spielen kann. Auf dieser Seite lernst du, so einen Plan als Bild zu lesen und zu ergänzen.
 
 - Aufgabe `zustaende-zaehlen` (unten)
 
-Selins Plan als Tabelle: Was macht der Automat in welchem Zustand bei welcher Eingabe?:
-- Jetzt | Eingabe | Danach (Ausgabe)
+### Vom Plan zum Diagramm
+
+Selins Plan als Tabelle: Wohin springt der Automat in welchem Zustand bei welcher Eingabe? Was kommt heraus?:
+- Jetzt | Eingabe | Danach
 - 0 € drin | Münze | 1 € drin
 - 0 € drin | Knopf | 0 € drin
 - 1 € drin | Münze | 2 € drin
 - 1 € drin | Knopf | 1 € drin
-- 2 € drin | Münze | 2 € drin (Münze kommt zurück)
-- 2 € drin | Knopf | 0 € drin (Saft fällt heraus)
+- 2 € drin | Münze | 2 € drin, Ausgabe: Geld kommt zurück
+- 2 € drin | Knopf | 0 € drin, Ausgabe: Saft fällt heraus
 
-### Vom Plan zum Diagramm
+Die Tabelle stimmt, aber sie ist lang. Selin zeichnet sie deshalb als Bild: Jeder Zustand wird ein Kreis. Jede Zeile wird ein Pfeil vom Kreis „Jetzt“ zum Kreis „Danach“. Am Pfeil steht die Eingabe in Blau. Kommt etwas heraus, steht nach dem Schrägstrich die Ausgabe in Orange. Ein Pfeil mit dem Wort „Start“ zeigt auf den Kreis, bei dem der Automat anfängt. Unten kannst du Selins Bild ausprobieren.
 
-Die Tabelle stimmt, aber sie ist lang. Selin zeichnet sie deshalb als **Zustandsdiagramm**. Jeder Zustand wird ein Kreis. Jede Zeile der Tabelle wird ein Pfeil: Er beginnt beim Kreis „Jetzt“ und zeigt mit der Spitze auf den Kreis „Danach“. Am Pfeil steht die Eingabe. Kommt etwas heraus, steht nach einem Schrägstrich die Ausgabe. Probier Selins Diagramm aus: Drück unten „Münze“ und „Knopf“. Der gefüllte Kreis zeigt den Zustand jetzt, der dicke Pfeil den letzten Sprung. Wie kommst du an einen Saft?
-
-Interaktiv: Der Simulator zeigt Selins Zustandsdiagramm des Saftautomaten. Drei Kreise: „0 € drin“ (Startzustand), „1 € drin“ und „2 € drin“. Die Pfeile: - 0 € drin – Münze → 1 € drin - 0 € drin – Knopf → 0 € drin - 1 € drin – Münze → 2 € drin - 1 € drin – Knopf → 1 € drin - 2 € drin – Münze → 2 € drin (Ausgabe: Münze kommt zurück) - 2 € drin – Knopf → 0 € drin (Ausgabe: Saft fällt heraus) Mit JavaScript kannst du die Eingaben „Münze“ und „Knopf“ drücken und siehst den Automaten springen.
+- **Zustandsdiagramm**: Ein Zustandsdiagramm zeigt alle Zustände eines Automaten als Kreise und alle Übergänge als Pfeile, mit Eingabe und Ausgabe.
 
 - **Übergang**: Ein Übergang ist der Sprung von einem Zustand zum nächsten bei einer Eingabe. Im Diagramm ist er ein Pfeil.
 
-- **Startzustand**: Der Startzustand ist der Zustand, in dem ein Automat anfängt. Im Diagramm zeigt ein Pfeil mit „Start“ auf ihn.
+- **Startzustand**: Der Startzustand ist der Zustand, in dem ein Automat anfängt. Im Diagramm zeigt der Pfeil mit „Start“ auf ihn.
 
-- **Zustandsdiagramm**: Ein Zustandsdiagramm zeigt alle Zustände eines Automaten als Kreise und alle Übergänge als Pfeile mit ihrer Eingabe.
+### Ausprobieren
 
-- Aufgabe `diagramm-teile` (unten)
+Interaktiv: Der Simulator zeigt Selins Zustandsdiagramm des Saftautomaten. Drei Kreise: „0 € drin“ (Startzustand), „1 € drin“ und „2 € drin“. Die Pfeile: - 0 € drin – Münze → 1 € drin - 0 € drin – Knopf → 0 € drin - 1 € drin – Münze → 2 € drin - 1 € drin – Knopf → 1 € drin - 2 € drin – Münze → 2 € drin (Ausgabe: Geld kommt zurück) - 2 € drin – Knopf → 0 € drin (Ausgabe: Saft fällt heraus) Mit JavaScript drückst du die Eingaben „Münze“ und „Knopf“ und siehst den Automaten springen.
+
+- Aufgabe `saft-bekommen` (unten)
 
 **Merke: Merke**
 
-- Jeder Zustand braucht für jede Eingabe einen Pfeil. Ändert sich nichts, führt der Pfeil zurück zum selben Kreis.
-- Lies einen Pfeil immer vom Anfang bis zur Spitze.
-- Fang immer beim Startzustand an.
+- Jeder Zustand braucht für jede Eingabe einen Pfeil. Ändert sich der Zustand nicht, führt der Pfeil zurück zum selben Kreis, auch wenn etwas herauskommt.
+- Der Automat springt immer zur Spitze des Pfeils.
 
 ### Nach Plan spielen
 
-Spielt den Automaten zu zweit nach Selins Plan:
+Spielt den Automaten zu zweit nach Selins Plan, ohne Computer:
 
 1. Zeichnet das Diagramm groß auf ein Blatt.
-2. Legt einen Spielstein auf den Kreis mit dem Startpfeil.
+2. Legt einen Spielstein auf den Startzustand.
 3. Eine Person sagt eine Eingabe. Die andere schiebt den Stein am passenden Pfeil entlang und sagt die Ausgabe.
 4. Tauscht nach fünf Eingaben.
 
 ### Übung
 
+Selin hat noch mehr Pläne gezeichnet: für das Flurlicht mit Knopf, das Drehkreuz am Schwimmbad (erst einen Chip einstecken, dann durchgehen), den Aufzug und die Fußgängerampel. Bei der Ampel ist auch „Zeit um“ eine Eingabe: Die bekommt die Ampel, wenn ihre Wartezeit vorbei ist.
+
+- Aufgabe `diagramm-teile` (unten)
+
 - Aufgabe `folge-lesen` (unten)
 
 - Aufgabe `pfeil-ergaenzen` (unten)
 
-- Aufgabe `pfeil-weglassen` (unten)
-
-- Aufgabe `startzustand-finden` (unten)
+- Aufgabe `diagramm-jetzt` (unten)
 
 ### Rückblick
 
-Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne Fehler. Du kannst einen Automaten als Zustandsdiagramm zeichnen und lesen: Kreise sind Zustände, Pfeile sind Übergänge, am Pfeil steht die Eingabe. In Klasse 9 oder 10 entwirfst du selbst einen Automaten, zum Beispiel für eine Ampel.
+Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne Fehler. Du kannst ein Zustandsdiagramm lesen und fehlende Pfeile ergänzen: Kreise sind Zustände, Pfeile sind Übergänge, am Pfeil stehen Eingabe und Ausgabe. In Klasse 9 oder 10 entwirfst du selbst einen ganzen Automaten, zum Beispiel die Ampeln an einer Kreuzung.
 
 ### Aufgabe zustaende-zaehlen
 
@@ -105,23 +108,37 @@ Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne
 - Antwortformat: eine Zahl eintippen
 - Lösung: 3
 - Erklärung: Jona merkt sich nur das Geld: 0 €, 1 € oder 2 €. Das sind drei Zustände.
+- Tipp der App: Was kann Jona auf seinem Zettel stehen haben? Zähl die Geldbeträge.
 - Typische Fehler und was die App sagt:
-  - 2: Hast du „0 € drin“ vergessen? Auch ein leerer Automat ist in einem Zustand.
+  - 2: Hast du den leeren Automaten vergessen? Auch „0 € drin“ ist ein Zustand.
   - 4: Mehr als 2 € sind nie drin: Eine dritte Münze kommt zurück.
 - Link: [../?via=tutor#zustaende-zaehlen](../?via=tutor#zustaende-zaehlen)
+
+### Aufgabe saft-bekommen
+
+- Aufgabe: Drück im Simulator „Münze“ und „Knopf“. Der grüne Kreis zeigt den Zustand jetzt, der dicke grüne Pfeil den letzten Sprung. Mit welchen Eingaben bekommst du vom leeren Automaten einen Saft?
+- Antwortformat: eine Antwort wählen
+- Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
+  - ✓ Münze, Münze, Knopf – Nach zwei Münzen ist der Automat bei „2 € drin“. Dort führt der Pfeil „Knopf“ zur Ausgabe „Saft fällt heraus“.
+  - ✗ Münze, Knopf – Nach einer Münze ist der Automat bei „1 € drin“. Dort führt der Pfeil „Knopf“ zurück zum selben Kreis, ohne Ausgabe.
+  - ✗ Knopf, Münze, Münze – Der Knopf am Anfang bringt nichts, der Automat ist ja leer. Am Ende sind 2 € drin, aber niemand drückt mehr den Knopf.
+  - ✗ Münze, Knopf, Münze – Beim Knopf ist erst 1 € drin, das reicht nicht. Danach sind 2 € drin, aber der Knopf kommt nicht mehr.
+- Lösung: Münze, Münze, Knopf
+- Erklärung: Folge vom Start aus den Pfeilen. Ein Saft kommt nur beim Pfeil von „2 € drin“ mit der Eingabe „Knopf“.
+- Link: [../?via=tutor#saft-bekommen](../?via=tutor#saft-bekommen)
 
 ### Aufgabe diagramm-teile
 
 - Aufgabe: Was bedeutet welcher Teil im Zustandsdiagramm?
 - Antwortformat: jedem Eintrag links den passenden rechts zuordnen
-- Lösung: ein Kreis – ein Zustand; ein Pfeil – ein Übergang; das Wort vor dem Schrägstrich – die Eingabe; das Wort nach dem Schrägstrich – die Ausgabe; der Pfeil mit „Start“ – der Startzustand
-- Erklärung: Kreise sind, was sich der Automat merkt. Pfeile sind die Sprünge. Am Pfeil steht erst, was hineinkommt, dann, was herauskommt.
+- Lösung: ein Kreis – ein Zustand; ein Pfeil von Kreis zu Kreis – ein Übergang; das blaue Wort am Pfeil – die Eingabe; der orange Text nach dem Schrägstrich – die Ausgabe; der Kreis, auf den „Start“ zeigt – der Startzustand
+- Erklärung: Kreise sind, was sich der Automat merken kann. Pfeile sind die Sprünge. Am Pfeil steht erst, was hineinkommt, dann, was herauskommt.
 - Link: [../?via=tutor#diagramm-teile](../?via=tutor#diagramm-teile)
 
 ### Aufgabe folge-lesen
 
 - Was zu tun ist: folge: Ein Automat ist als Zustandsdiagramm (oder als Kasten mit Zettel) zu sehen, dazu ein Startzustand und 3 bis 5 Eingaben. Das Kind wählt den Zustand am Ende. pfeil: Ein Pfeil des Diagramms fehlt, ein Satz sagt, was passiert; das Kind wählt, wohin der Pfeil führt. Dann drückt es „Prüfen“.
-- Aufgabe: „{automat}: Der Automat startet beim Startzustand „{start}“. Dann kommen die Eingaben {inputs}. In welchem Zustand ist er am Ende?“
+- Aufgabe: „{automat}: Der Automat startet bei „{start}“. Dann kommen diese Eingaben: {inputs}. In welchem Zustand ist er am Ende?“
 - Antwortformat: Ein Zustand: ein Knopf unter dem Diagramm oder ein Kreis.
 - Was als richtig zählt: folge: der Zustand, in dem der Automat nach der letzten Eingabe ist, wenn er beim Startzustand beginnt und bei jeder Eingabe dem Pfeil mit diesem Wort folgt. pfeil: der Zustand, zu dem der fehlende Pfeil führt.
 - Typische Fehler (die Meldung der App passt zu einem davon):
@@ -135,79 +152,79 @@ Geschafft: Selins Plan hängt jetzt am Karton, und Mia spielt den Automaten ohne
 
 ```
 Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
-1 | Saftautomat | 0 € drin | „Münze“, „Münze“, „Knopf“ | 0 € drin | 2 € drin | 2 € drin | –
-2 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Knopf“, „Zeit um“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-3 | Saftautomat | 0 € drin | „Knopf“, „Knopf“, „Münze“ | 1 € drin | 0 € drin | – | 0 € drin
-4 | Aufzug mit drei Stockwerken | unten | „runter“, „runter“, „hoch“, „hoch“ | oben | Mitte | unten | unten
-5 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-6 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-7 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Knopf“, „Zeit um“, „Zeit um“, „Knopf“ | wartet | Autos grün | Autos grün | Autos grün
-8 | Flurlicht mit Taster | aus | „Taster“, „Taster“, „Taster“, „Taster“ | aus | an | – | –
-9 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „hoch“, „hoch“ | oben | Mitte | unten | unten
-10 | Aufzug mit drei Stockwerken | unten | „hoch“, „hoch“, „runter“ | Mitte | oben | – | unten
-11 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „runter“, „hoch“, „hoch“ | oben | Mitte | unten | unten
-12 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-13 | Flurlicht mit Taster | aus | „Taster“, „Taster“, „Taster“ | an | aus | – | aus
-14 | Flurlicht mit Taster | aus | „Taster“, „Taster“, „Taster“, „Taster“, „Taster“ | an | aus | – | aus
-15 | Saftautomat | 0 € drin | „Knopf“, „Knopf“, „Münze“, „Knopf“, „Münze“ | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-16 | Aufzug mit drei Stockwerken | unten | „hoch“, „hoch“, „runter“, „runter“, „hoch“ | Mitte | unten | – | unten
-17 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Knopf“, „Zeit um“, „Zeit um“, „Knopf“ | wartet | Autos grün | Autos grün | Autos grün
-18 | Saftautomat | 0 € drin | „Münze“, „Knopf“, „Münze“ | 2 € drin | 1 € drin | 1 € drin | 0 € drin
-19 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Knopf“, „Zeit um“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-20 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Knopf“, „Zeit um“ | Fußgänger grün | wartet | wartet | Autos grün
-21 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „runter“, „hoch“ | Mitte | unten | unten | unten
-22 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Durchgehen“, „Chip“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-23 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „hoch“, „runter“, „hoch“ | Mitte | unten | unten | unten
-24 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Zeit um“, „Knopf“, „Knopf“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-25 | Aufzug mit drei Stockwerken | unten | „hoch“, „hoch“, „hoch“, „hoch“, „runter“ | Mitte | oben | – | unten
-26 | Aufzug mit drei Stockwerken | unten | „hoch“, „hoch“, „runter“, „hoch“ | oben | Mitte | unten | unten
-27 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-28 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Durchgehen“, „Durchgehen“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-29 | Aufzug mit drei Stockwerken | unten | „runter“, „runter“, „runter“, „hoch“, „runter“ | unten | Mitte | oben | –
-30 | Saftautomat | 0 € drin | „Knopf“, „Münze“, „Münze“, „Knopf“, „Münze“ | 1 € drin | 0 € drin | – | 0 € drin
-31 | Saftautomat | 0 € drin | „Knopf“, „Münze“, „Knopf“, „Münze“ | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-32 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-33 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Knopf“, „Knopf“, „Zeit um“ | Fußgänger grün | wartet | – | Autos grün
-34 | Saftautomat | 0 € drin | „Münze“, „Münze“, „Knopf“, „Knopf“, „Münze“ | 1 € drin | 0 € drin | – | 0 € drin
-35 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Durchgehen“, „Durchgehen“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-36 | Saftautomat | 0 € drin | „Knopf“, „Münze“, „Münze“ | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-37 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Knopf“, „Zeit um“, „Knopf“, „Zeit um“ | Autos grün | Fußgänger grün | Fußgänger grün | –
-38 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Zeit um“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-39 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Durchgehen“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-40 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „hoch“, „runter“ | unten | Mitte | Mitte | –
-41 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-42 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „runter“ | unten | Mitte | Mitte | –
-43 | Aufzug mit drei Stockwerken | unten | „hoch“, „hoch“, „hoch“, „runter“, „hoch“ | oben | Mitte | unten | unten
-44 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Chip“, „Chip“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-45 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Zeit um“, „Knopf“, „Zeit um“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-46 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Durchgehen“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-47 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Chip“, „Chip“, „Durchgehen“ | gesperrt | frei | frei | –
-48 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Zeit um“, „Zeit um“, „Knopf“ | wartet | Autos grün | Autos grün | Autos grün
-49 | Aufzug mit drei Stockwerken | unten | „runter“, „runter“, „hoch“ | Mitte | unten | – | unten
-50 | Drehkreuz am Schwimmbad | gesperrt | „Chip“, „Chip“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-51 | Drehkreuz am Schwimmbad | gesperrt | „Durchgehen“, „Chip“, „Chip“, „Durchgehen“, „Chip“ | frei | gesperrt | gesperrt | gesperrt
-52 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „hoch“, „runter“ | Mitte | oben | – | unten
-53 | Saftautomat | 0 € drin | „Münze“, „Münze“, „Knopf“, „Münze“ | 1 € drin | 0 € drin | – | 0 € drin
-54 | Saftautomat | 0 € drin | „Knopf“, „Knopf“, „Münze“, „Münze“ | 2 € drin | 1 € drin | 0 € drin | 0 € drin
-55 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „hoch“, „hoch“, „runter“ | Mitte | oben | – | unten
-56 | Fußgängerampel mit Knopf | Autos grün | „Knopf“, „Knopf“, „Zeit um“, „Knopf“, „Zeit um“ | Autos grün | Fußgänger grün | wartet | –
-57 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „hoch“, „runter“, „hoch“ | oben | Mitte | unten | unten
-58 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „hoch“ | oben | Mitte | unten | unten
-59 | Aufzug mit drei Stockwerken | unten | „runter“, „hoch“, „hoch“, „runter“, „runter“ | unten | Mitte | oben | –
-60 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Knopf“, „Knopf“, „Zeit um“ | Fußgänger grün | wartet | wartet | Autos grün
-61 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Zeit um“, „Knopf“ | wartet | Autos grün | Autos grün | Autos grün
-62 | Aufzug mit drei Stockwerken | unten | „runter“, „runter“, „hoch“, „runter“ | unten | Mitte | oben | –
-63 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „runter“, „runter“, „hoch“ | Mitte | unten | – | unten
-64 | Fußgängerampel mit Knopf | Autos grün | „Zeit um“, „Zeit um“, „Knopf“, „Knopf“, „Zeit um“ | Fußgänger grün | wartet | – | Autos grün
-65 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „runter“, „hoch“ | Mitte | unten | – | unten
-66 | Aufzug mit drei Stockwerken | unten | „hoch“, „runter“, „hoch“ | Mitte | unten | unten | unten
-67 | Saftautomat | 0 € drin | „Münze“, „Knopf“, „Knopf“, „Münze“, „Knopf“ | 0 € drin | 2 € drin | 1 € drin | –
+1 | Saftautomat | 0 € drin | Münze, Münze, Knopf | 0 € drin | 2 € drin | 2 € drin | –
+2 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+3 | Saftautomat | 0 € drin | Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+4 | Aufzug mit drei Stockwerken | unten | runter, runter, hoch, hoch | oben | Mitte | unten | unten
+5 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen | gesperrt | frei | frei | –
+6 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+7 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
+8 | Flurlicht mit Knopf | aus | Knopf, Knopf, Knopf, Knopf | aus | an | – | –
+9 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch, hoch | oben | Mitte | unten | unten
+10 | Aufzug mit drei Stockwerken | unten | hoch, hoch, runter | Mitte | oben | – | unten
+11 | Aufzug mit drei Stockwerken | unten | runter, hoch, runter, hoch, hoch | oben | Mitte | unten | unten
+12 | Drehkreuz am Schwimmbad | gesperrt | Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+13 | Flurlicht mit Knopf | aus | Knopf, Knopf, Knopf | an | aus | – | aus
+14 | Flurlicht mit Knopf | aus | Knopf, Knopf, Knopf, Knopf, Knopf | an | aus | – | aus
+15 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+16 | Aufzug mit drei Stockwerken | unten | hoch, hoch, runter, runter, hoch | Mitte | unten | – | unten
+17 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
+18 | Saftautomat | 0 € drin | Münze, Knopf, Münze | 2 € drin | 1 € drin | 1 € drin | 0 € drin
+19 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+20 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um | Fußgänger grün | wartet | wartet | Autos grün
+21 | Aufzug mit drei Stockwerken | unten | runter, hoch, runter, hoch | Mitte | unten | unten | unten
+22 | Drehkreuz am Schwimmbad | gesperrt | Chip, Durchgehen, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
+23 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch, runter, hoch | Mitte | unten | unten | unten
+24 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Knopf, Knopf, Zeit um | Autos grün | Fußgänger grün | wartet | –
+25 | Aufzug mit drei Stockwerken | unten | hoch, hoch, hoch, hoch, runter | Mitte | oben | – | unten
+26 | Aufzug mit drei Stockwerken | unten | hoch, hoch, runter, hoch | oben | Mitte | unten | unten
+27 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+28 | Drehkreuz am Schwimmbad | gesperrt | Chip, Durchgehen, Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+29 | Aufzug mit drei Stockwerken | unten | runter, runter, runter, hoch, runter | unten | Mitte | oben | –
+30 | Saftautomat | 0 € drin | Knopf, Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+31 | Saftautomat | 0 € drin | Knopf, Münze, Knopf, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+32 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Durchgehen | gesperrt | frei | frei | –
+33 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | – | Autos grün
+34 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+35 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Durchgehen, Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+36 | Saftautomat | 0 € drin | Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+37 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Fußgänger grün | Fußgänger grün | –
+38 | Fußgängerampel mit Knopf | Autos grün | Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+39 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Chip, Durchgehen | gesperrt | frei | frei | –
+40 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch, runter | unten | Mitte | Mitte | –
+41 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
+42 | Aufzug mit drei Stockwerken | unten | runter, hoch, runter | unten | Mitte | Mitte | –
+43 | Aufzug mit drei Stockwerken | unten | hoch, hoch, hoch, runter, hoch | oben | Mitte | unten | unten
+44 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+45 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Zeit um, Zeit um | Autos grün | Fußgänger grün | wartet | –
+46 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Durchgehen, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+47 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Chip, Durchgehen | gesperrt | frei | frei | –
+48 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
+49 | Aufzug mit drei Stockwerken | unten | runter, runter, hoch | Mitte | unten | – | unten
+50 | Drehkreuz am Schwimmbad | gesperrt | Chip, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+51 | Drehkreuz am Schwimmbad | gesperrt | Durchgehen, Chip, Chip, Durchgehen, Chip | frei | gesperrt | gesperrt | gesperrt
+52 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, runter | Mitte | oben | – | unten
+53 | Saftautomat | 0 € drin | Münze, Münze, Knopf, Münze | 1 € drin | 0 € drin | – | 0 € drin
+54 | Saftautomat | 0 € drin | Knopf, Knopf, Münze, Münze | 2 € drin | 1 € drin | 0 € drin | 0 € drin
+55 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, hoch, runter | Mitte | oben | – | unten
+56 | Fußgängerampel mit Knopf | Autos grün | Knopf, Knopf, Zeit um, Knopf, Zeit um | Autos grün | Fußgänger grün | wartet | –
+57 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, runter, hoch | oben | Mitte | unten | unten
+58 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch | oben | Mitte | unten | unten
+59 | Aufzug mit drei Stockwerken | unten | runter, hoch, hoch, runter, runter | unten | Mitte | oben | –
+60 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | wartet | Autos grün
+61 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf | wartet | Autos grün | Autos grün | Autos grün
+62 | Aufzug mit drei Stockwerken | unten | runter, runter, hoch, runter | unten | Mitte | oben | –
+63 | Aufzug mit drei Stockwerken | unten | hoch, runter, runter, runter, hoch | Mitte | unten | – | unten
+64 | Fußgängerampel mit Knopf | Autos grün | Zeit um, Zeit um, Knopf, Knopf, Zeit um | Fußgänger grün | wartet | – | Autos grün
+65 | Aufzug mit drei Stockwerken | unten | hoch, runter, runter, hoch | Mitte | unten | – | unten
+66 | Aufzug mit drei Stockwerken | unten | hoch, runter, hoch | Mitte | unten | unten | unten
+67 | Saftautomat | 0 € drin | Münze, Knopf, Knopf, Münze, Knopf | 0 € drin | 2 € drin | 1 € drin | –
 ```
 
 ### Aufgabe pfeil-ergaenzen
 
 - Was zu tun ist: folge: Ein Automat ist als Zustandsdiagramm (oder als Kasten mit Zettel) zu sehen, dazu ein Startzustand und 3 bis 5 Eingaben. Das Kind wählt den Zustand am Ende. pfeil: Ein Pfeil des Diagramms fehlt, ein Satz sagt, was passiert; das Kind wählt, wohin der Pfeil führt. Dann drückt es „Prüfen“.
-- Aufgabe: „{automat}: Ein Pfeil fehlt. {text} Wohin führt der Pfeil „{input}“ von „{from}“?“
+- Aufgabe: „{automat}: Der gestrichelte Pfeil „{input}“ von „{from}“ hat noch kein Ziel. {text} Wohin führt der Pfeil?“
 - Antwortformat: Ein Zustand: ein Knopf unter dem Diagramm oder ein Kreis.
 - Was als richtig zählt: folge: der Zustand, in dem der Automat nach der letzten Eingabe ist, wenn er beim Startzustand beginnt und bei jeder Eingabe dem Pfeil mit diesem Wort folgt. pfeil: der Zustand, zu dem der fehlende Pfeil führt.
 - Typische Fehler (die Meldung der App passt zu einem davon):
@@ -221,49 +238,36 @@ Nr. | automat | start | inputs | Lösung | F1 | F2 | F3
 
 ```
 Nr. | automat | text | from | input | Lösung | F4 | F5
-1 | Saftautomat | Der Automat ist leer. Du wirfst eine Münze ein. Jetzt hat er Geld, aber noch nicht genug. | 0 € drin | Münze | 1 € drin | 0 € drin | –
-2 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz oben. Jemand drückt „hoch“. Höher geht es nicht, er bleibt stehen. | oben | hoch | oben | – | unten
+1 | Saftautomat | Der Automat ist leer. Du wirfst eine Münze ein. Sie bleibt im Automaten. | 0 € drin | Münze | 1 € drin | 0 € drin | –
+2 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz oben. Jemand drückt „hoch“. Höher gibt es kein Stockwerk. | oben | hoch | oben | – | unten
 3 | Aufzug mit drei Stockwerken | Der Aufzug steht in der Mitte. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten. | Mitte | runter | unten | Mitte | –
 4 | Aufzug mit drei Stockwerken | Der Aufzug steht in der Mitte. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben. | Mitte | hoch | oben | Mitte | –
-5 | Drehkreuz am Schwimmbad | Das Drehkreuz ist gesperrt. Du steckst einen Chip hinein. Jetzt darfst du durch. | gesperrt | Chip | frei | gesperrt | –
-6 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Die Zeit ist um. Jetzt dürfen wieder die Autos fahren. | Fußgänger grün | Zeit um | Autos grün | Fußgänger grün | –
-7 | Flurlicht mit Taster | Im Flur ist es dunkel. Du drückst den Taster. Das Licht geht an. | aus | Taster | an | aus | –
-8 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz unten. Jemand drückt „runter“. Tiefer geht es nicht, er bleibt stehen. | unten | runter | unten | – | Mitte
+5 | Drehkreuz am Schwimmbad | Das Drehkreuz ist gesperrt. Du steckst einen Chip hinein. Nun lässt es sich drehen. | gesperrt | Chip | frei | gesperrt | –
+6 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Die Zeit ist um. Die Fußgänger bekommen Rot, und die Autos fahren los. | Fußgänger grün | Zeit um | Autos grün | Fußgänger grün | –
+7 | Flurlicht mit Knopf | Im Flur ist es dunkel. Du drückst den Knopf an der Wand. Danach kannst du im Flur gut sehen. | aus | Knopf | an | aus | –
+8 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz unten. Jemand drückt „runter“. Tiefer gibt es kein Stockwerk. | unten | runter | unten | – | Mitte
 9 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz oben. Jemand drückt „runter“. Er fährt ein Stockwerk nach unten. | oben | runter | Mitte | oben | –
 10 | Drehkreuz am Schwimmbad | Das Drehkreuz ist gesperrt. Du drückst dagegen, ohne zu bezahlen. Es bewegt sich nicht. | gesperrt | Durchgehen | gesperrt | – | frei
-11 | Fußgängerampel mit Knopf | Die Autos haben Grün, niemand hat gedrückt. Die Zeit ist um. Die Autos behalten Grün. | Autos grün | Zeit um | Autos grün | – | wartet
-12 | Flurlicht mit Taster | Im Flur brennt Licht. Du drückst den Taster. Das Licht geht aus. | an | Taster | aus | an | –
-13 | Saftautomat | Es ist schon genug Geld drin. Du wirfst noch eine Münze ein. Sie kommt zurück, es bleibt genug Geld drin. | 2 € drin | Münze | 2 € drin | – | 0 € drin
-14 | Fußgängerampel mit Knopf | Die Autos haben Grün. Ein Kind drückt den Knopf. Die Ampel merkt sich das, aber die Autos fahren noch. | Autos grün | Knopf | wartet | Autos grün | –
-15 | Drehkreuz am Schwimmbad | Du hast schon bezahlt und steckst noch einen Chip hinein. Er kommt zurück, du darfst weiter durch. | frei | Chip | frei | – | gesperrt
-16 | Saftautomat | Eine Münze ist schon drin. Du wirfst noch eine ein. Jetzt ist genug Geld für einen Saft drin. | 1 € drin | Münze | 2 € drin | 1 € drin | –
-17 | Saftautomat | Der Automat ist leer. Du drückst den Knopf. Es passiert nichts, er bleibt leer. | 0 € drin | Knopf | 0 € drin | – | 1 € drin
-18 | Saftautomat | Eine Münze ist drin. Du drückst den Knopf. Das Geld reicht nicht, der Automat behält die Münze. | 1 € drin | Knopf | 1 € drin | – | 0 € drin
-19 | Fußgängerampel mit Knopf | Jemand hat gedrückt. Die Zeit ist um. Jetzt dürfen die Fußgänger gehen. | wartet | Zeit um | Fußgänger grün | wartet | –
+11 | Fußgängerampel mit Knopf | Die Autos haben Grün, und niemand hat gedrückt. Die Zeit ist um. Die Autos fahren weiter. | Autos grün | Zeit um | Autos grün | – | wartet
+12 | Flurlicht mit Knopf | Im Flur ist es hell. Du drückst den Knopf an der Wand. Danach ist es im Flur wieder dunkel. | an | Knopf | aus | an | –
+13 | Saftautomat | Zwei Münzen sind im Automaten. Du wirfst noch eine ein. Sie fällt unten wieder heraus. | 2 € drin | Münze | 2 € drin | – | 0 € drin
+14 | Fußgängerampel mit Knopf | Die Autos haben Grün. Ein Kind drückt den Knopf. Die Autos fahren noch, aber das Wartesignal leuchtet. | Autos grün | Knopf | wartet | Autos grün | –
+15 | Drehkreuz am Schwimmbad | Du hast bezahlt und steckst noch einen Chip hinein. Der Chip fällt wieder heraus. Du kannst immer noch durch. | frei | Chip | frei | – | gesperrt
+16 | Saftautomat | Eine Münze ist im Automaten. Du wirfst noch eine ein. Auch sie bleibt im Automaten. | 1 € drin | Münze | 2 € drin | 1 € drin | –
+17 | Saftautomat | Der Automat ist leer. Du drückst den Knopf. Es kommt kein Saft heraus. | 0 € drin | Knopf | 0 € drin | – | 1 € drin
+18 | Saftautomat | Eine Münze ist im Automaten. Du drückst den Knopf. Es kommt kein Saft, und die Münze bleibt drin. | 1 € drin | Knopf | 1 € drin | – | 0 € drin
+19 | Fußgängerampel mit Knopf | Das Wartesignal leuchtet. Die Zeit ist um. Die Autos halten an, und die Kinder dürfen gehen. | wartet | Zeit um | Fußgänger grün | wartet | –
 20 | Aufzug mit drei Stockwerken | Der Aufzug steht ganz unten. Jemand drückt „hoch“. Er fährt ein Stockwerk nach oben. | unten | hoch | Mitte | unten | –
-21 | Drehkreuz am Schwimmbad | Du hast bezahlt und gehst durch. Hinter dir sperrt das Drehkreuz wieder. | frei | Durchgehen | gesperrt | frei | –
-22 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Es ändert sich nichts. | Fußgänger grün | Knopf | Fußgänger grün | – | Autos grün
-23 | Fußgängerampel mit Knopf | Jemand hat schon gedrückt. Ein Kind drückt noch einmal. Es ändert sich nichts, die Ampel wartet weiter. | wartet | Knopf | wartet | – | Autos grün
-24 | Saftautomat | Es ist genug Geld drin. Du drückst den Knopf. Ein Saft fällt heraus, das Geld ist verbraucht. | 2 € drin | Knopf | 0 € drin | 2 € drin | –
+21 | Drehkreuz am Schwimmbad | Du hast bezahlt und gehst durch. Das nächste Kind kann nicht einfach hinterher. | frei | Durchgehen | gesperrt | frei | –
+22 | Fußgängerampel mit Knopf | Die Fußgänger haben Grün. Ein Kind drückt den Knopf. Die Kinder gehen weiter über die Straße. | Fußgänger grün | Knopf | Fußgänger grün | – | Autos grün
+23 | Fußgängerampel mit Knopf | Das Wartesignal leuchtet schon. Ein Kind drückt noch einmal. Die Autos fahren noch. | wartet | Knopf | wartet | – | Autos grün
+24 | Saftautomat | Zwei Münzen sind im Automaten. Du drückst den Knopf. Ein Saft fällt heraus. Die zwei Münzen hat der Automat für den Saft behalten. | 2 € drin | Knopf | 0 € drin | 2 € drin | –
 ```
 
-### Aufgabe pfeil-weglassen
+### Aufgabe diagramm-jetzt
 
-- Aufgabe: Selin sagt: „Wenn bei einer Eingabe nichts passiert, brauche ich dafür keinen Pfeil.“ Stimmt das in unseren Plänen?
+- Aufgabe: Mia schaut auf Selins Plan an der Wand und sagt: „Auf dem Plan sehe ich, wie viel Geld gerade im Automaten ist.“ Stimmt das?
 - Antwortformat: „Stimmt“ oder „Stimmt nicht“ wählen
 - Lösung: Die Aussage stimmt nicht.
-- Erklärung: In unseren Plänen braucht jeder Zustand für jede Eingabe einen Pfeil. Sonst weiß, wer den Automaten spielt, nicht, was zu tun ist. Ändert sich nichts, führt der Pfeil zurück zum selben Kreis.
-- Link: [../?via=tutor#pfeil-weglassen](../?via=tutor#pfeil-weglassen)
-
-### Aufgabe startzustand-finden
-
-- Aufgabe: Mia will nach Selins Plan spielen. Woran erkennt sie, bei welchem Kreis sie anfangen muss?
-- Antwortformat: eine Antwort wählen
-- Antworten zur Wahl (✓ richtig, ✗ falsch, mit der Meldung der App):
-  - ✓ Am Pfeil mit „Start“ – Der Startpfeil kommt von nirgendwo und zeigt auf den Startzustand.
-  - ✗ Am Kreis ganz links – Beim Saftautomaten steht der Start zufällig links. In einem anderen Diagramm kann er überall stehen.
-  - ✗ Am Kreis mit den meisten Pfeilen – Wie viele Pfeile ein Kreis hat, sagt nichts über den Anfang.
-  - ✗ Am gefüllten Kreis im Simulator – Der gefüllte Kreis zeigt nur, wo der Automat gerade ist. Auf Papier gibt es ihn nicht.
-- Lösung: Am Pfeil mit „Start“
-- Erklärung: Der Startzustand ist am Pfeil mit „Start“ zu erkennen, egal wo er im Bild steht.
-- Link: [../?via=tutor#startzustand-finden](../?via=tutor#startzustand-finden)
+- Erklärung: Der Plan zeigt alle Zustände, die der Automat haben kann, und alle Pfeile. Wo er gerade ist, weiß nur, wer ihn spielt. Im Simulator zeigt es der grüne Kreis, auf Papier der Spielstein.
+- Link: [../?via=tutor#diagramm-jetzt](../?via=tutor#diagramm-jetzt)
