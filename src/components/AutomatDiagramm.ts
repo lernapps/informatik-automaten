@@ -100,7 +100,7 @@ export function line(a: P, b: P, bend: number): Omit<Arrow, "key" | "from" | "to
   if (side === 0) side = ny < -0.2 || (Math.abs(ny) <= 0.2 && nx > 0) ? 1 : -1;
   const ox = nx * side;
   const oy = ny * side;
-  const gap = 10;
+  const gap = 14;
   const lx = half.x + ox * gap;
   const ly = half.y + oy * gap + (oy > 0.3 ? FONT * 0.8 : oy < -0.3 ? 0 : FONT * 0.35);
   return { path, head: head(tip, bend === 0 ? start : mid), lx, ly, anchor: anchorOf(ox), up: oy < -0.3 };
@@ -134,8 +134,23 @@ export function loop(s: P, degrees: number): Omit<Arrow, "key" | "from" | "to" |
   };
 }
 
-/** The lines of a state's name in its circle: split at the space nearest the middle when it is long. */
-export function nameLines(name: string): string[] {
+/** Words of `text` in lines of at most `max` characters (a longer word stays whole on its own line). */
+export function wrap(text: string, max: number): string[] {
+  const lines: string[] = [];
+  for (const word of text.split(" ")) {
+    const last = lines.at(-1);
+    if (last !== undefined && last.length + 1 + word.length <= max) lines[lines.length - 1] = `${last} ${word}`;
+    else lines.push(word);
+  }
+  return lines;
+}
+
+/**
+ * The lines of a state's name in its circle: split at the space nearest the middle when it is long. On a narrow
+ * screen in short lines of at most 6 characters, so that the name can be written larger.
+ */
+export function nameLines(name: string, narrow = false): string[] {
+  if (narrow && name.length > 6) return wrap(name, 6);
   if (name.length <= 9 || !name.includes(" ")) return [name];
   const middle = name.length / 2;
   let best = -1;
@@ -144,10 +159,13 @@ export function nameLines(name: string): string[] {
   return [name.slice(0, best), name.slice(best + 1)];
 }
 
-/** The font size of a state's name: 22, smaller for a long word, so that it fits inside the circle. */
-export function stateFont(name: string): number {
-  const longest = Math.max(...nameLines(name).map((l) => l.length));
-  return Math.min(22, Math.floor((2 * R * 0.82) / (longest * 0.56)));
+/** The font size of a state's name: 22 (30 on a narrow screen), smaller so that every line fits inside the circle. */
+export function stateFont(name: string, narrow = false): number {
+  const lines = nameLines(name, narrow);
+  const longest = Math.max(...lines.map((l) => l.length));
+  const wide = (2 * R * 0.82) / (longest * 0.56);
+  const high = (2 * R * 0.8) / (lines.length * 1.1);
+  return Math.floor(Math.min(narrow ? 30 : 22, wide, high));
 }
 
 /** The text of a label, for its width: the inputs joined, each with " / output". */
@@ -165,15 +183,20 @@ export interface LabelLine {
  * The lines of a label: the inputs without output on one line ("Münze, Knopf"); each input with an output on a line of
  * its own ending in " /", and its output on the next line. Two short lines fit a phone better than one long one.
  */
-export function labelLines(parts: { input: string; output: string | undefined }[]): LabelLine[] {
+export function labelLines(parts: { input: string; output: string | undefined }[], max = 0): LabelLine[] {
   const plain = parts.filter((p) => p.output === undefined).map((p) => p.input);
   const out: LabelLine[] = plain.length > 0 ? [{ inputs: plain.join(", "), slash: false, output: "" }] : [];
   for (const p of parts) {
     if (p.output === undefined) continue;
-    out.push({ inputs: p.input, slash: true, output: "" }, { inputs: "", slash: false, output: p.output });
+    out.push({ inputs: p.input, slash: true, output: "" });
+    // on a narrow screen a long output goes on several short lines
+    for (const line of max > 0 ? wrap(p.output, max) : [p.output]) out.push({ inputs: "", slash: false, output: line });
   }
   return out;
 }
+
+/** The longest line of a label on a narrow screen, in characters. */
+export const NARROW_LINE = 11;
 
 /** The offset of the first line of a label from ly: upwards by all but one line when it grows up. */
 export const firstLine = (count: number, up: boolean) => (up ? -(count - 1) * LINE : 0);
@@ -184,6 +207,7 @@ export function viewBox(
   all: Arrow[],
   names: (input: number) => string,
   extra: readonly { x: number; y: number }[] = [],
+  narrow = false,
 ): string {
   const xs: number[] = extra.map((p) => p.x);
   const ys: number[] = extra.map((p) => p.y);
@@ -194,7 +218,10 @@ export function viewBox(
   const start = automat.states[automat.start];
   if (start) xs.push(start.x - R - 70);
   for (const a of all) {
-    const label = labelLines(a.parts.map((p) => ({ input: names(p.input), output: p.output })));
+    const label = labelLines(
+      a.parts.map((p) => ({ input: names(p.input), output: p.output })),
+      narrow ? NARROW_LINE : 0,
+    );
     const longest = Math.max(...label.map((l) => l.inputs.length + l.output.length + (l.slash ? 2 : 0)));
     const width = longest * FONT * 0.56;
     const left = a.anchor === "start" ? a.lx : a.anchor === "end" ? a.lx - width : a.lx - width / 2;

@@ -4,7 +4,7 @@
 // the slash is the second mark beside the colour). The active state is filled, the arrow used last is thick, a
 // selected state has a dashed ring. Used by AutomatSimulator and AutomatAufgabe; all words come from their props.
 // Written for lernapps/informatik-automaten (#500).
-import { computed } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { inputName } from "./Automat.ts";
 import {
   FONT,
@@ -16,6 +16,7 @@ import {
   labelLines,
   line,
   loop,
+  NARROW_LINE,
   nameLines,
   startArrow,
   stateFont,
@@ -50,7 +51,31 @@ const emit = defineEmits<{ pick: [number] }>();
 
 /** The lines of an arrow's label, with the names of its inputs. */
 const label = (arrow: Arrow) =>
-  labelLines(arrow.parts.map((p) => ({ input: inputName(props.automat, p.input), output: p.output })));
+  labelLines(
+    arrow.parts.map((p) => ({ input: inputName(props.automat, p.input), output: p.output })),
+    narrow.value ? NARROW_LINE : 0,
+  );
+
+/** The shift of line `j` of a state's name: the lines centred on the middle of the circle. */
+const nameDy = (name: string, j: number) => {
+  const size = stateFont(name, narrow.value);
+  const count = nameLines(name, narrow.value).length;
+  return j === 0 ? size * 0.35 - ((count - 1) * size * 1.1) / 2 : size * 1.1;
+};
+
+// a narrow screen (a phone): long outputs on short lines and state names on short lines, written larger, so that
+// the drawing, scaled down to the width, stays readable. Known only once mounted; the server draws the wide form.
+const narrow = ref(false);
+let query: MediaQueryList | undefined;
+const watchWidth = () => {
+  narrow.value = query?.matches ?? false;
+};
+onMounted(() => {
+  query = window.matchMedia("(max-width: 30rem)");
+  watchWidth();
+  query.addEventListener("change", watchWidth);
+});
+onBeforeUnmount(() => query?.removeEventListener("change", watchWidth));
 
 const all = computed(() => arrows(props.automat, props.hidden.from < 0 ? undefined : props.hidden));
 const start = computed(() => startArrow(props.automat));
@@ -96,7 +121,7 @@ const box = computed(() => {
         { x: g.lx + (g.anchor === "end" ? 0 : width), y: g.ly + 8 },
       ]
     : [];
-  return viewBox(props.automat, all.value, (id) => inputName(props.automat, id), extra);
+  return viewBox(props.automat, all.value, (id) => inputName(props.automat, id), extra, narrow.value);
 });
 </script>
 
@@ -143,13 +168,8 @@ const box = computed(() => {
     >
       <circle v-if="i === selected" class="automat-diagramm-ring" :cx="state.x" :cy="state.y" :r="R + 7" />
       <circle :cx="state.x" :cy="state.y" :r="R" />
-      <text :x="state.x" :y="state.y" text-anchor="middle" :style="{ fontSize: `${stateFont(state.name)}px` }">
-        <tspan
-          v-for="(part, j) in nameLines(state.name)"
-          :key="j"
-          :x="state.x"
-          :dy="j === 0 ? (nameLines(state.name).length === 1 ? FONT * 0.35 : -FONT * 0.25) : FONT * 1.1"
-        >
+      <text :x="state.x" :y="state.y" text-anchor="middle" :style="{ fontSize: `${stateFont(state.name, narrow)}px` }">
+        <tspan v-for="(part, j) in nameLines(state.name, narrow)" :key="j" :x="state.x" :dy="nameDy(state.name, j)">
           {{ part }}
         </tspan>
       </text>
