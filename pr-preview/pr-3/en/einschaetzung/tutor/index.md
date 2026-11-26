@@ -47,9 +47,9 @@ If the address of this page names `bedarf=`, each section it names holds, severa
 
 ### Chapter “Designing an automaton”
 
-- no self-assessment
-- “Designing traffic lights” · not asked
-- “Testing and improving designs” · not asked
+- self-assessment of the chapter
+- “Designing traffic lights” · Tasks A7, A8
+- “Testing and improving designs” · Tasks A9, A10, A11
 
 ## The tasks of this self-assessment
 
@@ -59,3 +59,8 @@ If the address of this page names `bedarf=`, each section it names holds, severa
 - A4: exercise folge-lesen of the page “State diagrams”
 - A5: exercise pfeil-ergaenzen of the page “State diagrams”
 - A6: exercise diagramm-teile of the page “State diagrams” (always the same task, on its page too: right may be remembered)
+- A7: exercise schritte-ordnen of the page “Designing traffic lights” (always the same task, on its page too: right may be remembered)
+- A8: exercise entwurf-neu of the page “Designing traffic lights”
+- A9: exercise pfeile-zaehlen of the page “Testing and improving designs”
+- A10: exercise falscher-pfeil of the page “Testing and improving designs”
+- A11: exercise fehlerarten of the page “Testing and improving designs” (always the same task, on its page too: right may be remembered)

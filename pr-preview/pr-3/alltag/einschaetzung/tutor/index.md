@@ -47,7 +47,7 @@ Nennt die Adresse dieser Seite `bedarf=`, gilt jeder Abschnitt, den sie nennt, m
 
 ### Kapitel „Einen Automaten entwerfen“
 
-- keine Selbsteinschätzung
+- Selbsteinschätzung des Kapitels
 - „Eine Ampel entwerfen“
 - „Entwürfe testen und verbessern“
 

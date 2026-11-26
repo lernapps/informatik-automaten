@@ -47,7 +47,7 @@ If the address of this page names `bedarf=`, each section it names holds, severa
 
 ### Chapter “Designing an automaton”
 
-- no self-assessment
+- self-assessment of the chapter
 - “Designing traffic lights”
 - “Testing and improving designs”
 

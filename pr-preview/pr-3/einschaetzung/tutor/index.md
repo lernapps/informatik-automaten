@@ -47,9 +47,9 @@ Nennt die Adresse dieser Seite `bedarf=`, gilt jeder Abschnitt, den sie nennt, m
 
 ### Kapitel „Einen Automaten entwerfen“
 
-- keine Selbsteinschätzung
-- „Eine Ampel entwerfen“ · nicht abgefragt
-- „Entwürfe testen und verbessern“ · nicht abgefragt
+- Selbsteinschätzung des Kapitels
+- „Eine Ampel entwerfen“ · Aufgaben A7, A8
+- „Entwürfe testen und verbessern“ · Aufgaben A9, A10, A11
 
 ## Die Aufgaben dieser Selbsteinschätzung
 
@@ -59,3 +59,8 @@ Nennt die Adresse dieser Seite `bedarf=`, gilt jeder Abschnitt, den sie nennt, m
 - A4: Aufgabe folge-lesen der Seite „Zustandsdiagramm“
 - A5: Aufgabe pfeil-ergaenzen der Seite „Zustandsdiagramm“
 - A6: Aufgabe diagramm-teile der Seite „Zustandsdiagramm“ (immer dieselbe Aufgabe, auch auf der Seite: richtig kann gemerkt sein)
+- A7: Aufgabe schritte-ordnen der Seite „Eine Ampel entwerfen“ (immer dieselbe Aufgabe, auch auf der Seite: richtig kann gemerkt sein)
+- A8: Aufgabe entwurf-neu der Seite „Eine Ampel entwerfen“
+- A9: Aufgabe pfeile-zaehlen der Seite „Entwürfe testen und verbessern“
+- A10: Aufgabe falscher-pfeil der Seite „Entwürfe testen und verbessern“
+- A11: Aufgabe fehlerarten der Seite „Entwürfe testen und verbessern“ (immer dieselbe Aufgabe, auch auf der Seite: richtig kann gemerkt sein)
