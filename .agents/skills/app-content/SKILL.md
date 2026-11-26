@@ -194,15 +194,20 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 
 ## Adding a chapter or round
 
-1. Neuer Ordner `src/entwerfen/` mit `chapter.yaml`, in `src/app.yaml` unter `chapters` eintragen; Seite
-   `automat-entwerfen.yaml` mit `competencies: [automat-entwerfen]` und den Abschnitts-ids oben.
-2. Neue Automaten (Ampelsteuerung) in `src/data/automaten.yaml`, gleiche Felder.
-3. Simulator: `AutomatSimulator` bekommt die Ansicht `entwerfen` (Zustände anlegen, Pfeile setzen, Folge testen);
-   prüfen mit `Automat.ts` (`run`, `isComplete`) gegen Testfolgen. Modell und Datenform nicht umbauen.
-4. In 9-10 keine gezeichneten Kinder: ein Fall (eine Ampel an der Schule).
+1. Neuer Ordner `src/<kapitel>/` mit `chapter.yaml`, in `src/app.yaml` unter `chapters` eintragen; Seiten mit
+   `competencies: [<id>]` und den Abschnitts-ids oben (`einstieg`, `idee`, `ausprobieren`, `uebung`, am Kapitelende
+   `rueckblick`).
+2. Neue fertige Automaten in `src/data/automaten.yaml` (Nummer `nr`, gleiche Felder, vollständig), neue
+   Entwurfsaufgaben in `src/data/entwuerfe.yaml` (ids, Karten mit `art` und `warum`, `loesung`, Testfolgen, davon 1-2
+   `hidden`), Fehlerbilder in `src/data/fehlerbilder.yaml`. Modell und Datenform nicht umbauen.
+3. Vorhandene Komponenten zuerst: `AutomatSimulator` (`diagramm`, `kasten`), `AutomatAufgabe` (`folge`, `pfeil`,
+   `fehler`), `AutomatWerkstatt`, `AutomatEntwurf` (`neu`, `verbessern`), `AutomatBild`, `EvaBild`. Jedes Diagramm bei
+   360 px und am Desktop ansehen (Beschriftungen dürfen sich nicht berühren; sonst Plätze `x`, `y`, `loop` ändern).
+4. Ab Klasse 7 keine gezeichneten Kinder: ein Fall und ein Chat.
 5. 1 bis 3 ihrer Übungen in `selfAssessment` aufnehmen, wie Skill `lernapps-explainer-self-assessment` sagt. Kapitel
    `alltag` hat zwei Schritte: `was-passiert`, `zettel-am-ende`, `zustand-oder-eingabe` und `folge-lesen`,
-   `pfeil-ergaenzen`, `diagramm-teile`.
+   `pfeil-ergaenzen`, `diagramm-teile`. Kapitel `entwerfen`: `schritte-ordnen`, `entwurf-neu` und `pfeile-zaehlen`,
+   `falscher-pfeil`, `fehlerarten`.
 6. `npx --no -- lernapps check`, dann Commit.
 
 ## Rules learned from mistakes
