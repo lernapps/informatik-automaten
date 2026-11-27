@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "strand": "informatik/sprachen-automaten",
+  "pages": [
+    {
+      "path": "alltag/das-brauchst-du/",
+      "title": {
+        "de": "Das brauchst du hier",
+        "en": "What you need here"
+      },
+      "recap": "informatik/eva-prinzip"
+    },
+    {
+      "path": "alltag/automaten-im-alltag/",
+      "title": {
+        "de": "Automaten im Alltag",
+        "en": "Automata in everyday life"
+      },
+      "competencies": [
+        "automaten-im-alltag"
+      ]
+    },
+    {
+      "path": "alltag/zustandsdiagramm/",
+      "title": {
+        "de": "Zustandsdiagramm",
+        "en": "State diagrams"
+      },
+      "competencies": [
+        "zustandsdiagramm"
+      ]
+    },
+    {
+      "path": "entwerfen/ampel-entwerfen/",
+      "title": {
+        "de": "Eine Ampel entwerfen",
+        "en": "Designing traffic lights"
+      },
+      "competencies": [
+        "automat-entwerfen"
+      ]
+    },
+    {
+      "path": "entwerfen/entwurf-testen/",
+      "title": {
+        "de": "Entwürfe testen und verbessern",
+        "en": "Testing and improving designs"
+      },
+      "competencies": [
+        "automat-entwerfen"
+      ]
+    }
+  ]
+}
