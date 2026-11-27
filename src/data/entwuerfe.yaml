@@ -1,0 +1,559 @@
+# Aufgaben zum Entwerfen eines Automaten (Kapitel entwerfen, Komponenten AutomatEntwurf und AutomatWerkstatt).
+# id: Schlüssel der Aufgabe (in `use` der Blöcke). text: die Aufgabe, so genau, dass sich die Testfolgen daraus ergeben.
+# inputs: die Eingaben (id, name). cards: Zustandskarten; art zustand, eingabe oder ausgabe; warum: warum eine Karte,
+# die kein Zustand ist, nicht passt (bei Zustandskarten: was sich der Automat in diesem Zustand merkt). start: die
+# Karte, bei der der Automat anfängt. loesung: ein gültiger Entwurf (nur für „Lösung zeigen“ und den Tutor; geprüft wird
+# über Eigenschaften, nicht gegen ihn). tests: Testfolgen mit erwartetem Endzustand; hidden: true prüft erst „Prüfen“.
+# x, y, loop: Platz der Karte im Diagramm wie in automaten.yaml; 0, 0, 0 heißt: auf einem Kreis angeordnet.
+# ids sind Schlüssel, keine Lerntexte (@verbatim in den Komponenten).
+- id: ampel
+  name:
+    de: Bedarfsampel vor der Schule
+    en: Pedestrian crossing outside the school
+  text:
+    de:
+      Am Anfang haben die Autos Grün. Ohne Knopfdruck bleibt das so, auch wenn die Zeit um ist. Drückt jemand den Knopf,
+      fahren die Autos weiter, bis die Zeit um ist. Dann kommt Gelb für die Autos, nach der nächsten Zeit Grün für die Fußgänger (die Autos haben dann Rot),
+      danach Rot-Gelb für die Autos und wieder Grün. Bei Gelb, Fußgänger-Grün und Rot-Gelb ändert der Knopf nichts.
+    en: At the start the cars have green. If nobody presses the button, it stays like this, even when the time is up. If
+      someone presses the button, the cars keep driving until the time is up. Then the cars get amber; when the time is
+      up again, the green man shows (the cars have red then), then the cars get red and amber, and then green again. During amber, the green man
+      and red and amber, the button changes nothing.
+  inputs:
+    - id: knopf
+      name:
+        de: Knopf
+        en: button
+    - id: zeit
+      name:
+        de: Zeit um
+        en: time up
+  cards:
+    - id: gruen
+      name:
+        de: Autos grün
+        en: cars green
+      art: zustand
+      warum:
+        de: Die Autos fahren, niemand wartet.
+        en: The cars drive and nobody is waiting.
+      x: 110
+      y: 250
+      loop: 135
+    - id: druecken
+      name:
+        de: Knopf drücken
+        en: press the button
+      art: eingabe
+      warum:
+        de: „Knopf drücken“ passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
+        en: “Press the button” happens in a moment. That is an input, not a state.
+      x: 0
+      y: 0
+      loop: 0
+    - id: wartet
+      name:
+        de: jemand wartet
+        en: someone waiting
+      art: zustand
+      warum:
+        de: Die Autos haben noch Grün, aber die Ampel hat sich den Knopf gemerkt.
+        en: The cars still have green, but the lights have remembered the button.
+      x: 200
+      y: 70
+      loop: -120
+    - id: gelb
+      name:
+        de: Autos gelb
+        en: cars amber
+      art: zustand
+      warum:
+        de: Die Autos sollen anhalten.
+        en: The cars should stop.
+      x: 430
+      y: 70
+      loop: -60
+    - id: signal
+      name:
+        de: Wartesignal leuchtet auf
+        en: WAIT light comes on
+      art: ausgabe
+      warum:
+        de: Das Aufleuchten passiert bei einem Übergang. Das ist eine Ausgabe, kein Zustand.
+        en: The light coming on happens during a transition. That is an output, not a state.
+      x: 0
+      y: 0
+      loop: 0
+    - id: gehen
+      name:
+        de: Grün zum Gehen
+        en: green man
+      art: zustand
+      warum:
+        de: Die Fußgänger dürfen gehen.
+        en: People on foot may cross.
+      x: 520
+      y: 250
+      loop: 0
+    - id: rotgelb
+      name:
+        de: Autos rot-gelb
+        en: cars red and amber
+      art: zustand
+      warum:
+        de: Die Autos dürfen gleich wieder fahren.
+        en: The cars may drive again soon.
+      x: 380
+      y: 400
+      loop: 90
+  start: gruen
+  loesung:
+    - from: gruen
+      input: knopf
+      to: wartet
+    - from: gruen
+      input: zeit
+      to: gruen
+    - from: wartet
+      input: knopf
+      to: wartet
+    - from: wartet
+      input: zeit
+      to: gelb
+    - from: gelb
+      input: knopf
+      to: gelb
+    - from: gelb
+      input: zeit
+      to: gehen
+    - from: gehen
+      input: knopf
+      to: gehen
+    - from: gehen
+      input: zeit
+      to: rotgelb
+    - from: rotgelb
+      input: knopf
+      to: rotgelb
+    - from: rotgelb
+      input: zeit
+      to: gruen
+  tests:
+    - inputs:
+        - zeit
+        - zeit
+      end: gruen
+      hidden: false
+    - inputs:
+        - knopf
+        - zeit
+      end: gelb
+      hidden: false
+    - inputs:
+        - knopf
+        - zeit
+        - zeit
+      end: gehen
+      hidden: false
+    - inputs:
+        - knopf
+        - zeit
+        - zeit
+        - zeit
+        - zeit
+      end: gruen
+      hidden: false
+    - inputs:
+        - knopf
+        - knopf
+        - zeit
+        - knopf
+        - zeit
+      end: gehen
+      hidden: true
+    - inputs:
+        - knopf
+        - zeit
+        - zeit
+        - knopf
+        - zeit
+      end: rotgelb
+      hidden: true
+    - { inputs: [knopf, knopf, zeit], end: gelb, hidden: false }
+    - { inputs: [zeit], end: gruen, hidden: true }
+    - { inputs: [knopf], end: wartet, hidden: true }
+    - { inputs: [knopf, zeit, zeit, zeit, knopf], end: rotgelb, hidden: true }
+- id: schranke
+  name:
+    de: Schranke an der Ausfahrt des Parkhauses
+    en: Barrier at the car park exit
+  text:
+    de:
+      Am Anfang ist die Schranke zu. Wer ein Ticket einsteckt, öffnet sie. Fährt ein Auto durch, geht sie wieder zu. Kommt
+      ein Auto an die geschlossene Schranke, bleibt sie zu. Ein zweites Ticket bei offener Schranke ändert nichts.
+    en: At the start the barrier is closed. Putting in a ticket opens it. When a car drives through, it closes again. If
+      a car comes to the closed barrier, it stays closed. A second ticket while the barrier is open changes nothing.
+  inputs:
+    - id: ticket
+      name:
+        de: Ticket
+        en: ticket
+    - id: auto
+      name:
+        de: Auto
+        en: car
+  cards:
+    - id: zu
+      name:
+        de: Schranke zu
+        en: barrier closed
+      art: zustand
+      warum:
+        de: Niemand kommt durch.
+        en: Nobody can get through.
+      x: 170
+      y: 160
+      loop: -90
+    - id: offen
+      name:
+        de: Schranke offen
+        en: barrier open
+      art: zustand
+      warum:
+        de: Ein Auto darf durchfahren.
+        en: One car may drive through.
+      x: 430
+      y: 160
+      loop: -90
+    - id: hebt
+      name:
+        de: Schranke geht hoch
+        en: barrier goes up
+      art: ausgabe
+      warum:
+        de: Das Hochgehen passiert bei einem Übergang. Das ist eine Ausgabe, kein Zustand.
+        en: Going up happens during a transition. That is an output, not a state.
+      x: 0
+      y: 0
+      loop: 0
+    - id: einstecken
+      name:
+        de: Ticket einstecken
+        en: put in a ticket
+      art: eingabe
+      warum:
+        de: Das Einstecken passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
+        en: Putting it in happens in a moment. That is an input, not a state.
+      x: 0
+      y: 0
+      loop: 0
+  start: zu
+  loesung:
+    - from: zu
+      input: ticket
+      to: offen
+    - from: zu
+      input: auto
+      to: zu
+    - from: offen
+      input: ticket
+      to: offen
+    - from: offen
+      input: auto
+      to: zu
+  tests:
+    - inputs:
+        - ticket
+      end: offen
+      hidden: false
+    - inputs:
+        - ticket
+        - auto
+      end: zu
+      hidden: false
+    - inputs:
+        - auto
+      end: zu
+      hidden: false
+    - inputs:
+        - ticket
+        - ticket
+        - auto
+      end: zu
+      hidden: true
+    - inputs:
+        - auto
+        - ticket
+      end: offen
+      hidden: true
+    - { inputs: [ticket, ticket], end: offen, hidden: true }
+- id: schloss
+  name:
+    de: Zahlenschloss am Spind mit dem Code 2-7
+    en: Combination lock on a locker, code 2-7
+  text:
+    de:
+      Am Anfang ist das Schloss zu. Es geht auf, wenn direkt nacheinander 2 und dann 7 getippt werden. Jede andere Ziffer
+      nach der 2 macht den Anfang ungültig. Kommt nach der 2 noch eine 2, ist die neue 2 der Anfang. Ist das Schloss offen, bleibt es offen.
+    en: At the start the lock is locked. It opens when 2 and then 7 are typed one right after the other. Any other digit
+      after the 2 means starting again. If you type 2 again, that 2 is the new start of the code. Once the lock is open, it stays open.
+  inputs:
+    - id: zwei
+      name:
+        de: "2"
+        en: "2"
+    - id: sieben
+      name:
+        de: "7"
+        en: "7"
+    - id: andere
+      name:
+        de: andere Ziffer
+        en: other digit
+  cards:
+    - id: zu
+      name:
+        de: zu
+        en: locked
+      art: zustand
+      warum:
+        de: Noch nichts Richtiges getippt.
+        en: Nothing right typed yet.
+      x: 110
+      y: 170
+      loop: -90
+    - id: halb
+      name:
+        de: 2 getippt
+        en: 2 typed
+      art: zustand
+      warum:
+        de: Das Schloss hat sich die 2 gemerkt.
+        en: The lock has remembered the 2.
+      x: 330
+      y: 170
+      loop: 90
+    - id: offen
+      name:
+        de: offen
+        en: open
+      art: zustand
+      warum:
+        de: Der Code war richtig.
+        en: The code was right.
+      x: 550
+      y: 170
+      loop: -90
+    - id: tippen
+      name:
+        de: 7 tippen
+        en: type 7
+      art: eingabe
+      warum:
+        de: Eine Ziffer tippen passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
+        en: Typing a digit happens in a moment. That is an input, not a state.
+      x: 0
+      y: 0
+      loop: 0
+    - id: klick
+      name:
+        de: Schloss klickt
+        en: lock clicks
+      art: ausgabe
+      warum:
+        de: Das Klicken passiert bei einem Übergang. Das ist eine Ausgabe, kein Zustand.
+        en: The click happens during a transition. That is an output, not a state.
+      x: 0
+      y: 0
+      loop: 0
+  start: zu
+  loesung:
+    - from: zu
+      input: zwei
+      to: halb
+    - from: zu
+      input: sieben
+      to: zu
+    - from: zu
+      input: andere
+      to: zu
+    - from: halb
+      input: zwei
+      to: halb
+    - from: halb
+      input: sieben
+      to: offen
+    - from: halb
+      input: andere
+      to: zu
+    - from: offen
+      input: zwei
+      to: offen
+    - from: offen
+      input: sieben
+      to: offen
+    - from: offen
+      input: andere
+      to: offen
+  tests:
+    - inputs:
+        - zwei
+        - sieben
+      end: offen
+      hidden: false
+    - inputs:
+        - sieben
+        - zwei
+      end: halb
+      hidden: false
+    - inputs:
+        - zwei
+        - andere
+        - sieben
+      end: zu
+      hidden: false
+    - inputs:
+        - zwei
+        - zwei
+        - sieben
+      end: offen
+      hidden: true
+    - inputs:
+        - zwei
+        - sieben
+        - andere
+      end: offen
+      hidden: true
+    - { inputs: [andere], end: zu, hidden: true }
+    - { inputs: [zwei, zwei], end: halb, hidden: true }
+    - { inputs: [zwei, sieben, zwei], end: offen, hidden: true }
+    - { inputs: [zwei, sieben, sieben], end: offen, hidden: true }
+- id: handy
+  name:
+    de: Sperre eines Handys
+    en: Phone lock screen
+  text:
+    de: Am Anfang ist das Handy gesperrt. Ein richtiger Code entsperrt es. Nach einem falschen Code darf man noch einmal
+      probieren; nach dem zweiten falschen Code in Folge ist das Handy blockiert und nimmt keinen Code mehr an. Ist es entsperrt,
+      bleibt es entsperrt.
+    en: At the start the phone is locked. A right code unlocks it. After one wrong code you may try once more; after the
+      second wrong code in a row the phone is blocked and takes no more codes. Once it is unlocked, it stays unlocked.
+  inputs:
+    - id: richtig
+      name:
+        de: Code richtig
+        en: right code
+    - id: falsch
+      name:
+        de: Code falsch
+        en: wrong code
+  cards:
+    - id: gesperrt
+      name:
+        de: gesperrt
+        en: locked
+      art: zustand
+      warum:
+        de: Noch kein falscher Versuch.
+        en: No wrong try yet.
+      x: 100
+      y: 120
+      loop: -90
+    - id: einmal
+      name:
+        de: 1 Fehler
+        en: 1 mistake
+      art: zustand
+      warum:
+        de: Das Handy hat sich einen Fehlversuch gemerkt.
+        en: The phone has remembered one wrong try.
+      x: 400
+      y: 120
+      loop: -90
+    - id: blockiert
+      name:
+        de: blockiert
+        en: blocked
+      art: zustand
+      warum:
+        de: Zweimal falsch, jetzt geht nichts mehr.
+        en: Wrong twice, now nothing works.
+      x: 400
+      y: 370
+      loop: 0
+    - id: entsperrt
+      name:
+        de: entsperrt
+        en: unlocked
+      art: zustand
+      warum:
+        de: Der Code war richtig.
+        en: The code was right.
+      x: 100
+      y: 370
+      loop: 90
+    - id: eingeben
+      name:
+        de: Code eingeben
+        en: type the code
+      art: eingabe
+      warum:
+        de: Einen Code eingeben passiert in einem Moment. Das ist eine Eingabe, kein Zustand.
+        en: Typing a code happens in a moment. That is an input, not a state.
+      x: 0
+      y: 0
+      loop: 0
+  start: gesperrt
+  loesung:
+    - from: gesperrt
+      input: richtig
+      to: entsperrt
+    - from: gesperrt
+      input: falsch
+      to: einmal
+    - from: einmal
+      input: richtig
+      to: entsperrt
+    - from: einmal
+      input: falsch
+      to: blockiert
+    - from: blockiert
+      input: richtig
+      to: blockiert
+    - from: blockiert
+      input: falsch
+      to: blockiert
+    - from: entsperrt
+      input: richtig
+      to: entsperrt
+    - from: entsperrt
+      input: falsch
+      to: entsperrt
+  tests:
+    - inputs:
+        - richtig
+      end: entsperrt
+      hidden: false
+    - inputs:
+        - falsch
+        - richtig
+      end: entsperrt
+      hidden: false
+    - inputs:
+        - falsch
+        - falsch
+      end: blockiert
+      hidden: false
+    - inputs:
+        - falsch
+        - falsch
+        - richtig
+      end: blockiert
+      hidden: true
+    - inputs:
+        - richtig
+        - falsch
+      end: entsperrt
+      hidden: true
+    - { inputs: [falsch, falsch, falsch], end: blockiert, hidden: false }
+    - { inputs: [richtig, richtig], end: entsperrt, hidden: true }

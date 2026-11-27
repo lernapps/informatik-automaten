@@ -39,7 +39,22 @@ Kapitel `alltag` „Automaten im Alltag“:
   `folge-lesen` (AutomatAufgabe folge, diagramm), `pfeil-ergaenzen` (AutomatAufgabe pfeil), `diagramm-jetzt`
   (true-false).
 
-Kapitel `entwerfen` (Inkrement): `automat-entwerfen`: „Ich kann für eine konkrete Aufgabe, zum Beispiel eine
+Kapitel `entwerfen` „Einen Automaten entwerfen“ (9-10, Plan 02):
+
+- Seite `entwerfen/ampel-entwerfen`, `competencies: [automat-entwerfen]`. Übungen: `ampel-eingaben`
+  (multiple-choice), `schritte-ordnen` (ordering), `warum-wartet` (single-choice), `entwurf-neu` (AutomatEntwurf
+  `neu`), `uhr-zustand` (true-false).
+- Seite `entwerfen/entwurf-testen`, `competencies: [automat-entwerfen]`. Einstieg: Chat (Mia testet nur ohne Knopf,
+  Jonas Folge findet den Fehler), `AutomatBild` 0 (Mias Ampel), `warum-nicht-gefunden` (single-choice). Idee: drei
+  Fehlerarten (Pfeil fehlt → nicht vollständig, `AutomatBild` 1; zwei Pfeile mit derselben Eingabe → nicht eindeutig,
+  `AutomatBild` 2; Pfeil führt falsch → nur eine Testfolge über ihn zeigt es), Definition „eindeutig“ (Fachwort
+  „deterministisch“ einmal: eindeutig und vollständig; en: unambiguous / ambiguous, deterministic), Übergänge =
+  Zustände mal Eingaben (ein Pfeil mit zwei Eingaben sind zwei Übergänge), gute Testfolgen laufen zusammen über jeden Pfeil. Übung:
+  `pfeile-zaehlen` (generated), `falscher-pfeil` (AutomatAufgabe `fehler`), `entwurf-verbessern` (AutomatEntwurf
+  `verbessern`, alle vier Aufgaben), `fehlerarten` (matching), `gute-testfolge` (single-choice: welche Folge der Schranke läuft über alle vier Übergänge). Rückblick auf Kapitel
+  und App (Mia setzt den Pfeil richtig, von der 6b bis zur 9b).
+
+`automat-entwerfen`: „Ich kann für eine konkrete Aufgabe, zum Beispiel eine
 Ampelsteuerung, einen Automaten mit Zuständen und Übergängen entwerfen.“
 
 Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns“.
@@ -84,6 +99,35 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
 
 ## Exercise patterns
 
+- **Entwerfen** (automat-entwerfen): Übungskomponente `AutomatEntwurf` (`mode: neu` oder `verbessern`) mit Aufgaben aus
+  `src/data/entwuerfe.yaml` (`ampel`, `schranke`, `schloss`, `handy`; `use: [ids]`, `@verbatim`). Zustandskarten
+  wählen (Checkbox), Startzustand (Radio), je Zustand × Eingabe ein Ziel (Auswahlliste); Diagramm und Testfolgen mit
+  „abspielen“ (✓/✗ sofort). Geprüft über Eigenschaften (`problem` in `AutomatEntwurf.ts`): keine Eingabe-/Ausgabe-Karte,
+  Startzustand der Aufgabe, vollständig, alle Testfolgen inkl. `hidden: true` (erst „Prüfen“; die Seite sagt das).
+  Die Testfolgen einer Aufgabe laufen zusammen über jeden Übergang und enden je mindestens einmal in jedem Zustand,
+  sodass nur ein Entwurf alle besteht (fachlich geprüft); mindestens eine sichtbare Folge benutzt eine Zeile, in der
+  sich nichts ändert. Eine neue Aufgabe genauso: alle Entwürfe durchprobieren.
+  `loesung` nur für „Lösung zeigen“ und den Tutor. Ohne Prüfen: Anzeige `AutomatWerkstatt` (eine Aufgabe, `aufgabe: <id>`).
+  Die Ampel ist das Beispiel der Werkstatt; `entwurf-neu` zieht nur `schranke`, `schloss`, `handy`. „Prüfen“ ohne
+  Zustand meldet `noStates`. Die Einleitung sagt „Geprüft werden auch weitere Testfolgen“, nicht „drück Prüfen“ (die
+  Selbsteinschätzung hat kein „Prüfen“). „abspielen“ ohne Startzustand zeigt `needStart`; Schritt 3 steht immer da. Karten heißen kurz und ohne Wort über 9 Zeichen („jemand wartet“, „Grün zum Gehen“,
+  „2 getippt“, „1 Fehler“); jede Karte hat `x`, `y`, `loop`. Sind alle gewählten Karten platziert (`x > 0`), zeichnet
+  das Diagramm sie dort (Handy im Quadrat: gesperrt 100,120, 1 Fehler 400,120, entsperrt 100,370, blockiert 400,370), sonst im Kreis. Tutor-Tabelle: kurze
+  Lösung je Zustand („↺“ = bleibt), nur der Fehler „Pfeil falsch“ als Antwort (sonst über 64 kB; Seite 2 hat
+  61 kB).
+
+- **Fehler finden** (automat-entwerfen): `AutomatAufgabe` mit `mode: fehler` (`use: [0, 2, 3]`, nicht die kleine
+  Ampel aus Kapitel 1, die anders als in Kapitel 2 drei Zustände hat; ohne Ausgaben im Diagramm): ein Pfeil eines
+  Automaten aus `automaten.yaml` ist umgesetzt, eine Testfolge von 2-4 Eingaben endet deshalb falsch; ein Knopf je
+  Pfeil („Mitte – runter → oben“), der gewählte Pfeil dick. Gezogen wird nur, wenn kein anderer Pfeil auf dem Weg
+  die Folge reparieren kann. Antwort: die Stelle des Pfeils in `transitions`. Meldungen: Pfeil nicht auf dem Weg;
+  Pfeil auf dem Weg, aber richtig. Platzhalter `{expected}`, `{actual}`.
+- **Übergänge zählen** (`pfeile-zaehlen`): `generated` n Zustände (2-5), m Eingaben (2-3), `n != m`; Antwort n·m;
+  Fehler n+m, n, m. „Übergänge“, nicht „Pfeile“: das Diagramm legt Übergänge mit gleichem Ziel zu einem Pfeil zusammen.
+- **Verbessern**: `AutomatEntwurf` `mode: verbessern` startet mit der Lösung, in der ein Pfeil so geändert ist, dass
+  eine sichtbare Testfolge scheitert. Vor der ersten Änderung meldet die Übung keine Antwort (Laufzeitprüfung):
+  „Prüfen“ zeigt dann `noStates`, auf dieser Seite als Aufforderung, den falschen Pfeil zu ändern.
+
 - **Reaktion vorhersagen** (automaten-im-alltag): `generated` mit `pick: 1` aus `src/data/saft-situationen.yaml`,
   Antwort `{ choice: [...] }` über die festen Reaktionen; `mistakes` für „gleicher Knopf, gleiche Reaktion“.
 - **Folge durchspielen** (beide Bausteine): Übungskomponente `AutomatAufgabe` mit `mode: folge`; Startzustand und
@@ -113,6 +157,12 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   - Beschriftung am Pfeil: Eingabe blau fett #2f5fb3 (dunkel: #8fb0ee), mit Ausgabe gefolgt von „ /“ und darunter die
     Ausgabe orange kursiv #a4500f (dunkel: #f0a060), wie E und A im EVA-Bild (#490); der Schrägstrich ist das zweite
     Zeichen neben der Farbe. Gleicher Start und gleiches Ziel: eine Beschriftung „Münze, Knopf“.
+  - Seite der Beschriftung eines geraden Pfeils: weg von der Mitte aller Kreise; liegt der Pfeil nah an der Mitte, auf
+    der Seite weiter weg von den Mitten der anderen Pfeile (`line` in `AutomatDiagramm.ts`).
+  - Ein gerader Pfeil, der durch einen anderen Kreis liefe, macht einen Bogen um ihn (`around`). Eine Beschriftung
+    über oder unter einem geraden Pfeil, die breiter ist als der Pfeil zwischen den Kreisen, steht über den Kreisen.
+    Schmal: mehrere Eingaben an einem Pfeil untereinander („Code richtig,“ / „Code falsch“), ein langes Wort mit
+    Bindestrich bricht nach ihm („rot-“ / „gelb“).
   - Schmaler Bildschirm (unter 30rem, erst nach dem Laden): lange Ausgaben in Zeilen bis 11 Zeichen, Zustandsnamen in
     Zeilen bis 6 Zeichen und bis Schriftgröße 30. Gemessen bei 360 px: jede Schrift ≥ 12 px. Zustandsnamen ohne ein
     Wort über 9 Zeichen (deshalb „Grün zum Gehen“ statt „Fußgänger grün“).
@@ -126,6 +176,12 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   Je Zustand `x`, `y` (Fläche etwa 600 × 300; der Aufzug steht senkrecht) und `loop` (Richtung des Pfeils zurück zum
   selben Kreis, Grad). Je Übergang `bend` und `text` (was passiert, ohne den Zielzustand zu nennen). `outputs`
   getrennt. Blöcke nennen Automaten mit `automat: <nr>` bzw. `use: [<nr>, …]`.
+- `src/data/fehlerbilder.yaml`: Entwürfe mit Fehler für `AutomatBild` (nur Diagramm, Name darunter, `nojs:
+  caption` mit allen Pfeilen): 0 Mias Ampel (jemand wartet – Zeit um → Autos grün), 1 Drehkreuz A (bei „frei“ fehlt
+  „Chip“), 2 Drehkreuz B (zwei Pfeile „Chip“ aus „gesperrt“). Form wie `automaten.yaml` ohne `text` und `outputs`.
+- Plätze der Ampel (in `entwuerfe.yaml` und `fehlerbilder.yaml` gleich): Autos grün 110,250 (Schleife 135°), jemand
+  wartet 200,70, Autos gelb 430,70, Grün zum Gehen 520,250, Autos rot-gelb 380,400. Schranke: zu 170,160, offen
+  430,160.
 - `src/data/saft-situationen.yaml`: sechs Lagen (Zustand × Eingabe) des Saftautomaten mit Reaktion, typischer falscher
   Reaktion, Grund für Fehler und Lösung; für `was-passiert`.
 - Bilder: eigene SVG ohne Text, `source: eigene Zeichnung`, `licence: CC-BY-4.0`. `schulfest.svg` (Seite 1): Jona im
@@ -144,17 +200,25 @@ Die Übungs-ids stehen oben je Seite; die Muster dazu unter „Exercise patterns
   https://isaaccomputerscience.org/concepts/dsa_toc_fsm; National Curriculum England, Computing KS3.
 - Alle Beispiele sind erfunden; kein Material eines Erstellers.
 
+- Kapitel 2 erzählt als Chat der 9b (Jona, Selin, Mia, alle 14, zwei Jahre nach der 6b): ein `text`-Block mit Zeilen
+  „**Selin:** …“, je Zeile ein eigener Absatz (Leerzeile dazwischen, sonst laufen sie zusammen), ohne Bilder von Personen. Begriffe neu: vollständig, eindeutig (deterministisch = eindeutig und vollständig), Testfolge (beginnt beim Startzustand, Soll-Ende laut Aufgabe); „Zeit um“ meldet ein Zeitgeber (Timer) außerhalb des Automaten; Situationen, die „für die Autos gleich aussehen“.
+
 ## Adding a chapter or round
 
-1. Neuer Ordner `src/entwerfen/` mit `chapter.yaml`, in `src/app.yaml` unter `chapters` eintragen; Seite
-   `automat-entwerfen.yaml` mit `competencies: [automat-entwerfen]` und den Abschnitts-ids oben.
-2. Neue Automaten (Ampelsteuerung) in `src/data/automaten.yaml`, gleiche Felder.
-3. Simulator: `AutomatSimulator` bekommt die Ansicht `entwerfen` (Zustände anlegen, Pfeile setzen, Folge testen);
-   prüfen mit `Automat.ts` (`run`, `isComplete`) gegen Testfolgen. Modell und Datenform nicht umbauen.
-4. In 9-10 keine gezeichneten Kinder: ein Fall (eine Ampel an der Schule).
+1. Neuer Ordner `src/<kapitel>/` mit `chapter.yaml`, in `src/app.yaml` unter `chapters` eintragen; Seiten mit
+   `competencies: [<id>]` und den Abschnitts-ids oben (`einstieg`, `idee`, `ausprobieren`, `uebung`, am Kapitelende
+   `rueckblick`).
+2. Neue fertige Automaten in `src/data/automaten.yaml` (Nummer `nr`, gleiche Felder, vollständig), neue
+   Entwurfsaufgaben in `src/data/entwuerfe.yaml` (ids, Karten mit `art` und `warum`, `loesung`, Testfolgen, davon 1-2
+   `hidden`), Fehlerbilder in `src/data/fehlerbilder.yaml`. Modell und Datenform nicht umbauen.
+3. Vorhandene Komponenten zuerst: `AutomatSimulator` (`diagramm`, `kasten`), `AutomatAufgabe` (`folge`, `pfeil`,
+   `fehler`), `AutomatWerkstatt`, `AutomatEntwurf` (`neu`, `verbessern`), `AutomatBild`, `EvaBild`. Jedes Diagramm bei
+   360 px und am Desktop ansehen (Beschriftungen dürfen sich nicht berühren; sonst Plätze `x`, `y`, `loop` ändern).
+4. Ab Klasse 7 keine gezeichneten Kinder: ein Fall und ein Chat.
 5. 1 bis 3 ihrer Übungen in `selfAssessment` aufnehmen, wie Skill `lernapps-explainer-self-assessment` sagt. Kapitel
    `alltag` hat zwei Schritte: `was-passiert`, `zettel-am-ende`, `zustand-oder-eingabe` und `folge-lesen`,
-   `pfeil-ergaenzen`, `diagramm-teile`.
+   `pfeil-ergaenzen`, `diagramm-teile`. Kapitel `entwerfen`: `schritte-ordnen`, `entwurf-neu` und `pfeile-zaehlen`,
+   `falscher-pfeil`, `fehlerarten`.
 6. `npx --no -- lernapps check`, dann Commit.
 
 ## Rules learned from mistakes
